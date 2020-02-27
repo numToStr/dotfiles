@@ -17,29 +17,18 @@ filetype off
 " <S> = Shift
 " <Leader> = \
 
-source "./plugins/plugins.vim"
-
-source "./defaults.vim"
-
-source "./coc/coc.vim"
-
-source "./airline/airline.vim"
-
-source "./quickscope/quickscope.vim"
-
-source "./easymotion/easymotion.vim"
-
-source "./gruvbox/gruvbox.vim"
-
-source "./indentline/indentline.vim"
-
-source "./nerdtree/nerdtree.vim"
-
-source "./nerdcommenter/nerdcommenter.vim"
-
-source "./ctrlp/ctrlp.vim"
-
-source "./move/move.vim"
+source "$DOTFILES/vim/plugins/plugins.vim"
+source "$DOTFILES/vim/defaults.vim"
+source "$DOTFILES/vim/gruvbox/gruvbox.vim"
+source "$DOTFILES/vim/coc/coc.vim"
+source "$DOTFILES/vim/airline/airline.vim"
+source "$DOTFILES/vim/quickscope/quickscope.vim"
+source "$DOTFILES/vim/easymotion/easymotion.vim"
+source "$DOTFILES/vim/indentline/indentline.vim"
+source "$DOTFILES/vim/nerdtree/nerdtree.vim"
+source "$DOTFILES/vim/nerdcommenter/nerdcommenter.vim"
+source "$DOTFILES/vim/ctrlp/ctrlp.vim"
+source "$DOTFILES/vim/move/move.vim"
 
 " Tmuxline config ===============================================================================================================
 " let g:tmuxline_preset = {

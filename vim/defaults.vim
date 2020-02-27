@@ -1,4 +1,3 @@
-colorscheme gruvbox 
 syntax on " Enabling syntax highlighting
 filetype plugin indent on " Enable inbuilt filetype plugin, helps NERDCommenter to aware of opened file for commenting
 

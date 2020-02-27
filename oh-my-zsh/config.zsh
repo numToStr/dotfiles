@@ -63,29 +63,6 @@ ZSH_THEME="spaceship"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-    zsh-syntax-highlighting
-    zsh-completions
-    history-substring-search
-    zsh-autosuggestions
-    git
-    docker
-    docker-compose
-    archlinux
-    tmux
-    # vi-mode
-)
-
-# ZSH_TMUX_AUTOSTART_ONCE=true
-ZSH_TMUX_AUTOSTART=true
-ZSH_TMUX_AUTOCONNECT=true
-ZSH_TMUX_FIXTERM=true
-
 autoload -U compinit && compinit
 
 source $ZSH/oh-my-zsh.sh
@@ -116,6 +93,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export ZSH_TMUX_AUTOSTART=true
+export ZSH_TMUX_AUTOCONNECT=true
+export ZSH_TMUX_FIXTERM=true
 # export SPACESHIP_TIME_FORMAT="%@"
 # export SPACESHIP_TIME_SHOW=true
 # export SPACESHIP_PROMPT_ADD_NEWLINE=false
@@ -125,6 +105,3 @@ export SPACESHIP_GIT_BRANCH_COLOR="#ff5f00"
 export SPACESHIP_DOCKER_CONTEXT_SHOW=false
 export SPACESHIP_DOCKER_VERBOSE=true
 
-source "../yarn/path.zsh"
-
-source "../z/path.zsh"
