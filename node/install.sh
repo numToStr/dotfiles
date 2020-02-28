@@ -5,6 +5,7 @@ then
     echo "::[ Already Installed ] 'n'"
 else
     echo "::[ Installing ] 'n'"
+    rm -rf $HOME/n
     curl -L https://git.io/n-install | bash
     # curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n
     # bash n lts
