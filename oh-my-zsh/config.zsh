@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/hello/.oh-my-zsh"
+# export ZSH="/home/hello/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -63,9 +63,9 @@ ZSH_THEME="spaceship"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-autoload -U compinit && compinit
-
-source $ZSH/oh-my-zsh.sh
+# autoload -U compinit && compinit
+#
+# source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
