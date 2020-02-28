@@ -1,4 +1,5 @@
-echo "::[ Installing ] 'yarn'"
+#!/bin/sh
 
+echo "::[ Installing ] 'yarn'"
 curl -o- -L https://yarnpkg.com/install.sh | bash
 

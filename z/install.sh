@@ -1,3 +1,4 @@
-# echo "::[ Installing ] 'yarn'"
+#!/bin/sh
 
+# echo "::[ Installing ] 'yarn'"
 echo "You should install 'z' through distro's package manager"
