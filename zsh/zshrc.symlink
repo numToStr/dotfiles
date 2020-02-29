@@ -2,9 +2,12 @@
 # uncomment this and the last line for zprof info
 # zmodload zsh/zprof
 
+# Path to your oh-my-zsh installation.
+export ZSH="/home/hello/.oh-my-zsh"
+#
 # ohmyzsh path from antibody installation, otherwise ohmyzsh will not work
-export ZSH="${HOME}/.cache/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-ohmyzsh-SLASH-ohmyzsh"
-
+# export ZSH="${HOME}/.cache/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-ohmyzsh-SLASH-ohmyzsh"
+#
 # shortcut to this dotfiles path is $DOTFILES
 export DOTFILES="$HOME/.dotfiles"
 
@@ -23,12 +26,12 @@ done
 # load antibody plugins
 # source ~/.zsh_plugins.sh
 
-# source $ZSH/oh-my-zsh.sh
-
 # load everything but the path and completion files
 for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}; do
   source "$file"
 done
+
+source $ZSH/oh-my-zsh.sh
 
 autoload -Uz compinit
 for dump in ~/.zcompdump(N.mh+24); do

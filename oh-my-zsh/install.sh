@@ -3,6 +3,13 @@
 echo "::[ Installing ] 'Oh my zsh'"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+if command -v zsh >/dev/null 2>&1; then
+    echo "::[ Linking ] '.zshrc'"
+    mv ~/.zshrc ~/.zshrc.backup
+    # touch ~/.zshrc
+    ln -sf "$DOTFILES/zsh/zshrc.symlink" ~/.zshrc
+fi
+
 echo "::[ Installing ] Plugin >> 'zsh-syntax-highlighting'"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
