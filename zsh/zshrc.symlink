@@ -21,7 +21,7 @@ for file in ${(M)config_files:#*/path.zsh}; do
 done
 
 # load antibody plugins
-source ~/.zsh_plugins.sh
+# source ~/.zsh_plugins.sh
 
 # source $ZSH/oh-my-zsh.sh
 
