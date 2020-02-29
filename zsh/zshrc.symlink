@@ -3,7 +3,7 @@
 # zmodload zsh/zprof
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/hello/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 #
 # ohmyzsh path from antibody installation, otherwise ohmyzsh will not work
 # export ZSH="${HOME}/.cache/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-ohmyzsh-SLASH-ohmyzsh"
