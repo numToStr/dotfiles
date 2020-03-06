@@ -1,12 +1,27 @@
 #!/bin/sh
 #
 # Run all dotfiles installers.
-# set -e
+set -e
 
 cd "$(dirname "$0")"/..
 
-# find the installers and run them iteratively
-git ls-tree --name-only -r HEAD | grep install.sh | while read -r installer; do
-	echo "› ${installer}..."
-	sh -c "$installer"
-done
+# Find the installers and run them iteratively, except vim installer
+# IDK why, but after vim installer no other installer runs
+find -H "$DOTFILES" -maxdepth 2 ! -path "*vim*" ! -path '*.git*' -name 'install.sh' |
+    while read -r installer; do
+        echo "› ${installer}..."
+        sh -c "$installer"
+    done
+
+# Installing vim installers
+find -H "$DOTFILES" -maxdepth 2 -path '*vim*' -name 'install.sh' |
+    while read -r installer; do
+        echo "› ${installer}..."
+        sh -c "$installer"
+    done 
+
+# git ls-tree --name-only -r HEAD | grep install.sh | while read -r installer; do
+#     echo "› ${installer}..."
+#     sh -c "$installer"
+# done
+
