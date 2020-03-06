@@ -10,3 +10,11 @@ else
     curl -L https://git.io/n-install | bash -s -- -y -n
 fi
 
+if command -v yarn >/dev/n; then
+    echo "::[ Already Installed ] 'yarn'"
+else
+    echo "::[ Installing ] 'yarn'"
+    curl -o- -L https://yarnpkg.com/install.sh | bash 
+fi
+
+
