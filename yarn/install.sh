@@ -5,6 +5,6 @@
 #     echo "::[ Already Installed ] 'yarn'"
 # else
     echo "::[ Installing ] 'yarn'"
-    curl -o- -L https://yarnpkg.com/install.sh | bash || echo ''
+    curl -o- -L https://yarnpkg.com/install.sh | bash 
 # fi
 
