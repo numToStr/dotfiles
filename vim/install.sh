@@ -8,7 +8,7 @@ if command -v vim >/dev/null 2>&1; then
     echo "::[ Linking ] Vim >> '.vimrc'"
     ln -sf "$DOTFILES/vim/vimrc.symlink" ~/.vimrc
 
-    vim +'PlugInstall --sync' +qa
+    # vim +'PlugInstall --sync' +qa
     vim +'PlugUpdate' +qa
 fi
 
@@ -22,6 +22,6 @@ if command -v nvim >/dev/null 2>&1; then
     echo "::[ Linking ] Nvim >> 'init.vim'"
     ln -sf "$DOTFILES/vim/vimrc.symlink" ~/.config/nvim/init.vim
 
-	nvim +'PlugInstall --sync' +qa
+    # nvim +'PlugInstall --sync' +qa
 	nvim +'PlugUpdate' +qa
 fi
