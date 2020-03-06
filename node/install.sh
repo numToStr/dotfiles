@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if command -v n >/dev/null 2>&1; then
     echo "::[ Already Installed ] 'n'"

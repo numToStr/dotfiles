@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 echo "You should install 'tmux' through distro's package manager"
 

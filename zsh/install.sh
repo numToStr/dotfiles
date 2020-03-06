@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # if command -v zsh >/dev/null 2>&1; then
 #     echo "::[ Linking ] '.zshrc'"

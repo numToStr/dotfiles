@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # If hub is found, use https: instead of git: or ssh::
 if command -v hub >/dev/null 2>&1; then

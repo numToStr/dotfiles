@@ -1,6 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 
-if command -v upgrade_oh_my_zsh >/dev/null 2>&1; then
+# if command -v upgrade_oh_my_zsh >/dev/null 2>&1; then
+if [[ -d ~/.oh-my-zsh && -f ~/.oh-my-zsh/oh-my-zsh.sh ]]; then
     echo "::[ Already Installed ] 'Oh my zsh'"
     echo "::[ Updating ] 'Oh my zsh'"
     upgrade_oh_my_zsh
