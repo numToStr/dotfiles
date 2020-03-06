@@ -1,10 +1,13 @@
 #!/bin/bash
 
-# if command -v upgrade_oh_my_zsh >/dev/null 2>&1; then
-if [[ -d ~/.oh-my-zsh && -f ~/.oh-my-zsh/oh-my-zsh.sh ]]; then
+OMZ_DIR=$HOME/.oh-my-zsh
+OMZ_FILE=$OMZ_DIR/oh-my-zsh.sh
+
+if [[ -d "$OMZ_DIR" && -f "$OMZ_FILE" ]];
+then
     echo "::[ Already Installed ] 'Oh my zsh'"
-    echo "::[ Updating ] 'Oh my zsh'"
-    upgrade_oh_my_zsh
+    # echo "::[ Updating ] 'Oh my zsh'"
+    # $OMZ_FILE && upgrade_oh_my_zsh
 else
     echo "::[ Installing ] 'Oh my zsh'"
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -12,7 +15,6 @@ else
     if command -v zsh >/dev/null 2>&1; then
         echo "::[ Linking ] '.zshrc'"
         mv ~/.zshrc ~/.zshrc.backup
-        # touch ~/.zshrc
         ln -sf "$DOTFILES/zsh/zshrc.symlink" ~/.zshrc
     fi
 
