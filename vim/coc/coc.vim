@@ -1,3 +1,5 @@
+let s:EasyMotion_is_active=1;
+
 " COC extensions list
 let g:coc_global_extensions = [    
     \ 'coc-tsserver',
