@@ -7,8 +7,6 @@ if command -v n >/dev/null 2>&1; then
 else
     echo "::[ Installing ] 'n'"
     rm -rf $HOME/n
-    curl -L https://git.io/n-install | bash
-    # curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n
-    # bash n lts
+    curl -L https://git.io/n-install | bash -s -- -y -n
 fi
 
