@@ -3,7 +3,7 @@
 if command -v n >/dev/null 2>&1; then
     echo "::[ Already Installed ] 'n'"
     echo "::[ Updating ] 'n'"
-    n-update
+    sh -c "n-update -y"
 else
     echo "::[ Installing ] 'n'"
     rm -rf $HOME/n
