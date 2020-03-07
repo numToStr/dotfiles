@@ -41,4 +41,9 @@ compinit -C
 
 unset config_files updated_at
 
+# use .localrc for SUPER SECRET CRAP that you don't
+# want in your public, versioned repo.
+# shellcheck disable=SC1090
+[ -f ~/.localrc ] && . ~/.localrc
+
 # zprof
