@@ -1,0 +1,10 @@
+{
+  "Markdown code block": {
+    "prefix": "mdcode",
+    "body": [
+      "```$1",
+      "$2",
+      "```"
+    ]
+  }
+}

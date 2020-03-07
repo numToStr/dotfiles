@@ -1,0 +1,14 @@
+coenraads.bracket-pair-colorizer-2
+ms-azuretools.vscode-docker
+mikestead.dotenv
+dsznajder.es7-react-js-snippets
+dbaeumer.vscode-eslint
+ms-vscode.github-issues-prs
+github.vscode-pull-request-github
+eamodio.gitlens
+kumar-harsh.graphql-for-vscode
+jolaleye.horizon-theme-vscode
+pkief.material-icon-theme
+hangxingliu.vscode-nginx-conf-hint
+esbenp.prettier-vscode
+vscodevim.vim
