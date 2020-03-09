@@ -1,8 +1,14 @@
+#!/bin/sh
+
 alias ..="cd .."
 alias ...="cd ../.."
+alias ....="cd ../../.."
+
 alias py="python"
-alias npm="echo 'WTF! YOU SHOULD USE \"yarn\"' && npm"
 alias myip="ip addr show wlo1 | grep wlo1"
+
+alias npm="echo 'WTF! YOU SHOULD USE \"yarn\"' && npm"
+alias npmnuke="echo Deleting ^/node_modules/ && rm -rf ./**/node_modules"
 
 if command -v pamac >/dev/null 2>&1; then
     alias checkup="sudo pamac checkupdates -a"
