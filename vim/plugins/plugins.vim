@@ -14,8 +14,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
 " A plugin of NERDTree showing git status flags
 Plug 'Xuyuanp/nerdtree-git-plugin'
-" For code commenting; <Leader> = \, <Leader>cc
-Plug 'preservim/nerdcommenter'
+" For commenting stuff out
+Plug 'tomtom/tcomment_vim'
 " For searching files Press ctrl+p
 Plug 'ctrlpvim/ctrlp.vim'
 " For navigating b/w tmux window, specially for navigating with NERDTree
@@ -49,6 +49,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'edkolev/tmuxline.vim'
 " Live code playground like Quokka.js
 " Plug 'metakirby5/codi.vim'
+" For code commenting; <Leader> = \, <Leader>cc
+" Plug 'preservim/nerdcommenter'
 
 " TO BE EXPLORED
 " Plug 'vim-ctrlspace/vim-ctrlspace'
