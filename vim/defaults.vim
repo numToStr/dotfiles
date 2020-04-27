@@ -51,8 +51,10 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
 " Quickly save document with \w
-nmap <leader>w :w<CR>
+map <leader>w :w<CR>
 " Quickly quit vim
 " Conflicting with <leader>qf in coc.vim
 " nmap <leader>q :q<CR>
+" Quickly remove search highlighting
+map <leader>n :nohl<CR>
 
