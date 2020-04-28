@@ -11,10 +11,12 @@ plugins=(
     history-substring-search
     zsh-autosuggestions
     git
+    git-extras
     docker
     docker-compose
     archlinux
     tmux
+    z
     # vi-mode
 )
 
