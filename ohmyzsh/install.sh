@@ -15,7 +15,7 @@ else
     if command -v zsh >/dev/null 2>&1; then
         echo "::[ Linking ] '.zshrc'"
         mv ~/.zshrc ~/.zshrc.backup
-        ln -sf "$DOTFILES/zsh/zshrc.symlink" ~/.zshrc
+        ln -sf "$DOTFILES/ohmyzsh/zshrc.symlink" ~/.zshrc
     fi
 
     echo "::[ Installing ] Plugin >> 'zsh-syntax-highlighting'"
