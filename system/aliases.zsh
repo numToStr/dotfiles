@@ -5,7 +5,6 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 
 alias py="python"
-alias myip="ip addr show wlo1 | grep wlo1"
 
 alias npm="echo 'WTF! YOU SHOULD USE \"yarn\"' && npm"
 alias npmnuke="echo Deleting ^/node_modules/ && rm -rf ./**/node_modules"
