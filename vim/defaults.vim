@@ -57,4 +57,7 @@ map <leader>w :w<CR>
 " nmap <leader>q :q<CR>
 " Quickly remove search highlighting
 map <leader>n :nohl<CR>
+" To quickly add a blank line above/below and stay on normal mode
+nmap <leader>o :normal o<CR>
+nmap <leader>O :normal O<CR>
 
