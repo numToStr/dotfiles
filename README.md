@@ -5,3 +5,24 @@
 # Inspired By
 
 @caarlos0's [dotfiles](https://github.com/caarlos0/dotfiles)
+
+# Installation
+
+### Required Dependencies
+
+- git
+- curl
+- zsh
+- sudo
+
+### Install
+
+```
+$ git clone https://github.com/numtostr/dotfiles ~/.dotfiles
+$ cd ~/.dotfiles
+$ ./scripts/bootstrap
+```
+
+### Software
+
+Personally I use Manjaro Linux w/ KDE Plasma. So, this should work on linux.
