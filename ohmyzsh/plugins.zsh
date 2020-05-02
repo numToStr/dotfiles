@@ -6,19 +6,23 @@
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    zsh-syntax-highlighting
+    archlinux
+    # zsh-syntax-highlighting
+    fast-syntax-highlighting
     zsh-completions
-    history-substring-search
     zsh-autosuggestions
+    history-substring-search
     git
     git-extras
+    gitignore
     docker
     docker-compose
-    archlinux
-    tmux
+    fd
     fzf
+    tmux
     z
+    # thefuck
+    # wd
     # vi-mode
 )
-
 
