@@ -14,6 +14,10 @@
 - curl
 - zsh
 - sudo
+- vim/neovim
+- tmux
+- fzf
+- fd
 
 ### Install
 
