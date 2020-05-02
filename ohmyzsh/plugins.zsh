@@ -16,6 +16,7 @@ plugins=(
     docker-compose
     archlinux
     tmux
+    fzf
     z
     # vi-mode
 )

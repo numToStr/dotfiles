@@ -65,6 +65,12 @@ ZSH_THEME="spaceship"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+# Uncomment the following line to disable fuzzy completion
+# export DISABLE_FZF_AUTO_COMPLETION="true"
+
+# Uncomment the following line to disable key bindings (CTRL-T, CTRL-R, ALT-C)
+export DISABLE_FZF_KEY_BINDINGS="true"
+
 # autoload -U compinit && compinit
 #
 # source $ZSH/oh-my-zsh.sh
