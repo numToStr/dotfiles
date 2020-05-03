@@ -32,8 +32,6 @@ Plug 'tpope/vim-surround'
 " For getting file icons in status-line, nerdtree etc.
 " Note: Make sure you have installed ttf-nerd-fonts-symbols, if you manjaro just run `pamac install ttf-nerd-fonts-symbols`
 Plug 'ryanoasis/vim-devicons'
-" Lightning fast left-right movement in Vim
-Plug 'unblevable/quick-scope'
 " Vim motion on speed!
 Plug 'easymotion/vim-easymotion'
 " VS Code instellisense and autocompletion in vim
@@ -51,6 +49,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'preservim/nerdcommenter'
 " For moving lines and selection up and down
 " Plug 'matze/vim-move'
+" Lightning fast left-right movement in Vim
+" Plug 'unblevable/quick-scope'
 
 " TO BE EXPLORED
 " Plug 'vim-ctrlspace/vim-ctrlspace'
