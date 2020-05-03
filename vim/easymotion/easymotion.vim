@@ -10,9 +10,11 @@ nmap - <Plug>(easymotion-bd-wl)
 
 " EasyMotion can be configured to avoid repetitive use of the h j k and l keys.
 " map <Leader>h <Plug>(easymotion-linebackward)
-map <Leader>j <Plug>(easymotion-w)
-map <Leader>k <Plug>(easymotion-b)
+" map <Leader>j <Plug>(easymotion-w)
+" map <Leader>k <Plug>(easymotion-b)
 " map <Leader>l <Plug>(easymotion-lineforward)
+map <S-j> <Plug>(easymotion-w)
+map <S-k> <Plug>(easymotion-b)
 
 " Color Reference: https://jonasjacek.github.io/colors/
 " Bg: White 15 #ffffff
