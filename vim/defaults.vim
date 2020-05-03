@@ -39,6 +39,9 @@ set shortmess+=c
 " This is almost a must if you wish to use buffers in this way.
 set hidden
 
+" Disabling the default Shift-k key map
+map <S-k> <Nop>
+
 " To open a new empty buffer
 nmap <leader>T :enew<cr>
 " Move to the previous buffer
