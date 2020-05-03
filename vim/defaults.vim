@@ -39,8 +39,9 @@ set shortmess+=c
 " This is almost a must if you wish to use buffers in this way.
 set hidden
 
-" Disabling the default Shift-k key map
+" Disabling the default Shift-{j,k} key map
 map <S-k> <Nop>
+map <S-j> <Nop>
 
 " To open a new empty buffer
 nmap <leader>T :enew<cr>
@@ -63,4 +64,11 @@ map <leader>n :nohl<CR>
 " To quickly add a blank line above/below and stay on normal mode
 nmap <leader>o :normal o<CR>
 nmap <leader>O :normal O<CR>
+
+" Move line up and down => Ctrl+Shift+<key>
+" Reference: https://vim.fandom.com/wiki/Moving_lines_up_or_down
+" map <S-j> :m .+1<CR>
+" map <S-k> :m .-2<CR>
+map <C-S-j> :m .+1<CR>
+map <C-S-k> :m .-2<CR>
 

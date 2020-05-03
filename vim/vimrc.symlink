@@ -28,9 +28,9 @@ source $DOTFILES/vim/quickscope/quickscope.vim
 source $DOTFILES/vim/easymotion/easymotion.vim
 source $DOTFILES/vim/indentline/indentline.vim
 source $DOTFILES/vim/nerdtree/nerdtree.vim
-" source $DOTFILES/vim/nerdcommenter/nerdcommenter.vim
 source $DOTFILES/vim/ctrlp/ctrlp.vim
-source $DOTFILES/vim/move/move.vim
+" source $DOTFILES/vim/nerdcommenter/nerdcommenter.vim
+" source $DOTFILES/vim/move/move.vim
 
 " Tmuxline config ===============================================================================================================
 " let g:tmuxline_preset = {

@@ -29,8 +29,6 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
 " For 'surroundings': parentheses, brackets, quotes, XML tags, and more.
 Plug 'tpope/vim-surround'
-" For moving lines and selection up and down
-Plug 'matze/vim-move'
 " For getting file icons in status-line, nerdtree etc.
 " Note: Make sure you have installed ttf-nerd-fonts-symbols, if you manjaro just run `pamac install ttf-nerd-fonts-symbols`
 Plug 'ryanoasis/vim-devicons'
@@ -51,6 +49,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'metakirby5/codi.vim'
 " For code commenting; <Leader> = \, <Leader>cc
 " Plug 'preservim/nerdcommenter'
+" For moving lines and selection up and down
+" Plug 'matze/vim-move'
 
 " TO BE EXPLORED
 " Plug 'vim-ctrlspace/vim-ctrlspace'
