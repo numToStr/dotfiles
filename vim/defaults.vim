@@ -67,8 +67,10 @@ nmap <leader>O :normal O<CR>
 
 " Move line up and down => Ctrl+Shift+<key>
 " Reference: https://vim.fandom.com/wiki/Moving_lines_up_or_down
-" map <S-j> :m .+1<CR>
-" map <S-k> :m .-2<CR>
-map <C-S-j> :m .+1<CR>
-map <C-S-k> :m .-2<CR>
+" Note:
+" - Don't map with only Ctrl or Ctrl+Shift it will conflict with vim-tmux-navigator
+" - Don't with only Shift, it will conflict with easymotion
+" - Mapping with Ctrl+Alt doen't work on my terminal i.e Konsole
+map <C-DOWN> :m .+1<CR>
+map <C-UP> :m .-2<CR>
 
