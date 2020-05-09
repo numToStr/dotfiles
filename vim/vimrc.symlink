@@ -19,7 +19,7 @@ filetype off
 
 " source $DOTFILES/vim/plugins/plugins.vim
 
-" Sourcing all vim files
+" Sourcing all vim files in the vim/plugins directory
 for f in split(globpath("$DOTFILES/vim/plugins", "**/*.vim"), "\n")
     exec "source" f
 endfor
