@@ -1,4 +1,4 @@
-" For starting NERDTree on vim startup 
+" For starting NERDTree on vim startup
 " autocmd vimenter * NERDTree
 
 " For mapping ctrl+n to toggle NERDTree
@@ -12,7 +12,7 @@ let g:NERDTreeDirArrowCollapsible = '-'
 " autocmd StdinReadPre * let s:std_in=1
 " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
-" For starting NERDTree when vim is opened on a directory 
+" For starting NERDTree when vim is opened on a directory
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 
