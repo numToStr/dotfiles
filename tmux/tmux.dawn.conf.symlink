@@ -74,7 +74,7 @@ set -goq  @theme-status-justify centre
 set -goq  @theme-status-interval 1
 
 set -goqF @theme-clock-mode-colour "#{@dawn-color-active}"
-set -goq  @theme-clock-mode-style 4
+set -goq  @theme-clock-mode-style 24
 
 set -goqF @theme-message-bg "#{@dawn-color-bg}"
 set -goqF @theme-message-fg "#{@dawn-color-primary}"
