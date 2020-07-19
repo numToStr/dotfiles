@@ -66,7 +66,10 @@ Plug 'sheerun/vim-polyglot'
 Plug 'machakann/vim-highlightedyank'
 
 " Fzf vim plugin. For this to work you need to install the fzf binary https://github.com/junegunn/fzf
-Plug 'junegunn/fzf.vim'
+" Only install in fzf is available on the system
+if has('fzf')
+    Plug 'junegunn/fzf.vim'
+endif
 
 " Provides insert mode auto-completion for quotes, parens, brackets, etc.
 Plug 'jiangmiao/auto-pairs'
