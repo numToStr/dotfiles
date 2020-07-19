@@ -1,6 +1,6 @@
 " For Plugins to work, copy this file into
-" [For vim] --> ~/.vimrc 
-" [For neovim] --> ~/.config/nvim/init.vim 
+" [For vim] --> ~/.vimrc
+" [For neovim] --> ~/.config/nvim/init.vim
 "
 " Generating config with GUI
 " https://vimconfig.com

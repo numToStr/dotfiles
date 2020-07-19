@@ -32,7 +32,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'christoomey/vim-tmux-navigator'
 
 " IDK, but some useful stuff
-" When searching with / , while on search 
+" When searching with / , while on search
     " -> ctrl+g for jump to next
     " -> ctrl+t for jump to previous
 Plug 'tpope/vim-sensible'
@@ -52,6 +52,34 @@ Plug 'easymotion/vim-easymotion'
 
 " VS Code instellisense and autocompletion in vim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" For various text objects
+Plug 'wellle/targets.vim'
+
+" For distraction free editing
+Plug 'junegunn/goyo.vim'
+
+" Enhanced syntax support
+Plug 'sheerun/vim-polyglot'
+
+" Making yarn highlight
+Plug 'machakann/vim-highlightedyank'
+
+" Fzf vim plugin. For this to work you need to install the fzf binary https://github.com/junegunn/fzf
+Plug 'junegunn/fzf.vim'
+
+" Provides insert mode auto-completion for quotes, parens, brackets, etc.
+Plug 'jiangmiao/auto-pairs'
+
+" For highlighting trailing whitespace
+" :StripWhitespace is also provided to clean whitespace automagically
+Plug 'ntpeters/vim-better-whitespace'
+
+" Delete buffers and close files in Vim without closing your windows or messing up your layout
+Plug 'moll/vim-bbye'
+
+" A simple, easy-to-use Vim alignment plugin.
+Plug 'junegunn/vim-easy-align'
 
 " Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
