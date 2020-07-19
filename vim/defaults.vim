@@ -86,7 +86,7 @@ nmap <leader>q :bp <BAR> bd #<CR>
 nmap <leader>bl :ls<CR>
 
 " Quickly save document with \w
-map <leader>w :w<CR>
+map <leader>w :w!<CR>
 " Quickly quit vim
 " Conflicting with <leader>qf in coc.vim
 " nmap <leader>q :q<CR>
