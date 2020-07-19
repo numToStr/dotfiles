@@ -1,9 +1,5 @@
 #!/bin/sh
 
-# Enabling buildkit for docker and docker compose
-export DOCKER_BUILDKIT=1
-export COMPOSE_DOCKER_CLI_BUILD=1
-
 # IP Address Utilities
 function ipInternal() {
     # echo "Ethernet :: IP => $( ip -4 -o a show wlan1 | awk '{ print $4 }' )"
