@@ -2,10 +2,6 @@
 
 > Dotfiles only for me. Includes configs for vim, tmux, zsh, oh-my-zsh, vscode and more.
 
-# Inspired By
-
-@caarlos0's [dotfiles](https://github.com/caarlos0/dotfiles)
-
 # Installation
 
 ### Required Dependencies
@@ -18,8 +14,10 @@
 - [tmux](https://github.com/tmux/tmux)
 - [fzf](https://github.com/junegunn/fzf)
 - [fd](https://github.com/sharkdp/fd)
+- node
 
 ### Fonts
+
 - [powerline-fonts](https://github.com/powerline/fonts)
 - [ttf-nerds-fonts-symbol](https://www.archlinux.org/packages/community/x86_64/ttf-nerd-fonts-symbols/)
 - [fira-code](https://github.com/tonsky/firacode)
@@ -35,3 +33,7 @@ $ ./scripts/bootstrap
 ### Software
 
 Personally I use Manjaro Linux w/ KDE Plasma. So, this should work on linux.
+
+# Inspired By
+
+@caarlos0's [dotfiles](https://github.com/caarlos0/dotfiles)
