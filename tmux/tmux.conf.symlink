@@ -1,29 +1,29 @@
-# Enable mouse mode (tmux 2.1 and above)
-set -g mouse on
+source-file ~/.tmux.dawn.conf
+# source-file ~/.tmux.dawn.default.conf
 
 # To fix tmux color
 set -g default-terminal "screen-256color"
 set-option -ga terminal-overrides ",xterm-256color:Tc"
+set -ga terminal-overrides ",alacritty:RGB" # if your echo $TERM outside of alacritty isn't alacritty, place this $TERM thing instead(it should be xterm-256color otherwise)
 
-set -g status-justify "left"
-set -g status "on"
-set -g status-left-style "none"
-set -g message-command-style "fg=#a89984,bg=#504945"
-set -g status-right-style "none"
-set -g pane-active-border-style "fg=#a89984"
-set -g status-style "none,bg=#3c3836"
-set -g message-style "fg=#a89984,bg=#504945"
-set -g pane-border-style "fg=#504945"
-set -g status-right-length "100"
-set -g status-left-length "100"
-setw -g window-status-activity-style "underscore,fg=#a89984,bg=#3c3836"
-setw -g window-status-separator ""
-setw -g window-status-style "none,fg=#a89984,bg=#3c3836"
-set -g status-left "#[fg=#282828,bg=#a89984] #S #[fg=#a89984,bg=#3c3836,nobold,nounderscore,noitalics]"
-set -g status-right "#[fg=#3c3836,bg=#3c3836,nobold,nounderscore,noitalics]#[fg=#a89984,bg=#3c3836] %a #[fg=#504945,bg=#3c3836,nobold,nounderscore,noitalics]#[fg=#a89984,bg=#504945] %b %d  %R:%S #[fg=#a89984,bg=#504945,nobold,nounderscore,noitalics]#[fg=#282828,bg=#a89984] #H "
-setw -g window-status-format "#[fg=#3c3836,bg=#3c3836,nobold,nounderscore,noitalics]#[fg=#afa89f] #I:#W#F #[fg=#3c3836,bg=#3c3836,nobold,nounderscore,noitalics]"
-setw -g window-status-current-format "#[fg=#3c3836,bg=colour214,nobold,nounderscore,noitalics]#[fg=colour239,bg=colour214] #I:#W#F #[fg=colour214,bg=#3c3836,nobold,nounderscore,noitalics]"
-# setw -g window-status-current-format "#[fg=#3c3836,bg=#504945,nobold,nounderscore,noitalics]#[fg=#a89984,bg=#504945] #I:#W#F #[fg=#504945,bg=#3c3836,nobold,nounderscore,noitalics]"
+# Tmux status line theme
+# set -g @themepack 'powerline/double/yellow'
+# set -g @dawntheme 'dark/centre'
+
+# Plugin options.
+set -g @tilish-navigator 'on'
+# set -g @tilish-easymode 'on'
+# set -g @tilish-default 'even-horizontal'
+
+# Enable mouse mode (tmux 2.1 and above)
+set -g mouse on
+
+# Makes workspace and pane numbers go from 1-10 instead of 0-9, which makes more sense on a keyboard where the number row starts at 1
+set -g base-index 1
+setw -g pane-base-index 1
+
+# renumber windows sequentially after closing any of them
+set -g renumber-windows on
 
 # remap prefix from 'C-b' to '`'
 # unbind C-b
@@ -32,21 +32,34 @@ setw -g window-status-current-format "#[fg=#3c3836,bg=colour214,nobold,noundersc
 
 # switch panes using Alt-key without prefix
 # Don't bind the Alt(M) to Ctrl(C) as It will conflict with vim-tmux-navigator
-bind -n M-h select-pane -L
-bind -n M-l select-pane -R
-bind -n M-k select-pane -U
-bind -n M-j select-pane -D
+# bind -n M-h select-pane -L
+# bind -n M-l select-pane -R
+# bind -n M-k select-pane -U
+# bind -n M-j select-pane -D
 
-# split panes using | and -
+# split panes using h and v
 bind h split-window -h
 bind v split-window -v
 unbind '"'
 unbind %
 
-# set -g @plugin 'tmux-plugins/tpm'
-# set -g @plugin 'tmux-plugins/tmux-sensible'
+bind-key -n M-c new-window
+
+# Tmux Plugins
+# set -g @plugin 'numtostr/tmux-dawn'
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'jabirali/tmux-tilish'
+
+# set -g @plugin 'jimeh/tmux-themepack'
+# set -g @plugin 'tmux-plugins/tmux-prefix-highlight'
+# set -g @plugin 'xamut/tmux-network-bandwidth'
 # set -g @plugin 'schasse/tmux-jump'
-#
-# # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
-# run -b '~/.tmux/plugins/tpm/tpm'
+
+# Install `tpm` if needed.
+if "test ! -d ~/.tmux/plugins/tpm" \
+   "run 'git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && ~/.tmux/plugins/tpm/bin/install_plugins'"
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run -b '~/.tmux/plugins/tpm/tpm'
 
