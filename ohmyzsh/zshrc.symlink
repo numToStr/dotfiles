@@ -18,17 +18,25 @@ export VEDITOR='vscode'
 typeset -U config_files
 config_files=($DOTFILES/*/*.zsh)
 
+# Loading ohmyzsh plugins so then plugin configs doesn't throw erro
+source "$DOTFILES/ohmyzsh/plugins.zsh"
+
 # load the path files
 for file in ${(M)config_files:#*/path.zsh}; do
-  source "$file"
+    source "$file"
+done
+
+# Load every files ohmyzsh folder except plugins
+for file in ${${(M)config_files:#*/ohmyzsh/*.zsh}:#*/plugins.zsh}; do
+    source "$file"
 done
 
 # load antibody plugins
 # source ~/.zsh_plugins.sh
 
-# load everything but the path and completion files
-for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}; do
-  source "$file"
+# load everything but the path, completion and ohmyzsh files
+for file in ${${${config_files:#*/path.zsh}:#*/completion.zsh}:#*/ohmyzsh/*.zsh}; do
+    source "$file"
 done
 
 source $ZSH/oh-my-zsh.sh
