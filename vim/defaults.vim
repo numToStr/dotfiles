@@ -81,17 +81,17 @@ nmap <leader>[ :bp<CR>
 nmap <leader>] :bn<CR>
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
-nmap <leader>q :bp <BAR> bd #<CR>
+nmap <leader>q :Bdelete<CR>
 " Show all open buffers and their status
 nmap <leader>bl :ls<CR>
 
 " Quickly save document with \w
-map <leader>w :w!<CR>
+nmap <leader>w :w!<CR>
 " Quickly quit vim
 " Conflicting with <leader>qf in coc.vim
 " nmap <leader>q :q<CR>
 " Quickly remove search highlighting
-map <leader>n :nohl<CR>
+nmap <leader>n :nohl<CR>
 " To quickly add a blank line above/below and stay on normal mode
 nmap <leader>o :normal o<CR>
 nmap <leader>O :normal O<CR>

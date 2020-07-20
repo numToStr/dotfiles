@@ -21,7 +21,7 @@ source $DOTFILES/vim/defaults.ts
 source $DOTFILES/vim/plugins/plugins.vim
 
 " Sourcing all vim files in the vim/plugins directory
-for f in split(globpath("$DOTFILES/vim/plugins", "**/*.vim"), "\n")
+for f in split(globpath("$DOTFILES/vim/plugins", "*/*.vim"), "\n")
     exec "source" f
 endfor
 
