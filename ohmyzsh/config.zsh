@@ -114,5 +114,9 @@ export SPACESHIP_CHAR_SYMBOL="❯ "
 # export SPACESHIP_DOCKER_CONTEXT_SHOW=false
 # export SPACESHIP_DOCKER_VERBOSE=true
 
-FAST_HIGHLIGHT[git-cmsg-len]=100
 FAST_THEME_NAME=spa
+
+# This is important
+# Issue: https://github.com/zdharma/fast-syntax-highlighting/issues/195
+typeset -gA FAST_HIGHLIGHT
+FAST_HIGHLIGHT[git-cmsg-len]=100

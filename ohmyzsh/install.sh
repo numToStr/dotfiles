@@ -24,6 +24,9 @@ else
     echo "::[ Installing ] Plugin >> 'fast-syntax-highlighting'"
     git clone https://github.com/zdharma/fast-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
 
+    # Setting zsh syntax theme
+    fast-theme -t spa
+
     echo "::[ Installing ] Plugin >> 'zsh-autosuggestions'"
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
