@@ -17,7 +17,7 @@ filetype off
 " <S> = Shift
 " <Leader> = \
 
-source $DOTFILES/vim/defaults.ts
+source $DOTFILES/vim/defaults.vim
 source $DOTFILES/vim/plugins/plugins.vim
 
 " Sourcing all vim files in the vim/plugins directory
