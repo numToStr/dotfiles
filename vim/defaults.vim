@@ -73,6 +73,11 @@ map <Space> <Leader>
 map <S-k> <Nop>
 map <S-j> <Nop>
 
+" Only enable fzf shortkey when fzf binary is installed
+if has('fzf')
+    nmap <leader>z :FZF<cr>
+endif
+
 " To open a new empty buffer
 nmap <leader>T :enew<cr>
 " Move to the previous buffer
