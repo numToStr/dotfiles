@@ -84,6 +84,9 @@ Plug 'moll/vim-bbye'
 " A simple, easy-to-use Vim alignment plugin.
 Plug 'junegunn/vim-easy-align'
 
+" Support for indent text object, useful for yaml, bash etc.
+Plug 'michaeljsmith/vim-indent-object'
+
 " Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
