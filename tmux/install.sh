@@ -1,9 +1,9 @@
 #!/bin/bash
 
-MODULE=Tmux
-TPM_DIR=~/.tmux/plugins/tpm
-
 if command -v tmux >/dev/null 2>&1; then
+    MODULE='Tmux'
+    TPM_DIR=~/.tmux/plugins/tpm
+
     echo "[ LINKING ] :: $MODULE >> .tmux.conf"
     ln -sf "$DOTFILES/tmux/tmux.dawn.conf.symlink" ~/.tmux.dawn.conf
     ln -sf "$DOTFILES/tmux/tmux.conf.symlink" ~/.tmux.conf

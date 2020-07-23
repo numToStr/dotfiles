@@ -1,11 +1,10 @@
 #!/bin/bash
 
-OMZ_DIR=$HOME/.oh-my-zsh
-OMZ_FILE=$OMZ_DIR/oh-my-zsh.sh
-
-MODULE="Oh-My-Zsh"
-
 if command -v zsh >/dev/null 2>&1; then
+    OMZ_DIR=$HOME/.oh-my-zsh
+    OMZ_FILE=$OMZ_DIR/oh-my-zsh.sh
+    MODULE='Oh-My-Zsh'
+
     if [[ -d "$OMZ_DIR" && -f "$OMZ_FILE" ]]; then
         echo "[ UPDATING ] :: $MODULE"
         sh $OMZ_DIR/tools/upgrade.sh
