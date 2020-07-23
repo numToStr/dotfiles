@@ -6,21 +6,30 @@
 
 ### Required Dependencies
 
-- sudo
-- git
-- zsh
-- curl
-- [vim](https://github.com/vim/vim)/[neovim](https://github.com/neovim/neovim)
-- [tmux](https://github.com/tmux/tmux)
-- [fzf](https://github.com/junegunn/fzf)
-- [fd](https://github.com/sharkdp/fd)
-- node
+-   sudo
+-   git
+-   zsh
+-   curl
+-   [neovim](https://github.com/neovim/neovim)
+-   [tmux](https://github.com/tmux/tmux)
+-   node (Required for coc.nvim to work)
+
+### Some awesome and required stuff, I promise you won't regret it
+
+-   [fzf](https://github.com/junegunn/fzf) (For fuzzing finding inside your terminal and vim)
+-   [fd](https://github.com/sharkdp/fd) (Better than GNU find)
+-   [ripgrep](https://github.com/BurntSushi/ripgrep) (Better than GNU grep)
 
 ### Fonts
 
-- [powerline-fonts](https://github.com/powerline/fonts)
-- [ttf-nerds-fonts-symbol](https://www.archlinux.org/packages/community/x86_64/ttf-nerd-fonts-symbols/)
-- [fira-code](https://github.com/tonsky/firacode)
+-   [powerline-fonts](https://github.com/powerline/fonts)
+-   [ttf-nerds-fonts-symbol](https://www.archlinux.org/packages/community/x86_64/ttf-nerd-fonts-symbols/)
+-   [fira-code](https://github.com/tonsky/firacode)
+
+### Terminal
+
+-   KDE Konsole (I use)
+-   [Alacritty](https://github.com/alacritty/alacritty) - Cross Platform Terminal app, written in Rust and It's awesome.
 
 ### Install
 
