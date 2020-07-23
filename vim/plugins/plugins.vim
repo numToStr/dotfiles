@@ -67,7 +67,7 @@ Plug 'machakann/vim-highlightedyank'
 
 " Fzf vim plugin. For this to work you need to install the fzf binary https://github.com/junegunn/fzf
 " Only install in fzf is available on the system
-if has('fzf')
+if executable('fzf')
     Plug 'junegunn/fzf.vim'
 endif
 

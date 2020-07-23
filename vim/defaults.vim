@@ -74,7 +74,7 @@ map <S-k> <Nop>
 map <S-j> <Nop>
 
 " Only enable fzf shortkey when fzf binary is installed
-if has('fzf')
+if executable('fzf')
     nmap <leader>z :FZF<cr>
 endif
 
