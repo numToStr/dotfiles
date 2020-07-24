@@ -6,15 +6,6 @@ set -g default-terminal "screen-256color"
 set-option -ga terminal-overrides ",xterm-256color:Tc"
 set -ga terminal-overrides ",alacritty:RGB" # if your echo $TERM outside of alacritty isn't alacritty, place this $TERM thing instead(it should be xterm-256color otherwise)
 
-# Tmux status line theme
-# set -g @themepack 'powerline/double/yellow'
-# set -g @dawntheme 'dark/centre'
-
-# Plugin options.
-set -g @tilish-navigator 'on'
-# set -g @tilish-easymode 'on'
-# set -g @tilish-default 'even-horizontal'
-
 # Enable mouse mode (tmux 2.1 and above)
 set -g mouse on
 
@@ -45,11 +36,26 @@ unbind %
 
 bind-key -n M-c new-window
 
+# Tmux status line theme
+# set -g @themepack 'powerline/double/yellow'
+# set -g @dawntheme 'dark/centre'
+
+# Plugin options.
+
+# Enabling tmux-tilish
+set -g @tilish-navigator 'on'
+# set -g @tilish-easymode 'on'
+# set -g @tilish-default 'even-horizontal'
+
+# This will fix the scrolling usue with vim inside tmux
+set -g @emulate-scroll-for-no-mouse-alternate-buffer "on"
+
 # Tmux Plugins
 # set -g @plugin 'numtostr/tmux-dawn'
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'jabirali/tmux-tilish'
+set -g @plugin 'nhdaly/tmux-better-mouse-mode'
 
 # set -g @plugin 'jimeh/tmux-themepack'
 # set -g @plugin 'tmux-plugins/tmux-prefix-highlight'
