@@ -87,6 +87,9 @@ Plug 'junegunn/vim-easy-align'
 " Support for indent text object, useful for yaml, bash etc.
 Plug 'michaeljsmith/vim-indent-object'
 
+" For floating terminal support, kinda like vscode
+Plug 'voldikss/vim-floaterm'
+
 " Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
