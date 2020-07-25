@@ -52,6 +52,12 @@ set shortmess+=c
 " This is almost a must if you wish to use buffers in this way.
 set hidden
 
+" For saving undo history, even if the file is closes
+set undofile
+set backupdir=/tmp//
+set directory=/tmp//
+set undodir=/tmp//
+
 " Auto save files when focus is lost
 au FocusLost * :wa
 au FocusLost * silent! wa
