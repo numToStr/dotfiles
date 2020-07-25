@@ -1,4 +1,5 @@
-nnoremap <leader>z :Files<CR>
+" Enabling Ctrl+p for fuzzy finding like vscode
+nnoremap <silent> <C-p> :Files<CR>
 " . = location of current file
 nnoremap '.  :exe ":FZF " . expand("%:h")<CR>
 " z = FZF

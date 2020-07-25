@@ -25,9 +25,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " For commenting stuff out
 Plug 'tomtom/tcomment_vim'
 
-" For searching files Press ctrl+p
-Plug 'ctrlpvim/ctrlp.vim'
-
 " For navigating b/w tmux window, specially for navigating with NERDTree
 Plug 'christoomey/vim-tmux-navigator'
 
@@ -96,6 +93,9 @@ Plug 'voldikss/vim-floaterm'
 
 " For decorating tmux statusline
 " Plug 'edkolev/tmuxline.vim'
+
+" For searching files Press ctrl+p
+" Plug 'ctrlpvim/ctrlp.vim'
 
 " Live code playground like Quokka.js
 " Plug 'metakirby5/codi.vim'
