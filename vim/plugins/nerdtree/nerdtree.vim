@@ -6,6 +6,10 @@ map <C-n> :NERDTreeToggle<CR>
 
 let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '-'
+let g:NERDTreeShowHidden = 1
+
+" Don't show .git folder in the tree
+let NERDTreeIgnore=['\.git$', '\.idea$']
 
 " For opening a NERDTree automatically when vim starts up if no files were specified?
 " Note: Now start vim with plain vim, not vim .
