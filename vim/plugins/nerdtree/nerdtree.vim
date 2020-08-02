@@ -4,12 +4,22 @@
 " For mapping ctrl+n to toggle NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
-let g:NERDTreeDirArrowExpandable = '+'
-let g:NERDTreeDirArrowCollapsible = '-'
+let g:NERDTreeMinimalMenu = 1
+let g:NERDTreeMinimalUI = 1
 let g:NERDTreeShowHidden = 1
+
+" These are hidden because devicons supports folder open/close icons
+let g:NERDTreeDirArrowExpandable = ''
+let g:NERDTreeDirArrowCollapsible = ''
 
 " Don't show .git folder in the tree
 let NERDTreeIgnore=['\.git$', '\.idea$']
+
+" Auto delete open buffer when file is deleted
+let NERDTreeAutoDeleteBuffer = 1
+
+" For folder open/close icons
+let g:DevIconsEnableFoldersOpenClose = 1
 
 " For opening a NERDTree automatically when vim starts up if no files were specified?
 " Note: Now start vim with plain vim, not vim .
