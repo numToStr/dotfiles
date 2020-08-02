@@ -69,10 +69,10 @@ autocmd FileType help wincmd L
 " This comes first, because we have mappings that depend on leader
 " With a map leader it's possible to do extra key combinations
 " i.e: <leader>w saves the current file
-" nnoremap <SPACE> <Nop>
-" let mapleader = ' '
-" let g:mapleader = ' '
-map <Space> <Leader>
+nnoremap <SPACE> <Nop>
+set timeoutlen=500
+let g:mapleader = "\<Space>"
+" map <Space> <Leader>
 
 " Disabling the default Shift-{j,k} key map
 " These keys are used for easymotion navigation
