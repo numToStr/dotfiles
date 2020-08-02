@@ -80,27 +80,30 @@ map <S-k> <Nop>
 map <S-j> <Nop>
 
 " To open a new empty buffer
-nmap <leader>T :enew<cr>
+nmap <silent> <leader>T :enew<cr>
 " Move to the previous buffer
-nmap <leader>[ :bp<CR>
+nmap <silent> <leader>[ :bp<CR>
 " Move to the next buffer
-nmap <leader>] :bn<CR>
+nmap <silent> <leader>] :bn<CR>
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
-nmap <leader>q :Bdelete<CR>
+nmap <silent> <leader>q :Bdelete<CR>
 " Show all open buffers and their status
-nmap <leader>bl :ls<CR>
-
+nmap <silent> <leader>bl :ls<CR>
+" Quickly exit vim
+nmap <silent> <leader>Q :q<CR>
 " Quickly save document with \w
-nmap <leader>w :w!<CR>
-" Quickly quit vim
-" Conflicting with <leader>qf in coc.vim
-" nmap <leader>q :q<CR>
+nmap <silent> <leader>w :w!<CR>
 " Quickly remove search highlighting
-nmap <leader>n :nohl<CR>
-" To quickly add a blank line above/below and stay on normal mode
-nmap <leader>o :normal o<CR>
-nmap <leader>O :normal O<CR>
+nmap <silent> <leader>n :nohl<CR>
+
+" leader-d/D deletes blank line below/above
+nnoremap <silent> <leader>d m`:silent +g/\m^\s*$/d<CR>``:noh<CR>
+nnoremap <silent> <leader>D m`:silent -g/\m^\s*$/d<CR>``:noh<CR>
+
+" leader-o/O inserts blank line below/above
+nnoremap <silent> <leader>o :set paste<CR>m`o<Esc>``:set nopaste<CR>
+nnoremap <silent> <leader>O :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
 " Move line up and down => Ctrl+Shift+<key>
 " Reference: https://vim.fandom.com/wiki/Moving_lines_up_or_down
