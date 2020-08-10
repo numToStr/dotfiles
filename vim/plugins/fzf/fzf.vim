@@ -1,10 +1,12 @@
 " let $FZF_DEFAULT_OPTS=' --color=dark --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1 --color=info:0,prompt:0,pointer:12,marker:4,spinner:11,header:-1 --layout=reverse  --margin=1,4'
 let $FZF_DEFAULT_OPTS='--color=dark --layout=reverse --margin=1,1 --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1 --color=info:0,pointer:12,marker:4,spinner:11,header:-1'
 
+let $FZF_DEFAULT_COMMAND="git ls-files --cached --others --exclude-standard || fd --type f --type l --hidden --follow"
+
 " This will not consider .gitignore while searching
 " this will make .eslintrc,.prettierrc to show in search
 " But will take consider .fdignore file
-let $FZF_DEFAULT_COMMAND='fd --type f --type l --hidden --follow --no-ignore-vcs'
+" let $FZF_DEFAULT_COMMAND='fd --type f --type l --hidden --follow --no-ignore-vcs'
 
 " Changing the prompt for the :Files
 command! -bang -nargs=? -complete=dir Files
