@@ -21,6 +21,9 @@ let NERDTreeAutoDeleteBuffer = 1
 " For folder open/close icons
 let g:DevIconsEnableFoldersOpenClose = 1
 
+" To hide signcolumn in NERDTree
+autocmd FileType tagbar,nerdtree setlocal signcolumn=no
+
 " For opening a NERDTree automatically when vim starts up if no files were specified?
 " Note: Now start vim with plain vim, not vim .
 " autocmd StdinReadPre * let s:std_in=1
