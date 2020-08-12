@@ -66,6 +66,15 @@ au FocusLost * silent! wa
 command! -nargs=* -complete=help Help vertical belowright help <args>
 autocmd FileType help wincmd L
 
+" For Highlight current line
+" only want the highlight applied in the current window
+" Source: https://vim.fandom.com/wiki/Highlight_current_line
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup END
+
 " This comes first, because we have mappings that depend on leader
 " With a map leader it's possible to do extra key combinations
 " i.e: <leader>w saves the current file
