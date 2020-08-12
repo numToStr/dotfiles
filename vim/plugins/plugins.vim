@@ -4,11 +4,15 @@ call plug#begin('~/.vim/plugged')
 " FocusGained and FocusLost autocommand events are not working in terminal vim. This plugin restores them when using vim inside Tmux.
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
+" For getting file icons in status-line, nerdtree etc.
+" Note: Make sure you have installed ttf-nerd-fonts-symbols, if you manjaro just run `pamac install ttf-nerd-fonts-symbols`
+Plug 'ryanoasis/vim-devicons'
+
 " For geting the status line below
 Plug 'vim-airline/vim-airline'
 
 " For getting the theme
-Plug 'morhetz/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 
 " For getting indent lines in code
 Plug 'yggdroot/indentline'
@@ -17,7 +21,7 @@ Plug 'yggdroot/indentline'
 Plug 'airblade/vim-gitgutter'
 
 " For getting file explorer :NERDTree
-Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdtree'
 
 " A plugin of NERDTree showing git status flags
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -39,10 +43,6 @@ Plug 'tpope/vim-fugitive'
 
 " For 'surroundings': parentheses, brackets, quotes, XML tags, and more.
 Plug 'tpope/vim-surround'
-
-" For getting file icons in status-line, nerdtree etc.
-" Note: Make sure you have installed ttf-nerd-fonts-symbols, if you manjaro just run `pamac install ttf-nerd-fonts-symbols`
-Plug 'ryanoasis/vim-devicons'
 
 " Vim motion on speed!
 Plug 'easymotion/vim-easymotion'
