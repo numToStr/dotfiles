@@ -2,15 +2,15 @@
 " autocmd vimenter * NERDTree
 
 " For mapping ctrl+n to toggle NERDTree
-map <C-n> :NERDTreeToggle<CR>
+map <silent> <C-n> :NERDTreeToggle<CR>
 
 let g:NERDTreeMinimalMenu = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeShowHidden = 1
 
-" These are hidden because devicons supports folder open/close icons
-let g:NERDTreeDirArrowExpandable = ''
-let g:NERDTreeDirArrowCollapsible = ''
+" These are spaces bcz the NERDTree is to close to side panel
+let g:NERDTreeDirArrowExpandable = ' '
+let g:NERDTreeDirArrowCollapsible = ' '
 
 " Don't show .git folder in the tree
 let NERDTreeIgnore=['\.git$', '\.idea$']
@@ -50,3 +50,23 @@ endfunction
 
 " Highlight currently open buffer in NERDTree
 autocmd bufenter * call NERDTreeSync()
+
+" NERDTree git status plugin ==================================================
+
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+    \ 'Modified'  :'M',
+    \ 'Staged'    :'A',
+    \ 'Untracked' :'U',
+    \ 'Renamed'   :'R',
+    \ 'Unmerged'  :'═',
+    \ 'Deleted'   :'D',
+    \ 'Dirty'     :'!',
+    \ 'Ignored'   :'I',
+    \ 'Clean'     :'C',
+    \ 'Unknown'   :'?',
+    \ }
+
+" Indicate every single untracked file under an untracked dir
+let g:NERDTreeGitStatusUntrackedFilesMode = 'all'
+" To hide the boring brackets ([ ])
+let g:NERDTreeGitStatusConcealBrackets = 0
