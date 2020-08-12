@@ -39,8 +39,6 @@ nnoremap '.  :call FZFOpen(":FZF " . expand("%:h"))<CR>
 nnoremap 'z  :call FZFOpen(':FZF')<cr>
 " b = buffers
 nnoremap 'b  :call FZFOpen(':Buffer')<cr>
-" f = fzf
-nnoremap 'f  :call FZFOpen(':Files')<cr>
 " t = tags
 nnoremap 't  :call FZFOpen(':Tags')<cr>
 " h = home
