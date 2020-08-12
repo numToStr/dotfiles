@@ -88,6 +88,13 @@ Plug 'voldikss/vim-floaterm'
 " For smooth scrolling like a smoothie
 Plug 'psliwka/vim-smoothie'
 
+" Seach with * and # in visual mode
+Plug 'bronson/vim-visual-star-search'
+
+" Safely deletes all open buffers except the current one and NERDTree
+Plug 'vim-scripts/BufOnly.vim'
+
+
 " Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}

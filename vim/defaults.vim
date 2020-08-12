@@ -89,22 +89,23 @@ map <S-k> <Nop>
 map <S-j> <Nop>
 
 " To open a new empty buffer
-nmap <silent> <leader>T :enew<cr>
+nnoremap <silent> <leader>T :enew<cr>
 " Move to the previous buffer
-nmap <silent> <leader>[ :bp<CR>
+nnoremap <silent> <leader>[ :bp<CR>
 " Move to the next buffer
-nmap <silent> <leader>] :bn<CR>
+nnoremap <silent> <leader>] :bn<CR>
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
-nmap <silent> <leader>q :Bdelete<CR>
-" Show all open buffers and their status
-nmap <silent> <leader>bl :ls<CR>
+nnoremap <silent> <leader>q :Bdelete<CR>
+" Close all buffers except the current one
+nnoremap <silent> <leader>x :BufOnly<CR>
+
 " Quickly exit vim
-nmap <silent> <leader>Q :q<CR>
+nnoremap <silent> <leader>Q :q<CR>
 " Quickly save document with \w
-nmap <silent> <leader>w :w!<CR>
+nnoremap <silent> <leader>w :w!<CR>
 " Quickly remove search highlighting
-nmap <silent> <leader>n :nohl<CR>
+nnoremap <silent> <leader>n :nohl<CR>
 
 " leader-d/D deletes blank line below/above
 nnoremap <silent> <leader>d m`:silent +g/\m^\s*$/d<CR>``:noh<CR>
