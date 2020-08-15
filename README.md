@@ -30,8 +30,8 @@
 
 ### Terminal
 
--   KDE Konsole (I use)
--   [Alacritty](https://github.com/alacritty/alacritty) - Cross Platform Terminal app, written in Rust and It's awesome.
+-   [Alacritty](https://github.com/alacritty/alacritty) (I use) - Cross Platform Terminal app, written in Rust and It's awesome.
+-   KDE Konsole
 
 ### Install
 
