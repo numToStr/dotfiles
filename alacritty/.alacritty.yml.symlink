@@ -1,0 +1,87 @@
+env:
+    # This is to fix weird font scaling on X11
+    # Solution: https://github.com/alacritty/alacritty/issues/1501#issuecomment-614867213
+    WINIT_X11_SCALE_FACTOR: "1.0"
+
+window:
+    dynamic_padding: true
+    decorations: none
+
+# Colors (Nord)
+colors:
+    # Default colors
+    primary:
+        background: "#1c1c1c"
+        foreground: "#D8DEE9"
+
+    # Normal colors
+    normal:
+        black: "#3B4252"
+        red: "#BF616A"
+        green: "#A3BE8C"
+        yellow: "#EBCB8B"
+        blue: "#81A1C1"
+        magenta: "#B48EAD"
+        cyan: "#88C0D0"
+        white: "#E5E9F0"
+
+    # Bright colors
+    bright:
+        black: "#4C566A"
+        red: "#BF616A"
+        green: "#A3BE8C"
+        yellow: "#EBCB8B"
+        blue: "#81A1C1"
+        magenta: "#B48EAD"
+        cyan: "#8FBCBB"
+        white: "#ECEFF4"
+
+# Colors (Iceberg Dark)
+# colors:
+#     # Default colors
+#     primary:
+#         background: "#161821"
+#         foreground: "#d2d4de"
+#
+#     # Normal colors
+#     normal:
+#         black: "#161821"
+#         red: "#e27878"
+#         green: "#b4be82"
+#         yellow: "#e2a478"
+#         blue: "#84a0c6"
+#         magenta: "#a093c7"
+#         cyan: "#89b8c2"
+#         white: "#c6c8d1"
+#
+#     # Bright colors
+#     bright:
+#         black: "#6b7089"
+#         red: "#e98989"
+#         green: "#c0ca8e"
+#         yellow: "#e9b189"
+#         blue: "#91acd1"
+#         magenta: "#ada0d3"
+#         cyan: "#95c4ce"
+#         white: "#d2d4de"
+#
+# Font configuration (changes require restart)
+font:
+    size: 11.5
+    # The normal (roman) font face to use.
+    normal:
+        family: Fira Code
+        # Style can be specified to pick a specific face.
+        style: Regular
+
+    # The bold font face
+    bold:
+        family: Fira Code
+        # Style can be specified to pick a specific face.
+        style: Bold
+
+    # The italic font face
+    italic:
+        family: Fira Code
+        # Style can be specified to pick a specific face.
+        style: Italic
