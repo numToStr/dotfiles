@@ -66,9 +66,16 @@ set undodir=/tmp//
 au FocusLost * :wa
 au FocusLost * silent! wa
 
-" open help vertically
-command! -nargs=* -complete=help Help vertical belowright help <args>
-autocmd FileType help wincmd L
+" open help vertically and press q to exit
+function! s:helptab()
+  if &buftype == 'help'
+    wincmd L
+    nnoremap <silent> <buffer> q :q<cr>
+  endif
+endfunction
+autocmd BufEnter *.txt call s:helptab()
+" command! -nargs=* -complete=help Help vertical belowright help <args>
+" autocmd FileType help wincmd L
 
 " For Highlight current line
 " only want the highlight applied in the current window
