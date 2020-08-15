@@ -19,6 +19,8 @@
 -   [fzf](https://github.com/junegunn/fzf) (For fuzzing finding inside your terminal and vim)
 -   [fd](https://github.com/sharkdp/fd) (Better than GNU find)
 -   [ripgrep](https://github.com/BurntSushi/ripgrep) (Better than GNU grep)
+-   [bat](https://github.com/sharkdp/bat) (A cat(1) clone with wings.)
+-   [delta](https://github.com/dandavison/delta) (A better viewer for git and diff output)
 
 ### Fonts
 
