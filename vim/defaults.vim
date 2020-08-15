@@ -34,6 +34,10 @@ set wrap
 set textwidth=80
 set formatoptions=qrn1
 
+" For a better search experience
+set ignorecase
+set smartcase
+
 " Some servers have issues with backup files, see #649.
 set nobackup
 set nowritebackup
