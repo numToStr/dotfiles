@@ -92,6 +92,9 @@ let g:mapleader = "\<Space>"
 map <S-k> <Nop>
 map <S-j> <Nop>
 
+" Interfering with <leader>g
+map <S-q> <Nop>
+
 " To open a new empty buffer
 nnoremap <silent> <leader>T :enew<cr>
 " Move to the previous buffer
