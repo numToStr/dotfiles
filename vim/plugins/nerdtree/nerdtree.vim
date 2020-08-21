@@ -2,7 +2,15 @@
 " autocmd vimenter * NERDTree
 
 " For mapping ctrl+n to toggle NERDTree
-map <silent> <C-n> :NERDTreeToggle<CR>
+" map <silent> <C-n> :NERDTreeToggle<CR>
+noremap <silent> <C-n> :call OpenNERDTree()<CR>
+
+function! OpenNERDTree()
+  exe 'NERDTreeToggle'
+  if (expand('%') =~# 'NERD_tree' && winnr('$') > 1)
+    exe "normal! \<c-w>\<c-w>"
+  endif
+endfunction
 
 let g:NERDTreeMinimalMenu = 1
 let g:NERDTreeMinimalUI = 1
@@ -72,4 +80,4 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 " Indicate every single untracked file under an untracked dir
 let g:NERDTreeGitStatusUntrackedFilesMode = 'all'
 " To hide the boring brackets ([ ])
-let g:NERDTreeGitStatusConcealBrackets = 0
+" let g:NERDTreeGitStatusConcealBrackets = 0
