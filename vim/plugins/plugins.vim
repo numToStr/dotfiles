@@ -12,7 +12,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 
 " For getting the theme
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
 
 " For getting indent lines in code
 Plug 'yggdroot/indentline'
