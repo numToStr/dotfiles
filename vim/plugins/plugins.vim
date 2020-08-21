@@ -44,6 +44,9 @@ Plug 'tpope/vim-fugitive'
 " For 'surroundings': parentheses, brackets, quotes, XML tags, and more.
 Plug 'tpope/vim-surround'
 
+" Fix repeat for vim-surround
+Plug 'tpope/vim-repeat'
+
 " Vim motion on speed!
 Plug 'easymotion/vim-easymotion'
 
@@ -93,6 +96,9 @@ Plug 'bronson/vim-visual-star-search'
 
 " Safely deletes all open buffers except the current one and NERDTree
 Plug 'vim-scripts/BufOnly.vim'
+
+" For showing the actual color of the hex value
+Plug 'ap/vim-css-color'
 
 
 " Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
