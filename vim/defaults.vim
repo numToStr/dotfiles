@@ -21,7 +21,7 @@ set autoindent
 " Width for the line number column
 set numberwidth=6
 " Display 5 lines above/below the cursor when scrolling with a mouse.
-set scrolloff=5
+set scrolloff=8
 " Speed up scrolling in Vim
 set ttyfast
 " Showing suggestion for tab completion
@@ -31,7 +31,7 @@ set relativenumber
 
 " Make Vim to handle long lines nicely.
 set wrap
-set textwidth=80
+set textwidth=300
 set formatoptions=qrn1
 
 " For a better search experience
@@ -86,6 +86,12 @@ augroup CursorLine
   au WinLeave * setlocal nocursorline
 augroup END
 
+" Copy to system clipboard
+" Source: https://vim.fandom.com/wiki/In_line_copy_and_paste_to_system_clipboard
+if executable('xclip')
+    vnoremap <silent> <C-c> y: call system("xclip -i -selection clipboard", getreg("\""))<CR>
+endif
+
 " This comes first, because we have mappings that depend on leader
 " With a map leader it's possible to do extra key combinations
 " i.e: <leader>w saves the current file
@@ -116,9 +122,10 @@ nnoremap <silent> <leader>x :BufOnly<CR>
 
 " Copying the vscode behaviour of making tab splits
 noremap <silent> <C-\> :vsplit<CR>
+noremap <silent> <A-\> :split<CR>
 
 " Quickly exit vim
-nnoremap <silent> <leader>Q :q<CR>
+nnoremap <silent> <C-q> :q<CR>
 " Quickly save document with \w
 nnoremap <silent> <leader>w :w!<CR>
 " Quickly remove search highlighting
@@ -129,8 +136,10 @@ nnoremap <silent> <leader>d m`:silent +g/\m^\s*$/d<CR>``:noh<CR>
 nnoremap <silent> <leader>D m`:silent -g/\m^\s*$/d<CR>``:noh<CR>
 
 " leader-o/O inserts blank line below/above
-nnoremap <silent> <leader>o :set paste<CR>m`o<Esc>``:set nopaste<CR>
-nnoremap <silent> <leader>O :set paste<CR>m`O<Esc>``:set nopaste<CR>
+nnoremap <silent> <leader>O :normal! O<CR>
+nnoremap <silent> <leader>o :normal! o<CR>
+" nnoremap <silent> <leader>o :set paste<CR>m`o<Esc>``:set nopaste<CR>
+" nnoremap <silent> <leader>O :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
 " Move line up and down => Ctrl+Shift+<key>
 " Reference: https://vim.fandom.com/wiki/Moving_lines_up_or_down
