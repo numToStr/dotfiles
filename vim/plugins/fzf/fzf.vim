@@ -10,8 +10,8 @@ let g:fzf_colors = {
       \ 'bg+':     ['bg', 'Normal'],
       \ 'hl+':     ['fg', 'Red'],
       \ 'info':    ['bg', 'Normal'],
-      \ 'prompt':  ['fg', 'Orange'],
-      \ 'pointer': ['fg', 'Blue'],
+      \ 'prompt':  ['bg', 'BGffffff'],
+      \ 'pointer': ['bg', 'BGffffff'],
       \ 'marker':  ['fg', 'Yellow'],
       \ 'spinner': ['fg', 'Yellow'],
       \ 'header':  ['bg', 'Normal']
