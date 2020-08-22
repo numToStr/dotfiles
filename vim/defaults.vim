@@ -62,6 +62,11 @@ set backupdir=/tmp//
 set directory=/tmp//
 set undodir=/tmp//
 
+" Defining white and black so it can be used in fzf
+autocmd ColorScheme *
+    \ hi MyWhite ctermfg=15 guifg=#ffffff |
+    \ hi MyBlack ctermfg=234 guifg=#1c1c1c
+
 " Auto save files when focus is lost
 au FocusLost * :wa
 au FocusLost * silent! wa

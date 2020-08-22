@@ -20,10 +20,10 @@ map <S-k> <Plug>(easymotion-b)
 
 " Color Reference: https://jonasjacek.github.io/colors/
 " Bg: White 15 #ffffff
-" Fg: Grey35 240 #585858
+" Fg: Grey11 234 #1c1c1c
 
 " hi link EasyMotionTarget ErrorMsg
-hi EasyMotionTarget ctermbg=15 ctermfg=240 guibg=#ffffff guifg=#585858
+hi EasyMotionTarget ctermbg=15 ctermfg=234 guibg=#ffffff guifg=#1c1c1c
 hi link EasyMotionShade  Comment
 
 hi link EasyMotionTarget2First EasyMotionTarget

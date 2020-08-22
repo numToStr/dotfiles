@@ -6,14 +6,14 @@ let g:fzf_colors = {
       \ 'fg':      ['fg', 'Normal'],
       \ 'bg':      ['bg', 'Normal'],
       \ 'hl':      ['fg', 'Red'],
-      \ 'fg+':     ['fg', 'White'],
+      \ 'fg+':     ['fg', 'MyWhite'],
       \ 'bg+':     ['bg', 'Normal'],
       \ 'hl+':     ['fg', 'Red'],
       \ 'info':    ['bg', 'Normal'],
-      \ 'prompt':  ['bg', 'BGffffff'],
-      \ 'pointer': ['bg', 'BGffffff'],
+      \ 'prompt':  ['fg', 'MyWhite'],
+      \ 'pointer': ['fg', 'MyWhite'],
       \ 'marker':  ['fg', 'Yellow'],
-      \ 'spinner': ['fg', 'Yellow'],
+      \ 'spinner': ['fg', 'MyWhite'],
       \ 'header':  ['bg', 'Normal']
       \ }
 
