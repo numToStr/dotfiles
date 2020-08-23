@@ -13,7 +13,8 @@ Plug 'vim-airline/vim-airline'
 
 " For getting the theme
 " Plug 'morhetz/gruvbox'
-Plug 'sainnhe/gruvbox-material'
+" Plug 'sainnhe/gruvbox-material'
+Plug 'numtostr/gruvbox-material'
 
 " For getting indent lines in code
 Plug 'yggdroot/indentline'
