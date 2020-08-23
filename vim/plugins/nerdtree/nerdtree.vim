@@ -6,7 +6,7 @@
 noremap <silent> <C-n> :call OpenNERDTree()<CR>
 
 function! OpenNERDTree()
-  exe 'NERDTreeToggle'
+  NERDTreeToggle
   if (expand('%') =~# 'NERD_tree' && winnr('$') > 1)
     exe "normal! \<c-w>\<c-w>"
   endif
@@ -29,8 +29,16 @@ let NERDTreeAutoDeleteBuffer = 1
 " For folder open/close icons
 let g:DevIconsEnableFoldersOpenClose = 1
 
-" To hide signcolumn in NERDTree
-autocmd FileType tagbar,nerdtree setlocal signcolumn=no
+" To hide unnecessary stuff in NERDTree
+autocmd FileType nerdtree call TreeSetting()
+
+function! TreeSetting()
+    " To remove signcolumn
+    setlocal signcolumn=no
+    " To remove forward slash after directory
+    setlocal conceallevel=3 | syntax match NERDTreeDirSlash #/$# containedin=NERDTreeDir conceal contained
+endfunction
+
 
 " For opening a NERDTree automatically when vim starts up if no files were specified?
 " Note: Now start vim with plain vim, not vim .
