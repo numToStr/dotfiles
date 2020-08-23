@@ -1,6 +1,6 @@
-let $FZF_DEFAULT_OPTS='--color=dark --layout=reverse --margin=1,1'
+let $FZF_DEFAULT_OPTS='--color=dark --layout=reverse --margin=1,1 --keep-right --marker=+'
 
-let $FZF_DEFAULT_COMMAND='git ls-files --cached --others --exclude-standard || fd --type f --type l --hidden --follow'
+let $FZF_DEFAULT_COMMAND='fd --type f --type l --hidden --follow || git ls-files --cached --others --exclude-standard'
 
 let g:fzf_colors = {
       \ 'fg':      ['fg', 'Normal'],
@@ -16,15 +16,16 @@ let g:fzf_colors = {
       \ 'spinner': ['fg', 'MyWhite'],
       \ 'header':  ['bg', 'Normal']
       \ }
+" Enable per-command history
+" - History files will be stored in the specified directory
+" - When set, CTRL-N and CTRL-P will be bound to 'next-history' and
+"   'previous-history' instead of 'down' and 'up'.
+let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 " This will not consider .gitignore while searching
 " this will make .eslintrc,.prettierrc to show in search
 " But will take consider .fdignore file
 " let $FZF_DEFAULT_COMMAND='fd --type f --type l --hidden --follow --no-ignore-vcs'
-
-" Changing the prompt for the :Files
-command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, { 'options': "--prompt '⯈ '"}, <bang>0)
 
 " Open fzf in a floating window
 let g:fzf_layout = { 'window': { 'width': 0.4, 'height': 0.25, 'yoffset': 0 } }
@@ -35,6 +36,10 @@ let g:fzf_preview_window = ''
 
 " If possible, jump to open buffer of a file
 let g:fzf_buffers_jump = 1
+
+" Changing the prompt for the :Files
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, { 'options': "--prompt '⯈ '"}, <bang>0)
 
 " This function prevents opening of any buffer/file
 " in the NERDTree buffer via FZF
