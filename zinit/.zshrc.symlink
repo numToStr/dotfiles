@@ -130,7 +130,7 @@ zinit light trapd00r/LS_COLORS
 # 3. Load ~/.localrc, if it exists
 zinit is-snippet for \
     $DOTFILES/zinit/*.zsh \
-    $DOTFILES/fzf/config.zsh \
+    $DOTFILES/fzf/fzf.zsh \
     if"[[ -f $HOME/.localrc  ]]" $HOME/.localrc
 
 # typeset -U config_files

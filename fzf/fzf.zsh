@@ -1,5 +1,10 @@
 #!/bin/zsh
 
+#######################################
+# FZF deserves its own config         #
+# Don't move it to zsh_config.zsh     #
+#######################################
+
 # Configure fzf, command line fuzzyf finder
 # Ignoring files will be handled by ~/.fdignore
 FD_OPTIONS="--hidden --follow"
