@@ -26,13 +26,13 @@ export DOTFILES="$HOME/.dotfiles"
 #####################
 # @source: https://github.com/crivotz/dot_files/blob/master/linux/zplugin/zshrc
 
-# zinit wait lucid for \
+# zinit wait lucid light-mode for \
 #     atinit"typeset -gA FAST_HIGHLIGHT; FAST_HIGHLIGHT[git-cmsg-len]=100; zpcompinit; zpcdreplay" \
 #         zdharma/fast-syntax-highlighting \
-#     blockf \
-#         zsh-users/zsh-completions \
 #     atinit'ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20' atload"_zsh_autosuggest_start" \
 #         zsh-users/zsh-autosuggestions \
+#     blockf atpull'zinit creinstall -q .' \
+#         zsh-users/zsh-completions \
 #     atload'bindkey "$terminfo[kcuu1]" history-substring-search-up; bindkey "$terminfo[kcud1]" history-substring-search-down' \
 #         zsh-users/zsh-history-substring-search
 
@@ -98,7 +98,10 @@ zinit wait lucid for \
 	OMZP::fzf \
 	OMZP::docker-compose \
 	as"completion" \
-    OMZP::docker/_docker
+    OMZP::docker/_docker \
+    chriskempson/base16-shell \
+    hlissner/zsh-autopair \
+    djui/alias-tips \
 
 # A fork of `z' by rupa deadwyler with much improved zsh/bash completion and better results. The data file format and core algorithm are compatible with those of the original.
 zinit ice wait lucid src"z.sh"
