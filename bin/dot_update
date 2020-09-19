@@ -1,5 +1,5 @@
 #!/bin/sh
-#
+
 # dot_update
 #
 # `dot_update` handles installation, updates, things like that. Run it
@@ -15,26 +15,58 @@ cd "$DOTFILES" || exit 1
 # shellcheck disable=SC1090
 [ -f ~/.localrc ] && . ~/.localrc
 
+MARK="❯❯"
+
+info() {
+	echo "[ INFO ] $MARK $1"
+}
+
+success() {
+	echo "[ SUCCESS ] $MARK $1"
+}
+
 # ssh would not work under cron, add a https one
-echo "› setting up update channel"
+info "Setting up update channel"
 git remote add updates https://github.com/numToStr/dotfiles.git 2>/dev/null
 
 # Update repo
-echo "› git update"
+info "Updating dotfiles"
 git pull --rebase --stat updates "$(git rev-parse --abbrev-ref HEAD)"
+success "Dotfiles updated"
 
 # Update submodules
-echo "› submodules update"
+info "Updating submodules"
 git submodule update --init --recursive --remote --merge --quiet
+success "Submodules updated"
 
 # Run all installs
-echo "› $DOTFILES/scripts/install"
-"$DOTFILES/scripts/install"
+info "Running $DOTFILES/scripts/install"
+# "$DOTFILES/scripts/install"
 
-if command -v antibody >/dev/null 2>&1; then
-	echo "› antibody update"
-	antibody update
-fi
+# Find the installers and run them iteratively, except vim installer
+# IDK why, but after vim installer no other installer runs
+find -H "$DOTFILES" -maxdepth 2 ! -path "*vim*" ! -path '*.git*' -name 'install.sh' |
+    while read -r installer; do
+        echo ""
+        info "Running ${installer}..."
+        echo ""
+        sh -c "$installer"
+        echo ""
+        success "Successful ${installer}"
+    done
 
-echo "› registering last update"
+# Installing vim installers
+find -H "$DOTFILES" -maxdepth 2 -path '*vim*' -name 'install.sh' |
+    while read -r installer; do
+        echo ""
+        info "Running ${installer}..."
+        echo ""
+        sh -c "$installer"
+        echo ""
+        success "Successful ${installer}"
+    done
+
+echo ""
+info "Registering last update"
+echo ""
 git config --global dotfiles.lastupdate "$(date +%Y%m%d%H%M)"
