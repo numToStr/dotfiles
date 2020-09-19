@@ -41,10 +41,10 @@ zinit ice wait"0a" lucid atload"_zsh_autosuggest_start"
 zinit light zsh-users/zsh-autosuggestions
 
 # zinit ice wait"0b" lucid atload'bindkey "$terminfo[kcuu1]" history-substring-search-up; bindkey "$terminfo[kcud1]" history-substring-search-down'
+
 zinit ice wait"0b" lucid atload'bindkey "$terminfo[kcuu1]" history-substring-search-up; bindkey "$terminfo[kcud1]" history-substring-search-down'
 zinit light zsh-users/zsh-history-substring-search
 
-# TAB COMPLETIONS
 zinit ice wait"0b" lucid blockf
 zinit light zsh-users/zsh-completions
 zstyle ':completion:*' completer _expand _complete _ignored _approximate
@@ -59,7 +59,7 @@ zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm,cmd
 zstyle ':fzf-tab:complete:kill:argument-rest' extra-opts --preview=$extract'ps --pid=$in[(w)1] -o cmd --no-headers -w -w' --preview-window=down:3:wrap
 zstyle ':fzf-tab:complete:cd:*' extra-opts --preview=$extract'exa -1 --color=always ${~ctxt[hpre]}$in'
 
-# Find a way to change after syntax is loaded, other wise call `fast-theme spa`
+# Find a way to change after syntax is loaded, otherwise call `fast-theme spa`
 # FAST_THEME_NAME=spa
 zinit ice wait"0c" lucid atinit"typeset -gA FAST_HIGHLIGHT; FAST_HIGHLIGHT[git-cmsg-len]=100; zpcompinit; zpcdreplay"
 zinit light zdharma/fast-syntax-highlighting
@@ -69,6 +69,13 @@ zinit light zdharma/fast-syntax-highlighting
 #####################
 
 setopt promptsubst
+
+# Loading tmux first, to prevent jumps when tmux is loaded after .zshrc
+zinit ice svn atinit"
+        ZSH_TMUX_FIXTERM=true;
+        ZSH_TMUX_AUTOSTART=true;
+        ZSH_TMUX_AUTOCONNECT=true;"
+zinit snippet OMZP::tmux
 
 zinit wait lucid for \
 	OMZL::git.zsh \
@@ -90,16 +97,11 @@ zinit wait lucid for \
 	OMZP::git \
 	OMZP::fzf \
 	OMZP::docker-compose \
-    svn atinit"
-        ZSH_TMUX_FIXTERM=true;
-        ZSH_TMUX_AUTOSTART=true;
-        ZSH_TMUX_AUTOCONNECT=true;" \
-    OMZP::tmux \
 	as"completion" \
     OMZP::docker/_docker
 
 # A fork of `z' by rupa deadwyler with much improved zsh/bash completion and better results. The data file format and core algorithm are compatible with those of the original.
-zinit ice wait'1' lucid src"z.sh"
+zinit ice wait lucid src"z.sh"
 zinit light knu/z
 
 #####################
