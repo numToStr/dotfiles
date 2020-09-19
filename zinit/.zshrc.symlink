@@ -24,7 +24,7 @@ export DOTFILES="$HOME/.dotfiles"
 #####################
 # PROMPT            #
 #####################
-zinit ice from"gh-r" as"command" atload'eval "$(starship init zsh)"'
+zinit ice from"gh-r" as"command" atinit'eval "$(starship init zsh)"'
 zinit load starship/starship
 
 
