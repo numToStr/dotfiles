@@ -1,0 +1,146 @@
+#!/bin/zsh
+
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
+
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+### End of Zinit's installer chunk
+
+
+#####################
+# DOTFILES Home     #
+#####################
+export DOTFILES="$HOME/.dotfiles"
+
+
+#####################
+# ZSH PLUGINS       #
+#####################
+# @source: https://github.com/crivotz/dot_files/blob/master/linux/zplugin/zshrc
+
+# zinit wait lucid for \
+#     atinit"typeset -gA FAST_HIGHLIGHT; FAST_HIGHLIGHT[git-cmsg-len]=100; zpcompinit; zpcdreplay" \
+#         zdharma/fast-syntax-highlighting \
+#     blockf \
+#         zsh-users/zsh-completions \
+#     atinit'ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20' atload"_zsh_autosuggest_start" \
+#         zsh-users/zsh-autosuggestions \
+#     atload'bindkey "$terminfo[kcuu1]" history-substring-search-up; bindkey "$terminfo[kcud1]" history-substring-search-down' \
+#         zsh-users/zsh-history-substring-search
+
+
+zinit ice wait"0a" lucid atload"_zsh_autosuggest_start"
+zinit light zsh-users/zsh-autosuggestions
+
+# zinit ice wait"0b" lucid atload'bindkey "$terminfo[kcuu1]" history-substring-search-up; bindkey "$terminfo[kcud1]" history-substring-search-down'
+
+zinit ice wait"0b" lucid atload'bindkey "$terminfo[kcuu1]" history-substring-search-up; bindkey "$terminfo[kcud1]" history-substring-search-down'
+zinit light zsh-users/zsh-history-substring-search
+
+zinit ice wait"0b" lucid blockf
+zinit light zsh-users/zsh-completions
+zstyle ':completion:*' completer _expand _complete _ignored _approximate
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' menu select=2
+zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
+zstyle ':completion:*:descriptions' format '-- %d --'
+zstyle ':completion:*:processes' command 'ps -au$USER'
+zstyle ':completion:complete:*:options' sort false
+zstyle ':fzf-tab:complete:_zlua:*' query-string input
+zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm,cmd -w -w"
+zstyle ':fzf-tab:complete:kill:argument-rest' extra-opts --preview=$extract'ps --pid=$in[(w)1] -o cmd --no-headers -w -w' --preview-window=down:3:wrap
+zstyle ':fzf-tab:complete:cd:*' extra-opts --preview=$extract'exa -1 --color=always ${~ctxt[hpre]}$in'
+
+# Find a way to change after syntax is loaded, otherwise call `fast-theme spa`
+# FAST_THEME_NAME=spa
+zinit ice wait"0c" lucid atinit"typeset -gA FAST_HIGHLIGHT; FAST_HIGHLIGHT[git-cmsg-len]=100; zpcompinit; zpcdreplay"
+zinit light zdharma/fast-syntax-highlighting
+
+#####################
+# OHMYZSH PLUGINS   #
+#####################
+
+setopt promptsubst
+
+# Loading tmux first, to prevent jumps when tmux is loaded after .zshrc
+zinit ice svn atinit"
+        ZSH_TMUX_FIXTERM=true;
+        ZSH_TMUX_AUTOSTART=true;
+        ZSH_TMUX_AUTOCONNECT=true;"
+zinit snippet OMZP::tmux
+
+zinit wait lucid for \
+	OMZL::git.zsh \
+	OMZL::clipboard.zsh \
+	OMZL::directories.zsh \
+	OMZL::grep.zsh \
+	OMZL::history.zsh \
+	OMZL::spectrum.zsh \
+	OMZL::termsupport.zsh \
+	OMZL::compfix.zsh \
+	OMZL::correction.zsh \
+	OMZL::completion.zsh \
+    atload"
+        bindkey '^[[A' history-substring-search-up;
+        bindkey '^[[B' history-substring-search-down;
+        bindkey -M vicmd 'k' history-substring-search-up;
+        bindkey -M vicmd 'j' history-substring-search-down;" \
+	OMZL::key-bindings.zsh \
+	OMZP::git \
+	OMZP::fzf \
+	OMZP::docker-compose \
+	as"completion" \
+    OMZP::docker/_docker
+
+# A fork of `z' by rupa deadwyler with much improved zsh/bash completion and better results. The data file format and core algorithm are compatible with those of the original.
+zinit ice wait lucid src"z.sh"
+zinit light knu/z
+
+#####################
+# Prompt            #
+#####################
+zinit ice from"gh-r" as"program" atload'eval "$(starship init zsh)"'
+zinit load starship/starship
+
+#####################
+# LS_COLORS         #
+#####################
+zinit ice wait"0c" lucid reset \
+    atclone"local P=${${(M)OSTYPE:#*darwin*}:+g}
+            \${P}sed -i \
+            '/DIR/c\DIR 38;5;63;1' LS_COLORS; \
+            \${P}dircolors -b LS_COLORS > c.zsh" \
+    atpull'%atclone' pick"c.zsh" nocompile'!' \
+    atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
+zinit light trapd00r/LS_COLORS
+
+
+#####################
+# MANUAL CONFIG     #
+#####################
+
+# 1. Load all .zsh files under zinit/ directory
+# 2. Load fzf/fzf.zsh
+# 3. Load ~/.localrc, if it exists
+zinit is-snippet for \
+    $DOTFILES/zinit/*.zsh \
+    $DOTFILES/fzf/fzf.zsh \
+    if"[[ -f $HOME/.localrc  ]]" $HOME/.localrc
+
+# typeset -U config_files
+# config_files=($HOME/.zsh/*.zsh)
+
+# 1. Load anything which ends with e.zsh
+# 2. Load anything except file ending with e.zsh
+# zinit is-snippet for \
+#     ${(M)config_files:#*/*e.zsh} \
+#     ${config_files:#*/*e.zsh}  \
+
