@@ -120,6 +120,8 @@ zinit wait lucid for \
 zinit wait lucid light-mode for \
     pick"z.sh" \
     knu/z \
+    as'command' mv'n* -> n' pick"bin/n" \
+    tj/n \
 
 
 #####################
