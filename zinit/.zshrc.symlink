@@ -22,6 +22,13 @@ export DOTFILES="$HOME/.dotfiles"
 
 
 #####################
+# PROMPT            #
+#####################
+zinit ice from"gh-r" as"command" atload'eval "$(starship init zsh)"'
+zinit load starship/starship
+
+
+#####################
 # ZSH PLUGINS       #
 #####################
 # @source: https://github.com/crivotz/dot_files/blob/master/linux/zplugin/zshrc
@@ -103,20 +110,22 @@ zinit wait lucid for \
     hlissner/zsh-autopair \
     djui/alias-tips \
 
-# A fork of `z' by rupa deadwyler with much improved zsh/bash completion and better results. The data file format and core algorithm are compatible with those of the original.
-zinit ice wait lucid src"z.sh"
-zinit light knu/z
 
 #####################
-# Prompt            #
+# PROGRAMS          #
 #####################
-zinit ice from"gh-r" as"program" atload'eval "$(starship init zsh)"'
-zinit load starship/starship
+
+# 1. A fork of `z' by rupa deadwyler with much improved zsh/bash completion and better results
+# 2. Fast and smol node version manager
+zinit wait lucid light-mode for \
+    pick"z.sh" \
+    knu/z \
+
 
 #####################
 # LS_COLORS         #
 #####################
-zinit ice wait"0c" lucid reset \
+zinit ice wait"1" lucid reset \
     atclone"local P=${${(M)OSTYPE:#*darwin*}:+g}
             \${P}sed -i \
             '/DIR/c\DIR 38;5;63;1' LS_COLORS; \
