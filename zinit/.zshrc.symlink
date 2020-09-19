@@ -120,7 +120,7 @@ zinit wait lucid for \
 zinit wait lucid light-mode for \
     pick"z.sh" \
     knu/z \
-    as'command' mv'n* -> n' pick"bin/n" \
+    atinit'export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"' as'command' mv'n* -> ~/n/bin/n' pick"bin/n" \
     tj/n \
 
 
