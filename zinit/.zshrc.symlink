@@ -117,11 +117,14 @@ zinit wait lucid for \
 
 # 1. A fork of `z' by rupa deadwyler with much improved zsh/bash completion and better results
 # 2. Fast and smol node version manager
+# 3. Yarn installation from github releases
 zinit wait lucid light-mode for \
     pick"z.sh" \
     knu/z \
-    atinit'export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"' as'command' mv'n* -> ~/n/bin/n' pick"bin/n" \
+    as'command' atinit'export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"' pick"bin/n" \
     tj/n \
+    from'gh-r' as'command' atload'export PATH="`yarn global bin`:$PATH"' mv'yarn* -> yarn' pick"yarn/bin/yarn" bpick'*.tar.gz' \
+    yarnpkg/yarn \
 
 
 #####################
