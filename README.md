@@ -1,6 +1,6 @@
-# [My](https://github.com/numToStr) dotfiles
+# Dotfiles
 
-> Dotfiles only for me. Includes configs for vim, tmux, zsh, fzf and more.
+My Dotfiles includes configs for vim, tmux, zsh, fzf and more. Made with blood, tears and shell.
 
 # Installation
 
