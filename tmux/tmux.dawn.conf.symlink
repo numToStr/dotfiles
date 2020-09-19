@@ -1,5 +1,6 @@
 # Dark color set
-set -goq @dawn-color-bg "#3C3836"
+# set -goq @dawn-color-bg "#3C3836"
+set -goq @dawn-color-bg "#1c1c1c"
 set -goq @dawn-color-primary "#A89984"
 set -goq @dawn-color-onprimary "#{@dawn-color-bg}"
 set -goq @dawn-color-secondary "#504945"
