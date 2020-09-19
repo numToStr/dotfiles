@@ -1,6 +1,6 @@
-# [My](https://github.com/numToStr) dotfiles
+# Dotfiles
 
-> Dotfiles only for me. Includes configs for vim, tmux, zsh, oh-my-zsh, vscode and more.
+My Dotfiles includes configs for vim, tmux, zsh, fzf and more. Made with blood, tears and shell.
 
 # Installation
 
@@ -30,8 +30,7 @@
 
 ### Terminal
 
--   [Alacritty](https://github.com/alacritty/alacritty) (I use) - Cross Platform Terminal app, written in Rust and It's awesome.
--   KDE Konsole
+-   [Alacritty](https://github.com/alacritty/alacritty) (Recommeded for a better performance)
 
 ### Install
 

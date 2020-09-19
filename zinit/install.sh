@@ -21,7 +21,7 @@ if command -v zsh >/dev/null 2>&1; then
         echo "[ LINKING ] :: $MODULE >> .zshrc"
 
         [[ -f $HOME/.zshrc ]] && mv $HOME/.zshrc $HOME/.zshrc.backup
-        ln -sf "$DOTFILES/zinit/zshrc.symlink" $HOME/.zshrc
+        ln -sf "$DOTFILES/zinit/.zshrc.symlink" $HOME/.zshrc
 
         echo "[ NOTE ] :: All $MODULE plugins will be installed on first prompt."
     fi
