@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-alias vim=$EDITOR
+alias vim=nvim
 
 alias ..="cd .."
 alias ...="cd ../.."
