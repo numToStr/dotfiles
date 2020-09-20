@@ -1,5 +1,7 @@
 let g:floaterm_autoclose=2
-let g:floaterm_wintitle=v:false
+let g:floaterm_title=v:false
+let g:floaterm_rootmarkers = ['.git', '.gitignore']
+
 nnoremap <silent> <A-i> :FloatermToggle<CR>
 tnoremap <silent> <A-i> <C-\><C-n>:FloatermToggle<CR>
 
