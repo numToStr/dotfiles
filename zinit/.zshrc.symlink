@@ -78,7 +78,7 @@ zinit light zdharma/fast-syntax-highlighting
 setopt promptsubst
 
 # Loading tmux first, to prevent jumps when tmux is loaded after .zshrc
-zinit ice svn atinit"
+zinit ice atinit"
         ZSH_TMUX_FIXTERM=true;
         ZSH_TMUX_AUTOSTART=true;
         ZSH_TMUX_AUTOCONNECT=true;"
