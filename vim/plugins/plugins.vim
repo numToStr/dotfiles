@@ -102,6 +102,9 @@ Plug 'vim-scripts/BufOnly.vim'
 " For showing the actual color of the hex value
 Plug 'ap/vim-css-color'
 
+" For git stuff
+Plug 'rhysd/git-messenger.vim'
+
 " Some snippets
 Plug 'honza/vim-snippets'
 
