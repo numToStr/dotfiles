@@ -24,7 +24,7 @@ export DOTFILES="$HOME/.dotfiles"
 #####################
 # PROMPT            #
 #####################
-zinit ice id-as from"gh-r" as"command" atload'eval "$(starship init zsh)"'
+zinit ice from"gh-r" as"command" atload'eval "$(starship init zsh)"'
 zinit load starship/starship
 
 
@@ -107,8 +107,8 @@ zinit wait lucid for \
 	as"completion" \
     OMZP::docker/_docker \
     djui/alias-tips \
-    chriskempson/base16-shell \
-    hlissner/zsh-autopair \
+    # chriskempson/base16-shell \
+    # hlissner/zsh-autopair \
 
 
 #####################
@@ -118,26 +118,21 @@ zinit wait lucid for \
 # 1. A fork of `z' by rupa deadwyler with much improved zsh/bash completion and better results
 # 2. Fast and smol node version manager
 # 3. Yarn installation from github releases
-zinit wait lucid light-mode for \
-    id-as pick"z.sh" \
+zinit wait'1' lucid light-mode for \
+    pick"z.sh" \
     knu/z \
-    id-as as'command' atinit'export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"' pick"bin/n" \
+    as'command' atinit'export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"' pick"bin/n" \
     tj/n \
-    id-as from'gh-r' as'command' atload'export PATH="`yarn global bin`:$PATH"' mv'yarn* -> yarn' pick"yarn/bin/yarn" bpick'*.tar.gz' \
+    from'gh-r' as'command' atinit'export PATH="$HOME/.yarn/bin:$PATH"' mv'yarn* -> yarn' pick"yarn/bin/yarn" bpick'*.tar.gz' \
     yarnpkg/yarn \
-
-
-#####################
-# LS_COLORS         #
-#####################
-zinit ice wait"1" lucid reset \
+    reset \
     atclone"local P=${${(M)OSTYPE:#*darwin*}:+g}
             \${P}sed -i \
             '/DIR/c\DIR 38;5;63;1' LS_COLORS; \
             \${P}dircolors -b LS_COLORS > c.zsh" \
     atpull'%atclone' pick"c.zsh" nocompile'!' \
-    atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
-zinit light trapd00r/LS_COLORS
+    atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”' \
+    trapd00r/LS_COLORS
 
 
 #####################
