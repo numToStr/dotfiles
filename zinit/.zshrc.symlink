@@ -24,7 +24,7 @@ export DOTFILES="$HOME/.dotfiles"
 #####################
 # PROMPT            #
 #####################
-zinit ice from"gh-r" as"command" atinit'eval "$(starship init zsh)"'
+zinit ice id-as from"gh-r" as"command" atload'eval "$(starship init zsh)"'
 zinit load starship/starship
 
 
@@ -106,9 +106,9 @@ zinit wait lucid for \
 	OMZP::docker-compose \
 	as"completion" \
     OMZP::docker/_docker \
+    djui/alias-tips \
     chriskempson/base16-shell \
     hlissner/zsh-autopair \
-    djui/alias-tips \
 
 
 #####################
@@ -119,11 +119,11 @@ zinit wait lucid for \
 # 2. Fast and smol node version manager
 # 3. Yarn installation from github releases
 zinit wait lucid light-mode for \
-    pick"z.sh" \
+    id-as pick"z.sh" \
     knu/z \
-    as'command' atinit'export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"' pick"bin/n" \
+    id-as as'command' atinit'export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"' pick"bin/n" \
     tj/n \
-    from'gh-r' as'command' atload'export PATH="`yarn global bin`:$PATH"' mv'yarn* -> yarn' pick"yarn/bin/yarn" bpick'*.tar.gz' \
+    id-as from'gh-r' as'command' atload'export PATH="`yarn global bin`:$PATH"' mv'yarn* -> yarn' pick"yarn/bin/yarn" bpick'*.tar.gz' \
     yarnpkg/yarn \
 
 
