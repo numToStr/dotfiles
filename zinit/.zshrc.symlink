@@ -28,87 +28,109 @@ zinit ice from"gh-r" as"command" atload'eval "$(starship init zsh)"'
 zinit load starship/starship
 
 
-#####################
-# ZSH PLUGINS       #
-#####################
-# @source: https://github.com/crivotz/dot_files/blob/master/linux/zplugin/zshrc
+##########################
+# OMZ Libs and Plugins   #
+##########################
 
-# zinit wait lucid light-mode for \
-#     atinit"typeset -gA FAST_HIGHLIGHT; FAST_HIGHLIGHT[git-cmsg-len]=100; zpcompinit; zpcdreplay" \
-#         zdharma/fast-syntax-highlighting \
-#     atinit'ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20' atload"_zsh_autosuggest_start" \
-#         zsh-users/zsh-autosuggestions \
-#     blockf atpull'zinit creinstall -q .' \
-#         zsh-users/zsh-completions \
-#     atload'bindkey "$terminfo[kcuu1]" history-substring-search-up; bindkey "$terminfo[kcud1]" history-substring-search-down' \
-#         zsh-users/zsh-history-substring-search
-
-
-zinit ice wait"0a" lucid atload"_zsh_autosuggest_start"
-zinit light zsh-users/zsh-autosuggestions
-
-# zinit ice wait"0b" lucid atload'bindkey "$terminfo[kcuu1]" history-substring-search-up; bindkey "$terminfo[kcud1]" history-substring-search-down'
-
-zinit ice wait"0b" lucid atload'bindkey "$terminfo[kcuu1]" history-substring-search-up; bindkey "$terminfo[kcud1]" history-substring-search-down'
-zinit light zsh-users/zsh-history-substring-search
-
-zinit ice wait"0b" lucid blockf
-zinit light zsh-users/zsh-completions
-zstyle ':completion:*' completer _expand _complete _ignored _approximate
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-zstyle ':completion:*' menu select=2
-zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
-zstyle ':completion:*:descriptions' format '-- %d --'
-zstyle ':completion:*:processes' command 'ps -au$USER'
-zstyle ':completion:complete:*:options' sort false
-zstyle ':fzf-tab:complete:_zlua:*' query-string input
-zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm,cmd -w -w"
-zstyle ':fzf-tab:complete:kill:argument-rest' extra-opts --preview=$extract'ps --pid=$in[(w)1] -o cmd --no-headers -w -w' --preview-window=down:3:wrap
-zstyle ':fzf-tab:complete:cd:*' extra-opts --preview=$extract'exa -1 --color=always ${~ctxt[hpre]}$in'
-
-# Find a way to change after syntax is loaded, otherwise call `fast-theme spa`
-# FAST_THEME_NAME=spa
-zinit ice wait"0c" lucid atinit"typeset -gA FAST_HIGHLIGHT; FAST_HIGHLIGHT[git-cmsg-len]=100; zpcompinit; zpcdreplay"
-zinit light zdharma/fast-syntax-highlighting
-
-#####################
-# OHMYZSH PLUGINS   #
-#####################
+# IMPORTANT:
+# Ohmyzsh plugins and libs are loaded first as some these sets some defaults which are required later on.
+# Otherwise something will look messed up
+# ie. some settings help zsh-autosuggestions to clear after tab completion
 
 setopt promptsubst
 
-# Loading tmux first, to prevent jumps when tmux is loaded after .zshrc
-zinit ice atinit"
-        ZSH_TMUX_FIXTERM=true;
-        ZSH_TMUX_AUTOSTART=true;
-        ZSH_TMUX_AUTOCONNECT=true;"
-zinit snippet OMZP::tmux
+# Explanation:
+# - Loading tmux first, to prevent jumps when tmux is loaded after .zshrc
+# - History plugin is loaded early (as it has some defaults) to prevent empty history stack for other plugins
+zinit lucid for \
+    atinit"
+        export ZSH_TMUX_FIXTERM=true
+        export ZSH_TMUX_AUTOSTART=true
+        export ZSH_TMUX_AUTOCONNECT=true
+    " \
+    OMZP::tmux \
+    OMZL::history.zsh \
+
 
 zinit wait lucid for \
-	OMZL::git.zsh \
 	OMZL::clipboard.zsh \
+	OMZL::compfix.zsh \
+	OMZL::completion.zsh \
+	OMZL::correction.zsh \
+    atload"
+        alias ..='cd ..'
+        alias ...='cd ../..'
+        alias ....='cd ../../..'
+        alias .....='cd ../../../..'
+    " \
 	OMZL::directories.zsh \
+	OMZL::git.zsh \
 	OMZL::grep.zsh \
-	OMZL::history.zsh \
+	OMZL::key-bindings.zsh \
 	OMZL::spectrum.zsh \
 	OMZL::termsupport.zsh \
-	OMZL::compfix.zsh \
-	OMZL::correction.zsh \
-	OMZL::completion.zsh \
     atload"
-        bindkey '^[[A' history-substring-search-up;
-        bindkey '^[[B' history-substring-search-down;
-        bindkey -M vicmd 'k' history-substring-search-up;
-        bindkey -M vicmd 'j' history-substring-search-down;" \
-	OMZL::key-bindings.zsh \
+        alias gcd='gco dev'
+    " \
 	OMZP::git \
 	OMZP::fzf \
+    atload"
+        alias dcupb='docker-compose up --build'
+    " \
 	OMZP::docker-compose \
 	as"completion" \
     OMZP::docker/_docker \
     djui/alias-tips \
-    # chriskempson/base16-shell \
     # hlissner/zsh-autopair \
+    # chriskempson/base16-shell \
+
+#####################
+# PLUGINS           #
+#####################
+# @source: https://github.com/crivotz/dot_files/blob/master/linux/zplugin/zshrc
+
+# IMPORTANT:
+# These plugins should be loaded after ohmyzsh plugins
+
+zinit wait lucid for \
+    light-mode atinit"ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20" atload"_zsh_autosuggest_start" \
+        zsh-users/zsh-autosuggestions \
+    light-mode atinit"
+        typeset -gA FAST_HIGHLIGHT;
+        FAST_HIGHLIGHT[git-cmsg-len]=100;
+        zpcompinit;
+        zpcdreplay;
+    " \
+        zdharma/fast-syntax-highlighting \
+    light-mode blockf atpull'zinit creinstall -q .' \
+    atinit"
+        zstyle ':completion:*' completer _expand _complete _ignored _approximate
+        zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+        zstyle ':completion:*' menu select=2
+        zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
+        zstyle ':completion:*:descriptions' format '-- %d --'
+        zstyle ':completion:*:processes' command 'ps -au$USER'
+        zstyle ':completion:complete:*:options' sort false
+        zstyle ':fzf-tab:complete:_zlua:*' query-string input
+        zstyle ':completion:*:*:*:*:processes' command 'ps -u $USER -o pid,user,comm,cmd -w -w'
+        zstyle ':fzf-tab:complete:kill:argument-rest' extra-opts --preview=$extract'ps --pid=$in[(w)1] -o cmd --no-headers -w -w' --preview-window=down:3:wrap
+        zstyle ':fzf-tab:complete:cd:*' extra-opts --preview=$extract'exa -1 --color=always ${~ctxt[hpre]}$in'
+    " \
+        zsh-users/zsh-completions \
+    bindmap"^R -> ^H" atinit"
+        zstyle :history-search-multi-word page-size 10
+        zstyle :history-search-multi-word highlight-color fg=red,bold
+        zstyle :plugin:history-search-multi-word reset-prompt-protect 1
+    " \
+        zdharma/history-search-multi-word \
+    reset \
+    atclone"local P=${${(M)OSTYPE:#*darwin*}:+g}
+            \${P}sed -i \
+            '/DIR/c\DIR 38;5;63;1' LS_COLORS; \
+            \${P}dircolors -b LS_COLORS > c.zsh" \
+    atpull'%atclone' pick"c.zsh" nocompile'!' \
+    atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”' \
+        trapd00r/LS_COLORS
 
 
 #####################
@@ -125,14 +147,6 @@ zinit wait'1' lucid light-mode for \
     tj/n \
     from'gh-r' as'command' atinit'export PATH="$HOME/.yarn/bin:$PATH"' mv'yarn* -> yarn' pick"yarn/bin/yarn" bpick'*.tar.gz' \
     yarnpkg/yarn \
-    reset \
-    atclone"local P=${${(M)OSTYPE:#*darwin*}:+g}
-            \${P}sed -i \
-            '/DIR/c\DIR 38;5;63;1' LS_COLORS; \
-            \${P}dircolors -b LS_COLORS > c.zsh" \
-    atpull'%atclone' pick"c.zsh" nocompile'!' \
-    atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”' \
-    trapd00r/LS_COLORS
 
 
 #####################
