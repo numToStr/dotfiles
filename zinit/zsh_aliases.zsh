@@ -1,14 +1,9 @@
 #!/bin/zsh
 
-alias vim=$EDITOR
-
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-
+alias vim=nvim
 alias sysinfo="inxi -Fxxxz"
 alias cat=bat
-alias myip=ipInternal
+alias myip=ip-internal
 alias h=http
 
 if command -v pamac >/dev/null 2>&1; then

@@ -1,17 +1,17 @@
 " Fix for easymotion messing with COC diagnostics
-let g:easymotion#is_active = 0
-function! EasyMotionCoc() abort
-    if EasyMotion#is_active()
-        CocDisable
-        let g:easymotion#is_active = 1
-    else
-        if g:easymotion#is_active == 1
-            CocEnable
-            let g:easymotion#is_active = 0
-        endif
-    endif
-endfunction
-autocmd TextChanged,CursorMoved * call EasyMotionCoc()
+" let g:easymotion#is_active = 0
+" function! EasyMotionCoc() abort
+"     if EasyMotion#is_active()
+"         CocDisable
+"         let g:easymotion#is_active = 1
+"     else
+"         if g:easymotion#is_active == 1
+"             CocEnable
+"             let g:easymotion#is_active = 0
+"         endif
+"     endif
+" endfunction
+" autocmd TextChanged,CursorMoved * call EasyMotionCoc()
 
 " COC extensions list
 let g:coc_global_extensions = [
@@ -19,7 +19,8 @@ let g:coc_global_extensions = [
     \'coc-tsserver',
     \'coc-yaml',
     \'coc-eslint',
-    \'coc-prettier'
+    \'coc-prettier',
+    \'coc-snippets'
     \]
 
 " NOTE: Some config can be found in defaults.vim
