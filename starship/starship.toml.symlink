@@ -1,53 +1,8 @@
-# # I need to edit the prompt_order because of the custom.docker order
-# prompt_order = [
-#     "username",
-#     "hostname",
-#     "kubernetes",
-#     "directory",
-#     "git_branch",
-#     "git_commit",
-#     "git_state",
-#     "git_status",
-#     "hg_branch",
-#     "docker_context",
-#     "package",
-#     "dotnet",
-#     "elixir",
-#     "elm",
-#     "erlang",
-#     "golang",
-#     "java",
-#     "julia",
-#     "nim",
-#     "nodejs",
-#     "ocaml",
-#     "php",
-#     "purescript",
-#     "python",
-#     "ruby",
-#     "rust",
-#     "terraform",
-#     "zig",
-#     "nix_shell",
-#     "conda",
-#     "memory_usage",
-#     "aws",
-#     "env_var",
-#     "crystal",
-#     "custom",
-#     "cmd_duration",
-#     "line_break",
-#     "jobs",
-#     "battery",
-#     "time",
-#     "character",
-# ]
-
 [cmd_duration]
 disabled = true
 
 [character]
-style_success = "bold white"
+success_symbol = "[❯](bold white)"
 
 [aws]
 disabled = true
@@ -62,4 +17,4 @@ description = "Shows the docker symbol if the current directory has Dockerfile o
 command = "echo 🐳"
 files = ["Dockerfile", "docker-compose.yml", "docker-compose.yaml"]
 when = """ command -v docker &> /dev/null; exit (echo $?); """
-prefix = "on "
+format = "in [$output]($style)"
