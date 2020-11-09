@@ -25,7 +25,7 @@ export DOTFILES="$HOME/.dotfiles"
 # PROMPT            #
 #####################
 zinit lucid for \
-    as"command" from"gh-r" atinit'export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"' atload'eval "$(starship init zsh)"' bpick'*unknown-linux-gnu*' \
+    as"command" from"gh-r" atload'eval "$(starship init zsh)"' bpick'*unknown-linux-gnu*' \
     starship/starship \
 
 ##########################
@@ -47,8 +47,9 @@ zinit lucid for \
         export ZSH_TMUX_FIXTERM=true
         export ZSH_TMUX_AUTOSTART=true
         export ZSH_TMUX_AUTOCONNECT=true
+        export ZSH_TMUX_DEFAULT_SESSION_NAME='</>'
     " \
-    OMZP::tmux \
+    https://gist.githubusercontent.com/realvikas/db63306fe26f49ec2f084cef25d99ea1/raw/71cbb84565d917a153676dcf962383daa02482e0/tmux.plugin.zsh \
     atinit"HIST_STAMPS=dd.mm.yyyy" \
     OMZL::history.zsh \
 
@@ -58,12 +59,16 @@ zinit wait lucid for \
 	OMZL::compfix.zsh \
 	OMZL::completion.zsh \
 	OMZL::correction.zsh \
-    atload"
-        alias ..='cd ..'
-        alias ...='cd ../..'
-        alias ....='cd ../../..'
-        alias .....='cd ../../../..'
-    " \
+    atload'
+        alias ..="cd .."
+        alias ...="cd ../.."
+        alias ....="cd ../../.."
+        alias .....="cd ../../../.."
+
+        function take() {
+            mkdir -p $@ && cd ${@:$#}
+        }
+    ' \
 	OMZL::directories.zsh \
 	OMZL::git.zsh \
 	OMZL::grep.zsh \
@@ -74,7 +79,6 @@ zinit wait lucid for \
         alias gcd='gco dev'
     " \
 	OMZP::git \
-	OMZP::fzf \
     atload"
         alias dcupb='docker-compose up --build'
     " \
@@ -82,8 +86,11 @@ zinit wait lucid for \
 	as"completion" \
     OMZP::docker/_docker \
     djui/alias-tips \
+    https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh \
+    https://github.com/junegunn/fzf/blob/master/shell/completion.zsh \
     # hlissner/zsh-autopair \
     # chriskempson/base16-shell \
+	# OMZP::fzf \
 
 #####################
 # PLUGINS           #
@@ -138,16 +145,18 @@ zinit wait lucid for \
 # PROGRAMS          #
 #####################
 
-# 1. A fork of `z' by rupa deadwyler with much improved zsh/bash completion and better results
-# 2. Fast and smol node version manager
-# 3. Yarn installation from github releases
-zinit wait'1' lucid light-mode for \
+zinit wait lucid light-mode for \
     pick"z.sh" \
     knu/z \
     as'command' atinit'export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"' pick"bin/n" \
     tj/n \
     from'gh-r' as'command' atinit'export PATH="$HOME/.yarn/bin:$PATH"' mv'yarn* -> yarn' pick"yarn/bin/yarn" bpick'*.tar.gz' \
     yarnpkg/yarn \
+    as'command' from'gh-r' bpick'*.tar.gz' atclone'
+        mkdir -p $HOME/.config/nvim/plugin
+        curl https://raw.githubusercontent.com/junegunn/fzf/master/plugin/fzf.vim -o $HOME/.config/nvim/plugin/fzf.vim
+    ' atpull'%atclone' \
+    junegunn/fzf \
 
 
 #####################

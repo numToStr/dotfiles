@@ -3,6 +3,8 @@
 #####################
 # SETOPT            #
 #####################
+
+setopt autocd autopushd pushdignoredups
 # set -o emacs
 # setopt vi
 # setopt extended_history       # record timestamp of command in HISTFILE
