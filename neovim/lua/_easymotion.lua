@@ -21,8 +21,8 @@ U.map("n", "<S-K>", "<Nop>")
 U.map("n", "<S-j>", "<Nop>")
 
 -- I don't know how to map <Plug> commands in lua
-cmd('map <S-j> <Plug>(easymotion-w)')
-cmd('map <S-k> <Plug>(easymotion-b)')
+U.map('n', '<S-J>', '<Plug>(easymotion-w)', { noremap = false })
+U.map('n', '<S-K>', '<Plug>(easymotion-b)', { noremap = false })
 
 -- Color Reference: https://jonasjacek.github.io/colors/
 -- Bg: White 15 #ffffff
