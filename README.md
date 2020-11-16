@@ -10,13 +10,13 @@ My Dotfiles includes configs for vim, tmux, zsh, fzf and more. Made with blood, 
 -   git
 -   zsh
 -   curl
--   [neovim](https://github.com/neovim/neovim)
+-   [neovim-nightly](https://github.com/neovim/neovim)
 -   [tmux](https://github.com/tmux/tmux)
 -   node (Required for coc.nvim to work)
 
 ### Some awesome and required stuff, I promise you won't regret it
 
--   [fzf](https://github.com/junegunn/fzf) (For fuzzing finding inside your terminal and vim)
+-   [fzf](https://github.com/junegunn/fzf) (For fuzzing finding inside your terminal and vim) **Auto Installed**
 -   [fd](https://github.com/sharkdp/fd) (Better than GNU find)
 -   [ripgrep](https://github.com/BurntSushi/ripgrep) (Better than GNU grep)
 -   [bat](https://github.com/sharkdp/bat) (A cat(1) clone with wings.)
