@@ -1,9 +1,10 @@
 local U = require 'utils'
 local g = vim.g
+local fn = vim.fn
 local cmd = vim.cmd
 
-U.setenv("FZF_DEFAULT_OPTS", "--color=dark --reverse --keep-right --marker=+ --padding=1,1")
-U.setenv("FZF_DEFAULT_COMMAND", "fd --type f --type l --hidden --follow || git ls-files --cached --others --exclude-standard")
+fn.setenv("FZF_DEFAULT_OPTS", "--color=dark --reverse --keep-right --marker=+ --padding=1,1")
+fn.setenv("FZF_DEFAULT_COMMAND", "fd --type f --type l --hidden --follow || git ls-files --cached --others --exclude-standard")
 
 -- Customize fzf colors to match your color scheme
 -- fzf#wrap translates this to a set of `--color` options

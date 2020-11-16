@@ -21,11 +21,6 @@ function U.map(mode, key, result, opts)
     fn.nvim_set_keymap(mode, key, result, opts)
 end
 
--- For setting environment variable
-function U.setenv(k, v)
-    vim.api.nvim_call_function("setenv", { k, v })
-end
-
 -- For moments when I don't want my cursor to stay on the tree
 function U.move_cursor_from_tree()
     n = fn.bufname()
