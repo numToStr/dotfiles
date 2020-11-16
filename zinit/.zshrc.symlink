@@ -145,19 +145,33 @@ zinit wait lucid for \
 # PROGRAMS          #
 #####################
 
-zinit wait lucid light-mode for \
-    pick"z.sh" \
-    knu/z \
-    as'command' atinit'export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"' pick"bin/n" \
-    tj/n \
-    from'gh-r' as'command' atinit'export PATH="$HOME/.yarn/bin:$PATH"' mv'yarn* -> yarn' pick"yarn/bin/yarn" bpick'*.tar.gz' \
-    yarnpkg/yarn \
-    as'command' from'gh-r' bpick'*.tar.gz' atclone'
+zinit wait lucid light-mode as'command' for \
+    pick"src/z.interactive.zsh" src"z.sh" \
+        knu/z \
+    atinit'export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"' pick"bin/n" \
+        tj/n \
+    from'gh-r' atinit'export PATH="$HOME/.yarn/bin:$PATH"' mv'yarn* -> yarn' pick"yarn/bin/yarn" bpick'*.tar.gz' \
+        yarnpkg/yarn \
+
+zinit wait"1" lucid light-mode from"gh-r" as"command" for \
+    bpick'*.tar.gz' atclone'
         mkdir -p $HOME/.config/nvim/plugin
         curl https://raw.githubusercontent.com/junegunn/fzf/master/plugin/fzf.vim -o $HOME/.config/nvim/plugin/fzf.vim
     ' atpull'%atclone' \
-    junegunn/fzf \
-
+        junegunn/fzf \
+    bpick'*unknown-linux-musl*' mv'ripgrep* -> rg' pick'rg/rg' \
+        BurntSushi/ripgrep \
+    bpick'*unknown-linux-gnu*' mv'fd* -> fd' pick'fd/fd' \
+        @sharkdp/fd \
+    bpick'*unknown-linux-gnu*' mv'bat* -> bat' pick'bat/bat' \
+        @sharkdp/bat \
+    bpick'*unknown-linux-gnu*' mv'delta* -> delta' pick'delta/delta' \
+        dandavison/delta \
+    atload'
+        unalias l
+        alias l="exa -abghHlS --git --group-directories-first"
+    ' bpick'*linux*' mv'exa* -> exa' \
+        ogham/exa \
 
 #####################
 # MANUAL CONFIG     #
