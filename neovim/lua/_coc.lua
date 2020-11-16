@@ -1,6 +1,8 @@
 local U = require 'utils'
 local g = vim.g
 local cmd = vim.cmd
+local fn = vim.fn
+local api = vim.api
 
 -- Add (Neo)Vim's native statusline support.
 -- NOTE: Please see `:h coc-status` for integrations with external plugins that
@@ -21,8 +23,33 @@ g.coc_global_extensions = {
 -- Use tab for trigger completion with characters ahead and navigate.
 -- NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 -- other plugin before putting this into your config.
--- U.map('i', '<TAB>', 'pumvisible() ? "<C-N>" : <SID>check_back_space() ? "<TAB>" : coc#refresh()', { expr = true })
+-- Source: https://github.com/nanotee/nvim-lua-guide#vlua
+function _G.check_back_space()
+    local col = fn.col('.') - 1
+    if col == 0 or fn.getline('.'):sub(col, col):match('%s') then
+        return true
+    else
+        return false
+    end
+end
+
+U.map('i', '<TAB>', 'pumvisible() ? "<C-N>" : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', { expr = true })
 U.map('i', '<S-TAB>', 'pumvisible() ? "<C-P>" : "<C-H>"', { expr = true })
+
+
+-- Use gh to show documentation in preview window.
+function show_docs()
+    local cw = fn.expand('<cword>')
+    if fn.index({'vim', 'help'}, vim.bo.filetype) >= 0 then
+        cmd('h '..cw)
+    elseif api.nvim_eval('coc#rpc#ready()') then
+        cmd('call CocActionAsync("doHover")')
+    else
+        cmd('!'..vim.o.keywordprg..' '..cw)
+    end
+end
+
+U.map('n', 'gh', '<CMD>lua show_docs()<CR>')
 
 -- Use <c-space> to trigger completion.
 U.map('i', '<C-SPACE>', 'coc#refresh()', { expr = true })
@@ -100,3 +127,37 @@ U.map('x', '<C-S>', '<Plug>(coc-range-select)', { noremap = false })
 -- U.map('n', '\\k', ':CocPrev<CR>')
 -- Resume latest coc list.
 -- U.map('n', '\\p', ':CocListResume<CR>')
+
+api.nvim_exec([[
+    " let g:easymotion#is_active = 0
+    " function! EasyMotionCoc() abort
+    "     if EasyMotion#is_active()
+    "         let g:easymotion#is_active = 1
+    "         silent CocDisable
+    "     elseif g:easymotion#is_active == 1
+    "         silent CocEnable
+    "         let g:easymotion#is_active = 0
+    "     endif
+    " endfunction
+    " autocmd TextChanged,CursorMoved * call EasyMotionCoc()
+
+    " Highlight the symbol and its references when holding the cursor.
+    autocmd CursorHold * silent call CocActionAsync('highlight')
+
+    augroup mygroup
+      autocmd!
+      " Setup formatexpr specified filetype(s).
+      autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+      " Update signature help on jump placeholder.
+      autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+    augroup end
+
+    " Add `:Format` command to format current buffer.
+    " command! -nargs=0 Format :call CocAction('format')
+
+    " Add `:Fold` command to fold current buffer.
+    " command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+    " Add `:OR` command for organize imports of the current buffer.
+    " command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+]], '')

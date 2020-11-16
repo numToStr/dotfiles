@@ -1,6 +1,5 @@
-" This line is pure magic and will heal all of your wounds.
+" This is a magic line that will take your pain away.
 set rtp+=$DOTFILES/neovim
 
 source $DOTFILES/neovim/plugins.vim
 lua require('init')
-source $DOTFILES/neovim/coc.vim
