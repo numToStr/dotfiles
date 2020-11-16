@@ -18,17 +18,7 @@ function U.map(mode, key, result, opts)
         expr = false
     }, opts or {})
 
-    fn.nvim_set_keymap(
-        mode,
-        key,
-        result,
-        {
-            noremap = opts.noremap,
-            silent = opts.silent,
-            expr = opts.expr
-            -- script = opts.script or false
-        }
-    )
+    fn.nvim_set_keymap(mode, key, result, opts)
 end
 
 -- For setting environment variable
