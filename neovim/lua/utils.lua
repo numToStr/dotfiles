@@ -3,19 +3,30 @@ local api = vim.api
 local cmd = vim.cmd
 local U = {}
 
+function table.merge(dest, src)
+   for k,v in pairs(src) do
+       dest[k] = v
+   end
+   return dest
+end
+
 -- Key mapping
 function U.map(mode, key, result, opts)
-    opts = opts or {}
+    opts = table.merge({
+        noremap = true,
+        silent = true,
+        expr = false
+    }, opts or {})
 
     fn.nvim_set_keymap(
         mode,
         key,
         result,
         {
-            noremap = opts.noremap or true,
-            silent = opts.silent or true,
-            expr = opts.expr or false,
-            script = opts.script or false
+            noremap = opts.noremap,
+            silent = opts.silent,
+            expr = opts.expr
+            -- script = opts.script or false
         }
     )
 end
