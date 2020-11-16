@@ -36,7 +36,7 @@ g.NERDTreeGitStatusIndicatorMapCustom = {
 }
 
 function OpenNERDTree()
-    vim.cmd("NERDTreeToggle")
+    cmd("NERDTreeToggle")
     U.move_cursor_from_tree()
 end
 
