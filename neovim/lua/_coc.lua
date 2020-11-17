@@ -60,17 +60,17 @@ U.map('i', '<CR>', 'pumvisible() ? coc#_select_confirm() : "<C-G>u<CR><C-R>=coc#
 
 -- Use `[g` and `]g` to navigate diagnostics
 -- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-U.map('n', '[g', '<Plug>(coc-diagnostic-prev)', { noremap = true })
-U.map('n', ']g', '<Plug>(coc-diagnostic-next)', { noremap = true })
+U.map('n', '[g', '<Plug>(coc-diagnostic-prev)', { noremap = false })
+U.map('n', ']g', '<Plug>(coc-diagnostic-next)', { noremap = false })
 
 -- Multiple Cursors support
-U.map('n', 'gb', '<Plug>(coc-cursors-word)', { noremap = true })
+U.map('n', 'gb', '<Plug>(coc-cursors-word)', { noremap = false })
 
 -- GoTo code navigation.
-U.map('n', 'gd', '<Plug>(coc-definition)', { noremap = true })
-U.map('n', 'gy', '<Plug>(coc-type-definition)', { noremap = true })
-U.map('n', 'gi', '<Plug>(coc-implementation)', { noremap = true })
-U.map('n', 'gr', '<Plug>(coc-references)', { noremap = true })
+U.map('n', 'gd', '<Plug>(coc-definition)', { noremap = false })
+U.map('n', 'gy', '<Plug>(coc-type-definition)', { noremap = false })
+U.map('n', 'gi', '<Plug>(coc-implementation)', { noremap = false })
+U.map('n', 'gr', '<Plug>(coc-references)', { noremap = false })
 
 -- Symbol renaming.
 U.map('n', '<F2>', '<Plug>(coc-rename)', { noremap = false })
