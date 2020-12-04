@@ -4,24 +4,27 @@ local o = vim.o
 -- This is a magic line that will take your pain away.
 o.rtp = string.format('%s/neovim,%s', D, o.rtp)
 
+-- Vanilla Config
+
 require 'plugins'
-require "_settings"
-require "_autocmd"
-require "_keybinds"
+require 'settings'
+require 'autocmd'
+require 'keybinds'
 
-require "_colorizer"
-require "_theme"
-require "_fzf"
-require "_statusline"
-require "_easymotion"
-require "_indentline"
-require "_nerdtree"
-require "_tmux-navigator"
-require "_git-messenger"
-require "_floaterm"
-require "_coc"
+-- Plugins Config
+require 'plugins/_theme'
+require 'plugins/_colorizer'
+require 'plugins/_fzf'
+require 'plugins/_statusline'
+require 'plugins/_easymotion'
+require 'plugins/_indentline'
+require 'plugins/_nerdtree'
+require 'plugins/_tmux-navigator'
+require 'plugins/_git-messenger'
+require 'plugins/_floaterm'
+require 'plugins/_coc'
 
--- require "_tree"
--- require "_devicons"
--- require "_goyo"
+-- require "plugins/_tree"
+-- require "plugins/_devicons"
+-- require "plugins/_goyo"
 

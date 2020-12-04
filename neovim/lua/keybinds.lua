@@ -7,6 +7,10 @@ U.map("n", "<S-Y>", "y$")
 U.map("i", "<C-E>", "<ESC>A")
 U.map("i", "<C-A>", "<ESC>I")
 
+-- Fast execute macro
+U.map('x' ,'Q', ':normal @@<CR>')
+U.map('n' ,'Q', ':normal @@<CR>')
+
 U.map("n", "<leader>w", ":w!<CR>")
 U.map("n", "<leader>n", ":nohl<CR>")
 U.map("n", "<C-Q>", ":q<CR>")
