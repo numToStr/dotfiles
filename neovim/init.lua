@@ -1,11 +1,10 @@
-local D = os.getenv('DOTFILES')
+local D = os.getenv('DOTFILES') or os.getenv('HOME')..'/.dotfiles'
 local o = vim.o
 
 -- This is a magic line that will take your pain away.
 o.rtp = string.format('%s/neovim,%s', D, o.rtp)
 
-vim.cmd('source' .. D .. '/neovim/plugins.vim')
-
+require 'plugins'
 require "_settings"
 require "_colorizer"
 require "_autocmd"
