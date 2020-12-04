@@ -43,7 +43,7 @@ function show_docs()
     if fn.index({'vim', 'help'}, vim.bo.filetype) >= 0 then
         cmd('h '..cw)
     elseif api.nvim_eval('coc#rpc#ready()') then
-        cmd('call CocActionAsync("doHover")')
+        g.CocActionAsync('doHover')
     else
         cmd('!'..vim.o.keywordprg..' '..cw)
     end
