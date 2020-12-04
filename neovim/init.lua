@@ -6,9 +6,10 @@ o.rtp = string.format('%s/neovim,%s', D, o.rtp)
 
 require 'plugins'
 require "_settings"
-require "_colorizer"
 require "_autocmd"
 require "_keybinds"
+
+require "_colorizer"
 require "_theme"
 require "_fzf"
 require "_statusline"

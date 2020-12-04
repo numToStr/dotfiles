@@ -58,7 +58,7 @@ return require('packer').startup(function()
     use 'easymotion/vim-easymotion'
 
     -- " Intellisense and completion engine
-    use { 'neoclide/coc.nvim', { branch = 'release' } }
+    use { 'neoclide/coc.nvim', branch = 'release' }
     use 'antoinemadec/coc-fzf'
 
     -- " For various text objects
@@ -79,36 +79,36 @@ return require('packer').startup(function()
     use 'ntpeters/vim-better-whitespace'
 
     -- " Delete buffers and close files in Vim without closing your windows or messing up your layout
-    use { 'moll/vim-bbye', { cmd = 'Bdelete' } }
+    use { 'moll/vim-bbye', cmd = 'Bdelete' }
 
     -- " A simple, easy-to-use Vim alignment plugin.
     use 'junegunn/vim-easy-align'
 
     use 'michaeljsmith/vim-indent-object'
 
-    use { 'voldikss/vim-floaterm', { cmd = 'FloatermToggle' } }
+    use { 'voldikss/vim-floaterm', cmd = 'FloatermToggle' }
 
     use 'psliwka/vim-smoothie'
 
     use 'bronson/vim-visual-star-search'
 
     -- " Safely deletes all open buffers except the current one and NERDTree
-    use { 'numtostr/BufOnly.nvim', { cmd = 'BufOnly' } }
+    use { 'numtostr/BufOnly.nvim', cmd = 'BufOnly' }
 
     -- " For showing the actual color of the hex value
     use 'norcalli/nvim-colorizer.lua'
 
     -- " For git stuff
-    use { 'rhysd/git-messenger.vim', { cmd = 'GitMessenger' } }
+    use { 'rhysd/git-messenger.vim', cmd = 'GitMessenger' }
 
     -- " Some snippets
     use 'honza/vim-snippets'
-    use { 'dsznajder/vscode-es7-javascript-react-snippets', { run = 'yarn install --frozen-lockfile && yarn compile' } }
+    use { 'dsznajder/vscode-es7-javascript-react-snippets', run = 'yarn install --frozen-lockfile && yarn compile' }
 
     use 'AndrewRadev/splitjoin.vim'
 
     -- " For distraction free editing
-    -- " use 'junegunn/goyo.vim', { cmd = 'Goyo' }
+    -- " use { 'junegunn/goyo.vim', cmd = 'Goyo' }
 
     -- " use 'kyazdani42/nvim-web-devicons'
     -- " use 'kyazdani42/nvim-tree.lua'
