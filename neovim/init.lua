@@ -5,7 +5,6 @@ local o = vim.o
 o.rtp = string.format('%s/neovim,%s', D, o.rtp)
 
 -- Vanilla Config
-
 require 'plugins'
 require 'settings'
 require 'autocmd'
@@ -21,7 +20,7 @@ require 'plugins/_indentline'
 require 'plugins/_nerdtree'
 require 'plugins/_tmux-navigator'
 require 'plugins/_git-messenger'
-require 'plugins/_floaterm'
+require 'plugins/_term'
 require 'plugins/_coc'
 
 -- require "plugins/_tree"

@@ -87,8 +87,10 @@ return require('packer').startup({
 
         use 'michaeljsmith/vim-indent-object'
 
-        use { 'voldikss/vim-floaterm', cmd = 'FloatermToggle' }
+        -- For floating terminal
+        use 'numToStr/FTerm.nvim'
 
+        -- For smooth scroll
         use 'psliwka/vim-smoothie'
 
         use 'bronson/vim-visual-star-search'
@@ -116,7 +118,7 @@ return require('packer').startup({
     end,
     config = {
         display = {
-            open_fn = require'packer.util'.float
+            open_fn = require"packer.utils".float
         }
     }
 })
