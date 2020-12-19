@@ -31,8 +31,8 @@ g.fzf_history_dir = "~/.local/share/fzf-history"
 
 g.fzf_layout = {
     window = {
-        width = 0.4,
-        height = 0.25,
+        width = 0.5,
+        height = 0.3,
         yoffset = 0,
     },
 }
