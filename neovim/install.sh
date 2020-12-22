@@ -4,7 +4,7 @@ if command -v nvim >/dev/null 2>&1; then
     MODULE="NeoVim"
     PACKER=$HOME/.local/share/nvim/site/pack/packer/opt/packer.nvim
 
-    if [ ! -f $PLUG_FILE ]; then
+    if [ ! -f $PACKER ]; then
         echo "[ INSTALLING ] :: $MODULE >> packer.nvim"
 
         git clone https://github.com/wbthomason/packer.nvim $PACKER
