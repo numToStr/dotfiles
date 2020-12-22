@@ -90,9 +90,9 @@ function U.define_autocmd(spec)
     local once = spec.once and "++once" or ""
     local nested = spec.nested and "++nested" or ""
 
-    local action = spec.command or ''
+    local command = spec.command or ''
 
-    cmd(join("autocmd", group, event, pattern, once, nested, action))
+    cmd(join("autocmd", group, event, pattern, once, nested, command))
 end
 
 return U
