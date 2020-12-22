@@ -24,7 +24,7 @@ cmd("au BufNewFile,BufRead tsconfig.json setlocal filetype=json5")
 function help_tab()
     if vim.bo.buftype == 'help' then
         cmd('wincmd L')
-        nr = api.nvim_get_current_buf()
+        local nr = api.nvim_get_current_buf()
         api.nvim_buf_set_keymap(nr, "", "q", ":q<CR>", { noremap = true, silent = true })
     end
 end

@@ -1,6 +1,5 @@
 local U = require 'utils'
 local g = vim.g
-local cmd = vim.cmd
 
 -- Disable default mappings
 g.EasyMotion_do_mapping = 0

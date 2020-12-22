@@ -23,8 +23,8 @@ end
 
 -- For moments when I don't want my cursor to stay on the tree
 function U.move_cursor_from_tree()
-    n = fn.bufname()
-    nr = api.nvim_get_current_buf()
+    local n = fn.bufname()
+    local nr = api.nvim_get_current_buf()
     if string.find(n, 'NERD_tree') and nr > 1 then
         -- cmd('exe "normal! \\<C-W>\\<C-W>"')
         cmd('wincmd l')

@@ -1,6 +1,5 @@
 local U = require "utils"
 local g = vim.g
-local cmd = vim.cmd
 local exec = vim.api.nvim_exec
 
 g.lua_tree_side = "left"
