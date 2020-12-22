@@ -1,6 +1,5 @@
 local U = require "utils"
 local g = vim.g
-local fn = vim.fn
 local cmd = vim.cmd
 local api = vim.api
 
@@ -44,39 +43,26 @@ end
 
 U.map("n", "<C-N>", "<CMD>lua OpenNERDTree()<CR>")
 
-function TreeSetting()
-    -- To hide signcolumn in NERDTree
-    vim.wo.signcolumn = 'no'
-    -- To remove forward slash after directory
-    vim.wo.conceallevel = 3
-    -- FIXME: I don't know how to write this in lua
-    cmd('syntax match NERDTreeDirSlash #/$# containedin=NERDTreeDir conceal contained')
-end
-
-U.define_autocmd({
-    event = 'FileType',
-    pattern = 'nerdtree',
-    command = 'lua TreeSetting()'
-})
-
--- For starting NERDTree when vim is opened on a directory
-U.define_autocmd({
-    event = 'StdinReadPre',
-    command = 'let s:std_in = 1'
-})
-
-U.define_autocmd({
-    event = 'VimEnter',
-    command = 'if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe "NERDTree" argv()[0] | wincmd p | ene | exe "cd ".argv()[0] | endif'
-})
-
--- For closing vim if the only window left open is a NERDTree
-U.define_autocmd({
-    event = 'BufEnter',
-    command = 'if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif'
-})
-
 api.nvim_exec([[
+    " To hide signcolumn in NERDTree
+    autocmd FileType nerdtree call TreeSetting()
+
+    function! TreeSetting()
+        " To remove signcolumn
+        setlocal signcolumn=no
+        " To remove forward slash after directory
+        setlocal conceallevel=3 | syntax match NERDTreeDirSlash #/$# containedin=NERDTreeDir conceal contained
+    endfunction
+
+
+    " For starting NERDTree when vim is opened on a directory
+    autocmd StdinReadPre * let s:std_in=1
+    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+
+    " For closing vim if the only window left open is a NERDTree
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+
     function! NERDTreeIsOpen()
       return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1) && g:NERDTree.IsOpen()
     endfunction
