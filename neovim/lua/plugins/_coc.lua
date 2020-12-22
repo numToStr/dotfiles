@@ -38,7 +38,7 @@ U.map('i', '<S-TAB>', 'pumvisible() ? "<C-P>" : "<C-H>"', { expr = true })
 
 
 -- Use gh to show documentation in preview window.
-function show_docs()
+function ShowDocs()
     local cw = fn.expand('<cword>')
     if fn.index({'vim', 'help'}, vim.bo.filetype) >= 0 then
         cmd('h '..cw)
@@ -49,7 +49,7 @@ function show_docs()
     end
 end
 
-U.map('n', 'gh', '<CMD>lua show_docs()<CR>')
+U.map('n', 'gh', '<CMD>lua ShowDocs()<CR>')
 
 -- Use <c-space> to trigger completion.
 U.map('i', '<C-SPACE>', 'coc#refresh()', { expr = true })
@@ -128,36 +128,49 @@ U.map('x', '<C-S>', '<Plug>(coc-range-select)', { noremap = false })
 -- Resume latest coc list.
 -- U.map('n', '\\p', ':CocListResume<CR>')
 
-api.nvim_exec([[
-    " let g:easymotion#is_active = 0
-    " function! EasyMotionCoc() abort
-    "     if EasyMotion#is_active()
-    "         let g:easymotion#is_active = 1
-    "         silent CocDisable
-    "     elseif g:easymotion#is_active == 1
-    "         silent CocEnable
-    "         let g:easymotion#is_active = 0
-    "     endif
-    " endfunction
-    " autocmd TextChanged,CursorMoved * call EasyMotionCoc()
+-- Highlight the symbol and its references when holding the cursor.
+U.define_autocmd({
+    event = 'CursorHold',
+    command = 'lua vim.fn.CocActionAsync("highlight")'
+})
 
-    " Highlight the symbol and its references when holding the cursor.
-    autocmd CursorHold * silent call CocActionAsync('highlight')
+local grp = U.define_autocmd_group('mygroup', { clear = true })
 
-    augroup mygroup
-      autocmd!
-      " Setup formatexpr specified filetype(s).
-      autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-      " Update signature help on jump placeholder.
-      autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-    augroup end
+-- Setup formatexpr specified filetype(s).
+U.define_autocmd({
+    group = grp,
+    event = 'FileType',
+    pattern = 'typescript,json',
+    command = 'setl formatexpr=CocAction("formatSelected")'
+})
 
-    " Add `:Format` command to format current buffer.
-    " command! -nargs=0 Format :call CocAction('format')
+-- Update signature help on jump placeholder.
+U.define_autocmd({
+    group = grp,
+    event = 'User',
+    pattern = 'CocJumpPlaceholder',
+    command = 'call CocActionAsync("showSignatureHelp")'
+})
 
-    " Add `:Fold` command to fold current buffer.
-    " command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-    " Add `:OR` command for organize imports of the current buffer.
-    " command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-]], '')
+-- api.nvim_exec([[
+--     " let g:easymotion#is_active = 0
+--     " function! EasyMotionCoc() abort
+--     "     if EasyMotion#is_active()
+--     "         let g:easymotion#is_active = 1
+--     "         silent CocDisable
+--     "     elseif g:easymotion#is_active == 1
+--     "         silent CocEnable
+--     "         let g:easymotion#is_active = 0
+--     "     endif
+--     " endfunction
+--     " autocmd TextChanged,CursorMoved * call EasyMotionCoc()
+--
+--     " Add `:Format` command to format current buffer.
+--     " command! -nargs=0 Format :call CocAction('format')
+--
+--     " Add `:Fold` command to fold current buffer.
+--     " command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+--
+--     " Add `:OR` command for organize imports of the current buffer.
+--     " command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+-- ]], '')
