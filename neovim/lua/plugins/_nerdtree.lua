@@ -1,7 +1,7 @@
 local U = require "utils"
 local g = vim.g
 local cmd = vim.cmd
-local exec = vim.api.nvim_exec
+local api = vim.api
 
 g.DevIconsEnableFoldersOpenClose = 1
 
@@ -36,13 +36,14 @@ g.NERDTreeGitStatusIndicatorMapCustom = {
 }
 
 function OpenNERDTree()
+    local last_pos = api.nvim_get_current_win()
     cmd("NERDTreeToggle")
-    U.move_cursor_from_tree()
+    api.nvim_set_current_win(last_pos)
 end
 
 U.map("n", "<C-N>", "<CMD>lua OpenNERDTree()<CR>")
 
-exec([[
+api.nvim_exec([[
     " To hide signcolumn in NERDTree
     autocmd FileType nerdtree call TreeSetting()
 

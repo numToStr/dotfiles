@@ -58,4 +58,8 @@ g.mapleader = " "
 
 
 -- For highlighting yanked region
-vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank({ higroup = "HighlightedyankRegion", timeout = 120 })')
+U.define_autocmd({
+    event = 'TextYankPost',
+    pattern = '*',
+    callback = 'silent! lua vim.highlight.on_yank({ higroup = "HighlightedyankRegion", timeout = 120 })'
+})

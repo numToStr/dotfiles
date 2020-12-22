@@ -10,6 +10,10 @@ local U = {}
 --    return dest
 -- end
 
+local function join(...)
+  return table.concat({...}, " ")
+end
+
 -- Key mapping
 function U.map(mode, key, result, opts)
     opts = vim.tbl_extend('keep', opts or {}, {
@@ -61,6 +65,34 @@ function U.hiLinks(hi_table)
     for src, dest in pairs(hi_table) do
         U.hiLink(src, dest)
     end
+end
+
+-- autocmd in lua
+-- Source: https://github.com/vheon/ycm.nvim/blob/master/lua/ycm/autocmd.lua
+
+function U.define_autocmd_group(group, opts)
+  cmd('augroup '..group)
+  if opts.clear then
+    cmd('autocmd!')
+  end
+  cmd('augroup END')
+
+  return group
+end
+
+function U.define_autocmd(spec)
+    local event = spec.event
+    if type(event) == 'table' then
+        event = table.concat(event, ',')
+    end
+    local group = spec.group or ""
+    local pattern = spec.pattern or "*"
+    local once = spec.once and "++once" or ""
+    local nested = spec.nested and "++nested" or ""
+
+    local action = spec.command or ''
+
+    cmd(join("autocmd", group, event, pattern, once, nested, action))
 end
 
 return U

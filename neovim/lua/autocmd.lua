@@ -3,17 +3,32 @@
 
 local cmd = vim.cmd
 local api = vim.api
+local U = require'utils'
 
 -- Auto save files when focus is lost
-cmd("au FocusLost * :wa")
-cmd("au FocusLost * silent! wa")
-
-cmd("au BufNewFile,BufRead .prettierrc setf json")
-cmd("au BufNewFile,BufRead .eslintrc setf json")
-cmd("au BufNewFile,BufRead .eslintignore setf gitignore")
+-- cmd("au FocusLost * :wa")
+U.define_autocmd({
+    event = 'FocusLost',
+    pattern = '*',
+    command = 'silent! wa'
+})
+U.define_autocmd({
+    event = 'BufNewFile,BufRead',
+    pattern = '.prettierrc,.eslintrc',
+    command = 'setf json'
+})
+U.define_autocmd({
+    event = 'BufNewFile,BufRead',
+    pattern = '*ignore',
+    command = 'setf gitignore'
+})
 
 -- tsconfig.json supports comments and json5 enables comments
-cmd("au BufNewFile,BufRead tsconfig.json setlocal filetype=json5")
+U.define_autocmd({
+    event = 'BufNewFile,BufRead',
+    pattern = 'tsconfig.json',
+    command = 'setlocal filetype=json5'
+})
 
 -- Appending the extra file types for vim-snippets to show react snippets
 -- Messing with prettier
