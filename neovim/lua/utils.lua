@@ -1,14 +1,6 @@
-local fn = vim.fn
 local api = vim.api
 local cmd = vim.cmd
 local U = {}
-
--- function table.merge(dest, src)
---    for k,v in pairs(src) do
---        dest[k] = v
---    end
---    return dest
--- end
 
 local function join(...)
   return table.concat({...}, " ")
@@ -22,15 +14,14 @@ function U.map(mode, key, result, opts)
         expr = false
     })
 
-    fn.nvim_set_keymap(mode, key, result, opts)
+    api.nvim_set_keymap(mode, key, result, opts)
 end
 
 -- For moments when I don't want my cursor to stay on the tree
 function U.move_cursor_from_tree()
-    local n = fn.bufname()
     local nr = api.nvim_get_current_buf()
-    if string.find(n, 'NERD_tree') and nr > 1 then
-        -- cmd('exe "normal! \\<C-W>\\<C-W>"')
+    local buf = api.nvim_buf_get_name(nr)
+    if string.find(buf, 'NERD_tree') and nr > 1 then
         cmd('wincmd l')
     end
 end
@@ -67,9 +58,8 @@ function U.hiLinks(hi_table)
     end
 end
 
--- autocmd in lua
+-- Autocmd and AuGroup in lua
 -- Source: https://github.com/vheon/ycm.nvim/blob/master/lua/ycm/autocmd.lua
-
 function U.define_autocmd_group(group, opts)
   cmd('augroup '..group)
   if opts.clear then
