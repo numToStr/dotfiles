@@ -76,7 +76,8 @@ zinit wait lucid for \
 	OMZL::spectrum.zsh \
 	OMZL::termsupport.zsh \
     atload"
-        alias gcd='gco dev'
+        alias gcd='git checkout dev'
+        alias gce='git commit -a -e'
     " \
 	OMZP::git \
     atload"
