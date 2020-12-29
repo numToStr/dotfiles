@@ -68,6 +68,8 @@ zinit wait lucid for \
         function take() {
             mkdir -p $@ && cd ${@:$#}
         }
+
+        alias rm="rm -rf"
     ' \
 	OMZL::directories.zsh \
 	OMZL::git.zsh \
