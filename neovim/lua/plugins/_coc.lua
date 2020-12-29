@@ -129,6 +129,9 @@ U.map('x', '<C-S>', '<Plug>(coc-range-select)', { noremap = false })
 -- U.map('n', '\\p', ':CocListResume<CR>')
 
 api.nvim_exec([[
+    autocmd User EasyMotionPromptBegin silent! CocDisable
+    autocmd User EasyMotionPromptEnd silent! CocEnable
+
     " let g:easymotion#is_active = 0
     " function! EasyMotionCoc() abort
     "     if EasyMotion#is_active()
