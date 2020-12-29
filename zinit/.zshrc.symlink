@@ -49,7 +49,7 @@ zinit lucid for \
         export ZSH_TMUX_AUTOCONNECT=true
         export ZSH_TMUX_DEFAULT_SESSION_NAME='</>'
     " \
-    https://gist.githubusercontent.com/realvikas/db63306fe26f49ec2f084cef25d99ea1/raw/71cbb84565d917a153676dcf962383daa02482e0/tmux.plugin.zsh \
+    https://gist.githubusercontent.com/numToStr/eb8f0d74cca69646df7cdfc773f855c8/raw/6bf87b70b9a0808a5fa29475140904a4487bde8f/tmux.plugin.zsh \
     atinit"HIST_STAMPS=dd.mm.yyyy" \
     OMZL::history.zsh \
 
