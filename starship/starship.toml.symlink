@@ -1,6 +1,3 @@
-[cmd_duration]
-disabled = true
-
 [character]
 success_symbol = "[❯](bold white)"
 
@@ -17,4 +14,4 @@ description = "Shows the docker symbol if the current directory has Dockerfile o
 command = "echo 🐳"
 files = ["Dockerfile", "docker-compose.yml", "docker-compose.yaml"]
 when = """ command -v docker &> /dev/null; exit (echo $?); """
-format = "in [$output]($style)"
+format = "in [$output]($style) "
