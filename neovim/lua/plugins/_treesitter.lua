@@ -15,6 +15,8 @@ require('nvim-treesitter.configs').setup({
                 ["if"] = "@function.inner",
                 ["ac"] = "@class.outer",
                 ["ic"] = "@class.inner",
+                ["al"] = "@loop.outer",
+                ["il"] = "@loop.inner",
 
                 -- Or you can define your own textobjects like this
                 -- ["iF"] = {
