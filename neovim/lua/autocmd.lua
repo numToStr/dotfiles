@@ -8,12 +8,8 @@ local api = vim.api
 cmd("au FocusLost * :wa")
 cmd("au FocusLost * silent! wa")
 
-cmd("au BufNewFile,BufRead .prettierrc setf json")
-cmd("au BufNewFile,BufRead .eslintrc setf json")
-cmd("au BufNewFile,BufRead .eslintignore setf gitignore")
-
--- tsconfig.json supports comments and json5 enables comments
-cmd("au BufNewFile,BufRead tsconfig.json setlocal filetype=json5")
+cmd("au BufNewFile,BufRead .eslintrc,.prettierrc,tsconfig.json setf json")
+cmd("au BufNewFile,BufRead .eslintignore,.prettierignore setf conf")
 
 -- Appending the extra file types for vim-snippets to show react snippets
 -- Messing with prettier
