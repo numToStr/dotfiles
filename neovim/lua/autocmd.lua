@@ -5,8 +5,8 @@ local cmd = vim.cmd
 local api = vim.api
 
 -- Auto save files when focus is lost
-cmd("au FocusLost * :wa")
-cmd("au FocusLost * silent! wa")
+-- cmd("au FocusLost * :wa")
+-- cmd("au FocusLost * silent! wa")
 
 cmd("au BufNewFile,BufRead .eslintrc,.prettierrc,tsconfig.json setf json")
 cmd("au BufNewFile,BufRead .eslintignore,.prettierignore setf conf")
