@@ -60,7 +60,7 @@ return require('packer').startup({
 
         -- " Intellisense and completion engine
         use { 'neoclide/coc.nvim', branch = 'release' }
-        use 'antoinemadec/coc-fzf'
+        -- use 'antoinemadec/coc-fzf'
 
         -- " For various text objects
         use 'wellle/targets.vim'
@@ -70,7 +70,7 @@ return require('packer').startup({
 
         -- " Fzf vim plugin. For this to work you need to install the fzf binary https://github.com/junegunn/fzf
         -- " use 'junegunn/fzf.vim', { 'commit': '0fe8e19' }
-        use 'junegunn/fzf.vim'
+        -- use 'junegunn/fzf.vim'
 
         -- " Provides insert mode auto-completion for quotes, parens, brackets, etc.
         use 'jiangmiao/auto-pairs'
@@ -113,8 +113,13 @@ return require('packer').startup({
         -- " For distraction free editing
         -- " use { 'junegunn/goyo.vim', cmd = 'Goyo' }
 
-        -- " use 'kyazdani42/nvim-web-devicons'
-        -- " use 'kyazdani42/nvim-tree.lua'
+        use 'kyazdani42/nvim-web-devicons'
+        -- use 'kyazdani42/nvim-tree.lua'
+
+        use {
+            'nvim-telescope/telescope.nvim',
+            requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+        }
     end,
     config = {
         display = {
