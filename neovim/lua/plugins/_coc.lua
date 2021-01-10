@@ -76,28 +76,28 @@ U.map('n', 'gr', '<Plug>(coc-references)', { noremap = false })
 U.map('n', '<F2>', '<Plug>(coc-rename)', { noremap = false })
 
 -- Formatting selected code.
-U.map('x', '<leader>f', '<Plug>(coc-format-selected)', { noremap = false })
-U.map('n', '<leader>f', '<Plug>(coc-format-selected)', { noremap = false })
+-- U.map('x', '<leader>f', '<Plug>(coc-format-selected)', { noremap = false })
+-- U.map('n', '<leader>f', '<Plug>(coc-format-selected)', { noremap = false })
 
 -- Applying codeAction to the selected region.
 -- Example: `<leader>aap` for current paragraph
-U.map('x', '<leader>a', '<Plug>(coc-codeaction-selected)', { noremap = false })
-U.map('n', '<leader>a', '<Plug>(coc-codeaction-selected)', { noremap = false })
+-- U.map('x', '<leader>a', '<Plug>(coc-codeaction-selected)', { noremap = false })
+-- U.map('n', '<leader>a', '<Plug>(coc-codeaction-selected)', { noremap = false })
 
 -- Remap keys for applying codeAction to the current buffer.
 U.map('n', '<leader>c', '<Plug>(coc-codeaction)', { noremap = false })
 
 -- Map function and class text objects
 -- NOTE: Requires 'textDocument.documentSymbol' support from the language server.
-U.map('x', 'if', '<Plug>(coc-funcobj-i)', { noremap = false })
-U.map('o', 'if', '<Plug>(coc-funcobj-i)', { noremap = false })
-U.map('x', 'af', '<Plug>(coc-funcobj-a)', { noremap = false })
-U.map('o', 'af', '<Plug>(coc-funcobj-a)', { noremap = false })
-
-U.map('x', 'ic', '<Plug>(coc-classobj-i)', { noremap = false })
-U.map('o', 'ic', '<Plug>(coc-classobj-i)', { noremap = false })
-U.map('x', 'ac', '<Plug>(coc-classobj-a)', { noremap = false })
-U.map('o', 'ac', '<Plug>(coc-classobj-a)', { noremap = false })
+-- U.map('x', 'if', '<Plug>(coc-funcobj-i)', { noremap = false })
+-- U.map('o', 'if', '<Plug>(coc-funcobj-i)', { noremap = false })
+-- U.map('x', 'af', '<Plug>(coc-funcobj-a)', { noremap = false })
+-- U.map('o', 'af', '<Plug>(coc-funcobj-a)', { noremap = false })
+--
+-- U.map('x', 'ic', '<Plug>(coc-classobj-i)', { noremap = false })
+-- U.map('o', 'ic', '<Plug>(coc-classobj-i)', { noremap = false })
+-- U.map('x', 'ac', '<Plug>(coc-classobj-a)', { noremap = false })
+-- U.map('o', 'ac', '<Plug>(coc-classobj-a)', { noremap = false })
 
 -- Remap <C-F> and <C-B> for scroll float windows/popups.
 U.map('n', '<C-F>', 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-F>"', { expr = true })
@@ -107,8 +107,8 @@ U.map('i', '<C-B>', 'coc#float#has_scroll() ? coc#float#scroll(0) : "<Left>"', {
 
 -- Use CTRL-S for selections ranges.
 -- Requires 'textDocument/selectionRange' support of language server.
-U.map('n', '<C-S>', '<Plug>(coc-range-select)', { noremap = false })
-U.map('x', '<C-S>', '<Plug>(coc-range-select)', { noremap = false })
+-- U.map('n', '<C-S>', '<Plug>(coc-range-select)', { noremap = false })
+-- U.map('x', '<C-S>', '<Plug>(coc-range-select)', { noremap = false })
 
 -- Mappings for CoCList
 -- Show all diagnostics.
