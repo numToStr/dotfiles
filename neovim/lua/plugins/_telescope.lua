@@ -33,13 +33,13 @@ function TelescopeOpen(fn)
 end
 
 -- Ctrl-p = fuzzy finder
-U.map("n", "<C-P>", "<CMD>lua TelescopeOpen('find_files')<CR>")
+U.map("n", "<C-P>", "<CMD>lua TelescopeOpen('git_files')<CR>")
 
 -- Fuzzy find active buffers
 U.map("n", "'b", "<CMD>lua TelescopeOpen('buffers')<CR>")
 
 -- Search for string
-U.map("n", "'f", "<CMD>lua TelescopeOpen('live_grep')<CR>")
+U.map("n", "'r", "<CMD>lua TelescopeOpen('live_grep')<CR>")
 
 -- Fuzzy find history buffers
 U.map("n", "'i", "<CMD>lua TelescopeOpen('oldfiles')<CR>")
