@@ -30,11 +30,9 @@ end
 -- Usage:
 -- highlight(Cursor, { fg = bg_dark, bg = yellow })
 function U.highlight(group, styles)
-    local gui = styles.gui and 'gui='..styles.gui or 'gui=NONE'
-    local sp = styles.sp and 'guisp='..styles.sp or 'guisp=NONE'
-    local fg = styles.fg and 'guifg='..styles.fg or 'guifg=NONE'
-    local bg = styles.bg and 'guibg='..styles.bg or 'guibg=NONE'
-    cmd('highlight '..group..' '..gui..' '..sp..' '..fg..' '..bg)
+    local s = vim.tbl_extend('keep', styles, { gui = 'NONE', sp = 'NONE', fg = 'NONE', bg = 'NONE' })
+
+    cmd('highlight! '..group..' gui='..s.gui..' guisp='..s.sp..' guifg='..s.fg..' guibg='..s.bg)
 end
 
 -- Usage:
