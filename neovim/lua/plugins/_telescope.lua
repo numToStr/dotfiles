@@ -1,6 +1,8 @@
 local U = require'utils'
-local telescope = require'telescope.builtin'
+local finders = require'telescope.builtin'
 local actions = require'telescope.actions'
+local previewers = require'telescope.previewers'
+local sorters = require'telescope.sorters'
 
 require('telescope').setup({
     defaults = {
@@ -16,9 +18,11 @@ require('telescope').setup({
                 ['<TAB>'] = function () do return end end
             }
         },
-        file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
-        grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
-        qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new
+        file_sorter =  sorters.get_fzy_sorter,
+        generic_sorter = sorters.get_fzy_sorter,
+        file_previewer = previewers.vim_buffer_cat.new,
+        grep_previewer = previewers.vim_buffer_vimgrep.new,
+        qflist_previewer = previewers.vim_buffer_qflist.new
     }
 })
 
@@ -29,7 +33,7 @@ U.highlights({
 
 function TelescopeOpen(fn)
     U.move_cursor_from_tree()
-    telescope[fn]()
+    finders[fn]()
 end
 
 -- Ctrl-p = fuzzy finder
