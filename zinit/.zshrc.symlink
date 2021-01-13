@@ -149,32 +149,39 @@ zinit wait lucid for \
 #####################
 
 zinit wait lucid light-mode as'command' for \
-    pick"src/z.interactive.zsh" src"z.sh" \
-        knu/z \
-    atinit'export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"' pick"bin/n" \
-        tj/n \
     from'gh-r' atinit'export PATH="$HOME/.yarn/bin:$PATH"' mv'yarn* -> yarn' pick"yarn/bin/yarn" bpick'*.tar.gz' \
         yarnpkg/yarn \
 
-zinit wait"1" lucid light-mode from"gh-r" as"command" for \
-    bpick'*.tar.gz' atclone'
-        mkdir -p $HOME/.config/nvim/plugin
-        curl https://raw.githubusercontent.com/junegunn/fzf/master/plugin/fzf.vim -o $HOME/.config/nvim/plugin/fzf.vim
-    ' atpull'%atclone' \
-        junegunn/fzf \
-    bpick'*unknown-linux-musl*' mv'ripgrep* -> rg' pick'rg/rg' \
-        BurntSushi/ripgrep \
-    bpick'*unknown-linux-gnu*' mv'fd* -> fd' pick'fd/fd' \
+zinit wait"1" lucid light-mode from"gh-r" as"command" bpick'*linux*' for \
+     atload'
+        eval `snm env zsh`
+        alias n="snm"
+    ' mv'snm* -> snm' pick'snm/snm' \
+        @numToStr/snm \
+    atload'
+        eval "$(zoxide init --no-aliases zsh)"
+        alias z="__zoxide_z"
+    ' mv'zoxide* -> zoxide' \
+        @ajeetdsouza/zoxide \
+        @junegunn/fzf \
+    mv'ripgrep* -> rg' pick'rg/rg' \
+        @BurntSushi/ripgrep \
+    mv'fd* -> fd' pick'fd/fd' \
         @sharkdp/fd \
-    bpick'*unknown-linux-gnu*' mv'bat* -> bat' pick'bat/bat' \
+    mv'bat* -> bat' pick'bat/bat' \
         @sharkdp/bat \
-    bpick'*unknown-linux-gnu*' mv'delta* -> delta' pick'delta/delta' \
-        dandavison/delta \
+    mv'delta* -> delta' pick'delta/delta' \
+        @dandavison/delta \
     atload'
         unalias l
         alias l="exa -abghHlS --git --group-directories-first"
-    ' bpick'*linux*' mv'exa* -> exa' \
-        ogham/exa \
+    ' mv'exa* -> exa' \
+        @ogham/exa \
+
+# atclone'
+#         mkdir -p $HOME/.config/nvim/plugin
+#         curl https://raw.githubusercontent.com/junegunn/fzf/master/plugin/fzf.vim -o $HOME/.config/nvim/plugin/fzf.vim
+#     ' atpull'%atclone'
 
 #####################
 # MANUAL CONFIG     #
