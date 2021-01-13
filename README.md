@@ -24,6 +24,9 @@ My Dotfiles includes configs for vim, tmux, zsh, fzf and more. Made with blood, 
 -   [bat](https://github.com/sharkdp/bat) (A cat(1) clone with wings.)
 -   [delta](https://github.com/dandavison/delta) (A better viewer for git and diff output)
 -   [exa](https://github.com/ogham/exa) (A modern replacement for ‘ls’)
+-   [zoxide](https://github.com/ajeetdsouza/zoxide) (A faster way to navigate your filesystem)
+-   [yarn](https://github.com/yarnpkg/yarn) (Yarn package manager for Nodejs)
+-   [snm](https://github.com/ogham/exa) (Version Manager for Nodejs)
 
 #### Fonts
 
