@@ -44,11 +44,13 @@ U.map("n", "<C-DOWN>", ":m .+1<CR>")
 U.map("n", "<C-UP>", ":m .-2<CR>")
 
 -- Edit r = shell rc
-U.map("n", "'r", ":e ~/.zshrc<CR>")
+-- Conflicts with telescope.live_grep keybinding
+-- U.map("n", "'r", ":e ~/.zshrc<CR>")
 
 --  Edit v = vimrc
 U.map("n", "'v", ":e $MYVIMRC<CR>")
 
 -- Use operator pending mode to visually select the whole buffer
 -- e.g. dA = delete buffer ALL, yA = copy whole buffer ALL
-U.map('o', 'A', ":<C-U>normal! ggVG<CR>")
+U.map('o', 'A', ":<C-U>normal! mzggVG<CR>`z")
+U.map('x', 'A', ":<C-U>normal! ggVG<CR>")
