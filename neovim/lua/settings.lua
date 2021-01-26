@@ -48,6 +48,7 @@ go.smartcase = true
 go.backup = false
 go.writebackup = false
 go.undofile = true
+go.swapfile = false
 go.backupdir = "/tmp/"
 go.directory = "/tmp/"
 go.undodir = "/tmp/"
