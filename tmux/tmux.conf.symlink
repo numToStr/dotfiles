@@ -40,23 +40,27 @@ bind-key -n M-c new-window
 # set -g @themepack 'powerline/double/yellow'
 # set -g @dawntheme 'dark/centre'
 
-# Plugin options.
-
-# Enabling tmux-tilish
+# Tmux tilish
 set -g @tilish-navigator 'on'
-# set -g @tilish-easymode 'on'
-# set -g @tilish-default 'even-horizontal'
+set -g @tilish-default 'tiled'
 
-# This will fix the scrolling usue with vim inside tmux
+# Better mouse mode
 set -g @emulate-scroll-for-no-mouse-alternate-buffer "on"
+set -g @scroll-speed-num-lines-per-scroll 2
+
+# Tmux yank
+set -g @yank_action 'copy-pipe' # or 'copy-pipe-and-cancel' for the default
+
 
 # Tmux Plugins
-# set -g @plugin 'numtostr/tmux-dawn'
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-yank'
 set -g @plugin 'jabirali/tmux-tilish'
 set -g @plugin 'nhdaly/tmux-better-mouse-mode'
 
+# set -g @plugin 'numtostr/tmux-dawn'
+# set -g @plugin 'tmux-plugins/tmux-resurrect'
 # set -g @plugin 'jimeh/tmux-themepack'
 # set -g @plugin 'tmux-plugins/tmux-prefix-highlight'
 # set -g @plugin 'xamut/tmux-network-bandwidth'
