@@ -43,8 +43,7 @@ return require('packer').startup({
         }
 
         -- " For commmenting stuff out
-        -- use 'tomtom/tcomment_vim'
-        use 'b3nj5m1n/kommentary'
+        use 'tomtom/tcomment_vim'
 
         -- " For navigating b/w tmux window, specially for navigating with NERDTree
         use 'christoomey/vim-tmux-navigator'
