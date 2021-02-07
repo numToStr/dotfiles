@@ -42,7 +42,8 @@ return require('packer').startup({
         use 'Xuyuanp/nerdtree-git-plugin'
 
         -- " For commmenting stuff out
-        use 'tomtom/tcomment_vim'
+        -- use 'tomtom/tcomment_vim'
+        use 'b3nj5m1n/kommentary'
 
         -- " For navigating b/w tmux window, specially for navigating with NERDTree
         use 'christoomey/vim-tmux-navigator'
