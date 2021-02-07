@@ -36,10 +36,11 @@ return require('packer').startup({
         use 'airblade/vim-gitgutter'
 
         -- " For getting file explorer :NERDTree
-        use 'preservim/nerdtree'
-
-        -- " A plugin of NERDTree showing git status flags
-        use 'Xuyuanp/nerdtree-git-plugin'
+        use {
+            'preservim/nerdtree',
+            -- A plugin of NERDTree showing git status flags
+            'Xuyuanp/nerdtree-git-plugin'
+        }
 
         -- " For commmenting stuff out
         -- use 'tomtom/tcomment_vim'
@@ -60,8 +61,11 @@ return require('packer').startup({
         use 'easymotion/vim-easymotion'
 
         -- " Intellisense and completion engine
-        use { 'neoclide/coc.nvim', branch = 'release' }
-        -- use 'antoinemadec/coc-fzf'
+        use {
+            { 'neoclide/coc.nvim', branch = 'release' },
+            -- This plugins only works with coc.nvim
+            { 'dsznajder/vscode-es7-javascript-react-snippets', run = 'yarn install --frozen-lockfile && yarn compile' }
+        }
 
         -- " For various text objects
         use 'wellle/targets.vim'
@@ -84,7 +88,7 @@ return require('packer').startup({
         use { 'moll/vim-bbye', cmd = 'Bdelete' }
 
         -- " A simple, easy-to-use Vim alignment plugin.
-        use 'junegunn/vim-easy-align'
+        -- use 'junegunn/vim-easy-align'
 
         use 'michaeljsmith/vim-indent-object'
 
@@ -107,7 +111,6 @@ return require('packer').startup({
 
         -- " Some snippets
         use 'honza/vim-snippets'
-        use { 'dsznajder/vscode-es7-javascript-react-snippets', run = 'yarn install --frozen-lockfile && yarn compile' }
 
         use 'AndrewRadev/splitjoin.vim'
 
