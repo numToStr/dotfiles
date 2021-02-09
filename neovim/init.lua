@@ -23,6 +23,7 @@ require 'plugins/_term'
 require 'plugins/_coc'
 require 'plugins/_telescope'
 -- require 'plugins/_treesitter'
+require 'plugins/_formatter'
 
 -- require "plugins/_tree"
 -- require "plugins/_devicons"

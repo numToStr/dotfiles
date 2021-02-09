@@ -124,6 +124,9 @@ return require('packer').startup({
             requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
         }
 
+        -- To format stuff out
+        use 'mhartington/formatter.nvim'
+
         -- use {
         --     { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
         --     'nvim-treesitter/playground',
