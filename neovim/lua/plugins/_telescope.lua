@@ -1,35 +1,39 @@
-local U = require'utils'
-local finders = require'telescope.builtin'
-local actions = require'telescope.actions'
-local previewers = require'telescope.previewers'
-local sorters = require'telescope.sorters'
+local U = require "utils"
+local finders = require "telescope.builtin"
+local actions = require "telescope.actions"
+local sorters = require "telescope.sorters"
 
-require('telescope').setup({
-    defaults = {
-        prompt_position = 'top',
-        prompt_prefix = ' ❯',
-        sorting_strategy = 'ascending',
-        mappings = {
-            i = {
-                ['<ESC>'] = actions.close,
-                ['<C-j>'] = actions.move_selection_next,
-                ['<C-k>'] = actions.move_selection_previous,
-                ['<C-o>'] = function () do return end end,
-                ['<TAB>'] = function () do return end end
-            }
-        },
-        file_sorter =  sorters.get_fzy_sorter,
-        generic_sorter = sorters.get_fzy_sorter,
-        file_previewer = previewers.vim_buffer_cat.new,
-        grep_previewer = previewers.vim_buffer_vimgrep.new,
-        qflist_previewer = previewers.vim_buffer_qflist.new
+require("telescope").setup(
+    {
+        defaults = {
+            prompt_position = "top",
+            prompt_prefix = " ❯",
+            sorting_strategy = "ascending",
+            mappings = {
+                i = {
+                    ["<ESC>"] = actions.close,
+                    ["<C-j>"] = actions.move_selection_next,
+                    ["<C-k>"] = actions.move_selection_previous,
+                    ["<C-o>"] = function()
+                        return
+                    end,
+                    ["<TAB>"] = function()
+                        return
+                    end
+                }
+            },
+            file_sorter = sorters.get_fzy_sorter,
+            generic_sorter = sorters.get_fzy_sorter
+        }
     }
-})
+)
 
-U.highlights({
-    TelescopePromptPrefix = { fg = 'MyWhite' },
-    TelescopeMatching = { fg = 'tomato' },
-})
+U.highlights(
+    {
+        TelescopePromptPrefix = {fg = "MyWhite"},
+        TelescopeMatching = {fg = "tomato"}
+    }
+)
 
 function TelescopeOpen(fn)
     U.move_cursor_from_tree()
