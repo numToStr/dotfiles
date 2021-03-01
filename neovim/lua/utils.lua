@@ -1,18 +1,20 @@
 local api = vim.api
-local cmd = vim.cmd
-local U = {}
+local cmd = api.nvim_command
 
-local function join(...)
-  return table.concat({...}, " ")
-end
+local U = {}
 
 -- Key mapping
 function U.map(mode, key, result, opts)
-    opts = vim.tbl_extend('keep', opts or {}, {
-        noremap = true,
-        silent = true,
-        expr = false
-    })
+    opts =
+        vim.tbl_extend(
+        "keep",
+        opts or {},
+        {
+            noremap = true,
+            silent = true,
+            expr = false
+        }
+    )
 
     api.nvim_set_keymap(mode, key, result, opts)
 end
@@ -21,8 +23,8 @@ end
 function U.move_cursor_from_tree()
     local nr = api.nvim_get_current_buf()
     local buf = api.nvim_buf_get_name(nr)
-    if string.find(buf, 'NERD_tree') and nr > 1 then
-        cmd('wincmd l')
+    if string.find(buf, "NERD_tree") and nr > 1 then
+        cmd("wincmd l")
     end
 end
 
@@ -30,9 +32,12 @@ end
 -- Usage:
 -- highlight(Cursor, { fg = bg_dark, bg = yellow })
 function U.highlight(group, styles)
-    local s = vim.tbl_extend('keep', styles, { gui = 'NONE', sp = 'NONE', fg = 'NONE', bg = 'NONE' })
+    local gui = styles.gui or "NONE"
+    local sp = styles.sp or "NONE"
+    local fg = styles.fg or "NONE"
+    local bg = styles.bg or "NONE"
 
-    cmd('highlight! '..group..' gui='..s.gui..' guisp='..s.sp..' guifg='..s.fg..' guibg='..s.bg)
+    cmd("highlight! " .. group .. " gui=" .. gui .. " guisp=" .. sp .. " guifg=" .. fg .. " guibg=" .. bg)
 end
 
 -- Usage:
@@ -47,7 +52,7 @@ function U.highlights(hi_table)
 end
 
 function U.hiLink(src, dest)
-    cmd('highlight link '..src..' '..dest)
+    cmd("highlight link " .. src .. " " .. dest)
 end
 
 function U.hiLinks(hi_table)
