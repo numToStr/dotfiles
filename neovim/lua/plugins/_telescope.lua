@@ -7,7 +7,7 @@ require("telescope").setup(
     {
         defaults = {
             prompt_position = "top",
-            prompt_prefix = " ❯",
+            prompt_prefix = " ❯ ",
             sorting_strategy = "ascending",
             mappings = {
                 i = {
