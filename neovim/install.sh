@@ -2,7 +2,7 @@
 
 if command -v nvim >/dev/null 2>&1; then
     MODULE="NeoVim"
-    PACKER=$HOME/.local/share/nvim/site/pack/packer/opt/packer.nvim
+    PACKER=$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
 
     if [ ! -f $PACKER ]; then
         echo "[ INSTALLING ] :: $MODULE >> packer.nvim"
