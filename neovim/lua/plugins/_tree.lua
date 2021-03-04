@@ -4,7 +4,7 @@ local exec = vim.api.nvim_exec
 
 g.nvim_tree_side = "left"
 g.nvim_tree_width = 35
-g.nvim_tree_ignore = { ".git", "node_modules" }
+g.nvim_tree_ignore = {".git", "node_modules"}
 
 -- 0 by default, opens the tree when typing `vim $DIR` or `vim`
 g.nvim_tree_auto_open = 1
@@ -30,7 +30,6 @@ g.nvim_tree_git_hl = 1
 -- 0 by default, will open the tree when entering a new tab and the tree was previously open
 -- g.nvim_tree_tab_open = 1
 
-
 -- "If 0, do not show the icons for one of 'git' 'folder' and 'files'
 -- "1 by default, notice that if 'files' is 1, it will only display
 -- "if nvim-web-devicons is installed and on your runtimepath
@@ -40,12 +39,10 @@ g.nvim_tree_git_hl = 1
 --     files = 0,
 -- }
 
--- U.map("n", "<C-N>", ":LuaTreeToggle<CR>")
-
 -- " default will show icon by default if no icon is provided
 -- " default shows no icon by default
 g.nvim_tree_icons = {
-    default = '',
+    default = "",
     -- symlink = '',
     git = {
         unstaged = "M",
@@ -53,7 +50,7 @@ g.nvim_tree_icons = {
         unmerged = "═",
         renamed = "R",
         untracked = "U"
-    },
+    }
     -- folder = {
     --     default = "",
     --     open = ""
@@ -66,7 +63,12 @@ g.nvim_tree_icons = {
 
 -- a list of groups can be found at `:help nvim_tree_highlight`
 -- highlight LuaTreeFolderIcon guifg=TermCursor
-U.highlight('NvimTreeFolderIcon', { fg = 'TermCursor' })
+U.highlights(
+    {
+        NvimTreeFolderName = {fg = "TermCursor"},
+        NvimTreeFolderIcon = {fg = "TermCursor"}
+    }
+)
 
 exec(
     [[
@@ -78,6 +80,7 @@ exec(
     ""
 )
 
+U.map("n", "<C-N>", ":NvimTreeToggle<CR>")
 
 -- " Disable default mappings by plugin
 -- " Bindings are enable by default, disabled on any non-zero value
