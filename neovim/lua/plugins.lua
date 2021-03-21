@@ -104,7 +104,12 @@ return require("packer").startup(
             use {"numtostr/BufOnly.nvim", cmd = "BufOnly"}
 
             -- " For showing the actual color of the hex value
-            use "norcalli/nvim-colorizer.lua"
+            use {
+                "norcalli/nvim-colorizer.lua",
+                config = function()
+                    require "colorizer".setup()
+                end
+            }
 
             -- " For git stuff
             use {"rhysd/git-messenger.vim", cmd = "GitMessenger"}
@@ -117,7 +122,12 @@ return require("packer").startup(
             -- " For distraction free editing
             -- " use { 'junegunn/goyo.vim', cmd = 'Goyo' }
 
-            use "kyazdani42/nvim-web-devicons"
+            use {
+                "kyazdani42/nvim-web-devicons",
+                config = function()
+                    require "nvim-web-devicons".setup()
+                end
+            }
             -- use 'kyazdani42/nvim-tree.lua'
 
             use {

@@ -10,7 +10,9 @@ vim.cmd("colorscheme gruvbox-material")
 
 -- These colors are used in fzf markers
 -- And should be called after colorscheme command
-U.highlights({
-    MyWhite = { fg = "#ffffff" },
-    MyBlack = { fg = "#1c1c1c" }
-})
+U.highlights(
+    {
+        MyWhite = {fg = "#ffffff"},
+        MyBlack = {fg = "#1c1c1c"}
+    }
+)

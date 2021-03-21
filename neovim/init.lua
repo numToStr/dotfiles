@@ -12,9 +12,6 @@ require "keybinds"
 
 -- Plugins Config
 require "plugins/_theme"
-require "plugins/_devicons"
-require "plugins/_colorizer"
-require "plugins/_statusline"
 require "plugins/_easymotion"
 require "plugins/_indentline"
 require "plugins/_nerdtree"
@@ -30,3 +27,4 @@ require "plugins/_formatter"
 -- require "plugins/_tree"
 -- require "plugins/_goyo"
 -- require 'plugins/_fzf'
+-- require "plugins/_statusline"
