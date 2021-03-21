@@ -1,3 +1,4 @@
+# Misc Folders
 Android*
 android*
 go
@@ -16,6 +17,7 @@ n
 .yarn
 .expo
 .themes
+.snm
 
 # Logs
 logs
@@ -124,9 +126,21 @@ dist
 .vscode-test
 
 # yarn v2
-
 .yarn/cache
 .yarn/unplugged
 .yarn/build-state.yml
 .pnp.*
+
+# Wine
+.wine
+
+# Zinit
+.zinit
+
+# Rust
+.rustup
+.cargo
+
+# Lua
+.luarocks
 
