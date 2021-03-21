@@ -25,7 +25,7 @@ return require("packer").startup(
 
             -- " Declare the list of plugins.
             -- " For geting the status line below
-            use "vim-airline/vim-airline"
+            -- use "vim-airline/vim-airline"
 
             -- " For getting the theme
             use "numtostr/gruvbox-material"
@@ -52,7 +52,7 @@ return require("packer").startup(
             -- " Fix repeat for vim-surround
             use "tpope/vim-repeat"
 
-            use "tpope/vim-fugitive"
+            -- use "tpope/vim-fugitive"
 
             -- " Vim motion in lightning fast speed
             use "easymotion/vim-easymotion"
@@ -139,6 +139,11 @@ return require("packer").startup(
 
             -- To format stuff out
             use "mhartington/formatter.nvim"
+
+            use {
+                "hoob3rt/lualine.nvim",
+                config = require "plugins._lualine".config
+            }
 
             -- use {
             --     { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
