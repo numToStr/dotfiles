@@ -24,9 +24,17 @@ require("telescope").setup(
             },
             file_sorter = sorters.get_fzy_sorter,
             generic_sorter = sorters.get_fzy_sorter
+        },
+        extensions = {
+            fzy_native = {
+                override_file_sorter = true,
+                override_generic_sorter = false
+            }
         }
     }
 )
+
+require("telescope").load_extension("fzy_native")
 
 U.highlights(
     {
@@ -41,7 +49,7 @@ function TelescopeOpen(fn)
 end
 
 -- Ctrl-p = fuzzy finder
-U.map("n", "<C-P>", "<CMD>lua TelescopeOpen('git_files')<CR>")
+U.map("n", "<C-P>", "<CMD>lua TelescopeOpen('find_files')<CR>")
 
 -- Fuzzy find active buffers
 U.map("n", "'b", "<CMD>lua TelescopeOpen('buffers')<CR>")
@@ -56,4 +64,4 @@ U.map("n", "'i", "<CMD>lua TelescopeOpen('oldfiles')<CR>")
 U.map("n", "'c", "<CMD>lua TelescopeOpen('git_status')<CR>")
 
 -- Fuzzy find register
--- U.map("n", "'r", "<CMD>lua TelescopeOpen('registers')<CR>")
+U.map("n", "'g", "<CMD>lua TelescopeOpen('registers')<CR>")

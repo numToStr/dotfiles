@@ -125,6 +125,11 @@ return require("packer").startup(
                 requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}
             }
 
+            use {
+                "nvim-telescope/telescope-fzy-native.nvim",
+                requires = {"romgrk/fzy-lua-native"}
+            }
+
             -- " For getting git status in the status line
             -- use 'airblade/vim-gitgutter'
             use {
