@@ -128,7 +128,11 @@ return require("packer").startup(
                     require "nvim-web-devicons".setup()
                 end
             }
-            -- use 'kyazdani42/nvim-tree.lua'
+
+            -- use {
+            --     "kyazdani42/nvim-tree.lua",
+            --     config = require "plugins._tree".config
+            -- }
 
             use {
                 "nvim-telescope/telescope.nvim",
