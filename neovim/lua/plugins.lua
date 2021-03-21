@@ -155,6 +155,11 @@ return require("packer").startup(
                 config = require "plugins._lualine".config
             }
 
+            use {
+                "akinsho/nvim-bufferline.lua",
+                config = require "plugins._bufferline".config
+            }
+
             -- use {
             --     { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
             --     'nvim-treesitter/playground',
