@@ -122,6 +122,14 @@ return require("packer").startup(
             -- " For distraction free editing
             -- " use { 'junegunn/goyo.vim', cmd = 'Goyo' }
 
+            -- ############################
+            -- # Some requied Lua plugins #
+            -- ############################
+            use {
+                "nvim-lua/popup.nvim",
+                "nvim-lua/plenary.nvim"
+            }
+
             use {
                 "kyazdani42/nvim-web-devicons",
                 config = function()
@@ -141,7 +149,6 @@ return require("packer").startup(
                 },
                 {
                     "nvim-telescope/telescope.nvim",
-                    requires = {"nvim-lua/popup.nvim", "nvim-lua/plenary.nvim"},
                     config = require("plugins._telescope").config
                 }
             }
@@ -150,7 +157,7 @@ return require("packer").startup(
             -- use 'airblade/vim-gitgutter'
             use {
                 "lewis6991/gitsigns.nvim",
-                requires = {"nvim-lua/plenary.nvim"}
+                config = require("plugins._gitsigns").config
             }
 
             -- To format stuff out
