@@ -17,7 +17,7 @@ return require("packer").startup(
             -- " When searching with / , while on search
             --     " -> ctrl+g for jump to next
             --     " -> ctrl+t for jump to previous
-            use "tpope/vim-sensible"
+            -- use "tpope/vim-sensible"
 
             -- " For getting file icons in status-line, nerdtree etc.
             -- " Note: Make sure you have installed ttf-nerd-fonts-symbols, if you manjaro just run `pamac install ttf-nerd-fonts-symbols`
