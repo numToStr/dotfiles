@@ -161,7 +161,10 @@ return require("packer").startup(
             }
 
             -- To format stuff out
-            use "mhartington/formatter.nvim"
+            use {
+                "mhartington/formatter.nvim",
+                config = require("plugins._formatter").config
+            }
 
             use {
                 "hoob3rt/lualine.nvim",

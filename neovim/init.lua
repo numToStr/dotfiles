@@ -19,12 +19,12 @@ require "plugins/_tmux-navigator"
 require "plugins/_git-messenger"
 require "plugins/_term"
 require "plugins/_coc"
--- require 'plugins/_treesitter'
-require "plugins/_formatter"
 
+-- require 'plugins/_treesitter'
 -- require "plugins/_tree"
 -- require "plugins/_goyo"
 -- require 'plugins/_fzf'
 -- require "plugins/_statusline"
 -- require "plugins/_telescope"
 -- require "plugins/_gitsigns"
+-- require "plugins/_formatter"
