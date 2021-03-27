@@ -11,7 +11,6 @@ require "autocmd"
 require "keybinds"
 
 -- Plugins Config
-require "plugins/_theme"
 require "plugins/_easymotion"
 require "plugins/_indentline"
 require "plugins/_nerdtree"
@@ -20,6 +19,7 @@ require "plugins/_git-messenger"
 require "plugins/_term"
 require "plugins/_coc"
 
+-- require "plugins/_theme"
 -- require 'plugins/_treesitter'
 -- require "plugins/_tree"
 -- require "plugins/_goyo"

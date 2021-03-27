@@ -28,7 +28,10 @@ return require("packer").startup(
             -- use "vim-airline/vim-airline"
 
             -- " For getting the theme
-            use "numtostr/gruvbox-material"
+            use {
+                "numtostr/gruvbox-material",
+                config = require("plugins._theme").config
+            }
 
             -- " For getting indent lines in code
             use "yggdroot/indentline"
