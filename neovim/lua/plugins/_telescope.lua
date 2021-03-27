@@ -41,8 +41,8 @@ function M.config()
 
     U.highlights(
         {
-            TelescopePromptPrefix = {fg = "MyWhite"},
-            TelescopeMatching = {fg = "tomato"}
+            TelescopePromptPrefix = {fg = "#ffffff"},
+            TelescopeMatching = {fg = "#ff6633"}
         }
     )
 
