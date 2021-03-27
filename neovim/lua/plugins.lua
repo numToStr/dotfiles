@@ -96,7 +96,10 @@ return require("packer").startup(
             use "michaeljsmith/vim-indent-object"
 
             -- For floating terminal
-            use "numToStr/FTerm.nvim"
+            use {
+                "numToStr/FTerm.nvim",
+                config = require("plugins._term").config
+            }
 
             -- For smooth scroll
             use "psliwka/vim-smoothie"
