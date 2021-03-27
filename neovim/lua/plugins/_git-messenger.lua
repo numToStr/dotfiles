@@ -1,6 +1,11 @@
-local g = vim.g
-local U = require 'utils'
+local M = {}
 
-g.git_messenger_no_default_mappings = true
+function M.config()
+    local U = require "utils"
 
-U.map("n", "gm", ":GitMessenger<CR>")
+    vim.g.git_messenger_no_default_mappings = true
+
+    U.map("n", "gm", ":GitMessenger<CR>")
+end
+
+return M

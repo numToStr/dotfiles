@@ -118,7 +118,11 @@ return require("packer").startup(
             }
 
             -- " For git stuff
-            use {"rhysd/git-messenger.vim", cmd = "GitMessenger"}
+            use {
+                "rhysd/git-messenger.vim",
+                cmd = "GitMessenger",
+                config = require("plugins._git-messenger").config
+            }
 
             -- " Some snippets
             use "honza/vim-snippets"
