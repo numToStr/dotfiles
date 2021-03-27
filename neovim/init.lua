@@ -11,7 +11,6 @@ require "autocmd"
 require "keybinds"
 
 -- Plugins Config
-require "plugins/_easymotion"
 require "plugins/_indentline"
 require "plugins/_nerdtree"
 require "plugins/_tmux-navigator"
@@ -28,3 +27,4 @@ require "plugins/_coc"
 -- require "plugins/_formatter"
 -- require "plugins/_term"
 -- require "plugins/_git-messenger"
+-- require "plugins/_easymotion"

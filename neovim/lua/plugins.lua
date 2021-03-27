@@ -58,7 +58,10 @@ return require("packer").startup(
             -- use "tpope/vim-fugitive"
 
             -- " Vim motion in lightning fast speed
-            use "easymotion/vim-easymotion"
+            use {
+                "easymotion/vim-easymotion",
+                config = require("plugins._easymotion").config
+            }
 
             -- " Intellisense and completion engine
             use {
