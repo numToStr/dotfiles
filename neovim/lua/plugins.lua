@@ -59,9 +59,13 @@ return require("packer").startup(
 
             -- " Vim motion in lightning fast speed
             use {
-                "easymotion/vim-easymotion",
-                config = require("plugins._easymotion").config
+                "phaazon/hop.nvim",
+                config = require("plugins._hop").config
             }
+            -- use {
+            --     "easymotion/vim-easymotion",
+            --     config = require("plugins._easymotion").config
+            -- }
 
             -- " Intellisense and completion engine
             use {
