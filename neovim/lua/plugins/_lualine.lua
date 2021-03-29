@@ -19,13 +19,18 @@ function M.config()
                 {"filename", full_path = true, file_status = true},
                 {"diagnostics", sources = {"coc"}}
             },
-            lualine_x = {"filetype", "encoding", "fileformat"},
+            lualine_x = {
+                "g:coc_status",
+                "filetype",
+                "encoding",
+                "fileformat"
+            },
             lualine_y = {"progress"},
             lualine_z = {
                 {"location", color = {gui = "bold"}}
             }
         },
-        extensions = {}
+        extensions = {"nerdtree"}
     }
 end
 
