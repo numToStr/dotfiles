@@ -11,9 +11,9 @@ require "autocmd"
 require "keybinds"
 
 -- Plugins Config
-require "plugins/_nerdtree"
 require "plugins/_coc"
 
+-- require "plugins/_nerdtree"
 -- require "plugins/_indentline"
 -- require "plugins/_tmux-navigator"
 -- require "plugins/_theme"

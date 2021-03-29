@@ -51,7 +51,10 @@ return require("packer").startup(
 
             -- " For getting file explorer :NERDTree
             use {
-                "preservim/nerdtree",
+                {
+                    "preservim/nerdtree",
+                    config = require("plugins._nerdtree").config
+                },
                 -- A plugin of NERDTree showing git status flags
                 "Xuyuanp/nerdtree-git-plugin"
             }
