@@ -1,7 +1,8 @@
 local U = require "utils"
 local g = vim.g
-local cmd = vim.cmd
-local exec = vim.api.nvim_exec
+local api = vim.api
+local cmd = api.nvim_command
+local exec = api.nvim_exec
 
 g.DevIconsEnableFoldersOpenClose = 1
 
@@ -14,25 +15,25 @@ g.NERDTreeWinSize = 35
 g.NERDTreeDirArrowExpandable = " "
 g.NERDTreeDirArrowCollapsible = " "
 
-g.NERDTreeIgnore = { ".git$", ".idea$", "node_modules" }
+g.NERDTreeIgnore = {".git$", ".idea$", "node_modules"}
 g.NERDTreeAutoDeleteBuffer = 1
 
 -- Indicate every single untracked file under an untracked dir
-g.NERDTreeGitStatusUntrackedFilesMode = 'all'
+g.NERDTreeGitStatusUntrackedFilesMode = "all"
 -- To hide the boring brackets ([ ])
 g.NERDTreeGitStatusConcealBrackets = 0
 
 g.NERDTreeGitStatusIndicatorMapCustom = {
-    Modified  = 'M',
-    Staged    = 'A',
-    Untracked = 'U',
-    Renamed   = 'R',
-    Unmerged  = '═',
-    Deleted   = 'D',
-    Dirty     = '!',
-    Ignored   = 'I',
-    Clean     = 'C',
-    Unknown   = '?',
+    Modified = "M",
+    Staged = "A",
+    Untracked = "U",
+    Renamed = "R",
+    Unmerged = "═",
+    Deleted = "D",
+    Dirty = "!",
+    Ignored = "I",
+    Clean = "C",
+    Unknown = "?"
 }
 
 function OpenNERDTree()
@@ -42,7 +43,8 @@ end
 
 U.map("n", "<C-N>", "<CMD>lua OpenNERDTree()<CR>")
 
-exec([[
+exec(
+    [[
     " To hide signcolumn in NERDTree
     autocmd FileType nerdtree call TreeSetting()
 
@@ -76,4 +78,6 @@ exec([[
 
     " Auto sync
     autocmd bufenter * call NERDTreeSync()
-]], "")
+]],
+    ""
+)

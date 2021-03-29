@@ -3,7 +3,7 @@ local g = vim.g
 local go = vim.o
 local bo = vim.bo
 local wo = vim.wo
-local cmd = vim.cmd
+local cmd = vim.api.nvim_command
 
 cmd("syntax on")
 cmd("filetype plugin indent on")

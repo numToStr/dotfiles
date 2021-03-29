@@ -1,8 +1,10 @@
+local cmd = vim.api.nvim_command
+
 -- Only required if you have packer in your `opt` pack
-vim.cmd [[packadd packer.nvim]]
+cmd [[packadd packer.nvim]]
 
 -- Automatically run :PackerCompile whenever plugins.lua is updated with an autocommand:
-vim.cmd [[ autocmd BufWritePost plugins.lua PackerCompile ]]
+cmd [[ autocmd BufWritePost plugins.lua PackerCompile ]]
 
 return require("packer").startup(
     {

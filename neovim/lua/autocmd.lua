@@ -1,8 +1,8 @@
 -- Currently, there is no interface to create user commands in Lua. It is planned, though:
 -- PR: https://github.com/neovim/neovim/pull/12378
 
-local cmd = vim.cmd
 local api = vim.api
+local cmd = api.nvim_command
 
 -- Auto save files when focus is lost
 -- cmd("au FocusLost * :wa")
@@ -27,4 +27,4 @@ end
 cmd("au BufEnter *.txt lua _G.help_tab()")
 
 -- For highlighting yanked region
-vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank({ higroup = "HighlightedyankRegion", timeout = 120 })')
+cmd('au TextYankPost * silent! lua vim.highlight.on_yank({ higroup = "HighlightedyankRegion", timeout = 120 })')

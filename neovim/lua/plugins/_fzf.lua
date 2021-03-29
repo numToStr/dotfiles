@@ -1,26 +1,29 @@
-local U = require 'utils'
+local U = require "utils"
 local g = vim.g
 local fn = vim.fn
-local cmd = vim.cmd
+local cmd = vim.api.nvim_command
 
 fn.setenv("FZF_DEFAULT_OPTS", "--color=dark --reverse --keep-right --marker=+ --padding=1,1")
-fn.setenv("FZF_DEFAULT_COMMAND", "fd --type f --type l --hidden --follow || git ls-files --cached --others --exclude-standard")
+fn.setenv(
+    "FZF_DEFAULT_COMMAND",
+    "fd --type f --type l --hidden --follow || git ls-files --cached --others --exclude-standard"
+)
 
 -- Customize fzf colors to match your color scheme
 -- fzf#wrap translates this to a set of `--color` options
 g.fzf_colors = {
-    fg = { "fg", "Normal" },
-    bg = { "bg", "Normal" },
-    hl = { "fg", "Red" },
-    ["fg+"] = { "fg", "MyWhite" },
-    ["bg+"] = { "bg", "Normal" },
-    ["hl+"] = { "fg", "Red" },
-    info = { "bg", "Normal" },
-    prompt = { "fg", "MyWhite" },
-    pointer = { "fg", "MyWhite" },
-    marker = { "fg", "Yellow" },
-    spinner = { "fg", "MyWhite" },
-    header = { "bg", "Normal" }
+    fg = {"fg", "Normal"},
+    bg = {"bg", "Normal"},
+    hl = {"fg", "Red"},
+    ["fg+"] = {"fg", "MyWhite"},
+    ["bg+"] = {"bg", "Normal"},
+    ["hl+"] = {"fg", "Red"},
+    info = {"bg", "Normal"},
+    prompt = {"fg", "MyWhite"},
+    pointer = {"fg", "MyWhite"},
+    marker = {"fg", "Yellow"},
+    spinner = {"fg", "MyWhite"},
+    header = {"bg", "Normal"}
 }
 
 -- Enable per-command history
@@ -33,8 +36,8 @@ g.fzf_layout = {
     window = {
         width = 0.5,
         height = 0.3,
-        yoffset = 0,
-    },
+        yoffset = 0
+    }
 }
 
 cmd [[ command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, { "options": "--prompt '⯈ '"}, <bang>0) ]]
@@ -51,7 +54,7 @@ end
 U.map("n", "<C-P>", "<CMD>lua FZFOpen(':Files')<CR>")
 
 -- . = location of current file
-U.map("n", "'.", "<CMD>lua FZFOpen(':FZF "..vim.fn.expand("%:h").."')<CR>")
+U.map("n", "'.", "<CMD>lua FZFOpen(':FZF " .. vim.fn.expand("%:h") .. "')<CR>")
 
 -- z = FZF
 U.map("n", "'z", "<CMD>lua FZFOpen(':FZF')<CR>")
