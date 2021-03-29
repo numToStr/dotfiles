@@ -44,7 +44,10 @@ return require("packer").startup(
             }
 
             -- " For getting indent lines in code
-            use "yggdroot/indentline"
+            use {
+                "yggdroot/indentline",
+                config = require("plugins._indentline").config
+            }
 
             -- " For getting file explorer :NERDTree
             use {
