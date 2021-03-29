@@ -3,11 +3,16 @@ local M = {}
 function M.config()
     local U = require "utils"
 
+    local hi = {
+        bg = U.get_hl_color("Normal", "fg"),
+        fg = U.get_hl_color("Normal", "bg")
+    }
+
     U.highlights(
         {
-            HopNextKey = {bg = "#ffffff", fg = "#1c1c1c"},
-            HopNextKey1 = {bg = "#ffffff", fg = "#1c1c1c"},
-            HopNextKey2 = {bg = "#ffffff", fg = "#1c1c1c"}
+            HopNextKey = hi,
+            HopNextKey1 = hi,
+            HopNextKey2 = hi
         }
     )
 

@@ -39,10 +39,10 @@ function M.config()
 
     require("telescope").load_extension("fzy_native")
 
-    U.hiLinks(
+    U.highlights(
         {
-            TelescopePromptPrefix = "Normal",
-            TelescopeMatching = "Error"
+            TelescopePromptPrefix = {fg = U.get_hl_color("Normal", "fg")},
+            TelescopeMatching = {fg = "Orange", gui = "bold"}
         }
     )
 
