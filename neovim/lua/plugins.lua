@@ -7,6 +7,14 @@ vim.cmd [[ autocmd BufWritePost plugins.lua PackerCompile ]]
 return require("packer").startup(
     {
         function(use)
+            -- ############################
+            -- # Some requied Lua plugins #
+            -- ############################
+            use {
+                "nvim-lua/popup.nvim",
+                "nvim-lua/plenary.nvim"
+            }
+
             -- Packer can manage itself as an optional plugin
             use {"wbthomason/packer.nvim", opt = true}
 
@@ -95,7 +103,12 @@ return require("packer").startup(
             use "ntpeters/vim-better-whitespace"
 
             -- " Delete buffers and close files in Vim without closing your windows or messing up your layout
-            use {"moll/vim-bbye", cmd = "Bdelete"}
+            use {
+                "moll/vim-bbye",
+                config = function()
+                    require("utils").map("n", "<leader>q", ":Bdelete<CR>")
+                end
+            }
 
             -- " A simple, easy-to-use Vim alignment plugin.
             -- use 'junegunn/vim-easy-align'
@@ -114,7 +127,12 @@ return require("packer").startup(
             use "bronson/vim-visual-star-search"
 
             -- " Safely deletes all open buffers except the current one and NERDTree
-            use {"numtostr/BufOnly.nvim", cmd = "BufOnly"}
+            use {
+                "numtostr/BufOnly.nvim",
+                config = function()
+                    require("utils").map("n", "<leader>x", ":BufOnly<CR>")
+                end
+            }
 
             -- " For showing the actual color of the hex value
             use {
@@ -127,7 +145,6 @@ return require("packer").startup(
             -- " For git stuff
             use {
                 "rhysd/git-messenger.vim",
-                cmd = "GitMessenger",
                 config = require("plugins._git-messenger").config
             }
 
@@ -138,14 +155,6 @@ return require("packer").startup(
 
             -- " For distraction free editing
             -- " use { 'junegunn/goyo.vim', cmd = 'Goyo' }
-
-            -- ############################
-            -- # Some requied Lua plugins #
-            -- ############################
-            use {
-                "nvim-lua/popup.nvim",
-                "nvim-lua/plenary.nvim"
-            }
 
             use {
                 "kyazdani42/nvim-web-devicons",
@@ -160,14 +169,13 @@ return require("packer").startup(
             -- }
 
             use {
-                {
-                    "nvim-telescope/telescope-fzy-native.nvim",
-                    requires = {"romgrk/fzy-lua-native"}
-                },
-                {
-                    "nvim-telescope/telescope.nvim",
-                    config = require("plugins._telescope").config
-                }
+                "nvim-telescope/telescope.nvim",
+                config = require("plugins._telescope").config
+            }
+
+            use {
+                "nvim-telescope/telescope-fzy-native.nvim",
+                requires = {"romgrk/fzy-lua-native"}
             }
 
             -- " For getting git status in the status line
