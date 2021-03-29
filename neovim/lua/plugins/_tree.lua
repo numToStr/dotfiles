@@ -3,7 +3,8 @@ local M = {}
 function M.config()
     local U = require "utils"
     local g = vim.g
-    local exec = vim.api.nvim_exec
+    local api = vim.api
+    local exec = api.nvim_exec
 
     g.nvim_tree_side = "left"
     g.nvim_tree_width = 35
@@ -48,16 +49,12 @@ function M.config()
         default = "",
         symlink = "",
         git = {
-            unstaged = "M",
-            staged = "A",
+            unstaged = "!",
+            staged = "+",
             unmerged = "═",
-            renamed = "R",
-            untracked = "U"
+            renamed = "-",
+            untracked = "?"
         }
-        -- folder = {
-        --     default = "",
-        --     open = ""
-        -- }
     }
 
     -- U.augroup("LuaTreeOverride", function nvim_tree_override()
@@ -65,22 +62,20 @@ function M.config()
     -- end)
 
     -- a list of groups can be found at `:help nvim_tree_highlight`
-    -- highlight LuaTreeFolderIcon guifg=TermCursor
+    local comment_fg = U.get_hl_color("Comment", "fg")
+    local normal_fg = U.get_hl_color("Normal", "fg")
+
     U.highlights(
         {
-            NvimTreeFolderName = {fg = "TermCursor"},
-            NvimTreeFolderIcon = {fg = "TermCursor"}
+            NvimTreeFolderName = {fg = normal_fg},
+            NvimTreeFolderIcon = {fg = normal_fg},
+            NvimTreeIndentMarker = {fg = comment_fg}
+            -- NvimTreeFileDirty = {fg = "None"},
+            -- NvimTreeFileStaged = {fg = "None"},
+            -- NvimTreeFileMerge = {fg = "None"},
+            -- NvimTreeFileNew = {fg = "None"},
+            -- NvimTreeFileRenamed = {fg = "None"}
         }
-    )
-
-    exec(
-        [[
-        augroup LuaTreeOverride
-          au!
-          au FileType LuaTree setlocal nowrap
-        augroup END
-    ]],
-        ""
     )
 
     U.map("n", "<C-N>", ":NvimTreeToggle<CR>")
@@ -116,6 +111,16 @@ function M.config()
     -- nnoremap <leader>r :LuaTreeRefresh<CR>
     -- nnoremap <leader>n :LuaTreeFindFile<CR>
     -- " LuaTreeOpen and LuaTreeClose are also available if you need them
+
+    exec(
+        [[
+            augroup LuaTreeOverride
+              au!
+              au FileType LuaTree setlocal nowrap
+            augroup END
+        ]],
+        false
+    )
 end
 
 return M

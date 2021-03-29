@@ -1,4 +1,5 @@
 local api = vim.api
+local fn = vim.fn
 local cmd = api.nvim_command
 
 local U = {}
@@ -23,7 +24,7 @@ end
 function U.move_cursor_from_tree()
     local nr = api.nvim_get_current_buf()
     local buf = api.nvim_buf_get_name(nr)
-    if string.find(buf, "NERD_tree") and nr > 1 then
+    if string.find(buf, "NvimTree") and nr > 1 then
         cmd("wincmd l")
     end
 end
@@ -59,6 +60,10 @@ function U.hiLinks(hi_table)
     for src, dest in pairs(hi_table) do
         U.hiLink(src, dest)
     end
+end
+
+function U.get_hl_color(name, attr)
+    return fn.synIDattr(fn.hlID(name), attr)
 end
 
 return U

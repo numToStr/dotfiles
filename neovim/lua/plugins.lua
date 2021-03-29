@@ -50,14 +50,14 @@ return require("packer").startup(
             }
 
             -- " For getting file explorer :NERDTree
-            use {
-                {
-                    "preservim/nerdtree",
-                    config = require("plugins._nerdtree").config
-                },
-                -- A plugin of NERDTree showing git status flags
-                "Xuyuanp/nerdtree-git-plugin"
-            }
+            -- use {
+            --     {
+            --         "preservim/nerdtree",
+            --         config = require("plugins._nerdtree").config
+            --     },
+            --     -- A plugin of NERDTree showing git status flags
+            --     "Xuyuanp/nerdtree-git-plugin"
+            -- }
 
             -- " For commmenting stuff out
             use "tomtom/tcomment_vim"
@@ -178,10 +178,10 @@ return require("packer").startup(
                 end
             }
 
-            -- use {
-            --     "kyazdani42/nvim-tree.lua",
-            --     config = require "plugins._tree".config
-            -- }
+            use {
+                "kyazdani42/nvim-tree.lua",
+                config = require "plugins._tree".config
+            }
 
             use {
                 "nvim-telescope/telescope.nvim",
