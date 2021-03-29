@@ -57,7 +57,10 @@ return require("packer").startup(
             use "tomtom/tcomment_vim"
 
             -- " For navigating b/w tmux window, specially for navigating with NERDTree
-            use "christoomey/vim-tmux-navigator"
+            use {
+                "christoomey/vim-tmux-navigator",
+                config = require("plugins._tmux-navigator").config
+            }
 
             -- " For 'surroundings': parentheses, brackets, quotes, XML tags, and more.
             use "tpope/vim-surround"

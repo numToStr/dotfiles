@@ -13,9 +13,9 @@ require "keybinds"
 -- Plugins Config
 require "plugins/_indentline"
 require "plugins/_nerdtree"
-require "plugins/_tmux-navigator"
 require "plugins/_coc"
 
+-- require "plugins/_tmux-navigator"
 -- require "plugins/_theme"
 -- require 'plugins/_treesitter'
 -- require "plugins/_tree"
