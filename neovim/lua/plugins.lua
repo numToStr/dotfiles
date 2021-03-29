@@ -88,7 +88,11 @@ return require("packer").startup(
 
             -- " Intellisense and completion engine
             use {
-                {"neoclide/coc.nvim", branch = "release"},
+                {
+                    "neoclide/coc.nvim",
+                    branch = "release",
+                    config = require("plugins._coc").config
+                },
                 -- This plugins only works with coc.nvim
                 {
                     "dsznajder/vscode-es7-javascript-react-snippets",
