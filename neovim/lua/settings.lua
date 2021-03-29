@@ -9,9 +9,9 @@ cmd("syntax on")
 cmd("filetype plugin indent on")
 
 go.compatible = false
-go.encoding = 'UTF-8'
+go.encoding = "UTF-8"
 go.termguicolors = true
-go.background = 'dark'
+go.background = "dark"
 
 go.hidden = true
 go.timeoutlen = 500
@@ -56,7 +56,3 @@ go.undodir = "/tmp/"
 -- Map <leader> to space
 U.map("n", "<SPACE>", "<Nop>")
 g.mapleader = " "
-
-
--- For highlighting yanked region
-vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank({ higroup = "HighlightedyankRegion", timeout = 120 })')
