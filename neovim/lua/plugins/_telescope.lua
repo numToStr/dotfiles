@@ -39,10 +39,10 @@ function M.config()
 
     require("telescope").load_extension("fzy_native")
 
-    U.highlights(
+    U.hiLinks(
         {
-            TelescopePromptPrefix = {fg = "Normal"},
-            TelescopeMatching = {fg = "#ff6633"}
+            TelescopePromptPrefix = "Normal",
+            TelescopeMatching = "Error"
         }
     )
 
