@@ -30,7 +30,7 @@ function M.config()
                 {"location", color = {gui = "bold"}}
             }
         },
-        extensions = {"nerdtree"}
+        extensions = {}
     }
 end
 
