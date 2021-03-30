@@ -100,15 +100,6 @@ zinit wait lucid for \
 # These plugins should be loaded after ohmyzsh plugins
 
 zinit wait lucid for \
-    light-mode atinit"ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20" atload"_zsh_autosuggest_start" \
-        zsh-users/zsh-autosuggestions \
-    light-mode atinit"
-        typeset -gA FAST_HIGHLIGHT;
-        FAST_HIGHLIGHT[git-cmsg-len]=100;
-        zpcompinit;
-        zpcdreplay;
-    " \
-        zdharma/fast-syntax-highlighting \
     light-mode blockf atpull'zinit creinstall -q .' \
     atinit"
         zstyle ':completion:*' completer _expand _complete _ignored _approximate
@@ -124,6 +115,15 @@ zinit wait lucid for \
         zstyle ':fzf-tab:complete:cd:*' extra-opts --preview=$extract'exa -1 --color=always ${~ctxt[hpre]}$in'
     " \
         zsh-users/zsh-completions \
+    light-mode atinit"ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20" atload"_zsh_autosuggest_start" \
+        zsh-users/zsh-autosuggestions \
+    light-mode atinit"
+        typeset -gA FAST_HIGHLIGHT;
+        FAST_HIGHLIGHT[git-cmsg-len]=100;
+        zpcompinit;
+        zpcdreplay;
+    " \
+        zdharma/fast-syntax-highlighting \
     bindmap"^R -> ^H" atinit"
         zstyle :history-search-multi-word page-size 10
         zstyle :history-search-multi-word highlight-color fg=red,bold
