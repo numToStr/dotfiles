@@ -10,20 +10,8 @@ require "settings"
 require "autocmd"
 require "keybinds"
 
--- Plugins Config
--- require "plugins/_coc"
--- require "plugins/_nerdtree"
--- require "plugins/_indentline"
--- require "plugins/_tmux-navigator"
--- require "plugins/_theme"
--- require 'plugins/_treesitter'
--- require "plugins/_tree"
--- require "plugins/_goyo"
--- require 'plugins/_fzf'
--- require "plugins/_statusline"
--- require "plugins/_telescope"
--- require "plugins/_gitsigns"
--- require "plugins/_formatter"
--- require "plugins/_term"
--- require "plugins/_git-messenger"
--- require "plugins/_easymotion"
+-- For debugging purpose
+function _G.dump(...)
+    local objects = vim.tbl_map(vim.inspect, {...})
+    print(unpack(objects))
+end
