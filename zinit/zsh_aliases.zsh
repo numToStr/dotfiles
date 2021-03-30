@@ -4,7 +4,7 @@ alias vim=nvim
 alias sysinfo="inxi -Fxxxz"
 alias cat=bat
 alias myip=ip-internal
-alias h=http
+alias open=xdg-open
 
 if command -v pamac >/dev/null 2>&1; then
     alias checkup="sudo pamac checkupdates -a"
@@ -23,14 +23,18 @@ if command -v microk8s >/dev/null 2>&1; then
     alias kubectl="microk8s.kubectl"
 fi
 
-if command -v exa >/dev/null 2>&1; then
-    unalias l
-    alias l="exa -abghHlS --git --group-directories-first"
-fi
-
 # If the github cli is installed then these alias will be handy
 if command -v gh >/dev/null 2>&1; then
-    prcreate() gh pr create -B "$1" -f
+    prcreate() {
+        if [ -z "$2" ]; then
+            # If title is not provided then use autofill
+            gh pr create -B "$1" -f
+        else
+            # Otherwise use provided title
+            gh pr create -B "$1" -t "$2"
+        fi
+    }
+
     prmerge() gh pr merge --merge --delete-branch=false "$1"
     prlist() gh pr list --state open
     prcheck() { gh pr checkout "$1" && gh pr diff }
