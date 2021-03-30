@@ -3,8 +3,6 @@ local M = {}
 function M.config()
     local U = require "utils"
     local g = vim.g
-    local api = vim.api
-    local exec = api.nvim_exec
 
     g.nvim_tree_side = "left"
     g.nvim_tree_width = 35
@@ -111,16 +109,19 @@ function M.config()
     -- nnoremap <leader>r :LuaTreeRefresh<CR>
     -- nnoremap <leader>n :LuaTreeFindFile<CR>
     -- " LuaTreeOpen and LuaTreeClose are also available if you need them
-
-    exec(
-        [[
-            augroup LuaTreeOverride
-              au!
-              au FileType LuaTree setlocal nowrap
-            augroup END
-        ]],
-        false
-    )
 end
+
+require("au").augroup(
+    "NvimTreeOverrides",
+    {
+        {
+            event = "FileType",
+            pattern = "NvimTree",
+            callback = function()
+                vim.api.nvim_win_set_option(0, "wrap", false)
+            end
+        }
+    }
+)
 
 return M

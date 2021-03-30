@@ -4,7 +4,16 @@ local cmd = vim.api.nvim_command
 cmd [[packadd packer.nvim]]
 
 -- Automatically run :PackerCompile whenever plugins.lua is updated with an autocommand:
-cmd [[ autocmd BufWritePost plugins.lua PackerCompile ]]
+require("au").augroup(
+    "PackerGroup",
+    {
+        {
+            event = "BufWritePost",
+            pattern = "plugins.lua",
+            command = "PackerCompile"
+        }
+    }
+)
 
 return require("packer").startup(
     {

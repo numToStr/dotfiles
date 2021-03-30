@@ -29,14 +29,15 @@ function M.config()
     )
 end
 
-vim.api.nvim_exec(
-    [[
-        augroup FormatAutogroup
-          autocmd!
-          autocmd BufWritePost *.tf,*.lua FormatWrite
-        augroup END
-    ]],
-    true
+require("au").augroup(
+    "FormatAutogroup",
+    {
+        {
+            event = "BufWritePost",
+            pattern = "*.tf,*.lua",
+            command = "FormatWrite"
+        }
+    }
 )
 
 return M

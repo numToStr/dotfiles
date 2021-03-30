@@ -7,7 +7,7 @@ o.rtp = string.format("%s/neovim,%s", D, o.rtp)
 -- Vanilla Config
 require "plugins"
 require "settings"
-require "autocmd"
+require "autocommands"
 require "keybinds"
 
 -- For debugging purpose

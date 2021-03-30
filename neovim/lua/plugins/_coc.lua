@@ -130,45 +130,71 @@ function M.config()
     -- Resume latest coc list.
     -- U.map('n', '\\p', ':CocListResume<CR>')
 
-    api.nvim_exec(
-        [[
-            " autocmd User EasyMotionPromptBegin silent! CocDisable
-            " autocmd User EasyMotionPromptEnd silent! CocEnable
-
-            " let g:easymotion#is_active = 0
-            " function! EasyMotionCoc() abort
-            "     if EasyMotion#is_active()
-            "         let g:easymotion#is_active = 1
-            "         silent CocDisable
-            "     elseif g:easymotion#is_active == 1
-            "         silent CocEnable
-            "         let g:easymotion#is_active = 0
-            "     endif
-            " endfunction
-            " autocmd TextChanged,CursorMoved * call EasyMotionCoc()
-
-            " Highlight the symbol and its references when holding the cursor.
-            autocmd CursorHold * silent call CocActionAsync('highlight')
-
-            augroup mygroup
-              autocmd!
-              " Setup formatexpr specified filetype(s).
-              autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-              " Update signature help on jump placeholder.
-              autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-            augroup end
-
-            " Add `:Format` command to format current buffer.
-            " command! -nargs=0 Format :call CocAction('format')
-
-            " Add `:Fold` command to fold current buffer.
-            " command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-            " Add `:OR` command for organize imports of the current buffer.
-            " command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-        ]],
-        false
-    )
+    -- api.nvim_exec(
+    --     [[
+    --         " autocmd User EasyMotionPromptBegin silent! CocDisable
+    --         " autocmd User EasyMotionPromptEnd silent! CocEnable
+    --
+    --         " let g:easymotion#is_active = 0
+    --         " function! EasyMotionCoc() abort
+    --         "     if EasyMotion#is_active()
+    --         "         let g:easymotion#is_active = 1
+    --         "         silent CocDisable
+    --         "     elseif g:easymotion#is_active == 1
+    --         "         silent CocEnable
+    --         "         let g:easymotion#is_active = 0
+    --         "     endif
+    --         " endfunction
+    --         " autocmd TextChanged,CursorMoved * call EasyMotionCoc()
+    --
+    --         " Highlight the symbol and its references when holding the cursor.
+    --         autocmd CursorHold * silent call CocActionAsync('highlight')
+    --
+    --         augroup mygroup
+    --           autocmd!
+    --           " Setup formatexpr specified filetype(s).
+    --           autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+    --           " Update signature help on jump placeholder.
+    --           autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+    --         augroup end
+    --
+    --         " Add `:Format` command to format current buffer.
+    --         " command! -nargs=0 Format :call CocAction('format')
+    --
+    --         " Add `:Fold` command to fold current buffer.
+    --         " command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+    --
+    --         " Add `:OR` command for organize imports of the current buffer.
+    --         " command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+    --     ]],
+    --     false
+    -- )
 end
+
+require("au").augroup(
+    "CocOverrides",
+    {
+        {
+            event = "CursorHold",
+            callback = function()
+                vim.fn.CocActionAsync("highlight")
+            end
+        },
+        {
+            event = "FileType",
+            pattern = "typescript,json",
+            callback = function()
+                vim.api.nvim_buf_set_option(0, "formatexpr", "CocAction('formatSelected')")
+            end
+        },
+        {
+            event = "User",
+            pattern = "CocJumpPlaceholder",
+            callback = function()
+                vim.fn.CocActionAsync("showSignatureHelp")
+            end
+        }
+    }
+)
 
 return M

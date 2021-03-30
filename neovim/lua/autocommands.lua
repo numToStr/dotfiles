@@ -1,6 +1,7 @@
 -- Currently, there is no interface to create user commands in Lua. It is planned, though:
 -- PR: https://github.com/neovim/neovim/pull/12378
 
+local au = require("au")
 local api = vim.api
 local cmd = api.nvim_command
 
@@ -8,8 +9,25 @@ local cmd = api.nvim_command
 -- cmd("au FocusLost * :wa")
 -- cmd("au FocusLost * silent! wa")
 
-cmd("au BufNewFile,BufRead .eslintrc,.prettierrc,tsconfig.json setf json")
-cmd("au BufNewFile,BufRead .eslintignore,.prettierignore setf conf")
+au.augroup(
+    "MyFileTypes",
+    {
+        {
+            event = "BufNewFile,BufRead",
+            pattern = ".eslintrc,.prettierrc,.tsconfig.json",
+            callback = function()
+                vim.bo.filetype = "json"
+            end
+        },
+        {
+            event = "BufNewFile,BufRead",
+            pattern = ".eslintignore,.prettierignore ",
+            callback = function()
+                vim.bo.filetype = "conf"
+            end
+        }
+    }
+)
 
 -- Appending the extra file types for vim-snippets to show react snippets
 -- Messing with prettier
@@ -17,14 +35,28 @@ cmd("au BufNewFile,BufRead .eslintignore,.prettierignore setf conf")
 -- cmd("au BufRead,BufNewFile *.tsx setlocal filetype=typescript.typescriptreact.javascript_react")
 
 -- Open help vertically and press q to exit
-function _G.help_tab()
+local function help_tab()
     if vim.bo.buftype == "help" then
         cmd("wincmd L")
         local nr = api.nvim_get_current_buf()
         api.nvim_buf_set_keymap(nr, "", "q", ":q<CR>", {noremap = true, silent = true})
     end
 end
-cmd("au BufEnter *.txt lua _G.help_tab()")
+
+au.autocmd(
+    {
+        event = "BufEnter",
+        pattern = "*.txt",
+        callback = help_tab
+    }
+)
 
 -- For highlighting yanked region
-cmd('au TextYankPost * silent! lua vim.highlight.on_yank({ higroup = "HighlightedyankRegion", timeout = 120 })')
+au.autocmd(
+    {
+        event = "TextYankPost",
+        callback = function()
+            vim.highlight.on_yank({higroup = "HighlightedyankRegion", timeout = 120})
+        end
+    }
+)
