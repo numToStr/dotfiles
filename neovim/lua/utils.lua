@@ -4,6 +4,10 @@ local cmd = api.nvim_command
 
 local U = {}
 
+local function join(...)
+    return table.concat({...}, " ")
+end
+
 -- Key mapping
 function U.map(mode, key, result, opts)
     opts =
@@ -62,8 +66,59 @@ function U.hiLinks(hi_table)
     end
 end
 
+-- For getting hex color from hi group
+-- Usage:
+-- get_hl_color('Normal', 'fg' | 'bg')
 function U.get_hl_color(name, attr)
     return fn.synIDattr(fn.hlID(name), attr)
 end
+
+-- Source: https://github.com/vheon/ycm.nvim/blob/master/lua/ycm/autocmd.lua
+-- just some lua for defining autocmds.
+-- It mimics https://github.com/neovim/neovim/pull/12076 so that when it is
+-- merged we can just delete beyond this line
+
+--#region autocommand
+U._au_cb = {}
+
+function U.define_autocmd_group(group, opts)
+    cmd("augroup " .. group)
+    if opts.clear then
+        cmd("autocmd!")
+    end
+    cmd("augroup END")
+
+    return group
+end
+
+local function lua_call(cb)
+    local key = tostring(cb)
+    U._au_cb[key] = cb
+    return string.format("lua require'utils'._au_cb['%s']()", key)
+end
+
+function U.define_autocmd(spec)
+    local event = spec.event
+
+    if type(event) == "table" then
+        event = table.concat(event, ",")
+    end
+
+    local group = spec.group or ""
+    local pattern = spec.pattern or "*"
+    local once = spec.once and "++once" or ""
+    local nested = spec.nested and "++nested" or ""
+
+    local action = spec.command or ""
+    local callback = spec.callback
+    if callback ~= nil then
+        action = lua_call(callback)
+    end
+
+    local aucmd = join("autocmd", group, event, pattern, once, nested, action)
+
+    cmd(aucmd)
+end
+--#endregion
 
 return U
