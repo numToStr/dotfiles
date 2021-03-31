@@ -21,4 +21,43 @@ function M.config()
     -- )
 end
 
+require("au").augroup(
+    "ColorSchemeOverrides",
+    {
+        {
+            event = "ColorScheme",
+            callback = function()
+                local U = require("utils")
+
+                local comment_fg = U.get_hl_color("Comment", "fg")
+                local normal_fg = U.get_hl_color("Normal", "fg")
+                local normal_bg = U.get_hl_color("Normal", "bg")
+
+                local hop_hi = {
+                    bg = normal_fg,
+                    fg = normal_bg
+                }
+
+                U.highlights(
+                    {
+                        TelescopePromptPrefix = {fg = normal_fg},
+                        TelescopeMatching = {fg = "Orange", gui = "bold"},
+                        HopNextKey = hop_hi,
+                        HopNextKey1 = hop_hi,
+                        HopNextKey2 = hop_hi,
+                        NvimTreeFolderName = {fg = normal_fg},
+                        NvimTreeFolderIcon = {fg = normal_fg},
+                        NvimTreeIndentMarker = {fg = comment_fg}
+                        -- NvimTreeFileDirty = {fg = "None"},
+                        -- NvimTreeFileStaged = {fg = "None"},
+                        -- NvimTreeFileMerge = {fg = "None"},
+                        -- NvimTreeFileNew = {fg = "None"},
+                        -- NvimTreeFileRenamed = {fg = "None"}
+                    }
+                )
+            end
+        }
+    }
+)
+
 return M

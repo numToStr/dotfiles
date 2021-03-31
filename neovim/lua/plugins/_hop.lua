@@ -3,19 +3,6 @@ local M = {}
 function M.config()
     local U = require "utils"
 
-    local hi = {
-        bg = U.get_hl_color("Normal", "fg"),
-        fg = U.get_hl_color("Normal", "bg")
-    }
-
-    U.highlights(
-        {
-            HopNextKey = hi,
-            HopNextKey1 = hi,
-            HopNextKey2 = hi
-        }
-    )
-
     -- U.map("n", "<S-m>", "<CMD>lua require'hop'.hint_words()<CR>")
 
     -- These are mapping are legacy reasons, because I used them with easymotion

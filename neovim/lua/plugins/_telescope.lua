@@ -39,13 +39,6 @@ function M.config()
 
     require("telescope").load_extension("fzy_native")
 
-    U.highlights(
-        {
-            TelescopePromptPrefix = {fg = U.get_hl_color("Normal", "fg")},
-            TelescopeMatching = {fg = "Orange", gui = "bold"}
-        }
-    )
-
     function TelescopeOpen(fn)
         U.move_cursor_from_tree()
         finders[fn]()

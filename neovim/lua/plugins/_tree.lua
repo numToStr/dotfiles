@@ -60,21 +60,6 @@ function M.config()
     -- end)
 
     -- a list of groups can be found at `:help nvim_tree_highlight`
-    local comment_fg = U.get_hl_color("Comment", "fg")
-    local normal_fg = U.get_hl_color("Normal", "fg")
-
-    U.highlights(
-        {
-            NvimTreeFolderName = {fg = normal_fg},
-            NvimTreeFolderIcon = {fg = normal_fg},
-            NvimTreeIndentMarker = {fg = comment_fg}
-            -- NvimTreeFileDirty = {fg = "None"},
-            -- NvimTreeFileStaged = {fg = "None"},
-            -- NvimTreeFileMerge = {fg = "None"},
-            -- NvimTreeFileNew = {fg = "None"},
-            -- NvimTreeFileRenamed = {fg = "None"}
-        }
-    )
 
     U.map("n", "<C-N>", ":NvimTreeToggle<CR>")
 
