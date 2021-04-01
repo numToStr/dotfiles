@@ -4,10 +4,6 @@ local cmd = api.nvim_command
 
 local U = {}
 
-local function join(...)
-    return table.concat({...}, " ")
-end
-
 -- Key mapping
 function U.map(mode, key, result, opts)
     opts =
@@ -26,9 +22,7 @@ end
 
 -- For moments when I don't want my cursor to stay on the tree
 function U.move_cursor_from_tree()
-    local nr = api.nvim_get_current_buf()
-    local buf = api.nvim_buf_get_name(nr)
-    if string.find(buf, "NvimTree") and nr > 1 then
+    if vim.bo.filetype == "NvimTree" then
         cmd("wincmd l")
     end
 end
