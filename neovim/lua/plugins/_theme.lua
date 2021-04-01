@@ -10,15 +10,6 @@ function M.config()
     g.gruvbox_material_better_performance = 1
 
     vim.api.nvim_command("colorscheme gruvbox-material")
-
-    -- These colors are used in fzf markers
-    -- And should be called after colorscheme command
-    -- U.highlights(
-    --     {
-    --         MyWhite = {fg = "#ffffff"},
-    --         MyBlack = {fg = "#1c1c1c"}
-    --     }
-    -- )
 end
 
 require("au").augroup(
@@ -33,10 +24,8 @@ require("au").augroup(
                 local normal_fg = U.get_hl_color("Normal", "fg")
                 local normal_bg = U.get_hl_color("Normal", "bg")
 
-                local hop_hi = {
-                    bg = normal_fg,
-                    fg = normal_bg
-                }
+                local hop_hi = {bg = normal_fg, fg = normal_bg}
+                local git_hi = {fg = normal_fg, gui = "bold"}
 
                 U.highlights(
                     {
@@ -47,12 +36,14 @@ require("au").augroup(
                         HopNextKey2 = hop_hi,
                         NvimTreeFolderName = {fg = normal_fg},
                         NvimTreeFolderIcon = {fg = normal_fg},
-                        NvimTreeIndentMarker = {fg = comment_fg}
-                        -- NvimTreeFileDirty = {fg = "None"},
-                        -- NvimTreeFileStaged = {fg = "None"},
-                        -- NvimTreeFileMerge = {fg = "None"},
-                        -- NvimTreeFileNew = {fg = "None"},
-                        -- NvimTreeFileRenamed = {fg = "None"}
+                        NvimTreeIndentMarker = {fg = comment_fg},
+                        NvimTreeRootFolder = {fg = comment_fg, gui = "bold"},
+                        NvimTreeGitDirty = git_hi,
+                        NvimTreeGitStaged = git_hi,
+                        NvimTreeGitMerge = git_hi,
+                        NvimTreeGitNew = git_hi,
+                        NvimTreeGitRenamed = git_hi,
+                        NvimTreeGitDeleted = git_hi
                     }
                 )
             end
