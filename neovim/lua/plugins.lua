@@ -73,8 +73,8 @@ return require("packer").startup(
 
             -- " For navigating b/w tmux window, specially for navigating with NERDTree
             use {
-                "christoomey/vim-tmux-navigator",
-                config = require("plugins._tmux-navigator").config
+                "numtostr/Navigator.nvim",
+                config = require("plugins._navigator").config
             }
 
             -- " For 'surroundings': parentheses, brackets, quotes, XML tags, and more.
