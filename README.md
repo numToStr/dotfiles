@@ -1,6 +1,8 @@
-# Dotfiles
+<h1 align="center">
+    <code>.dotfiles</code>
+</h1>
 
-My Dotfiles includes configs for vim, tmux, zsh, fzf and more. Made with blood, tears and shell.
+<h4 align='center'>Configuration for neovim, tmux, zsh, fzf and more. Made with blood, tears and shell.</h4>
 
 # Installation
 
