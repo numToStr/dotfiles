@@ -1,7 +1,6 @@
 local M = {}
 
 function M.config()
-    -- local U = require "utils"
     local g = vim.g
 
     g.gruvbox_material_background = "hard"
@@ -21,21 +20,20 @@ require("au").augroup(
                 local U = require("utils")
 
                 local comment_fg = U.get_hl_color("Comment", "fg")
-                local normal_fg = U.get_hl_color("Normal", "fg")
-                local normal_bg = U.get_hl_color("Normal", "bg")
+                local normal = U.get_hl_color("Normal", "both")
 
-                local hop_hi = {bg = normal_fg, fg = normal_bg}
-                local git_hi = {fg = normal_fg, gui = "bold"}
+                local hop_hi = {bg = normal.fg, fg = normal.bg}
+                local git_hi = {fg = normal.fg, gui = "bold"}
 
                 U.highlights(
                     {
-                        TelescopePromptPrefix = {fg = normal_fg},
+                        TelescopePromptPrefix = {fg = normal.fg},
                         TelescopeMatching = {fg = "Orange", gui = "bold"},
                         HopNextKey = hop_hi,
                         HopNextKey1 = hop_hi,
                         HopNextKey2 = hop_hi,
-                        NvimTreeFolderName = {fg = normal_fg},
-                        NvimTreeFolderIcon = {fg = normal_fg},
+                        NvimTreeFolderName = {fg = normal.fg},
+                        NvimTreeFolderIcon = {fg = normal.fg},
                         NvimTreeIndentMarker = {fg = comment_fg},
                         NvimTreeRootFolder = {fg = comment_fg, gui = "bold"},
                         NvimTreeGitDirty = git_hi,

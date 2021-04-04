@@ -1,5 +1,4 @@
 local api = vim.api
-local fn = vim.fn
 local cmd = api.nvim_command
 
 local U = {}
@@ -60,11 +59,30 @@ function U.hiLinks(hi_table)
     end
 end
 
+local function get_hex(rgb)
+    return "#" .. bit.tohex(rgb, 6)
+end
+
 -- For getting hex color from hi group
 -- Usage:
--- get_hl_color('Normal', 'fg' | 'bg')
+-- get_hl_color('Normal', 'fg' | 'bg' | 'both')
 function U.get_hl_color(name, attr)
-    return fn.synIDattr(fn.hlID(name), attr)
+    local colors = api.nvim_get_hl_by_name(name, true)
+
+    if attr == "both" then
+        return {
+            fg = get_hex(colors.foreground),
+            bg = get_hex(colors.background)
+        }
+    end
+
+    if attr == "fg" then
+        return get_hex(colors.foreground)
+    end
+
+    if attr == "bg" then
+        return get_hex(colors.background)
+    end
 end
 
 return U
