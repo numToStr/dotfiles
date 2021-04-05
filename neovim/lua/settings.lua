@@ -17,7 +17,10 @@ go.hidden = true
 go.timeoutlen = 500
 go.updatetime = 100
 go.ttyfast = true
+
+-- I have to set these individually as neovim doesn't update those
 go.scrolloff = 8
+wo.scrolloff = 8
 
 go.showcmd = true
 go.wildmenu = true
