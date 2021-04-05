@@ -1,6 +1,6 @@
 local U = require "utils"
 local g = vim.g
-local go = vim.o
+local o = vim.o
 local bo = vim.bo
 local wo = vim.wo
 local cmd = vim.api.nvim_command
@@ -8,22 +8,22 @@ local cmd = vim.api.nvim_command
 cmd("syntax on")
 cmd("filetype plugin indent on")
 
-go.compatible = false
-go.encoding = "UTF-8"
-go.termguicolors = true
-go.background = "dark"
+o.compatible = false
+o.encoding = "UTF-8"
+o.termguicolors = true
+o.background = "dark"
 
-go.hidden = true
-go.timeoutlen = 500
-go.updatetime = 100
-go.ttyfast = true
+o.hidden = true
+o.timeoutlen = 500
+o.updatetime = 100
+o.ttyfast = true
 
 -- I have to set these individually as neovim doesn't update those
-go.scrolloff = 8
+o.scrolloff = 8
 wo.scrolloff = 8
 
-go.showcmd = true
-go.wildmenu = true
+o.showcmd = true
+o.wildmenu = true
 
 wo.number = true
 wo.numberwidth = 6
@@ -31,30 +31,30 @@ wo.relativenumber = true
 wo.signcolumn = "yes"
 wo.cursorline = true
 
-go.expandtab = true
-go.smarttab = true
-go.tabstop = 4
-go.cindent = true
-go.shiftwidth = 4
-go.softtabstop = 4
-go.autoindent = true
-go.clipboard = "unnamedplus"
+o.expandtab = true
+o.smarttab = true
+o.tabstop = 4
+o.cindent = true
+o.shiftwidth = 4
+o.softtabstop = 4
+o.autoindent = true
+o.clipboard = "unnamedplus"
 
 wo.wrap = true
 bo.textwidth = 300
 bo.formatoptions = "qrn1"
 
-go.hlsearch = true
-go.ignorecase = true
-go.smartcase = true
+o.hlsearch = true
+o.ignorecase = true
+o.smartcase = true
 
-go.backup = false
-go.writebackup = false
-go.undofile = true
-go.swapfile = false
-go.backupdir = "/tmp/"
-go.directory = "/tmp/"
-go.undodir = "/tmp/"
+o.backup = false
+o.writebackup = false
+o.undofile = true
+o.swapfile = false
+o.backupdir = "/tmp/"
+o.directory = "/tmp/"
+o.undodir = "/tmp/"
 
 -- Map <leader> to space
 U.map("n", "<SPACE>", "<Nop>")
