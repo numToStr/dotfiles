@@ -29,9 +29,6 @@ return require("packer").startup(
             -- Packer can manage itself as an optional plugin
             use {"wbthomason/packer.nvim", opt = true}
 
-            -- " FocusGained and FocusLost autocommand events are not working in terminal vim. This plugin restores them when using vim inside Tmux.
-            use "tmux-plugins/vim-tmux-focus-events"
-
             -- " IDK, but some useful stuff
             -- " When searching with / , while on search
             --     " -> ctrl+g for jump to next
