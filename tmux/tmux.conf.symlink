@@ -16,10 +16,10 @@ setw -g pane-base-index 1
 # renumber windows sequentially after closing any of them
 set -g renumber-windows on
 
-# remap prefix from 'C-b' to '`'
-# unbind C-b
-# set-option -g prefix C-a
-# bind-key C-a send-prefix
+# remap prefix from 'C-b' to 'C-@'
+unbind C-b
+set-option -g prefix C-@
+bind-key C-@ send-prefix
 
 # switch panes using Alt-key without prefix
 # Don't bind the Alt(M) to Ctrl(C) as It will conflict with vim-tmux-navigator
