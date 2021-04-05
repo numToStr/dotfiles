@@ -143,7 +143,10 @@ return require("packer").startup(
             }
 
             -- For smooth scroll
-            use "psliwka/vim-smoothie"
+            -- use "psliwka/vim-smoothie"
+            use {
+                "karb94/neoscroll.nvim"
+            }
 
             use "bronson/vim-visual-star-search"
 
