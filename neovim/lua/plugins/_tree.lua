@@ -12,7 +12,7 @@ function M.config()
     -- g.nvim_tree_auto_open = 1
 
     -- 0 by default, closes the tree when it's the last window
-    g.nvim_tree_auto_close = 1
+    -- g.nvim_tree_auto_close = 0
 
     -- 0 by default, this option allows the cursor to be updated when entering a buffer
     g.nvim_tree_follow = 1
