@@ -11,9 +11,15 @@ U.map("i", "<C-A>", "<ESC>I")
 U.map("x", "Q", ":normal @@<CR>")
 U.map("n", "Q", ":normal @@<CR>")
 
-U.map("n", "<leader>w", ":w!<CR>")
-U.map("n", "<leader>n", ":nohl<CR>")
+-- Quickly save the current buffer or all buffers
+U.map("n", "<leader>w", ":update<CR>")
+U.map("n", "<leader>W", ":wall<CR>")
+
+-- Quit neovim
 U.map("n", "<C-Q>", ":q<CR>")
+
+-- Remove search highlight
+U.map("n", "<leader>n", ":nohl<CR>")
 
 -- leader-o/O inserts blank line below/above
 U.map("n", "<leader>o", "o<ESC>")
