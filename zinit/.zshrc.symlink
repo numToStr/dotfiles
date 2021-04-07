@@ -171,7 +171,7 @@ zinit wait"1" lucid light-mode from"gh-r" as"command" bpick'*linux*' for \
     atload'
         unalias l
         alias l="exa -abghHlS --git --group-directories-first"
-    ' mv'exa* -> exa' \
+    ' pick'bin/exa' \
         @ogham/exa \
 
 # atclone'
