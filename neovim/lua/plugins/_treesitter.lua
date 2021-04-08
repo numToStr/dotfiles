@@ -1,51 +1,70 @@
-require("nvim-treesitter.configs").setup(
-    {
-        ensure_installed = "maintained",
-        playground = {
-            enable = true,
-            disable = {},
-            updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-            persist_queries = false -- Whether the query persists across vim sessions
-        },
-        highlight = {
-            enable = true
-        },
-        indent = {
-            enable = true
-        },
-        textobjects = {
-            select = {
-                enable = true,
-                keymaps = {
-                    -- You can use the capture groups defined in textobjects.scm
-                    ["af"] = "@function.outer",
-                    ["if"] = "@function.inner",
-                    ["ac"] = "@class.outer",
-                    ["ic"] = "@class.inner",
-                    ["al"] = "@loop.outer",
-                    ["il"] = "@loop.inner"
+local M = {}
 
-                    -- Or you can define your own textobjects like this
-                    -- ["iF"] = {
-                    --     python = "(function_definition) @function",
-                    --     cpp = "(function_definition) @function",
-                    --     c = "(function_definition) @function",
-                    --     java = "(method_declaration) @function",
-                    -- },
+function M.config()
+    require("nvim-treesitter.configs").setup(
+        {
+            ensure_installed = "maintained",
+            highlight = {
+                enable = true
+            },
+            indent = {
+                enable = true
+            },
+            -- nvim-treesitter/nvim-treesitter-textobjects
+            textobjects = {
+                select = {
+                    enable = true,
+                    keymaps = {
+                        -- You can use the capture groups defined in textobjects.scm
+                        ["af"] = "@function.outer",
+                        ["if"] = "@function.inner",
+                        ["ac"] = "@class.outer",
+                        ["ic"] = "@class.inner",
+                        ["al"] = "@loop.outer",
+                        ["il"] = "@loop.inner",
+                        ["ab"] = "@block.outer",
+                        ["ib"] = "@block.inner"
+
+                        -- Or you can define your own textobjects like this
+                        -- ["iF"] = {
+                        --     python = "(function_definition) @function",
+                        --     cpp = "(function_definition) @function",
+                        --     c = "(function_definition) @function",
+                        --     java = "(method_declaration) @function",
+                        -- },
+                    }
+                },
+                swap = {
+                    enable = true,
+                    swap_next = {
+                        ["<leader>a"] = "@parameter.inner"
+                    },
+                    swap_previous = {
+                        ["<leader>A"] = "@parameter.inner"
+                    }
                 }
             },
-            swap = {
-                enable = true,
-                swap_next = {
-                    ["<leader>a"] = "@parameter.inner"
-                },
-                swap_previous = {
-                    ["<leader>A"] = "@parameter.inner"
-                }
+            -- windwp/nvim-ts-autotag
+            autotag = {
+                enable = true
             }
+            -- nvim-treesitter/playground
+            -- playground = {
+            --     enable = true,
+            --     disable = {},
+            --     updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+            --     persist_queries = false -- Whether the query persists across vim sessions
+            -- },
+            -- nvim-treesitter/nvim-treesitter-refactor
+            -- refactor = {
+            --     highlight_definitions = {enable = true},
+            --     highlight_current_scope = {enable = true}
+            -- }
         }
-    }
-)
+    )
 
--- vim.api.nvim_command('set foldmethod=expr')
--- vim.api.nvim_command('set foldexpr=nvim_treesitter#foldexpr()')
+    -- cmd("set foldmethod=expr")
+    -- cmd("set foldexpr=nvim_treesitter#foldexpr()")
+end
+
+return M
