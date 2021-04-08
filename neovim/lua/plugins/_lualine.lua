@@ -1,6 +1,11 @@
 local M = {}
 
 function M.config()
+    local U = require("utils")
+
+    local err = U.get_hl_color("ErrorMsg", "fg")
+    local warn = U.get_hl_color("WarningMsg", "fg")
+
     require("lualine").setup {
         options = {
             theme = "gruvbox_material",
@@ -17,7 +22,12 @@ function M.config()
             },
             lualine_c = {
                 {"filename", full_path = true, file_status = true},
-                {"diagnostics", sources = {"coc"}}
+                {
+                    "diagnostics",
+                    sources = {"coc"},
+                    color_error = err,
+                    color_warn = warn
+                }
             },
             lualine_x = {
                 "g:coc_status",
