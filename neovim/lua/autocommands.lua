@@ -56,7 +56,7 @@ au.autocmd(
     {
         event = "TextYankPost",
         callback = function()
-            vim.highlight.on_yank({higroup = "HighlightedyankRegion", timeout = 120})
+            vim.highlight.on_yank({higroup = "Visual", timeout = 120})
         end
     }
 )
