@@ -46,6 +46,7 @@ return require("packer").startup(
             -- " For getting the theme
             use {
                 "numtostr/gruvbox-material",
+                branch = "lua",
                 config = require("plugins._theme").config
             }
 
