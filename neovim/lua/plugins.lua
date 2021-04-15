@@ -111,7 +111,7 @@ return require("packer").startup(
             use "wellle/targets.vim"
 
             -- " Enhanced syntax support
-            use "sheerun/vim-polyglot"
+            -- use "sheerun/vim-polyglot"
 
             -- " Fzf vim plugin. For this to work you need to install the fzf binary https://github.com/junegunn/fzf
             -- " use 'junegunn/fzf.vim', { 'commit': '0fe8e19' }
@@ -229,11 +229,16 @@ return require("packer").startup(
                 config = require "plugins._bufferline".config
             }
 
-            -- use {
-            --     { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
-            --     'nvim-treesitter/playground',
-            --     'nvim-treesitter/nvim-treesitter-textobjects'
-            -- }
+            use {
+                {
+                    "nvim-treesitter/nvim-treesitter",
+                    run = ":TSUpdate",
+                    config = require("plugins._treesitter").config
+                },
+                "nvim-treesitter/playground",
+                "nvim-treesitter/nvim-treesitter-textobjects",
+                "windwp/nvim-ts-autotag"
+            }
         end,
         config = {
             display = {

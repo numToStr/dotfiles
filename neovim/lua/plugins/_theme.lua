@@ -5,6 +5,7 @@ function M.config()
         background = "hard",
         diagnostic_text_highlight = true,
         plugins = {
+            "treesitter",
             "coc",
             "telescope",
             "hop.nvim",

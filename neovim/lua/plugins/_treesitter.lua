@@ -3,7 +3,7 @@ local M = {}
 function M.config()
     require("nvim-treesitter.configs").setup(
         {
-            ensure_installed = "maintained",
+            ensure_installed = "all",
             highlight = {
                 enable = true
             },
@@ -21,9 +21,11 @@ function M.config()
                         ["ac"] = "@class.outer",
                         ["ic"] = "@class.inner",
                         ["al"] = "@loop.outer",
-                        ["il"] = "@loop.inner",
-                        ["ab"] = "@block.outer",
-                        ["ib"] = "@block.inner"
+                        ["il"] = "@loop.inner"
+
+                        -- Doesn't work with ()
+                        -- ["ab"] = "@block.outer",
+                        -- ["ib"] = "@block.inner"
 
                         -- Or you can define your own textobjects like this
                         -- ["iF"] = {
@@ -47,14 +49,14 @@ function M.config()
             -- windwp/nvim-ts-autotag
             autotag = {
                 enable = true
-            }
+            },
             -- nvim-treesitter/playground
-            -- playground = {
-            --     enable = true,
-            --     disable = {},
-            --     updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-            --     persist_queries = false -- Whether the query persists across vim sessions
-            -- },
+            playground = {
+                enable = true,
+                disable = {},
+                updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+                persist_queries = false -- Whether the query persists across vim sessions
+            }
             -- nvim-treesitter/nvim-treesitter-refactor
             -- refactor = {
             --     highlight_definitions = {enable = true},
