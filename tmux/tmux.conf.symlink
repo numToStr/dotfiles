@@ -16,6 +16,10 @@ setw -g pane-base-index 1
 # renumber windows sequentially after closing any of them
 set -g renumber-windows on
 
+# Enable dynamic title, works nicely with alacritty `dynamic_title` option
+set -g set-titles on
+set -g set-titles-string '#S #I::#W'
+
 # remap prefix from 'C-b' to '`'
 # unbind C-b
 # set-option -g prefix C-a
