@@ -37,7 +37,7 @@ return require("packer").startup(
 
             -- " For getting file icons in status-line, nerdtree etc.
             -- " Note: Make sure you have installed ttf-nerd-fonts-symbols, if you manjaro just run `pamac install ttf-nerd-fonts-symbols`
-            use "ryanoasis/vim-devicons"
+            -- use "ryanoasis/vim-devicons"
 
             -- " Declare the list of plugins.
             -- " For geting the status line below
