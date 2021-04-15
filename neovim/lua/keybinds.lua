@@ -41,8 +41,8 @@ U.map("n", "<A-\\>", ":split<CR>")
 
 -- Move line up and down => Ctrl+Shift+<key>
 -- Reference: https://vim.fandom.com/wiki/Moving_lines_up_or_down
-U.map("n", "<C-DOWN>", ":m .+1<CR>")
-U.map("n", "<C-UP>", ":m .-2<CR>")
+U.map("n", "<C-j>", ":move .+1<CR>")
+U.map("n", "<C-k>", ":move .-2<CR>")
 
 -- Edit r = shell rc
 -- Conflicts with telescope.live_grep keybinding
