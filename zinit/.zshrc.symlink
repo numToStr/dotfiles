@@ -44,7 +44,7 @@ setopt promptsubst
 # - History plugin is loaded early (as it has some defaults) to prevent empty history stack for other plugins
 zinit lucid for \
     atinit"
-        export ZSH_TMUX_FIXTERM=true
+        export ZSH_TMUX_FIXTERM=false
         export ZSH_TMUX_AUTOSTART=true
         export ZSH_TMUX_AUTOCONNECT=true
         export ZSH_TMUX_DEFAULT_SESSION_NAME='</>'
