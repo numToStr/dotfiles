@@ -118,7 +118,12 @@ return require("packer").startup(
             -- use 'junegunn/fzf.vim'
 
             -- " Provides insert mode auto-completion for quotes, parens, brackets, etc.
-            use "jiangmiao/auto-pairs"
+            use {
+                "windwp/nvim-autopairs",
+                config = function()
+                    require("nvim-autopairs").setup()
+                end
+            }
 
             -- " For highlighting trailing whitespace
             -- " :StripWhitespace is also provided to clean whitespace automagically
