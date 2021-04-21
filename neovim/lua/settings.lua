@@ -31,6 +31,10 @@ wo.relativenumber = true
 wo.signcolumn = "yes"
 wo.cursorline = true
 
+-- To fix a neovim bug affecting indent-blankline
+-- Related: https://github.com/lukas-reineke/indent-blankline.nvim/issues/59
+wo.colorcolumn = "99999"
+
 o.expandtab = true
 o.smarttab = true
 o.tabstop = 4
