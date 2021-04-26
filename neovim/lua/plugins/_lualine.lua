@@ -21,7 +21,7 @@ function M.config()
                 {"diff", colored = false}
             },
             lualine_c = {
-                {"filename", full_path = true, file_status = true},
+                {"filename", file_status = true},
                 {
                     "diagnostics",
                     sources = {"coc"},
