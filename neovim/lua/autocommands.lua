@@ -25,6 +25,14 @@ au.augroup(
             callback = function()
                 vim.bo.filetype = "conf"
             end
+        },
+        {
+            event = "BufNewFile,BufRead",
+            pattern = "*.gql,*.graphql",
+            callback = function()
+                vim.bo.filetype = "graphql"
+                vim.bo.commentstring = "# %s"
+            end
         }
     }
 )
