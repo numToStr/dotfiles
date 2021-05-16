@@ -203,13 +203,18 @@ return require("packer").startup(
             }
 
             use {
-                "nvim-telescope/telescope.nvim",
-                config = require("plugins._telescope").config
-            }
-
-            use {
-                "nvim-telescope/telescope-fzy-native.nvim",
-                requires = {"romgrk/fzy-lua-native"}
+                {
+                    "nvim-telescope/telescope.nvim",
+                    config = require("plugins._telescope").config
+                },
+                {
+                    "nvim-telescope/telescope-fzf-native.nvim",
+                    run = "make"
+                }
+                -- {
+                --     "nvim-telescope/telescope-fzy-native.nvim",
+                --     requires = {"romgrk/fzy-lua-native"}
+                -- }
             }
 
             -- " For getting git status in the status line
