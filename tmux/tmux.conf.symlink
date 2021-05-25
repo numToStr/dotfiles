@@ -6,6 +6,9 @@ set -g default-terminal "screen-256color"
 set-option -ga terminal-overrides ",xterm-256color:Tc"
 set -ga terminal-overrides ",alacritty:RGB" # if your echo $TERM outside of alacritty isn't alacritty, place this $TERM thing instead(it should be xterm-256color otherwise)
 
+# vi is good
+setw -g mode-keys vi
+
 # Enable mouse mode (tmux 2.1 and above)
 set -g mouse on
 
