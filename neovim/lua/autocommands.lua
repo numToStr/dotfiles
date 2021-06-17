@@ -33,6 +33,27 @@ au.augroup(
                 vim.bo.filetype = "graphql"
                 vim.bo.commentstring = "# %s"
             end
+        },
+        {
+            event = "BufNewFile,BufRead",
+            pattern = "*.conf",
+            callback = function()
+                vim.bo.filetype = "conf"
+            end
+        },
+        {
+            event = "BufNewFile,BufRead",
+            pattern = "*.env*",
+            callback = function()
+                vim.bo.filetype = "sh"
+            end
+        },
+        {
+            event = "BufNewFile,BufRead",
+            pattern = "*.mdx",
+            callback = function()
+                vim.bo.filetype = "markdown"
+            end
         }
     }
 )
