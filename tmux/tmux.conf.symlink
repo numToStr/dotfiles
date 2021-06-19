@@ -9,6 +9,13 @@ set -ga terminal-overrides ",alacritty:RGB" # if your echo $TERM outside of alac
 # vi is good
 setw -g mode-keys vi
 
+# by default there is no way to go direct into visual block mode, so I have to improvise
+bind-key -T copy-mode-vi C-v send -X begin-selection \; send -X rectangle-toggle
+# by default, pressing SPACE starts visual mode
+bind-key -T copy-mode-vi v send -X begin-selection
+# pressing i should exit vi-mode
+bind-key -T copy-mode-vi i send -X cancel
+
 # Enable mouse mode (tmux 2.1 and above)
 set -g mouse on
 
