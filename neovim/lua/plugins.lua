@@ -29,20 +29,6 @@ return require("packer").startup(
             -- Packer can manage itself as an optional plugin
             use {"wbthomason/packer.nvim", opt = true}
 
-            -- " IDK, but some useful stuff
-            -- " When searching with / , while on search
-            --     " -> ctrl+g for jump to next
-            --     " -> ctrl+t for jump to previous
-            -- use "tpope/vim-sensible"
-
-            -- " For getting file icons in status-line, nerdtree etc.
-            -- " Note: Make sure you have installed ttf-nerd-fonts-symbols, if you manjaro just run `pamac install ttf-nerd-fonts-symbols`
-            -- use "ryanoasis/vim-devicons"
-
-            -- " Declare the list of plugins.
-            -- " For geting the status line below
-            -- use "vim-airline/vim-airline"
-
             -- " For getting the theme
             use {
                 "numtostr/gruvbox-material",
@@ -56,16 +42,6 @@ return require("packer").startup(
                 branch = "lua",
                 config = require("plugins._indentline").config
             }
-
-            -- " For getting file explorer :NERDTree
-            -- use {
-            --     {
-            --         "preservim/nerdtree",
-            --         config = require("plugins._nerdtree").config
-            --     },
-            --     -- A plugin of NERDTree showing git status flags
-            --     "Xuyuanp/nerdtree-git-plugin"
-            -- }
 
             -- " For commmenting stuff out
             use "tomtom/tcomment_vim"
@@ -82,18 +58,11 @@ return require("packer").startup(
             -- " Fix repeat for vim-surround
             use "tpope/vim-repeat"
 
-            -- use "tpope/vim-fugitive"
-
             -- " Vim motion in lightning fast speed
             use {
                 "phaazon/hop.nvim",
                 config = require("plugins._hop").config
             }
-            -- use {
-            --     "easymotion/vim-easymotion",
-            --     config = require("plugins._easymotion").config
-            -- }
-
             -- " Intellisense and completion engine
             use {
                 {
@@ -110,13 +79,6 @@ return require("packer").startup(
 
             -- " For various text objects
             use "wellle/targets.vim"
-
-            -- " Enhanced syntax support
-            -- use "sheerun/vim-polyglot"
-
-            -- " Fzf vim plugin. For this to work you need to install the fzf binary https://github.com/junegunn/fzf
-            -- " use 'junegunn/fzf.vim', { 'commit': '0fe8e19' }
-            -- use 'junegunn/fzf.vim'
 
             -- " Provides insert mode auto-completion for quotes, parens, brackets, etc.
             use {
@@ -138,9 +100,6 @@ return require("packer").startup(
                 end
             }
 
-            -- " A simple, easy-to-use Vim alignment plugin.
-            -- use 'junegunn/vim-easy-align'
-
             use "michaeljsmith/vim-indent-object"
 
             -- For floating terminal
@@ -150,7 +109,6 @@ return require("packer").startup(
             }
 
             -- For smooth scroll
-            -- use "psliwka/vim-smoothie"
             use {
                 "karb94/neoscroll.nvim",
                 config = function()
@@ -187,9 +145,6 @@ return require("packer").startup(
 
             use "AndrewRadev/splitjoin.vim"
 
-            -- " For distraction free editing
-            -- " use { 'junegunn/goyo.vim', cmd = 'Goyo' }
-
             use {
                 "kyazdani42/nvim-web-devicons",
                 config = function()
@@ -211,14 +166,9 @@ return require("packer").startup(
                     "nvim-telescope/telescope-fzf-native.nvim",
                     run = "make"
                 }
-                -- {
-                --     "nvim-telescope/telescope-fzy-native.nvim",
-                --     requires = {"romgrk/fzy-lua-native"}
-                -- }
             }
 
             -- " For getting git status in the status line
-            -- use 'airblade/vim-gitgutter'
             use {
                 "lewis6991/gitsigns.nvim",
                 config = require("plugins._gitsigns").config
