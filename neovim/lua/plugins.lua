@@ -165,6 +165,9 @@ return require("packer").startup(
                 {
                     "nvim-telescope/telescope-fzf-native.nvim",
                     run = "make"
+                },
+                {
+                    "nvim-telescope/telescope-symbols.nvim"
                 }
             }
 
