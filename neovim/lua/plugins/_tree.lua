@@ -23,6 +23,9 @@ function M.config()
     -- 0 by default, this option shows indent markers when folders are open
     g.nvim_tree_indent_markers = 1
 
+    -- 0 by default, will enable folder and file icon highlight for opened files/directories.
+    -- g.nvim_tree_highlight_opened_files = 1
+
     -- 0 by default, this option hides files and folders starting with a dot `.`
     -- g.nvim_tree_hide_dotfiles = 1
 
@@ -35,11 +38,12 @@ function M.config()
     -- "If 0, do not show the icons for one of 'git' 'folder' and 'files'
     -- "1 by default, notice that if 'files' is 1, it will only display
     -- "if nvim-web-devicons is installed and on your runtimepath
-    -- g.nvim_tree_show_icons = {
-    --     git = 1,
-    --     folders = 0,
-    --     files = 0,
-    -- }
+    -- If I don't set these then a leading indent marker will show bcz of `folder_arrows`
+    g.nvim_tree_show_icons = {
+        git = 1,
+        folders = 1,
+        files = 1
+    }
 
     -- " default will show icon by default if no icon is provided
     -- " default shows no icon by default
@@ -56,45 +60,7 @@ function M.config()
         }
     }
 
-    -- U.augroup("LuaTreeOverride", function nvim_tree_override()
-    --     cmd("au FileType LuaTree setlocal nowrap")
-    -- end)
-
-    -- a list of groups can be found at `:help nvim_tree_highlight`
-
     U.map("n", "<C-N>", ":NvimTreeToggle<CR>")
-
-    -- " Disable default mappings by plugin
-    -- " Bindings are enable by default, disabled on any non-zero value
-    -- " let nvim_tree_disable_keybindings=1
-    --
-    -- " You can edit keybindings be defining this variable
-    -- " You don't have to define all keys.
-    -- " NOTE: the 'edit' key will wrap/unwrap a folder and open a file
-    -- let g:nvim_tree_bindings = {
-    --     \ 'edit':            ['<CR>', 'o'],
-    --     \ 'edit_vsplit':     '<C-v>',
-    --     \ 'edit_split':      '<C-x>',
-    --     \ 'edit_tab':        '<C-t>',
-    --     \ 'toggle_ignored':  'I',
-    --     \ 'toggle_dotfiles': 'H',
-    --     \ 'refresh':         'R',
-    --     \ 'preview':         '<Tab>',
-    --     \ 'cd':              '<C-]>',
-    --     \ 'create':          'a',
-    --     \ 'remove':          'd',
-    --     \ 'rename':          'r',
-    --     \ 'cut':             'x',
-    --     \ 'copy':            'c',
-    --     \ 'paste':           'p',
-    --     \ 'prev_git_item':   '[c',
-    --     \ 'next_git_item':   ']c',
-    --     }
-    --
-    -- nnoremap <C-n> :LuaTreeToggle<CR>
-    -- nnoremap <leader>r :LuaTreeRefresh<CR>
-    -- nnoremap <leader>n :LuaTreeFindFile<CR>
-    -- " LuaTreeOpen and LuaTreeClose are also available if you need them
 end
 
 require("au").augroup(
