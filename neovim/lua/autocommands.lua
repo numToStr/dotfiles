@@ -9,61 +9,37 @@ local cmd = api.nvim_command
 -- cmd("au FocusLost * :wa")
 -- cmd("au FocusLost * silent! wa")
 
-au.augroup(
-    "MyFileTypes",
+local au_filetypes = {
     {
-        {
-            event = "BufNewFile,BufRead",
-            pattern = ".eslintrc,.prettierrc,.tsconfig.json",
-            callback = function()
-                vim.bo.filetype = "json"
-            end
-        },
-        {
-            event = "BufNewFile,BufRead",
-            pattern = ".eslintignore,.prettierignore ",
-            callback = function()
-                vim.bo.filetype = "conf"
-            end
-        },
-        {
-            event = "BufNewFile,BufRead",
-            pattern = "*.gql,*.graphql",
-            callback = function()
-                vim.bo.filetype = "graphql"
-                vim.bo.commentstring = "# %s"
-            end
-        },
-        {
-            event = "BufNewFile,BufRead",
-            pattern = "*.conf",
-            callback = function()
-                vim.bo.filetype = "conf"
-            end
-        },
-        {
-            event = "BufNewFile,BufRead",
-            pattern = "*.env*",
-            callback = function()
-                vim.bo.filetype = "sh"
-            end
-        },
-        {
-            event = "BufNewFile,BufRead",
-            pattern = "*.mdx",
-            callback = function()
-                vim.bo.filetype = "markdown"
-            end
-        },
-        {
-            event = "BufNewFile,BufRead",
-            pattern = "*.tf",
-            callback = function()
-                vim.bo.filetype = "terraform"
-            end
-        }
+        event = "BufNewFile,BufRead",
+        pattern = "*.gql,*.graphql",
+        callback = function()
+            vim.bo.filetype = "graphql"
+            vim.bo.commentstring = "# %s"
+        end
     }
-)
+}
+
+local filetypes = {
+    {".eslintrc,.prettierrc,*.json*", "json"},
+    {".eslintignore,.prettierignore,*.conf", "conf"},
+    {"*.env*", "sh"},
+    {"*.mdx", "markdown"},
+    {"*.tf", "terraform"}
+}
+
+for _, ft in ipairs(filetypes) do
+    table.insert(
+        au_filetypes,
+        {
+            event = "BufNewFile,BufRead",
+            pattern = ft[1],
+            command = "lua vim.bo.filetype=" .. ft[2]
+        }
+    )
+end
+
+au.augroup("MyFileTypes", au_filetypes)
 
 -- Appending the extra file types for vim-snippets to show react snippets
 -- Messing with prettier
