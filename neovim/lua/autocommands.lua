@@ -54,6 +54,13 @@ au.augroup(
             callback = function()
                 vim.bo.filetype = "markdown"
             end
+        },
+        {
+            event = "BufNewFile,BufRead",
+            pattern = "*.tf",
+            callback = function()
+                vim.bo.filetype = "terraform"
+            end
         }
     }
 )
