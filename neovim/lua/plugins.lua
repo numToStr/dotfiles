@@ -203,10 +203,6 @@ return require("packer").startup(
                 "nvim-treesitter/nvim-treesitter-textobjects",
                 "windwp/nvim-ts-autotag"
             }
-
-            -- After removing polyglot some filetypes got messed up and doesn't have treesitter support
-            -- So, I need to fix them by intalling there syntax file individually
-            use "hashivim/vim-terraform" -- for terraform
         end,
         config = {
             display = {
