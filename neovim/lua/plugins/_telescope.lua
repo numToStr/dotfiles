@@ -9,9 +9,12 @@ function M.config()
     require("telescope").setup(
         {
             defaults = {
-                prompt_position = "top",
                 prompt_prefix = " ❯ ",
+                initial_mode = "insert",
                 sorting_strategy = "ascending",
+                layout_config = {
+                    prompt_position = "top"
+                },
                 mappings = {
                     i = {
                         ["<ESC>"] = actions.close,
