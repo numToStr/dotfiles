@@ -39,7 +39,6 @@ return require("packer").startup(
             -- " For getting indent lines in code
             use {
                 "lukas-reineke/indent-blankline.nvim",
-                branch = "lua",
                 config = require("plugins._indentline").config
             }
 
