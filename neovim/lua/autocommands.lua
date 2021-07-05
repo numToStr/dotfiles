@@ -34,7 +34,9 @@ for _, ft in ipairs(filetypes) do
         {
             event = "BufNewFile,BufRead",
             pattern = ft[1],
-            command = "lua vim.bo.filetype=" .. ft[2]
+            callback = function()
+                vim.bo.filetype = ft[2]
+            end
         }
     )
 end
