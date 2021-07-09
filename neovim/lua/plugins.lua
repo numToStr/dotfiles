@@ -10,7 +10,7 @@ require("au").augroup(
         {
             event = "BufWritePost",
             pattern = "plugins.lua",
-            command = "PackerCompile"
+            command = "source <afile> | PackerCompile"
         }
     }
 )
