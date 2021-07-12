@@ -8,18 +8,18 @@ local cmd = vim.api.nvim_command
 M._au_cb = {}
 
 local function join(...)
-    return table.concat({...}, " ")
+    return table.concat({ ... }, ' ')
 end
 
 function M.augroup(group, au_specs)
-    cmd("augroup " .. group)
-    cmd("autocmd!")
+    cmd('augroup ' .. group)
+    cmd('autocmd!')
     if au_specs ~= nil then
         for _, spec in ipairs(au_specs) do
             M.autocmd(spec)
         end
     end
-    cmd("augroup END")
+    cmd('augroup END')
 
     return group
 end
@@ -33,22 +33,22 @@ end
 function M.autocmd(spec)
     local event = spec.event
 
-    if type(event) == "table" then
-        event = table.concat(event, ",")
+    if type(event) == 'table' then
+        event = table.concat(event, ',')
     end
 
-    local group = spec.group or ""
-    local pattern = spec.pattern or "*"
-    local once = spec.once and "++once" or ""
-    local nested = spec.nested and "++nested" or ""
+    local group = spec.group or ''
+    local pattern = spec.pattern or '*'
+    local once = spec.once and '++once' or ''
+    local nested = spec.nested and '++nested' or ''
 
-    local action = spec.command or ""
+    local action = spec.command or ''
     local callback = spec.callback
     if callback ~= nil then
         action = lua_call(callback)
     end
 
-    local aucmd = join("autocmd", group, event, pattern, once, nested, action)
+    local aucmd = join('autocmd', group, event, pattern, once, nested, action)
 
     cmd(aucmd)
 end

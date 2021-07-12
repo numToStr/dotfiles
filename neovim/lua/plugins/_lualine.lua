@@ -1,47 +1,47 @@
 local M = {}
 
 function M.config()
-    local U = require("utils")
+    local U = require('utils')
 
-    local err = U.get_hl_color("ErrorMsg", "fg")
-    local warn = U.get_hl_color("WarningMsg", "fg")
+    local err = U.get_hl_color('ErrorMsg', 'fg')
+    local warn = U.get_hl_color('WarningMsg', 'fg')
 
-    require("lualine").setup {
+    require('lualine').setup({
         options = {
-            theme = "gruvbox_material",
-            component_separators = "",
-            icons_enabled = true
+            theme = 'gruvbox_material',
+            component_separators = '',
+            icons_enabled = true,
         },
         sections = {
             lualine_a = {
-                {"mode", upper = true, color = {gui = "bold"}}
+                { 'mode', upper = true, color = { gui = 'bold' } },
             },
             lualine_b = {
-                {"branch"},
-                {"diff", colored = false}
+                { 'branch' },
+                { 'diff', colored = false },
             },
             lualine_c = {
-                {"filename", file_status = true},
+                { 'filename', file_status = true },
                 {
-                    "diagnostics",
-                    sources = {"coc"},
+                    'diagnostics',
+                    sources = { 'coc' },
                     color_error = err,
-                    color_warn = warn
-                }
+                    color_warn = warn,
+                },
             },
             lualine_x = {
-                "g:coc_status",
-                "filetype",
-                "encoding",
-                "fileformat"
+                'g:coc_status',
+                'filetype',
+                'encoding',
+                'fileformat',
             },
-            lualine_y = {"progress"},
+            lualine_y = { 'progress' },
             lualine_z = {
-                {"location", color = {gui = "bold"}}
-            }
+                { 'location', color = { gui = 'bold' } },
+            },
         },
-        extensions = {"nvim-tree"}
-    }
+        extensions = { 'nvim-tree' },
+    })
 end
 
 return M

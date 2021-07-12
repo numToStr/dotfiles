@@ -1,12 +1,12 @@
 local M = {}
 
 function M.config()
-    local U = require "utils"
+    local U = require('utils')
     local g = vim.g
 
-    g.nvim_tree_side = "left"
+    g.nvim_tree_side = 'left'
     g.nvim_tree_width = 35
-    g.nvim_tree_ignore = {".git", "node_modules"}
+    g.nvim_tree_ignore = { '.git', 'node_modules' }
 
     -- 0 by default, opens the tree when typing `vim $DIR` or `vim`
     -- g.nvim_tree_auto_open = 1
@@ -42,38 +42,35 @@ function M.config()
     g.nvim_tree_show_icons = {
         git = 1,
         folders = 1,
-        files = 1
+        files = 1,
     }
 
     -- " default will show icon by default if no icon is provided
     -- " default shows no icon by default
     g.nvim_tree_icons = {
-        default = "",
-        symlink = "",
+        default = '',
+        symlink = '',
         git = {
-            unstaged = "~",
-            staged = "+",
-            unmerged = "!",
-            renamed = "≈",
-            untracked = "?",
-            deleted = "-"
-        }
+            unstaged = '~',
+            staged = '+',
+            unmerged = '!',
+            renamed = '≈',
+            untracked = '?',
+            deleted = '-',
+        },
     }
 
-    U.map("n", "<C-N>", ":NvimTreeToggle<CR>")
+    U.map('n', '<C-N>', ':NvimTreeToggle<CR>')
 end
 
-require("au").augroup(
-    "NvimTreeOverrides",
+require('au').augroup('NvimTreeOverrides', {
     {
-        {
-            event = "FileType",
-            pattern = "NvimTree",
-            callback = function()
-                vim.api.nvim_win_set_option(0, "wrap", false)
-            end
-        }
-    }
-)
+        event = 'FileType',
+        pattern = 'NvimTree',
+        callback = function()
+            vim.api.nvim_win_set_option(0, 'wrap', false)
+        end,
+    },
+})
 
 return M

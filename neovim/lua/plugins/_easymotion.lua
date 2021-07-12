@@ -1,7 +1,7 @@
 local M = {}
 
 function M.config()
-    local U = require "utils"
+    local U = require('utils')
     local g = vim.g
 
     -- Disable default mappings
@@ -19,26 +19,24 @@ function M.config()
     -- " map <Leader>k <Plug>(easymotion-b)
     -- " map <Leader>l <Plug>(easymotion-lineforward)
 
-    U.map("n", "<S-K>", "<Nop>")
-    U.map("n", "<S-j>", "<Nop>")
+    U.map('n', '<S-K>', '<Nop>')
+    U.map('n', '<S-j>', '<Nop>')
 
     -- I don't know how to map <Plug> commands in lua
-    U.map("n", "<S-J>", "<Plug>(easymotion-w)", {noremap = false})
-    U.map("n", "<S-K>", "<Plug>(easymotion-b)", {noremap = false})
+    U.map('n', '<S-J>', '<Plug>(easymotion-w)', { noremap = false })
+    U.map('n', '<S-K>', '<Plug>(easymotion-b)', { noremap = false })
 
     -- Color Reference: https://jonasjacek.github.io/colors/
     -- Bg: White 15 #ffffff
     -- Fg: Grey11 234 #1c1c1c
 
-    U.highlight("EasyMotionTarget", {bg = "#ffffff", fg = "#1c1c1c"})
+    U.highlight('EasyMotionTarget', { bg = '#ffffff', fg = '#1c1c1c' })
 
-    U.hiLinks(
-        {
-            EasyMotionShade = "Comment",
-            EasyMotionTarget2First = "EasyMotionTarget",
-            EasyMotionTarget2Second = "EasyMotionTarget"
-        }
-    )
+    U.hiLinks({
+        EasyMotionShade = 'Comment',
+        EasyMotionTarget2First = 'EasyMotionTarget',
+        EasyMotionTarget2Second = 'EasyMotionTarget',
+    })
 
     -- cmd("hi EasyMotionTarget ctermbg=15 ctermfg=234 guibg=#ffffff guifg=#1c1c1c")
     -- cmd("hi link EasyMotionShade Comment")
