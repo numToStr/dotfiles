@@ -6,18 +6,63 @@ set -e
 # from the scripts/ directory where this script
 cd "$(dirname "$0")/.."
 
-DOTFILES=$(pwd)
+export DOTFILES=$(pwd)
 TARGET=$HOME
 
 # List of packages that has to installed via `stow`
 DOTFILES_DIRS=$(ls -d $DOTFILES/*/ | awk -F "/" '{ print $(NF-1) }')
 
-# function _stow() {
-#     stow --dir $DIR --target $TARGET $1
-# }
+for F in $DOTFILES_DIRS ; do
+    if [[ $F = "bin" ]] || [[ $F = "scripts" ]]; then
+        continue;
+    fi
 
-for f in $DOTFILES_DIRS ; do
-    echo $f
-    # _stow -D $f
-    # _stow $f
+    echo "- Install :: $F"
+
+    # Remove previous links
+    # NOTE: `stow` issues warning when working with absolute paths, so for now I am ignoring it
+    # GHI: https://github.com/aspiers/stow/issues/65
+    stow -D --dotfiles --dir $DOTFILES --target $TARGET $F 2>/dev/null
+
+    # Installed new links
+    stow --dotfiles --dir $DOTFILES --target $TARGET $F
+
+    echo "+ Done    :: $F"
+    echo ""
 done
+
+# git config --global include.path $HOME/.gitconfig.local
+#
+# # If hub is found, use https: instead of git: or ssh::
+# if command -v hub >/dev/null 2>&1; then
+#     git config --global hub.protocol https
+# fi
+#
+# # use vscode as mergetool
+# if command -v code >/dev/null 2>&1; then
+# 	git config --global merge.tool vscode
+# 	git config --global mergetool.vscode.cmd "code --wait $MERGED"
+# fi
+
+# if command -v zsh >/dev/null 2>&1; then
+#     MODULE='Zsh'
+#     ZINIT=$HOME/.zinit/bin/zinit.zsh
+#
+#     echo "[ LINKING ] :: $MODULE >> .zshrc"
+#
+#     [[ -f $HOME/.zshrc ]] && mv $HOME/.zshrc $HOME/.zshrc.backup
+#     ln -sf "$DOTFILES/zinit/.zshrc.symlink" $HOME/.zshrc
+#
+#     if [[ ! -f $ZINIT ]]; then
+#         echo "[ INSTALLING ] :: $MODULE >> zinit"
+#
+#         command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+#         command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+#             echo "[ SUCCESS ] :: Installation successful" || \
+#             echo "[ FAIL ] :: Installation failed"
+#
+#         echo "[ NOTE ] :: All $MODULE plugins will be installed on first prompt."
+#     else
+#         echo "[ Info ] :: Run 'zinit self-update && zinit update --all' to update plugins"
+#     fi
+# fi
