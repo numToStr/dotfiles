@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -e
+
+# Moving one directory upwards to the root of the dotfiles
+# from the scripts/ directory where this script
+cd "$(dirname "$0")/.."
+
+DOTFILES=$(pwd)
+TARGET=$HOME
+
+# List of packages that has to installed via `stow`
+DOTFILES_DIRS=$(ls -d $DOTFILES/*/ | awk -F "/" '{ print $(NF-1) }')
+
+# function _stow() {
+#     stow --dir $DIR --target $TARGET $1
+# }
+
+for f in $DOTFILES_DIRS ; do
+    echo $f
+    # _stow -D $f
+    # _stow $f
+done
