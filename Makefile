@@ -1,4 +1,4 @@
-.PHONY = install refresh update purge
+.PHONY = setup install update purge
 
 .DEFAULT_GOAL = setup
 
