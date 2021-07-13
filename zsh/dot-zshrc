@@ -189,9 +189,7 @@ zinit wait"1" lucid light-mode from"gh-r" as"command" bpick'*linux*' for \
 # 2. Load fzf/fzf.zsh
 # 3. Load ~/.localrc, if it exists
 zinit is-snippet for \
-    ./zsh_config.zsh \
-    ./zsh_aliases.zsh \
-    ./fzf.zsh \
+    $HOME/.dotrc/*.zsh \
     if"[[ -f $HOME/.localrc  ]]" $HOME/.localrc
 
 # typeset -U config_files
