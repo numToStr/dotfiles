@@ -1,6 +1,6 @@
 .PHONY = install refresh update purge
 
-.DEFAULT_GOAL = install
+.DEFAULT_GOAL = setup
 
 setup:
 	@echo "~>> [[ DOTFILES ]] <<~"
