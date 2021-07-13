@@ -16,7 +16,7 @@ elif [ "$(git config --global --get dotfiles.managed)" != "true" ]; then
     user_name="$(git config --global --get user.name)"
     user_email="$(git config --global --get user.email)"
 
-    mv ~/.gitconfig ~/.gitconfig.backup
+    # mv ~/.gitconfig ~/.gitconfig.backup
 
     # echo "Moved ~/.gitconfig to ~/.gitconfig.backup"
 
