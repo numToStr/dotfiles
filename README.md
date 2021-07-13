@@ -2,11 +2,8 @@
     <code>.dotfiles</code>
 </h1>
 
-<h4 align='center'>
-    The things that you can't live without
-    </br>
-    Made with blood, tears and shell | Managed by GNU stow
-</h4>
+<h4 align='center'>~~ The things that you can't live without ~~</h4>
+<!-- <h4 align='center'>Made with blood, tears and shell | Managed by GNU stow</h4> -->
 
 ## ⚠️ Requirements
 
