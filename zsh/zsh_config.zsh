@@ -38,7 +38,7 @@ setopt autocd autopushd pushdignoredups
 export ZSH_AUTOSUGGEST_MANUAL_REBIND=1  # make prompt faster
 export DISABLE_MAGIC_FUNCTIONS=true     # make pasting into terminal faster
 export EDITOR=nvim
-export PAGER=bat
+# export PAGER=bat
 export DOCKER_BUILDKIT=1 # For enabling buildkit backend in docker and docker-compose
 export COMPOSE_DOCKER_CLI_BUILD=1
 export CGO_ENABLED=1
@@ -47,7 +47,6 @@ export CGO_CFLAGS="-g -O2 -Wno-return-local-addr"
 #####################
 # PATH              #
 #####################
-export DOT_BIN="$DOTFILES/bin:$HOME/.bin"
 export GOPATH="$HOME/go/"
 export GOBIN="$GOPATH/bin"
 export PATH="$DOT_BIN:$GOBIN:$PATH"
