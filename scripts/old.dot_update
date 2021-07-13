@@ -1,0 +1,72 @@
+#!/bin/sh
+
+# dot_update
+#
+# `dot_update` handles installation, updates, things like that. Run it
+# periodically to make sure you're on the latest and greatest.
+
+export DOTFILES="$HOME/.dotfiles"
+cd "$DOTFILES" || exit 1
+
+# fixes PATH (we could be running from the crontab)
+# PATH="$(command -p getconf PATH):/usr/local/bin"
+
+# load custom config if any
+# shellcheck disable=SC1090
+[ -f ~/.localrc ] && . ~/.localrc
+
+MARK="❯❯"
+
+info() {
+	echo "[ INFO ] $MARK $1"
+}
+
+success() {
+	echo "[ SUCCESS ] $MARK $1"
+}
+
+# ssh would not work under cron, add a https one
+info "Setting up update channel"
+git remote add updates https://github.com/numToStr/dotfiles.git 2>/dev/null
+
+# Update repo
+info "Updating dotfiles"
+git pull --rebase --stat updates "$(git rev-parse --abbrev-ref HEAD)"
+success "Dotfiles updated"
+
+# Update submodules
+info "Updating submodules"
+git submodule update --init --recursive --remote --merge --quiet
+success "Submodules updated"
+
+# Run all installs
+info "Running $DOTFILES/scripts/install"
+# "$DOTFILES/scripts/install"
+
+# Find the installers and run them iteratively, except neovim installer
+# IDK why, but after neovim installer no other installer runs
+find -H "$DOTFILES" -maxdepth 2 ! -path "*neovim*" ! -path '*.git*' -name 'install.sh' |
+    while read -r installer; do
+        echo ""
+        info "Running ${installer}..."
+        echo ""
+        sh -c "$installer"
+        echo ""
+        success "Successful ${installer}"
+    done
+
+# Installing neovim installers
+find -H "$DOTFILES" -maxdepth 2 -path '*neovim*' -name 'install.sh' |
+    while read -r installer; do
+        echo ""
+        info "Running ${installer}..."
+        echo ""
+        sh -c "$installer"
+        echo ""
+        success "Successful ${installer}"
+    done
+
+echo ""
+info "Registering last update"
+echo ""
+git config --global dotfiles.lastupdate "$(date +%Y%m%d%H%M)"
