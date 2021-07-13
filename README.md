@@ -2,58 +2,60 @@
     <code>.dotfiles</code>
 </h1>
 
-<h4 align='center'>Configuration for neovim, tmux, zsh, fzf and more. Made with blood, tears and shell.</h4>
+<h3 align='center'>The things that you can't live without</h3>
+<h4 align='center'>Made with blood, tears and shell | Managed by GNU stow</h4>
 
-# Installation
+## ⚠️ Requirements
 
-#### Required Dependencies
+#### Commands
 
--   sudo
+-   sudo (maybe)
 -   git
--   zsh
--   curl
--   [neovim-nightly](https://github.com/neovim/neovim)
--   [tmux](https://github.com/tmux/tmux)
--   node (Required for coc.nvim to work)
-
-#### Some awesome and required stuff
-
-> All these will be installed next time you open your terminal
-
--   [fzf](https://github.com/junegunn/fzf) (For fuzzing finding inside your terminal and vim)
--   [fd](https://github.com/sharkdp/fd) (Better than GNU find)
--   [ripgrep](https://github.com/BurntSushi/ripgrep) (Better than GNU grep)
--   [bat](https://github.com/sharkdp/bat) (A cat(1) clone with wings.)
--   [delta](https://github.com/dandavison/delta) (A better viewer for git and diff output)
--   [exa](https://github.com/ogham/exa) (A modern replacement for ‘ls’)
--   [zoxide](https://github.com/ajeetdsouza/zoxide) (A faster way to navigate your filesystem)
--   [yarn](https://github.com/yarnpkg/yarn) (Yarn package manager for Nodejs)
--   [snm](https://github.com/numToStr/snm) (Version Manager for Nodejs)
+-   bash
+-   make
+-   [GNU stow](https://github.com/aspiers/stow)
 
 #### Fonts
+
+These dotfiles doesn't contains any font installation so you have install them beforehand.
 
 -   [powerline-fonts](https://github.com/powerline/fonts)
 -   [ttf-nerds-fonts-symbol](https://www.archlinux.org/packages/community/x86_64/ttf-nerd-fonts-symbols/)
 -   [fira-code](https://github.com/tonsky/firacode)
 
-#### Terminal
+## 🚀 Installation
 
--   [Alacritty](https://github.com/alacritty/alacritty) (Recommeded for a better performance)
-
-#### Install
+-   Clone the repository into `$HOME/.dotfiles` and `cd` into it.
 
 ```
-$ git clone https://github.com/numtostr/dotfiles ~/.dotfiles
-$ cd ~/.dotfiles
-$ ./scripts/bootstrap
+git clone https://github.com/numtostr/dotfiles ~/.dotfiles
+cd ~/.dotfiles
 ```
 
-> After dotfiles' installation, open your terminal again. Which will start binary installation.
+-   Now run `make setup`
 
-#### Software
+> NOTE: After the installation, when you'll open your terminal, or a different tab then `zinit` will start downloading some command line tools that are used inside the dotfiles.
 
-Personally I use Manjaro Linux w/ KDE Plasma. So, this should work on linux.
+## ✨ Commands
 
-# Inspired By
+For convenience, I've added some `make` commands to do some regular stuff which are following:
 
-@caarlos0's [dotfiles](https://github.com/caarlos0/dotfiles)
+-   `setup` - For setting up the dotfiles on a new machine
+
+-   `install` - To reinstall the dotfiles, it doesn't include the setup part
+
+-   `update` - For updating the dotfiles, which will pull the latest commits and install them
+
+-   `purge` - Removes everything
+
+## 🖥️ Software
+
+-   OS: Linux
+-   Distro: Manjaro
+-   Desktop: KDE Plasma
+-   Terminal: kitty
+
+## 🙏 Credits
+
+-   @caarlos0's [dotfiles](https://github.com/caarlos0/dotfiles)
+-   ThePrimeagen for this [masterpiece](https://youtu.be/tkUllCAGs3c)
