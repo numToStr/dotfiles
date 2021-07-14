@@ -2,9 +2,9 @@
 
 set -e
 
-# Moving one directory upwards to the root of the dotfiles
+# Moving two directory upwards to the root of the dotfiles
 # from the scripts/ directory where this script
-cd "$(dirname "$0")/.."
+cd "$(dirname "$0")/../.."
 
 REPO="https://github.com/numToStr/dotfiles.git"
 

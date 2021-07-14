@@ -2,9 +2,9 @@
 
 set -e
 
-# Moving one directory upwards to the root of the dotfiles
+# Moving two directory upwards to the root of the dotfiles
 # from the scripts/ directory where this script
-cd "$(dirname "$0")/.."
+cd "$(dirname "$0")/../.."
 
 export DOTFILES=$(pwd -P)
 TARGET=$HOME
@@ -13,14 +13,18 @@ TARGET=$HOME
 DOTFILES_DIRS=$(ls -d $DOTFILES/*/ | awk -F "/" '{ print $(NF-1) }')
 
 for F in $DOTFILES_DIRS ; do
-    if [[ $F = "bin" ]] || [[ $F = "scripts" ]]; then
+    # Don't install scripts/
+    if [[ $F = "scripts" ]]; then
         continue;
     fi
 
-    echo "~ Purging :: $F"
+    echo "~ Installing :: $F"
 
     # Remove previous links
     # NOTE: `stow` issues warning when working with absolute paths, so for now I am ignoring it
     # GHI: https://github.com/aspiers/stow/issues/65
     stow -D --dotfiles --dir $DOTFILES --target $TARGET $F 2>/dev/null
+
+    # Installed new links
+    stow --dotfiles --dir $DOTFILES --target $TARGET $F
 done
