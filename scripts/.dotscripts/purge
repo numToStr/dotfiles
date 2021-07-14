@@ -13,10 +13,6 @@ TARGET=$HOME
 DOTFILES_DIRS=$(ls -d $DOTFILES/*/ | awk -F "/" '{ print $(NF-1) }')
 
 for F in $DOTFILES_DIRS ; do
-    if [[ $F = "bin" ]] || [[ $F = "scripts" ]]; then
-        continue;
-    fi
-
     echo "~ Purging :: $F"
 
     # Remove previous links
