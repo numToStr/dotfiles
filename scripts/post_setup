@@ -1,0 +1,104 @@
+#!/bin/bash
+
+set -e
+
+############################
+## Setup required for git ##
+############################
+
+echo "> Setting up git"
+
+# Adding extra config, look inside git/ dir
+git config --global include.path $HOME/.gitconfig.extra
+
+# If hub is found, use https: instead of git: or ssh::
+if command -v hub >/dev/null 2>&1; then
+    git config --global hub.protocol https
+fi
+
+# # use vscode as mergetool
+# if command -v code >/dev/null 2>&1; then
+# 	git config --global merge.tool vscode
+# 	git config --global mergetool.vscode.cmd "code --wait $MERGED"
+# fi
+
+############################
+## Setup required for zsh ##
+############################
+
+echo "> Setting up zsh"
+
+ZINIT=$HOME/.zinit
+
+if [[ ! -d $ZINIT ]]; then
+    echo "~ Installing :: zinit"
+
+    command mkdir -p $ZINIT && command chmod g-rwX $ZINIT
+    command git clone https://github.com/zdharma/zinit "$ZINIT/bin" && \
+        echo "+ Done" || \
+        echo "- Fail"
+
+    echo "~ All 'zinit' plugins will be installed on first prompt."
+else
+    echo "~ Already Installed :: zinit"
+    echo "~ Run 'zinit self-update && zinit update --all' to update plugins"
+fi
+
+###############################
+## Setup required for neovim ##
+###############################
+
+echo "> Setting up neovim"
+
+PACKER=$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
+
+if [ ! -d $PACKER ]; then
+    echo "~ Installing :: packer.nvim"
+
+    git clone https://github.com/wbthomason/packer.nvim $PACKER
+
+    echo "+ Done"
+else
+    echo "~ Already Installed :: packer.nvim"
+fi
+
+###############################
+## Setup required for neovim ##
+###############################
+
+echo "> Setting up tmux"
+
+TPM_DIR=$HOME/.tmux/plugins/tpm
+
+if [ ! -d $TPM_DIR ]; then
+    echo "~ Installing :: tmux-plugin-manager"
+
+    git clone https://github.com/tmux-plugins/tpm $TPM_DIR
+
+    echo "+ Done"
+else
+    echo "~ Already Installed :: tmux-plugin-manager"
+fi
+
+##################################
+## Making ZSH the default shell ##
+##################################
+
+find_zsh() {
+	if command -v zsh >/dev/null 2>&1 && grep "$(command -v zsh)" /etc/shells >/dev/null; then
+		command -v zsh
+	else
+		echo "/bin/zsh"
+	fi
+}
+
+zsh="$(find_zsh)"
+
+echo "> Setting 'zsh' as default shell"
+
+test "$(expr "$SHELL" : '.*/\(.*\)')" != "zsh" &&
+	command -v chsh >/dev/null 2>&1 &&
+	chsh -s "$zsh" &&
+	echo "> Set $("$zsh" --version) at $zsh as your default shell"
+
+echo '>> All installed! Enjoy dofiles :) <<'

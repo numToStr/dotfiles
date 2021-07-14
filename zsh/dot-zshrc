@@ -18,7 +18,14 @@ autoload -Uz _zinit
 #####################
 # DOTFILES Home     #
 #####################
-export DOTFILES="$HOME/.dotfiles"
+
+# First find the location of the script, assuming that dotfiles are already linked by `stow`
+# - `${0:a:h}` will return `/home/<user>` then `.zshrc` is added. Final will be `/home/<user>/.zshrc`
+# - `realpath` will read the symlink, which will return the actual location of the file i.e. `rest/of/the/path/dotfiles/zsh/dot-zshrc`
+# - `WHERE_IS_SCRIPT:h:h` will remove the last two path segments
+# - `DOTFILES` will be now `rest/of/the/path/dotfiles`
+WHERE_IS_SCRIPT="$(realpath ${0:a:h}/.zshrc)"
+export DOTFILES=${WHERE_IS_SCRIPT:h:h}
 
 
 #####################
@@ -173,6 +180,8 @@ zinit wait"1" lucid light-mode from"gh-r" as"command" bpick'*linux*' for \
         alias l="exa -abghHlS --git --group-directories-first"
     ' pick'bin/exa' \
         @ogham/exa \
+    # mv'vivid* -> vivid' pick'vivid/vivid' atload'export LS_COLORS="$(vivid generate ayu)"' \
+    #     @sharkdp/vivid \
 
 # atclone'
 #         mkdir -p $HOME/.config/nvim/plugin
@@ -187,8 +196,7 @@ zinit wait"1" lucid light-mode from"gh-r" as"command" bpick'*linux*' for \
 # 2. Load fzf/fzf.zsh
 # 3. Load ~/.localrc, if it exists
 zinit is-snippet for \
-    $DOTFILES/zinit/*.zsh \
-    $DOTFILES/fzf/fzf.zsh \
+    $HOME/.dotrc/*.zsh \
     if"[[ -f $HOME/.localrc  ]]" $HOME/.localrc
 
 # typeset -U config_files
