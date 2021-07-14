@@ -2,30 +2,27 @@
 
 .DEFAULT_GOAL = setup
 
-SCRIPT_PATH = ./scripts/.dotscripts
-MAKE_DOTFILES = 1
-
-export MAKE_DOTFILES
+DOT_SCRIPTS = ./scripts/.dotscripts
 
 setup:
 	@echo "~>> [[ DOTFILES ]] <<~"
-	@echo ""
-	@bash -c $(SCRIPT_PATH)/setup
-	@bash -c $(SCRIPT_PATH)/install
-	@bash -c $(SCRIPT_PATH)/post_setup
+	@echo
+	@bash -c $(DOT_SCRIPTS)/setup
+	@bash -c $(DOT_SCRIPTS)/install
+	@bash -c $(DOT_SCRIPTS)/post_setup
 
 install:
 	@echo "~>> [[ Installing ]] <<~"
-	@echo ""
-	@bash -c $(SCRIPT_PATH)/install
+	@echo
+	@bash -c $(DOT_SCRIPTS)/install
 
 update:
 	@echo "~>> [[ Updating ]] <<~"
-	@echo ""
-	@bash -c $(SCRIPT_PATH)/update
-	@bash -c $(SCRIPT_PATH)/install
+	@echo
+	@bash -c $(DOT_SCRIPTS)/update
+	@bash -c $(DOT_SCRIPTS)/install
 
 purge:
 	@echo "~>> [[ Purging ]] <<~"
-	@echo ""
-	@bash -c $(SCRIPT_PATH)/purge
+	@echo
+	@bash -c $(DOT_SCRIPTS)/purge
