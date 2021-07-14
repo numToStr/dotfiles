@@ -25,6 +25,7 @@ help() {
 }
 
 main() {
+    DOTFILES_CLI="1"
     case $1 in
         -v|--version)
             version
@@ -40,6 +41,7 @@ main() {
             ;;
         install)
             echo "~>> [[ Installing ]] <<~"
+            source $HOME/.dotscripts/install
             echo
             ;;
         update)

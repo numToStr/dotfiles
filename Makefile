@@ -3,6 +3,9 @@
 .DEFAULT_GOAL = setup
 
 SCRIPT_PATH = ./scripts/.dotscripts
+MAKE_DOTFILES = 1
+
+export MAKE_DOTFILES
 
 setup:
 	@echo "~>> [[ DOTFILES ]] <<~"
