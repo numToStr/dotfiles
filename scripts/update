@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -e
+
+# Moving one directory upwards to the root of the dotfiles
+# from the scripts/ directory where this script
+cd "$(dirname "$0")/.."
+
+REPO="https://github.com/numToStr/dotfiles.git"
+
+# ssh would not work under cron, add a https one
+echo "~ Setting up update channel"
+git remote add updates $REPO 2>/dev/null
+
+# Update repo
+echo "~ Updating dotfiles"
+git pull --rebase --stat updates "$(git rev-parse --abbrev-ref HEAD)"
+
+echo "~ Registering last update"
+git config --global dotfiles.lastupdate "$(date +%Y%m%d%H%M)"

@@ -49,13 +49,20 @@ function M.config()
 
     -- require("telescope").load_extension("fzy_native")
 
+    function TelescopeFindFiles()
+        U.move_cursor_from_tree()
+        finders.find_files({
+            hidden = true,
+        })
+    end
+
     function TelescopeOpen(fn)
         U.move_cursor_from_tree()
         finders[fn]()
     end
 
     -- Ctrl-p = fuzzy finder
-    U.map('n', '<C-P>', "<CMD>lua TelescopeOpen('find_files')<CR>")
+    U.map('n', '<C-P>', '<CMD>lua TelescopeFindFiles()<CR>')
 
     -- Fuzzy find active buffers
     U.map('n', "'b", "<CMD>lua TelescopeOpen('buffers')<CR>")

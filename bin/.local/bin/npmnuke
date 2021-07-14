@@ -6,13 +6,13 @@ if [ "$inside_git_repo" ];
 then
     read -p "Deleting node_modules. Confirm? (y/n) " -r CONFIRM
 
-    if [[ $CONFIRM == "y" || $CONFIRM == "yes" ]] 
+    if [[ $CONFIRM == "y" || $CONFIRM == "yes" ]]
     then
         rm -rf "./**/node_modules"
-        echo "Deleted :-)"
+        echo "+ Deleted :-)"
     else
-        echo "Abort:: Cancelled"
+        echo "- Cancelled"
     fi
 else
-    echo "Abort:: Not a git repo"
+    echo "- Not a git repo"
 fi
