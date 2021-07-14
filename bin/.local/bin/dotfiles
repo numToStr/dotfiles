@@ -1,0 +1,56 @@
+#!/bin/zsh
+
+version() {
+    echo ".dotfiles - $(git rev-parse --short HEAD)"
+}
+
+help() {
+    version
+    echo "The things that you can't live without"
+    echo
+    echo "USAGE:
+    dotfiles [FLAGS] <SUBCOMMAND>
+    "
+    echo "FLAGS:
+    -v, --version       Prints version
+    -h, --help          Prints help information
+    "
+    echo "COMMAND:
+    setup               Set up the dotfiles on a new machine
+    install             Reinstall the dotfiles
+    update              Fetch latest commits and updates dotfiles
+    purge               Removes everything
+    "
+    echo "Give a star @ https://github.com/numToStr/dotfiles"
+}
+
+main() {
+    case $1 in
+        -v|--version)
+            version
+            shift # past argument
+            ;;
+        -h|--help)
+            help
+            shift # past argument
+            ;;
+        setup)
+            echo "~>> [[ DOTFILES ]] <<~"
+            echo
+            ;;
+        install)
+            echo "~>> [[ Installing ]] <<~"
+            echo
+            ;;
+        update)
+            echo "~>> [[ Updating ]] <<~"
+            echo
+            ;;
+        purge)
+            echo "~>> [[ Purging ]] <<~"
+            echo
+            ;;
+    esac
+}
+
+main "$@"
