@@ -2,25 +2,27 @@
 
 .DEFAULT_GOAL = setup
 
+DOT_SCRIPTS = ./scripts/.dotscripts
+
 setup:
 	@echo "~>> [[ DOTFILES ]] <<~"
-	@echo ""
-	@bash -c ./scripts/setup
-	@bash -c ./scripts/install
-	@bash -c ./scripts/post_setup
+	@echo
+	@bash -c $(DOT_SCRIPTS)/setup
+	@bash -c $(DOT_SCRIPTS)/install
+	@bash -c $(DOT_SCRIPTS)/post_setup
 
 install:
 	@echo "~>> [[ Installing ]] <<~"
-	@echo ""
-	@bash -c ./scripts/install
+	@echo
+	@bash -c $(DOT_SCRIPTS)/install
 
 update:
 	@echo "~>> [[ Updating ]] <<~"
-	@echo ""
-	@bash -c ./scripts/update
-	@bash -c ./scripts/install
+	@echo
+	@bash -c $(DOT_SCRIPTS)/update
+	@bash -c $(DOT_SCRIPTS)/install
 
 purge:
 	@echo "~>> [[ Purging ]] <<~"
-	@echo ""
-	@bash -c ./scripts/purge
+	@echo
+	@bash -c $(DOT_SCRIPTS)/purge
