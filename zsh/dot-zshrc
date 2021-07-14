@@ -18,7 +18,14 @@ autoload -Uz _zinit
 #####################
 # DOTFILES Home     #
 #####################
-export DOTFILES="$HOME/.dotfiles"
+
+# First find the location of the script, assuming that dotfiles are already linked by `stow`
+# - `${0:a:h}` will return `/home/<user>` then `.zshrc` is added. Final will be `/home/<user>/.zshrc`
+# - `realpath` will read the symlink, which will return the actual location of the file i.e. `rest/of/the/path/dotfiles/zsh/dot-zshrc`
+# - `WHERE_IS_SCRIPT:h:h` will remove the last two path segments
+# - `DOTFILES` will be now `rest/of/the/path/dotfiles`
+WHERE_IS_SCRIPT="$(realpath ${0:a:h}/.zshrc)"
+export DOTFILES=${WHERE_IS_SCRIPT:h:h}
 
 
 #####################
