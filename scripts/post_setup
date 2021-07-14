@@ -24,6 +24,46 @@ else
     echo "~ Run 'zinit self-update && zinit update --all' to update plugins"
 fi
 
+###############################
+## Setup required for neovim ##
+###############################
+
+echo "> Setting up neovim"
+
+PACKER=$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
+
+if [ ! -d $PACKER ]; then
+    echo "~ Installing :: packer.nvim"
+
+    git clone https://github.com/wbthomason/packer.nvim $PACKER
+
+    echo "+ Done"
+else
+    echo "~ Already Installed :: packer.nvim"
+fi
+
+###############################
+## Setup required for neovim ##
+###############################
+
+echo "> Setting up tmux"
+
+TPM_DIR=$HOME/.tmux/plugins/tpm
+
+if [ ! -d $TPM_DIR ]; then
+    echo "~ Installing :: tmux-plugin-manager"
+
+    git clone https://github.com/tmux-plugins/tpm $TPM_DIR
+
+    echo "+ Done"
+else
+    echo "~ Already Installed :: tmux-plugin-manager"
+fi
+
+##################################
+## Making ZSH the default shell ##
+##################################
+
 find_zsh() {
 	if command -v zsh >/dev/null 2>&1 && grep "$(command -v zsh)" /etc/shells >/dev/null; then
 		command -v zsh
@@ -41,4 +81,4 @@ test "$(expr "$SHELL" : '.*/\(.*\)')" != "zsh" &&
 	chsh -s "$zsh" &&
 	echo "> Set $("$zsh" --version) at $zsh as your default shell"
 
-success '>> All installed! Enjoy dofiles :) <<'
+echo '>> All installed! Enjoy dofiles :) <<'
