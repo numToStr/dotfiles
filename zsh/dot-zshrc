@@ -14,11 +14,13 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
 
+# Load .zsh_pre if available
+zinit is-snippet for if"[[ -f $HOME/.zsh_pre ]]" $HOME/.zsh_pre
 
 ############
 # DOTFILES #
 ############
-export DOTFILES="$HOME/.dotfiles"
+export DOTFILES=${DOTFILES:=$HOME/.dotfiles}
 
 #####################
 # PROMPT            #
@@ -184,19 +186,10 @@ zinit wait"1" lucid light-mode from"gh-r" as"command" bpick'*linux*' for \
 # MANUAL CONFIG     #
 #####################
 
-# 1. Load all .zsh files under zinit/ directory
-# 2. Load fzf/fzf.zsh
+# 1. Load all .zsh files under zsh/.dotrc directory
 # 3. Load ~/.localrc, if it exists
+# 3. Load ~/.zsh_post if it exists
 zinit is-snippet for \
     $HOME/.dotrc/*.zsh \
-    if"[[ -f $HOME/.localrc  ]]" $HOME/.localrc
-
-# typeset -U config_files
-# config_files=($HOME/.zsh/*.zsh)
-
-# 1. Load anything which ends with e.zsh
-# 2. Load anything except file ending with e.zsh
-# zinit is-snippet for \
-#     ${(M)config_files:#*/*e.zsh} \
-#     ${config_files:#*/*e.zsh}  \
-
+    if"[[ -f $HOME/.localrc  ]]" $HOME/.localrc \
+    if"[[ -f $HOME/.zsh_post ]]" $HOME/.zsh_post
