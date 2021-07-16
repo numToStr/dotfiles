@@ -172,12 +172,12 @@ function M.config()
 end
 
 require('au').augroup('CocOverrides', {
-    {
-        event = 'CursorHold',
-        callback = function()
-            vim.fn.CocActionAsync('highlight')
-        end,
-    },
+    -- {
+    --     event = 'CursorHold',
+    --     callback = function()
+    --         vim.fn.CocActionAsync('highlight')
+    --     end,
+    -- },
     {
         event = 'FileType',
         pattern = 'typescript,json',

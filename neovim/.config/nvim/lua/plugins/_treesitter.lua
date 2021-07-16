@@ -94,10 +94,10 @@ function M.config()
             persist_queries = false, -- Whether the query persists across vim sessions
         },
         -- nvim-treesitter/nvim-treesitter-refactor
-        -- refactor = {
-        --     highlight_definitions = {enable = true},
-        --     highlight_current_scope = {enable = true}
-        -- }
+        refactor = {
+            highlight_definitions = { enable = true },
+            -- highlight_current_scope = { enable = false },
+        },
     })
 
     -- cmd("set foldmethod=expr")

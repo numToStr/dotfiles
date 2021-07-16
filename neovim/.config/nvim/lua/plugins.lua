@@ -196,6 +196,7 @@ return require('packer').startup({
             },
             'nvim-treesitter/playground',
             'nvim-treesitter/nvim-treesitter-textobjects',
+            'nvim-treesitter/nvim-treesitter-refactor',
             'windwp/nvim-ts-autotag',
         })
     end,
