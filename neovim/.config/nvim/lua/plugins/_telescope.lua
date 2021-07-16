@@ -46,23 +46,17 @@ function M.config()
     -- To get fzf loaded and working with telescope, you need to call
     -- load_extension, somewhere after setup function:
     require('telescope').load_extension('fzf')
-
     -- require("telescope").load_extension("fzy_native")
 
-    function TelescopeFindFiles()
+    function TelescopeOpen(fn)
         U.move_cursor_from_tree()
-        finders.find_files({
+        finders[fn]({
             hidden = true,
         })
     end
 
-    function TelescopeOpen(fn)
-        U.move_cursor_from_tree()
-        finders[fn]()
-    end
-
     -- Ctrl-p = fuzzy finder
-    U.map('n', '<C-P>', '<CMD>lua TelescopeFindFiles()<CR>')
+    U.map('n', '<C-P>', "<CMD>lua TelescopeOpen('find_files')<CR>")
 
     -- Fuzzy find active buffers
     U.map('n', "'b", "<CMD>lua TelescopeOpen('buffers')<CR>")
