@@ -13,7 +13,10 @@
 -   git
 -   bash
 -   make
+-   unzip
+-   GNU tar
 -   [GNU stow](https://github.com/aspiers/stow)
+-   gcc or clang (for compiling neovim treesitter parsers)
 
 #### Fonts
 
