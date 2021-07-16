@@ -2,12 +2,22 @@ local M = {}
 
 function M.config()
     require('nvim-treesitter.configs').setup({
+        -- nvim-treesitter/nvim-treesitter (self config)
         ensure_installed = 'all',
         highlight = {
             enable = true,
         },
         indent = {
             enable = true,
+        },
+        incremental_selection = {
+            enable = true,
+            keymaps = {
+                init_selection = 'gnn',
+                node_incremental = 'grn',
+                scope_incremental = 'grc',
+                node_decremental = 'grN',
+            },
         },
         -- nvim-treesitter/nvim-treesitter-textobjects
         textobjects = {
@@ -23,10 +33,11 @@ function M.config()
                     ['ic'] = '@class.inner',
                     ['al'] = '@loop.outer',
                     ['il'] = '@loop.inner',
-
+                    ['aa'] = '@parameter.outer',
+                    ['ia'] = '@parameter.inner',
                     -- Doesn't work with ()
-                    -- ["ab"] = "@block.outer",
-                    -- ["ib"] = "@block.inner"
+                    ['ab'] = '@block.outer',
+                    ['ib'] = '@block.inner',
 
                     -- Or you can define your own textobjects like this
                     -- ["iF"] = {
@@ -40,10 +51,34 @@ function M.config()
             swap = {
                 enable = true,
                 swap_next = {
-                    ['<leader>a'] = '@parameter.inner',
+                    ['<leader><M-a>'] = '@parameter.inner',
+                    ['<leader><M-f>'] = '@function.outer',
+                    ['<leader><M-e>'] = '@element',
                 },
                 swap_previous = {
-                    ['<leader>A'] = '@parameter.inner',
+                    ['<leader><M-A>'] = '@parameter.inner',
+                    ['<leader><M-F>'] = '@function.outer',
+                    ['<leader><M-E>'] = '@element',
+                },
+            },
+            move = {
+                enable = true,
+                set_jumps = true, -- whether to set jumps in the jumplist
+                goto_next_start = {
+                    [']f'] = '@function.outer',
+                    [']]'] = '@class.outer',
+                },
+                goto_next_end = {
+                    [']F'] = '@function.outer',
+                    [']['] = '@class.outer',
+                },
+                goto_previous_start = {
+                    ['[f'] = '@function.outer',
+                    ['[['] = '@class.outer',
+                },
+                goto_previous_end = {
+                    ['[F'] = '@function.outer',
+                    ['[]'] = '@class.outer',
                 },
             },
         },
