@@ -21,6 +21,9 @@ zinit is-snippet for if"[[ -f $HOME/.zsh_pre ]]" $HOME/.zsh_pre
 # DOTFILES #
 ############
 export DOTFILES=${DOTFILES:=$HOME/.dotfiles}
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:=$HOME/.config}
+export TERM=${TERM:=screen-256color}
+export COLORTERM=${COLORTERM:=truecolor}
 
 #####################
 # PROMPT            #
