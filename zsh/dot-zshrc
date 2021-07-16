@@ -24,6 +24,9 @@ export DOTFILES=${DOTFILES:=$HOME/.dotfiles}
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:=$HOME/.config}
 export TERM=${TERM:=screen-256color}
 export COLORTERM=${COLORTERM:=truecolor}
+# fixed powerline fonts rendering inside tmux
+export LC_ALL=en_IN.UTF-8
+export LANG=en_IN.UTF-8
 
 #####################
 # PROMPT            #
