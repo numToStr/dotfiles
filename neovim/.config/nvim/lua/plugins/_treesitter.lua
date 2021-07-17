@@ -40,9 +40,6 @@ function M.config()
                     ['il'] = '@loop.inner',
                     ['aa'] = '@parameter.outer',
                     ['ia'] = '@parameter.inner',
-                    -- Doesn't work with ()
-                    ['ab'] = '@block.outer',
-                    ['ib'] = '@block.inner',
 
                     -- Or you can define your own textobjects like this
                     -- ["iF"] = {
