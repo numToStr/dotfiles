@@ -60,6 +60,8 @@ o.backupdir = '/tmp/'
 o.directory = '/tmp/'
 o.undodir = '/tmp/'
 
+o.completeopt = 'menuone,noselect'
+
 -- Map <leader> to space
 U.map('n', '<SPACE>', '<Nop>')
 g.mapleader = ' '

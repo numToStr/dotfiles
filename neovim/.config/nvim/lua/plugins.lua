@@ -1,5 +1,7 @@
 local cmd = vim.api.nvim_command
 
+local is_nvim_lsp = os.getenv('NVIM_LSP') == 'true'
+
 -- Only required if you have packer in your `opt` pack
 cmd([[packadd packer.nvim]])
 
@@ -64,11 +66,13 @@ return require('packer').startup({
                 'neoclide/coc.nvim',
                 branch = 'release',
                 config = require('plugins._coc').config,
+                disable = is_nvim_lsp,
             },
             -- This plugins only works with coc.nvim
             {
                 'dsznajder/vscode-es7-javascript-react-snippets',
                 run = 'yarn install --frozen-lockfile && yarn compile',
+                disable = is_nvim_lsp,
             },
         })
 
@@ -198,6 +202,21 @@ return require('packer').startup({
             'nvim-treesitter/nvim-treesitter-textobjects',
             'nvim-treesitter/nvim-treesitter-refactor',
             'windwp/nvim-ts-autotag',
+        })
+
+        -- ##############
+        -- # Neovim LSP #
+        -- ##############
+
+        -- For autocompletion
+        use({
+            'hrsh7th/nvim-compe',
+            disable = not is_nvim_lsp,
+            config = require('plugins.lsp.nvim-compe').config,
+            requires = {
+                -- For snippets support
+                { 'L3MON4D3/LuaSnip' },
+            },
         })
     end,
     config = {
