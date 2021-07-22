@@ -23,22 +23,20 @@ if command -v microk8s >/dev/null 2>&1; then
     alias kubectl="microk8s.kubectl"
 fi
 
-# If the github cli is installed then these alias will be handy
-if command -v gh >/dev/null 2>&1; then
-    prcreate() {
-        if [ -z "$2" ]; then
-            # If title is not provided then use autofill
-            gh pr create -B "$1" -f
-        else
-            # Otherwise use provided title
-            gh pr create -B "$1" -t "$2"
-        fi
-    }
+# Github CLI aliases
+prcreate() {
+    if [ -z "$2" ]; then
+        # If title is not provided then use autofill
+        gh pr create -B "$1" -f
+    else
+        # Otherwise use provided title
+        gh pr create -B "$1" -t "$2"
+    fi
+}
 
-    prmerge() gh pr merge --merge --delete-branch=false "$1"
-    prlist() gh pr list --state open
-    prcheck() { gh pr checkout "$1" && gh pr diff }
-fi
+prmerge() gh pr merge --merge --delete-branch=false "$1"
+prlist() gh pr list --state open
+prcheck() { gh pr checkout "$1" && gh pr diff }
 
 ip-internal() echo "Wireless :: IP => $( ip -4 -o a show wlo1 | awk '{ print $4 }' )"
 ip-external() echo "External :: IP => $( curl --silent https://ifconfig.me )"
