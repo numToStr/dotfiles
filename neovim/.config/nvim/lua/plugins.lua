@@ -204,6 +204,15 @@ return require('packer').startup({
             'windwp/nvim-ts-autotag',
         })
 
+        use({
+            'folke/todo-comments.nvim',
+            config = function()
+                require('todo-comments').setup({
+                    signs = false,
+                })
+            end,
+        })
+
         -- ##############
         -- # Neovim LSP #
         -- ##############
