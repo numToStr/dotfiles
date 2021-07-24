@@ -5,6 +5,7 @@
 -- o.rtp = string.format('%s/neovim,%s', D, o.rtp)
 
 -- Vanilla Config
+require('builtins')
 require('plugins')
 require('settings')
 require('autocommands')
@@ -25,3 +26,4 @@ end
 --     ]],
 --     false
 -- )
+--
