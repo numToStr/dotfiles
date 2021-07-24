@@ -1,5 +1,6 @@
 -- Disable builtin plugins
 local disabled_builtins = {
+    'man',
     'netrw',
     'netrwPlugin',
     'netrwSettings',
