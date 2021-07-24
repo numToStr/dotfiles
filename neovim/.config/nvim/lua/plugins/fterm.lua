@@ -1,27 +1,24 @@
-local M = {}
+local U = require('utils')
 
-function M.config()
-    local U = require('utils')
-    local term = require('FTerm.terminal')
+require('FTerm').setup()
 
-    require('FTerm').setup()
+U.map('n', '<A-i>', "<CMD>lua require('FTerm').toggle()<CR>")
+U.map('t', '<A-i>', "<C-\\><C-n><CMD>lua require('FTerm').toggle()<CR>")
 
-    local gitui = term:new():setup({
-        cmd = 'gitui',
-        dimensions = {
-            height = 0.95,
-            width = 0.95,
-        },
-    })
+-- gitui via FTerm
+local term = require('FTerm.terminal')
 
-    function _G.__gitui()
-        gitui:toggle()
-    end
+local gitui = term:new():setup({
+    cmd = 'gitui',
+    dimensions = {
+        height = 0.95,
+        width = 0.95,
+    },
+})
 
-    U.map('n', '<A-g>', '<CMD>lua __gitui()<CR>')
-    U.map('t', '<A-g>', '<C-\\><C-n><CMD>lua __gitui()<CR>')
-    U.map('n', '<A-i>', "<CMD>lua require('FTerm').toggle()<CR>")
-    U.map('t', '<A-i>', "<C-\\><C-n><CMD>lua require('FTerm').toggle()<CR>")
+function _G.__gitui()
+    gitui:toggle()
 end
 
-return M
+U.map('n', '<A-g>', '<CMD>lua __gitui()<CR>')
+U.map('t', '<A-g>', '<C-\\><C-n><CMD>lua __gitui()<CR>')

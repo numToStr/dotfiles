@@ -1,17 +1,10 @@
-local M = {}
+local U = require('utils')
 
-function M.config()
-    N = require('Navigator')
-    local U = require('utils')
+require('Navigator').setup({
+    auto_save = 'current',
+})
 
-    N.setup({
-        auto_save = 'current',
-    })
-
-    U.map('n', '<A-h>', ':lua N.left()<CR>')
-    U.map('n', '<A-k>', ':lua N.up()<CR>')
-    U.map('n', '<A-l>', ':lua N.right()<CR>')
-    U.map('n', '<A-j>', ':lua N.down()<CR>')
-end
-
-return M
+U.map('n', '<A-h>', ':lua require("Navigator").left()<CR>')
+U.map('n', '<A-k>', ':lua require("Navigator").up()<CR>')
+U.map('n', '<A-l>', ':lua require("Navigator").right()<CR>')
+U.map('n', '<A-j>', ':lua require("Navigator").down()<CR>')

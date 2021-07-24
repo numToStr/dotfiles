@@ -31,13 +31,17 @@ return require('packer').startup({
         use({
             'numtostr/gruvbox-material',
             branch = 'lua',
-            config = require('plugins.gruvbox').config,
+            config = function()
+                require('plugins.gruvbox')
+            end,
         })
 
         -- " For getting indent lines in code
         use({
             'lukas-reineke/indent-blankline.nvim',
-            config = require('plugins.indentline').config,
+            config = function()
+                require('plugins.indentline')
+            end,
         })
 
         -- " For commmenting stuff out
@@ -46,7 +50,9 @@ return require('packer').startup({
         -- " For navigating b/w tmux window, specially for navigating with NERDTree
         use({
             'numtostr/Navigator.nvim',
-            config = require('plugins.navigator').config,
+            config = function()
+                require('plugins.navigator')
+            end,
         })
 
         -- " For 'surroundings': parentheses, brackets, quotes, XML tags, and more.
@@ -58,14 +64,18 @@ return require('packer').startup({
         -- " Vim motion in lightning fast speed
         use({
             'phaazon/hop.nvim',
-            config = require('plugins.hop').config,
+            config = function()
+                require('plugins.hop')
+            end,
         })
         -- " Intellisense and completion engine
         use({
             {
                 'neoclide/coc.nvim',
                 branch = 'release',
-                config = require('plugins.coc').config,
+                config = function()
+                    require('plugins.coc')
+                end,
                 disable = is_nvim_lsp,
             },
             -- This plugins only works with coc.nvim
@@ -104,7 +114,9 @@ return require('packer').startup({
         -- For floating terminal
         use({
             'numToStr/FTerm.nvim',
-            config = require('plugins.fterm').config,
+            config = function()
+                require('plugins.fterm')
+            end,
         })
 
         -- For smooth scroll
@@ -136,7 +148,9 @@ return require('packer').startup({
         -- " For git stuff
         use({
             'rhysd/git-messenger.vim',
-            config = require('plugins.git-messenger').config,
+            config = function()
+                require('plugins.git-messenger')
+            end,
         })
 
         -- " Some snippets
@@ -153,13 +167,17 @@ return require('packer').startup({
 
         use({
             'kyazdani42/nvim-tree.lua',
-            config = require('plugins.nvim-tree').config,
+            config = function()
+                require('plugins.nvim-tree')
+            end,
         })
 
         use({
             {
                 'nvim-telescope/telescope.nvim',
-                config = require('plugins.telescope').config,
+                config = function()
+                    require('plugins.telescope')
+                end,
             },
             {
                 'nvim-telescope/telescope-fzf-native.nvim',
@@ -173,30 +191,40 @@ return require('packer').startup({
         -- " For getting git status in the status line
         use({
             'lewis6991/gitsigns.nvim',
-            config = require('plugins.gitsigns').config,
+            config = function()
+                require('plugins.gitsigns')
+            end,
         })
 
         -- To format stuff out
         use({
             'mhartington/formatter.nvim',
-            config = require('plugins.formatter').config,
+            config = function()
+                require('plugins.formatter')
+            end,
         })
 
         use({
             'hoob3rt/lualine.nvim',
-            config = require('plugins.lualine').config,
+            config = function()
+                require('plugins.lualine')
+            end,
         })
 
         use({
             'akinsho/nvim-bufferline.lua',
-            config = require('plugins.bufferline').config,
+            config = function()
+                require('plugins.bufferline')
+            end,
         })
 
         use({
             {
                 'nvim-treesitter/nvim-treesitter',
                 run = ':TSUpdate',
-                config = require('plugins.treesitter').config,
+                config = function()
+                    require('plugins.treesitter')
+                end,
             },
             'nvim-treesitter/playground',
             'nvim-treesitter/nvim-treesitter-textobjects',
@@ -221,7 +249,9 @@ return require('packer').startup({
         use({
             'hrsh7th/nvim-compe',
             disable = not is_nvim_lsp,
-            config = require('plugins.lsp.nvim-compe').config,
+            config = function()
+                require('plugins.lsp.nvim-compe')
+            end,
             requires = {
                 -- For snippets support
                 { 'L3MON4D3/LuaSnip' },

@@ -1,31 +1,27 @@
-local M = {}
-
-function M.config()
-    require('formatter').setup({
-        logging = false,
-        filetype = {
-            terraform = {
-                function()
-                    return {
-                        exe = 'terraform',
-                        args = { 'fmt', '-' },
-                        stdin = true,
-                    }
-                end,
-            },
-            lua = {
-                function()
-                    return {
-                        exe = 'stylua',
-                        args = { '-s', '--stdin-filepath', vim.api.nvim_buf_get_name(0) },
-                        stdin = false,
-                        tempfile_dir = '/tmp',
-                    }
-                end,
-            },
+require('formatter').setup({
+    logging = false,
+    filetype = {
+        terraform = {
+            function()
+                return {
+                    exe = 'terraform',
+                    args = { 'fmt', '-' },
+                    stdin = true,
+                }
+            end,
         },
-    })
-end
+        lua = {
+            function()
+                return {
+                    exe = 'stylua',
+                    args = { '-s', '--stdin-filepath', vim.api.nvim_buf_get_name(0) },
+                    stdin = false,
+                    tempfile_dir = '/tmp',
+                }
+            end,
+        },
+    },
+})
 
 require('au').augroup('FormatAutogroup', {
     {
@@ -34,5 +30,3 @@ require('au').augroup('FormatAutogroup', {
         command = 'FormatWrite',
     },
 })
-
-return M
