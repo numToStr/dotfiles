@@ -67,6 +67,9 @@ o.inccommand = 'nosplit'
 -- Completion menu option
 o.completeopt = 'menuone,noselect'
 
+-- When running macros and regexes on a large file, lazy redraw tells neovim/vim not to draw the screen, which greatly speeds it up, upto 6-7x faster
+o.lazyredraw = true
+
 -- Map <leader> to space
 U.map('n', '<SPACE>', '<Nop>')
 g.mapleader = ' '
