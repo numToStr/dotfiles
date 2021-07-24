@@ -8,23 +8,21 @@ local cmd = vim.api.nvim_command
 cmd('syntax on')
 cmd('filetype plugin indent on')
 
-o.compatible = false
-o.encoding = 'UTF-8'
 o.termguicolors = true
 o.background = 'dark'
 
+-- Do not save when switching buffers
 o.hidden = true
+
+-- Decrease update time
 o.timeoutlen = 500
-o.updatetime = 100
-o.ttyfast = true
+o.updatetime = 200
 
 -- I have to set these individually as neovim doesn't update those
 o.scrolloff = 8
 wo.scrolloff = 8
 
-o.showcmd = true
-o.wildmenu = true
-
+-- Better editor UI
 wo.number = true
 wo.numberwidth = 6
 wo.relativenumber = true
@@ -35,6 +33,7 @@ wo.cursorline = true
 -- Related: https://github.com/lukas-reineke/indent-blankline.nvim/issues/59
 wo.colorcolumn = '99999'
 
+-- Better editing experience
 o.expandtab = true
 o.smarttab = true
 o.tabstop = 4
@@ -42,16 +41,18 @@ o.cindent = true
 o.shiftwidth = 4
 o.softtabstop = 4
 o.autoindent = true
-o.clipboard = 'unnamedplus'
-
 wo.wrap = true
 bo.textwidth = 300
-bo.formatoptions = 'qrn1'
+-- bo.formatoptions = 'qrn1'
 
-o.hlsearch = true
+-- Makes neovim and host OS clipboard play nicely with each other
+o.clipboard = 'unnamedplus'
+
+-- Case insensitive searching UNLESS /C or capital in search
 o.ignorecase = true
 o.smartcase = true
 
+-- Undo and backup options
 o.backup = false
 o.writebackup = false
 o.undofile = true
@@ -60,8 +61,13 @@ o.backupdir = '/tmp/'
 o.directory = '/tmp/'
 o.undodir = '/tmp/'
 
+-- Incremental live completion
+o.inccommand = 'nosplit'
+
+-- Completion menu option
 o.completeopt = 'menuone,noselect'
 
 -- Map <leader> to space
 U.map('n', '<SPACE>', '<Nop>')
 g.mapleader = ' '
+g.maplocalleader = ' '
