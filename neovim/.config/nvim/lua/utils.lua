@@ -5,18 +5,18 @@ local U = {}
 
 -- Key mapping
 function U.map(mode, key, result, opts)
-    opts = vim.tbl_extend('keep', opts or {}, {
-        noremap = true,
-        silent = true,
-        expr = false,
-    })
+    local options = { noremap = true, silent = true, expr = false }
 
-    api.nvim_set_keymap(mode, key, result, opts)
+    if opts then
+        options = vim.tbl_extend('keep', opts, options)
+    end
+
+    api.nvim_set_keymap(mode, key, result, options)
 end
 
 -- For moments when I don't want my cursor to stay on the tree
 function U.move_cursor_from_tree()
-    if vim.bo.filetype == 'NvimTree' then
+    if api.nvim_buf_get_option(0, 'filetype') == 'NvimTree' then
         cmd('wincmd l')
     end
 end
