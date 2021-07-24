@@ -8,7 +8,7 @@
 require('builtins')
 require('plugins')
 require('settings')
-require('autocommands')
+require('autocmd')
 require('keybinds')
 
 -- For debugging purpose

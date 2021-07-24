@@ -9,18 +9,8 @@ local cmd = api.nvim_command
 -- cmd("au FocusLost * :wa")
 -- cmd("au FocusLost * silent! wa")
 
-local au_filetypes = {
-    {
-        event = 'BufNewFile,BufRead',
-        pattern = '*.gql,*.graphql',
-        callback = function()
-            vim.bo.filetype = 'graphql'
-            vim.bo.commentstring = '# %s'
-        end,
-    },
-}
-
 local filetypes = {
+    { '*.gql,*.graphql', 'graphql' },
     { '.eslintrc,.prettierrc,*.json*', 'json' },
     { '.eslintignore,.prettierignore,*.conf', 'conf' },
     { '*.env*', 'sh' },
@@ -28,8 +18,10 @@ local filetypes = {
     { '*.tf', 'terraform' },
 }
 
+local au_ft = {}
+
 for _, ft in ipairs(filetypes) do
-    table.insert(au_filetypes, {
+    table.insert(au_ft, {
         event = 'BufNewFile,BufRead',
         pattern = ft[1],
         callback = function()
@@ -38,7 +30,7 @@ for _, ft in ipairs(filetypes) do
     })
 end
 
-au.augroup('MyFileTypes', au_filetypes)
+au.augroup('MyFileTypes', au_ft)
 
 -- Open help vertically and press q to exit
 local function help_tab()
