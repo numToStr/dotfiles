@@ -70,16 +70,16 @@ return require('packer').startup({
         use({
             {
                 'nvim-treesitter/nvim-treesitter',
-                event = { 'BufRead' },
+                event = 'BufRead',
                 run = ':TSUpdate',
                 config = function()
                     require('plugins.treesitter')
                 end,
             },
-            { 'nvim-treesitter/playground', event = { 'BufRead' } },
-            { 'nvim-treesitter/nvim-treesitter-textobjects', event = { 'BufRead' } },
-            { 'nvim-treesitter/nvim-treesitter-refactor', event = { 'BufRead' } },
-            { 'windwp/nvim-ts-autotag', event = { 'BufRead' } },
+            { 'nvim-treesitter/playground', event = 'BufRead' },
+            { 'nvim-treesitter/nvim-treesitter-textobjects', event = 'BufRead' },
+            { 'nvim-treesitter/nvim-treesitter-refactor', event = 'BufRead' },
+            { 'windwp/nvim-ts-autotag', event = 'BufRead' },
         })
 
         --------------------------
@@ -88,7 +88,7 @@ return require('packer').startup({
 
         use({
             'lukas-reineke/indent-blankline.nvim',
-            event = { 'BufRead' },
+            event = 'BufRead',
             config = function()
                 require('plugins.indentline')
             end,
@@ -96,7 +96,7 @@ return require('packer').startup({
 
         use({
             'norcalli/nvim-colorizer.lua',
-            event = { 'BufEnter' },
+            event = 'BufEnter',
             config = function()
                 require('colorizer').setup()
             end,
@@ -104,7 +104,7 @@ return require('packer').startup({
 
         use({
             'folke/todo-comments.nvim',
-            event = { 'BufRead' },
+            event = 'BufRead',
             config = function()
                 require('todo-comments').setup({
                     signs = false,
@@ -114,7 +114,7 @@ return require('packer').startup({
 
         use({
             'lewis6991/gitsigns.nvim',
-            event = { 'BufRead' },
+            event = 'BufRead',
             config = function()
                 require('plugins.gitsigns')
             end,
@@ -122,7 +122,7 @@ return require('packer').startup({
 
         use({
             'rhysd/git-messenger.vim',
-            event = { 'BufRead' },
+            event = 'BufRead',
             config = function()
                 require('plugins.git-messenger')
             end,
@@ -134,7 +134,7 @@ return require('packer').startup({
 
         use({
             'kyazdani42/nvim-tree.lua',
-            event = { 'VimEnter' },
+            event = 'VimEnter',
             config = function()
                 require('plugins.nvim-tree')
             end,
@@ -153,7 +153,8 @@ return require('packer').startup({
 
         use({
             'numtostr/Navigator.nvim',
-            event = { 'FocusLost', 'WinEnter' },
+            event = 'FocusLost',
+            'WinEnter',
             config = function()
                 require('plugins.navigator')
             end,
@@ -161,7 +162,7 @@ return require('packer').startup({
 
         use({
             'phaazon/hop.nvim',
-            event = { 'BufRead' },
+            event = 'BufRead',
             config = function()
                 require('plugins.hop')
             end,
@@ -169,7 +170,7 @@ return require('packer').startup({
 
         use({
             'karb94/neoscroll.nvim',
-            event = { 'WinScrolled' },
+            event = 'WinScrolled',
             config = function()
                 require('neoscroll').setup({ hide_cursor = false })
             end,
@@ -181,27 +182,27 @@ return require('packer').startup({
 
         use({
             'tomtom/tcomment_vim',
-            event = { 'BufRead' },
+            event = 'BufRead',
         })
 
         use({
             'tpope/vim-surround',
-            event = { 'BufRead' },
+            event = 'BufRead',
         })
 
         use({
             'tpope/vim-repeat',
-            event = { 'BufRead' },
+            event = 'BufRead',
         })
 
         use({
             'wellle/targets.vim',
-            event = { 'BufRead' },
+            event = 'BufRead',
         })
 
         use({
             'windwp/nvim-autopairs',
-            event = { 'InsertCharPre' },
+            event = 'InsertCharPre',
             config = function()
                 require('nvim-autopairs').setup()
             end,
@@ -209,27 +210,27 @@ return require('packer').startup({
 
         use({
             'ntpeters/vim-better-whitespace',
-            event = { 'BufRead' },
+            event = 'BufRead',
         })
 
         use({
             'michaeljsmith/vim-indent-object',
-            event = { 'BufRead' },
+            event = 'BufRead',
         })
 
         use({
             'bronson/vim-visual-star-search',
-            event = { 'BufRead' },
+            event = 'BufRead',
         })
 
         use({
             'AndrewRadev/splitjoin.vim',
-            event = { 'BufRead' },
+            event = 'BufRead',
         })
 
         use({
             'mhartington/formatter.nvim',
-            event = { 'BufRead' },
+            event = 'BufRead',
             config = function()
                 require('plugins.formatter')
             end,
@@ -237,7 +238,7 @@ return require('packer').startup({
 
         use({
             'numtostr/BufOnly.nvim',
-            event = { 'BufRead' },
+            event = 'BufRead',
             config = function()
                 require('utils').map('n', '<leader>x', ':BufOnly<CR>')
             end,
@@ -245,7 +246,7 @@ return require('packer').startup({
 
         use({
             'moll/vim-bbye',
-            event = { 'BufRead' },
+            event = 'BufRead',
             config = function()
                 require('utils').map('n', '<leader>q', ':Bdelete<CR>')
             end,
@@ -257,7 +258,7 @@ return require('packer').startup({
 
         use({
             'numToStr/FTerm.nvim',
-            event = { 'BufEnter' },
+            event = 'BufEnter',
             config = function()
                 require('plugins.fterm')
             end,
@@ -269,7 +270,7 @@ return require('packer').startup({
 
         use({
             'neoclide/coc.nvim',
-            event = { 'BufRead' },
+            event = 'BufRead',
             config = function()
                 require('plugins.coc')
             end,
@@ -278,12 +279,12 @@ return require('packer').startup({
                 {
                     'dsznajder/vscode-es7-javascript-react-snippets',
                     run = 'yarn install --frozen-lockfile && yarn compile',
-                    event = { 'InsertCharPre' },
+                    event = 'InsertCharPre',
                     disable = is_nvim_lsp,
                 },
                 {
                     'honza/vim-snippets',
-                    event = { 'InsertCharPre' },
+                    event = 'InsertCharPre',
                     disable = is_nvim_lsp,
                 },
             },
