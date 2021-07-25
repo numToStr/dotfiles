@@ -16,133 +16,31 @@ require('au').augroup('PackerGroup', {
 
 return require('packer').startup({
     function(use)
-        -- ############################
-        -- # Some requied Lua plugins #
-        -- ############################
-        use({
-            'nvim-lua/popup.nvim',
-            'nvim-lua/plenary.nvim',
-        })
+        ---------------------
+        -- Package Manager --
+        ---------------------
 
-        -- Packer can manage itself as an optional plugin
         use({ 'wbthomason/packer.nvim', opt = true })
 
-        -- " For getting the theme
+        ----------------------
+        -- Required plugins --
+        ----------------------
+
+        use({ 'nvim-lua/plenary.nvim' })
+
+        use({ 'nvim-lua/popup.nvim' })
+
+        ----------------------------------------
+        -- Theme, Icons, Statusbar, Bufferbar --
+        ----------------------------------------
+
         use({
             'numtostr/gruvbox-material',
             branch = 'lua',
-            config = require('plugins._theme').config,
-        })
-
-        -- " For getting indent lines in code
-        use({
-            'lukas-reineke/indent-blankline.nvim',
-            config = require('plugins._indentline').config,
-        })
-
-        -- " For commmenting stuff out
-        use('tomtom/tcomment_vim')
-
-        -- " For navigating b/w tmux window, specially for navigating with NERDTree
-        use({
-            'numtostr/Navigator.nvim',
-            config = require('plugins._navigator').config,
-        })
-
-        -- " For 'surroundings': parentheses, brackets, quotes, XML tags, and more.
-        use('tpope/vim-surround')
-
-        -- " Fix repeat for vim-surround
-        use('tpope/vim-repeat')
-
-        -- " Vim motion in lightning fast speed
-        use({
-            'phaazon/hop.nvim',
-            config = require('plugins._hop').config,
-        })
-        -- " Intellisense and completion engine
-        use({
-            {
-                'neoclide/coc.nvim',
-                branch = 'release',
-                config = require('plugins._coc').config,
-                disable = is_nvim_lsp,
-            },
-            -- This plugins only works with coc.nvim
-            {
-                'dsznajder/vscode-es7-javascript-react-snippets',
-                run = 'yarn install --frozen-lockfile && yarn compile',
-                disable = is_nvim_lsp,
-            },
-        })
-
-        -- " For various text objects
-        use('wellle/targets.vim')
-
-        -- " Provides insert mode auto-completion for quotes, parens, brackets, etc.
-        use({
-            'windwp/nvim-autopairs',
             config = function()
-                require('nvim-autopairs').setup()
+                require('plugins.gruvbox')
             end,
         })
-
-        -- " For highlighting trailing whitespace
-        -- " :StripWhitespace is also provided to clean whitespace automagically
-        use('ntpeters/vim-better-whitespace')
-
-        -- " Delete buffers and close files in Vim without closing your windows or messing up your layout
-        use({
-            'moll/vim-bbye',
-            config = function()
-                require('utils').map('n', '<leader>q', ':Bdelete<CR>')
-            end,
-        })
-
-        use('michaeljsmith/vim-indent-object')
-
-        -- For floating terminal
-        use({
-            'numToStr/FTerm.nvim',
-            config = require('plugins._term').config,
-        })
-
-        -- For smooth scroll
-        use({
-            'karb94/neoscroll.nvim',
-            config = function()
-                require('neoscroll').setup({ hide_cursor = false })
-            end,
-        })
-
-        use('bronson/vim-visual-star-search')
-
-        -- " Safely deletes all open buffers except the current one and NERDTree
-        use({
-            'numtostr/BufOnly.nvim',
-            config = function()
-                require('utils').map('n', '<leader>x', ':BufOnly<CR>')
-            end,
-        })
-
-        -- " For showing the actual color of the hex value
-        use({
-            'norcalli/nvim-colorizer.lua',
-            config = function()
-                require('colorizer').setup()
-            end,
-        })
-
-        -- " For git stuff
-        use({
-            'rhysd/git-messenger.vim',
-            config = require('plugins._git-messenger').config,
-        })
-
-        -- " Some snippets
-        use('honza/vim-snippets')
-
-        use('AndrewRadev/splitjoin.vim')
 
         use({
             'kyazdani42/nvim-web-devicons',
@@ -152,60 +50,63 @@ return require('packer').startup({
         })
 
         use({
-            'kyazdani42/nvim-tree.lua',
-            config = require('plugins._tree').config,
-        })
-
-        use({
-            {
-                'nvim-telescope/telescope.nvim',
-                config = require('plugins._telescope').config,
-            },
-            {
-                'nvim-telescope/telescope-fzf-native.nvim',
-                run = 'make',
-            },
-            {
-                'nvim-telescope/telescope-symbols.nvim',
-            },
-        })
-
-        -- " For getting git status in the status line
-        use({
-            'lewis6991/gitsigns.nvim',
-            config = require('plugins._gitsigns').config,
-        })
-
-        -- To format stuff out
-        use({
-            'mhartington/formatter.nvim',
-            config = require('plugins._formatter').config,
-        })
-
-        use({
             'hoob3rt/lualine.nvim',
-            config = require('plugins._lualine').config,
+            event = 'BufEnter',
+            config = function()
+                require('plugins.lualine')
+            end,
         })
 
         use({
             'akinsho/nvim-bufferline.lua',
-            config = require('plugins._bufferline').config,
+            event = 'BufEnter',
+            config = function()
+                require('plugins.bufferline')
+            end,
         })
+
+        -----------------------------------
+        -- Treesitter: Better Highlights --
+        -----------------------------------
 
         use({
             {
                 'nvim-treesitter/nvim-treesitter',
+                event = 'BufRead',
                 run = ':TSUpdate',
-                config = require('plugins._treesitter').config,
+                config = function()
+                    require('plugins.treesitter')
+                end,
             },
-            'nvim-treesitter/playground',
-            'nvim-treesitter/nvim-treesitter-textobjects',
-            'nvim-treesitter/nvim-treesitter-refactor',
-            'windwp/nvim-ts-autotag',
+            { 'nvim-treesitter/playground', event = 'BufRead' },
+            { 'nvim-treesitter/nvim-treesitter-textobjects', event = 'BufRead' },
+            { 'nvim-treesitter/nvim-treesitter-refactor', event = 'BufRead' },
+            { 'windwp/nvim-ts-autotag', event = 'BufRead' },
+        })
+
+        --------------------------
+        -- Editor UI Niceties --
+        --------------------------
+
+        use({
+            'lukas-reineke/indent-blankline.nvim',
+            event = 'BufRead',
+            config = function()
+                require('plugins.indentline')
+            end,
+        })
+
+        use({
+            'norcalli/nvim-colorizer.lua',
+            event = 'BufEnter',
+            config = function()
+                require('colorizer').setup()
+            end,
         })
 
         use({
             'folke/todo-comments.nvim',
+            event = 'BufRead',
             config = function()
                 require('todo-comments').setup({
                     signs = false,
@@ -213,24 +114,208 @@ return require('packer').startup({
             end,
         })
 
-        -- ##############
-        -- # Neovim LSP #
-        -- ##############
+        use({
+            'lewis6991/gitsigns.nvim',
+            event = 'BufRead',
+            config = function()
+                require('plugins.gitsigns')
+            end,
+        })
 
-        -- For autocompletion
+        use({
+            'rhysd/git-messenger.vim',
+            event = 'BufRead',
+            config = function()
+                require('plugins.git-messenger')
+            end,
+        })
+
+        ---------------------------------
+        -- Navigation and Fuzzy Search --
+        ---------------------------------
+
+        use({
+            'kyazdani42/nvim-tree.lua',
+            event = 'BufEnter',
+            config = function()
+                require('plugins.nvim-tree')
+            end,
+        })
+
+        use({
+            {
+                'nvim-telescope/telescope.nvim',
+                event = 'BufEnter',
+                config = function()
+                    require('plugins.telescope')
+                end,
+            },
+            { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+            { 'nvim-telescope/telescope-symbols.nvim' },
+        })
+
+        use({
+            'numtostr/Navigator.nvim',
+            event = { 'FocusLost', 'WinEnter' },
+            config = function()
+                require('plugins.navigator')
+            end,
+        })
+
+        use({
+            'phaazon/hop.nvim',
+            event = 'BufRead',
+            config = function()
+                require('plugins.hop')
+            end,
+        })
+
+        use({
+            'karb94/neoscroll.nvim',
+            event = 'WinScrolled',
+            config = function()
+                require('neoscroll').setup({ hide_cursor = false })
+            end,
+        })
+
+        -------------------------
+        -- Editing to the MOON --
+        -------------------------
+
+        use({
+            'tomtom/tcomment_vim',
+            event = 'BufRead',
+        })
+
+        use({
+            'tpope/vim-surround',
+            event = 'BufRead',
+        })
+
+        use({
+            'tpope/vim-repeat',
+            event = 'BufRead',
+        })
+
+        use({
+            'wellle/targets.vim',
+            event = 'BufRead',
+        })
+
+        use({
+            'windwp/nvim-autopairs',
+            event = 'InsertCharPre',
+            config = function()
+                require('nvim-autopairs').setup()
+            end,
+        })
+
+        use({
+            'ntpeters/vim-better-whitespace',
+            event = 'BufRead',
+            config = function()
+                require('plugins.whitespace')
+            end,
+        })
+
+        use({
+            'michaeljsmith/vim-indent-object',
+            event = 'BufRead',
+        })
+
+        use({
+            'bronson/vim-visual-star-search',
+            event = 'BufRead',
+        })
+
+        use({
+            'AndrewRadev/splitjoin.vim',
+            -- NOTE: splitjoin won't work with `BufRead` event
+            event = 'BufEnter',
+        })
+
+        use({
+            'mhartington/formatter.nvim',
+            event = 'BufRead',
+            config = function()
+                require('plugins.formatter')
+            end,
+        })
+
+        use({
+            'numtostr/BufOnly.nvim',
+            event = 'BufRead',
+            config = function()
+                require('utils').map('n', '<leader>x', ':BufOnly<CR>')
+            end,
+        })
+
+        use({
+            'moll/vim-bbye',
+            event = 'BufRead',
+            config = function()
+                require('utils').map('n', '<leader>q', ':Bdelete<CR>')
+            end,
+        })
+
+        --------------
+        -- Terminal --
+        --------------
+
+        use({
+            'numToStr/FTerm.nvim',
+            event = 'BufEnter',
+            config = function()
+                require('plugins.fterm')
+            end,
+        })
+
+        -----------------------------------
+        -- LSP, Completions and Snippets --
+        -----------------------------------
+
+        use({
+            'neoclide/coc.nvim',
+            event = 'BufRead',
+            config = function()
+                require('plugins.coc')
+            end,
+            disable = is_nvim_lsp,
+            requires = {
+                {
+                    'dsznajder/vscode-es7-javascript-react-snippets',
+                    run = 'yarn install --frozen-lockfile && yarn compile',
+                    event = 'InsertCharPre',
+                    disable = is_nvim_lsp,
+                },
+                {
+                    'honza/vim-snippets',
+                    event = 'InsertCharPre',
+                    disable = is_nvim_lsp,
+                },
+            },
+        })
+
         use({
             'hrsh7th/nvim-compe',
             disable = not is_nvim_lsp,
-            config = require('plugins.lsp.nvim-compe').config,
+            event = 'InsertEnter',
+            config = function()
+                require('plugins.lsp.nvim-compe')
+            end,
             requires = {
-                -- For snippets support
-                { 'L3MON4D3/LuaSnip' },
+                {
+                    'L3MON4D3/LuaSnip',
+                    event = 'InsertCharPre',
+                },
             },
         })
     end,
     config = {
         display = {
-            open_fn = require('packer.util').float,
+            open_fn = function()
+                return require('packer.util').float({ border = 'single' })
+            end,
         },
     },
 })
