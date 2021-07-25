@@ -195,7 +195,7 @@ zinit wait"1" lucid light-mode from"gh-r" as"command" bpick'*linux*' for \
 # 1. Load all .zsh files under zsh/.dotrc directory
 # 3. Load ~/.localrc, if it exists
 # 3. Load ~/.zsh_post if it exists
-zinit is-snippet for \
+zinit wait'0a' lucid is-snippet for \
     $HOME/.dotrc/*.zsh \
     if"[[ -f $HOME/.localrc  ]]" $HOME/.localrc \
     if"[[ -f $HOME/.zsh_post ]]" $HOME/.zsh_post
