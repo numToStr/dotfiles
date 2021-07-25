@@ -15,6 +15,7 @@ zinit wait'1' lucid light-mode from'gh-r' as'command' bpick'*linux*.tar.gz' for 
     atload'alias h=xh' mv'xh* -> xh' pick'xh/xh' @ducaale/xh \
     mv'zenv* -> zenv' pick'zenv/zenv' numToStr/zenv \
     mv'gh* -> gh' pick'gh/bin/gh' cli/cli \
+    @sharkdp/hyperfine \
     charmbracelet/glow \
     extrawurst/gitui \
     muesli/duf \
