@@ -51,6 +51,7 @@ return require('packer').startup({
 
         use({
             'hoob3rt/lualine.nvim',
+            event = 'BufEnter',
             config = function()
                 require('plugins.lualine')
             end,
@@ -58,6 +59,7 @@ return require('packer').startup({
 
         use({
             'akinsho/nvim-bufferline.lua',
+            event = 'BufEnter',
             config = function()
                 require('plugins.bufferline')
             end,
@@ -143,6 +145,7 @@ return require('packer').startup({
         use({
             {
                 'nvim-telescope/telescope.nvim',
+                event = 'BufEnter',
                 config = function()
                     require('plugins.telescope')
                 end,
@@ -224,7 +227,8 @@ return require('packer').startup({
 
         use({
             'AndrewRadev/splitjoin.vim',
-            event = 'BufRead',
+            -- NOTE: splitjoin won't work with `BufRead` event
+            event = 'BufEnter',
         })
 
         use({
