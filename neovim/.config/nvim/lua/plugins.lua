@@ -213,6 +213,9 @@ return require('packer').startup({
         use({
             'ntpeters/vim-better-whitespace',
             event = 'BufRead',
+            config = function()
+                require('plugins.whitespace')
+            end,
         })
 
         use({
