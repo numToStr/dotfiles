@@ -134,7 +134,7 @@ return require('packer').startup({
 
         use({
             'kyazdani42/nvim-tree.lua',
-            event = 'VimEnter',
+            event = 'BufEnter',
             config = function()
                 require('plugins.nvim-tree')
             end,
@@ -153,8 +153,7 @@ return require('packer').startup({
 
         use({
             'numtostr/Navigator.nvim',
-            event = 'FocusLost',
-            'WinEnter',
+            event = { 'FocusLost', 'WinEnter' },
             config = function()
                 require('plugins.navigator')
             end,
