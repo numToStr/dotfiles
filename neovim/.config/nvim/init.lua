@@ -1,5 +1,8 @@
 -- local D = os.getenv('DOTFILES') or os.getenv('HOME') .. '/.dotfiles'
--- local o = vim.o
+local o = vim.o
+
+-- Disable shadafile
+o.shadafile = 'NONE'
 
 -- This is a magic line that will take your pain away.
 -- o.rtp = string.format('%s/neovim,%s', D, o.rtp)
@@ -16,6 +19,9 @@ function _G.dump(...)
     local objects = vim.tbl_map(vim.inspect, { ... })
     print(unpack(objects))
 end
+
+-- Enable shadafile
+o.shadafile = ''
 
 -- vim.api.nvim_exec(
 --     [[
