@@ -98,7 +98,7 @@ return require('packer').startup({
 
         use({
             'norcalli/nvim-colorizer.lua',
-            event = 'BufEnter',
+            event = 'CursorHold',
             config = function()
                 require('colorizer').setup()
             end,
@@ -136,7 +136,7 @@ return require('packer').startup({
 
         use({
             'kyazdani42/nvim-tree.lua',
-            event = 'BufEnter',
+            event = 'CursorHold',
             config = function()
                 require('plugins.nvim-tree')
             end,
@@ -145,13 +145,20 @@ return require('packer').startup({
         use({
             {
                 'nvim-telescope/telescope.nvim',
-                event = 'BufEnter',
+                event = 'CursorHold',
                 config = function()
                     require('plugins.telescope')
                 end,
             },
-            { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
-            { 'nvim-telescope/telescope-symbols.nvim' },
+            {
+                'nvim-telescope/telescope-fzf-native.nvim',
+                run = 'make',
+                event = 'CursorHold',
+            },
+            {
+                'nvim-telescope/telescope-symbols.nvim',
+                event = 'CursorHold',
+            },
         })
 
         use({
@@ -231,7 +238,7 @@ return require('packer').startup({
         use({
             'AndrewRadev/splitjoin.vim',
             -- NOTE: splitjoin won't work with `BufRead` event
-            event = 'BufEnter',
+            event = 'CursorHold',
         })
 
         use({
@@ -264,7 +271,7 @@ return require('packer').startup({
 
         use({
             'numToStr/FTerm.nvim',
-            event = 'BufEnter',
+            event = 'CursorHold',
             config = function()
                 require('plugins.fterm')
             end,
