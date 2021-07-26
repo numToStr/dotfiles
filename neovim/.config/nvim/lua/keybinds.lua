@@ -39,10 +39,12 @@ U.map('n', "''", ':b#<CR>')
 U.map('n', '<C-\\>', ':vsplit<CR>')
 U.map('n', '<A-\\>', ':split<CR>')
 
--- Move line up and down => Ctrl+Shift+<key>
+-- Move line up and down in NORMAL and VISUAL modes
 -- Reference: https://vim.fandom.com/wiki/Moving_lines_up_or_down
 U.map('n', '<C-j>', ':move .+1<CR>')
 U.map('n', '<C-k>', ':move .-2<CR>')
+U.map('v', '<C-j>', ":move '>+1<CR>gv=gv")
+U.map('v', '<C-k>', ":move '<-2<CR>gv=gv")
 
 -- Edit r = shell rc
 -- Conflicts with telescope.live_grep keybinding
