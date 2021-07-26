@@ -1,15 +1,15 @@
 local U = require('utils')
 
--- Interfering with <leader>q
-U.map('n', '<S-q>', '<Nop>')
-
+-- Fix Y
 U.map('n', '<S-Y>', 'y$')
+
+-- Mimic shell movements
 U.map('i', '<C-E>', '<ESC>A')
 U.map('i', '<C-A>', '<ESC>I')
 
 -- Fast execute macro
-U.map('x', 'Q', ':normal @@<CR>')
-U.map('n', 'Q', ':normal @@<CR>')
+U.map('x', '<S-q>', ':normal @@<CR>')
+U.map('n', '<S-q>', ':normal @@<CR>')
 
 -- Quickly save the current buffer or all buffers
 U.map('n', '<leader>w', ':update<CR>')
@@ -25,16 +25,13 @@ U.map('n', '<leader>n', ':nohl<CR>')
 U.map('n', '<leader>o', 'o<ESC>')
 U.map('n', '<leader>O', 'O<ESC>')
 
--- To open a new empty buffer
--- U.map("n", "<leader>T", ":enew<CR>")
--- Move to the previous buffer
+-- Move to the next/previous buffer
 U.map('n', '<leader>[', ':bp<CR>')
--- Move to the next buffer
 U.map('n', '<leader>]', ':bn<CR>')
--- Show all open buffers and their status
--- U.map("n", "<leader>bl", ":ls<CR>")
+
 -- Move to last buffer
 U.map('n', "''", ':b#<CR>')
+
 -- Copying the vscode behaviour of making tab splits
 U.map('n', '<C-\\>', ':vsplit<CR>')
 U.map('n', '<A-\\>', ':split<CR>')
@@ -45,13 +42,6 @@ U.map('n', '<C-j>', ':move .+1<CR>')
 U.map('n', '<C-k>', ':move .-2<CR>')
 U.map('v', '<C-j>', ":move '>+1<CR>gv=gv")
 U.map('v', '<C-k>', ":move '<-2<CR>gv=gv")
-
--- Edit r = shell rc
--- Conflicts with telescope.live_grep keybinding
--- U.map("n", "'r", ":e ~/.zshrc<CR>")
-
---  Edit v = vimrc
-U.map('n', "'v", ':e $MYVIMRC<CR>')
 
 -- Use operator pending mode to visually select the whole buffer
 -- e.g. dA = delete buffer ALL, yA = copy whole buffer ALL
