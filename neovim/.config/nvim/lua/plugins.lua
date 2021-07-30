@@ -72,16 +72,16 @@ return require('packer').startup({
         use({
             {
                 'nvim-treesitter/nvim-treesitter',
-                event = 'BufRead',
+                event = 'CursorHold',
                 run = ':TSUpdate',
                 config = function()
                     require('plugins.treesitter')
                 end,
             },
-            { 'nvim-treesitter/playground', event = 'BufRead' },
-            { 'nvim-treesitter/nvim-treesitter-textobjects', event = 'BufRead' },
-            { 'nvim-treesitter/nvim-treesitter-refactor', event = 'BufRead' },
-            { 'windwp/nvim-ts-autotag', event = 'BufRead' },
+            { 'nvim-treesitter/playground', event = 'CursorHold' },
+            { 'nvim-treesitter/nvim-treesitter-textobjects', event = 'CursorHold' },
+            { 'nvim-treesitter/nvim-treesitter-refactor', event = 'CursorHold' },
+            { 'windwp/nvim-ts-autotag', event = 'CursorHold' },
         })
 
         --------------------------
@@ -145,7 +145,7 @@ return require('packer').startup({
         use({
             {
                 'nvim-telescope/telescope.nvim',
-                event = 'CursorHold',
+                event = 'BufEnter',
                 config = function()
                     require('plugins.telescope')
                 end,
@@ -153,17 +153,17 @@ return require('packer').startup({
             {
                 'nvim-telescope/telescope-fzf-native.nvim',
                 run = 'make',
-                event = 'CursorHold',
+                event = 'BufEnter',
             },
             {
                 'nvim-telescope/telescope-symbols.nvim',
-                event = 'CursorHold',
+                event = 'BufEnter',
             },
         })
 
         use({
             'numtostr/Navigator.nvim',
-            event = { 'FocusLost', 'WinEnter' },
+            event = 'CursorHold',
             config = function()
                 require('plugins.navigator')
             end,
