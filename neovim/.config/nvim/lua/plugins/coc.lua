@@ -79,15 +79,15 @@ U.map('n', '<leader>c', '<Plug>(coc-codeaction)', { noremap = false })
 
 -- Map function and class text objects
 -- NOTE: Requires 'textDocument.documentSymbol' support from the language server.
-U.map('x', 'if', '<Plug>(coc-funcobj-i)', { noremap = false })
-U.map('o', 'if', '<Plug>(coc-funcobj-i)', { noremap = false })
-U.map('x', 'af', '<Plug>(coc-funcobj-a)', { noremap = false })
-U.map('o', 'af', '<Plug>(coc-funcobj-a)', { noremap = false })
-
-U.map('x', 'ic', '<Plug>(coc-classobj-i)', { noremap = false })
-U.map('o', 'ic', '<Plug>(coc-classobj-i)', { noremap = false })
-U.map('x', 'ac', '<Plug>(coc-classobj-a)', { noremap = false })
-U.map('o', 'ac', '<Plug>(coc-classobj-a)', { noremap = false })
+-- U.map('x', 'if', '<Plug>(coc-funcobj-i)', { noremap = false })
+-- U.map('o', 'if', '<Plug>(coc-funcobj-i)', { noremap = false })
+-- U.map('x', 'af', '<Plug>(coc-funcobj-a)', { noremap = false })
+-- U.map('o', 'af', '<Plug>(coc-funcobj-a)', { noremap = false })
+--
+-- U.map('x', 'ic', '<Plug>(coc-classobj-i)', { noremap = false })
+-- U.map('o', 'ic', '<Plug>(coc-classobj-i)', { noremap = false })
+-- U.map('x', 'ac', '<Plug>(coc-classobj-a)', { noremap = false })
+-- U.map('o', 'ac', '<Plug>(coc-classobj-a)', { noremap = false })
 
 -- Remap <C-F> and <C-B> for scroll float windows/popups.
 U.map('n', '<C-F>', 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-F>"', { expr = true })
