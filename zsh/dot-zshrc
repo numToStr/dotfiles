@@ -155,7 +155,7 @@ zinit wait lucid light-mode as'command' for \
     from'gh-r' atinit'export PATH="$HOME/.yarn/bin:$PATH"' mv'yarn* -> yarn' pick"yarn/bin/yarn" bpick'*.tar.gz' \
         yarnpkg/yarn \
 
-zinit wait"1" lucid light-mode from"gh-r" as"command" bpick'*linux*' for \
+zinit wait"1a" lucid light-mode from"gh-r" as"command" bpick'*linux*' for \
      atload'
         eval `snm env zsh`
         alias n="snm"
