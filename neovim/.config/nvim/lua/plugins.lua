@@ -242,14 +242,6 @@ return require('packer').startup({
         })
 
         use({
-            'mhartington/formatter.nvim',
-            event = 'BufRead',
-            config = function()
-                require('plugins.formatter')
-            end,
-        })
-
-        use({
             'numtostr/BufOnly.nvim',
             event = 'BufRead',
             config = function()
@@ -301,6 +293,22 @@ return require('packer').startup({
                     disable = is_nvim_lsp,
                 },
             },
+        })
+
+        use({
+            'neovim/nvim-lspconfig',
+            event = 'BufRead',
+            config = function()
+                require('plugins.lsp.lsp-config')
+            end,
+        })
+
+        use({
+            'jose-elias-alvarez/null-ls.nvim',
+            after = 'nvim-lspconfig',
+            config = function()
+                require('plugins.lsp.null-ls')
+            end,
         })
 
         use({
