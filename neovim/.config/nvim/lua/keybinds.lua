@@ -3,6 +3,10 @@ local U = require('utils')
 -- Fix Y
 U.map('n', '<S-Y>', 'y$')
 
+-- Fix n and N. Keeping cursor in center
+U.map('n', 'n', 'nzz')
+U.map('n', 'N', 'Nzz')
+
 -- Mimic shell movements
 U.map('i', '<C-E>', '<ESC>A')
 U.map('i', '<C-A>', '<ESC>I')
