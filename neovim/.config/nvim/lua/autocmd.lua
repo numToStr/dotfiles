@@ -1,21 +1,12 @@
--- Currently, there is no interface to create user commands in Lua. It is planned, though:
--- PR: https://github.com/neovim/neovim/pull/12378
-
 local au = require('au')
 local api = vim.api
 local cmd = api.nvim_command
 
--- Auto save files when focus is lost
--- cmd("au FocusLost * :wa")
--- cmd("au FocusLost * silent! wa")
-
 local filetypes = {
-    { '*.gql,*.graphql', 'graphql' },
     { '.eslintrc,.prettierrc,*.json*', 'json' },
     { '.eslintignore,.prettierignore,*.conf', 'conf' },
     { '*.env*', 'sh' },
     { '*.mdx', 'markdown' },
-    { '*.tf', 'terraform' },
 }
 
 local au_ft = {}
