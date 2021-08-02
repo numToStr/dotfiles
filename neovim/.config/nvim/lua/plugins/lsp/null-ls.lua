@@ -6,6 +6,10 @@ local fmt = nls.builtins.formatting
 -- Configuring null-ls
 nls.config({
     sources = {
+        fmt.trim_whitespace.with({
+            filetypes = { 'text', 'sh', 'zsh' },
+        }),
+        fmt.rustfmt,
         fmt.stylua,
         fmt.terraform_fmt,
     },
