@@ -145,7 +145,7 @@ return require('packer').startup({
         use({
             {
                 'nvim-telescope/telescope.nvim',
-                event = 'BufEnter',
+                event = 'CursorHold',
                 config = function()
                     require('plugins.telescope')
                 end,
@@ -153,11 +153,11 @@ return require('packer').startup({
             {
                 'nvim-telescope/telescope-fzf-native.nvim',
                 run = 'make',
-                event = 'BufEnter',
+                event = 'CursorHold',
             },
             {
                 'nvim-telescope/telescope-symbols.nvim',
-                event = 'BufEnter',
+                event = 'CursorHold',
             },
         })
 
