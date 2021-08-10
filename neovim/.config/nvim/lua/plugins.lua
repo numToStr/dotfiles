@@ -78,10 +78,10 @@ return require('packer').startup({
                     require('plugins.treesitter')
                 end,
             },
-            { 'nvim-treesitter/playground', event = 'CursorHold' },
-            { 'nvim-treesitter/nvim-treesitter-textobjects', event = 'CursorHold' },
-            { 'nvim-treesitter/nvim-treesitter-refactor', event = 'CursorHold' },
-            { 'windwp/nvim-ts-autotag', event = 'CursorHold' },
+            { 'nvim-treesitter/playground', after = 'nvim-treesitter' },
+            { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' },
+            { 'nvim-treesitter/nvim-treesitter-refactor', after = 'nvim-treesitter' },
+            { 'windwp/nvim-ts-autotag', after = 'nvim-treesitter' },
         })
 
         --------------------------
