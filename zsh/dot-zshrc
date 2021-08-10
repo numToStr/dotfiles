@@ -157,7 +157,7 @@ zinit wait lucid light-mode as'command' for \
 
 zinit wait"1a" lucid light-mode from"gh-r" as"command" bpick'*linux*' for \
      atload'
-        eval `snm env zsh`
+        eval "$(snm env zsh)"
         alias n="snm"
     ' mv'snm* -> snm' pick'snm/snm' \
         @numToStr/snm \
