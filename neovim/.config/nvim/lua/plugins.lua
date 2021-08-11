@@ -26,9 +26,7 @@ return require('packer').startup({
         -- Required plugins --
         ----------------------
 
-        use({ 'nvim-lua/plenary.nvim' })
-
-        use({ 'nvim-lua/popup.nvim' })
+        use('nvim-lua/plenary.nvim')
 
         ----------------------------------------
         -- Theme, Icons, Statusbar, Bufferbar --
