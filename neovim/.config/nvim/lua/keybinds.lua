@@ -1,8 +1,5 @@
 local U = require('utils')
 
--- Fix Y
-U.map('n', '<S-Y>', 'y$')
-
 -- Fix n and N. Keeping cursor in center
 U.map('n', 'n', 'nzz')
 U.map('n', 'N', 'Nzz')
@@ -21,9 +18,6 @@ U.map('n', '<leader>W', ':wall<CR>')
 
 -- Quit neovim
 U.map('n', '<C-Q>', ':q<CR>')
-
--- Remove search highlight
-U.map('n', '<leader>n', ':nohl<CR>')
 
 -- leader-o/O inserts blank line below/above
 U.map('n', '<leader>o', 'o<ESC>')

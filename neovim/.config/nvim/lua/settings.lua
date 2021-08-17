@@ -61,9 +61,6 @@ o.backupdir = '/tmp/'
 o.directory = '/tmp/'
 o.undodir = '/tmp/'
 
--- Incremental live completion
-o.inccommand = 'nosplit'
-
 -- Completion menu option
 o.completeopt = 'menuone,noselect'
 
