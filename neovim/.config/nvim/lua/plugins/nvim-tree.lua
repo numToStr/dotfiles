@@ -32,6 +32,9 @@ g.nvim_tree_indent_markers = 1
 -- 0 by default, will open the tree when entering a new tab and the tree was previously open
 -- g.nvim_tree_tab_open = 1
 
+-- 0 by default, will disable the window picker.
+g.nvim_tree_disable_window_picker = 1
+
 -- "If 0, do not show the icons for one of 'git' 'folder' and 'files'
 -- "1 by default, notice that if 'files' is 1, it will only display
 -- "if nvim-web-devicons is installed and on your runtimepath
