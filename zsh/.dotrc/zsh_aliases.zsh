@@ -2,8 +2,7 @@
 
 alias vim=nvim
 alias sysinfo="inxi -Fxxxz"
-alias cat=bat
-alias myip=ip-internal
+# alias cat=bat
 alias open=xdg-open
 
 if command -v pamac >/dev/null 2>&1; then
@@ -14,7 +13,7 @@ fi
 
 if command -v pacman >/dev/null 2>&1; then
     alias upnup="sudo pacman -Syyuu"
-    alias cleanup="sudo pacman -Rsn $(pacman -Qdtq)"
+    alias cleanup='sudo pacman -Rsn $(pacman -Qdtq)'
 fi
 
 if command -v microk8s >/dev/null 2>&1; then
@@ -34,13 +33,28 @@ prcreate() {
     fi
 }
 
-prmerge() gh pr merge --merge --delete-branch=false "$1"
-prlist() gh pr list --state open
-prcheck() { gh pr checkout "$1" && gh pr diff }
+prmerge() {
+    gh pr merge --merge --delete-branch=false "$1"
+}
+prlist() {
+    gh pr list --state open
+}
+prcheck() {
+    gh pr checkout "$1" && gh pr diff
+}
 
-ip-internal() echo "Wireless :: IP => $( ip -4 -o a show wlo1 | awk '{ print $4 }' )"
-ip-external() echo "External :: IP => $( curl --silent https://ifconfig.me )"
-ipinfo() { ip-internal && ip-external }
+# IP aliases
+ip-internal() {
+    echo "Wireless :: IP => $( ip -4 -o a show wlo1 | awk '{ print $4 }' )"
+}
+ip-external() {
+    echo "External :: IP => $( curl --silent https://ifconfig.me )"
+}
+ipinfo() {
+    ip-internal && ip-external
+}
+
+alias myip=ip-internal
 
 # open_with_fzf() {
 #     fd -t f -H -I | fzf -m --preview="xdg-mime query default {}" | xargs -ro -d "\n" xdg-open 2>&-

@@ -21,12 +21,6 @@ zinit is-snippet for if"[[ -f $HOME/.zsh_pre ]]" $HOME/.zsh_pre
 # DOTFILES #
 ############
 export DOTFILES=${DOTFILES:=$HOME/.dotfiles}
-export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:=$HOME/.config}
-export TERM=${TERM:=screen-256color}
-export COLORTERM=${COLORTERM:=truecolor}
-# fixed powerline fonts rendering inside tmux
-export LC_ALL=en_IN.UTF-8
-export LANG=en_IN.UTF-8
 
 #####################
 # PROMPT            #
@@ -197,5 +191,4 @@ zinit wait"1a" lucid light-mode from"gh-r" as"command" bpick'*linux*' for \
 # 3. Load ~/.zsh_post if it exists
 zinit wait'0a' lucid is-snippet for \
     $HOME/.dotrc/*.zsh \
-    if"[[ -f $HOME/.localrc  ]]" $HOME/.localrc \
-    if"[[ -f $HOME/.zsh_post ]]" $HOME/.zsh_post
+    if"[[ -f $HOME/.localrc ]]" $HOME/.localrc

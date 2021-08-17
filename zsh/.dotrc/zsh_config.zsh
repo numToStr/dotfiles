@@ -35,14 +35,25 @@ setopt autocd autopushd pushdignoredups
 #####################
 # ENV               #
 #####################
-export ZSH_AUTOSUGGEST_MANUAL_REBIND=1  # make prompt faster
-export DISABLE_MAGIC_FUNCTIONS=true     # make pasting into terminal faster
-export EDITOR=nvim
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:=$HOME/.config}
+export TERM=${TERM:=screen-256color}
+export COLORTERM=${COLORTERM:=truecolor}
+export EDITOR=$(which nvim)
 # export PAGER=bat
-export DOCKER_BUILDKIT=1 # For enabling buildkit backend in docker and docker-compose
+
+# Update locales (Also fixes powerline fonts rendering inside tmux)
+export LC_ALL=en_IN.UTF-8
+export LANG=en_IN.UTF-8
+
+# For enabling buildkit backend in docker and docker-compose
+export DOCKER_BUILDKIT=1
 export COMPOSE_DOCKER_CLI_BUILD=1
+
 export CGO_ENABLED=1
 export CGO_CFLAGS="-g -O2 -Wno-return-local-addr"
+
+export ZSH_AUTOSUGGEST_MANUAL_REBIND=1  # make prompt faster
+export DISABLE_MAGIC_FUNCTIONS=true     # make pasting into terminal faster
 
 #####################
 # PATH              #
