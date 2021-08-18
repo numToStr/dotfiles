@@ -150,12 +150,15 @@ return require('packer').startup({
             },
             {
                 'nvim-telescope/telescope-fzf-native.nvim',
+                after = 'telescope.nvim',
                 run = 'make',
-                event = 'CursorHold',
+                config = function()
+                    require('telescope').load_extension('fzf')
+                end,
             },
             {
                 'nvim-telescope/telescope-symbols.nvim',
-                event = 'CursorHold',
+                after = 'telescope.nvim',
             },
         })
 

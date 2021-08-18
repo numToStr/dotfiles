@@ -1,7 +1,6 @@
 local U = require('utils')
 local finders = require('telescope.builtin')
 local actions = require('telescope.actions')
--- local sorters = require "telescope.sorters"
 
 require('telescope').setup({
     defaults = {
@@ -24,28 +23,18 @@ require('telescope').setup({
                 ['<C-q>'] = actions.send_to_qflist,
             },
         },
-        -- file_sorter = sorters.get_fzy_sorter,
-        -- generic_sorter = sorters.get_fzy_sorter
     },
     extensions = {
         fzf = {
+            fuzzy = true,
             override_generic_sorter = true, -- override the generic sorter
             override_file_sorter = true, -- override the file sorter
             case_mode = 'smart_case', -- "smart_case" | "ignore_case" | "respect_case"
         },
-        -- fzy_native = {
-        --     override_file_sorter = true,
-        --     override_generic_sorter = true
-        -- }
     },
 })
 
--- To get fzf loaded and working with telescope, you need to call
--- load_extension, somewhere after setup function:
-require('telescope').load_extension('fzf')
--- require("telescope").load_extension("fzy_native")
-
-function TelescopeOpen(fn)
+function _G.__telescope_open(fn)
     U.move_cursor_from_tree()
     finders[fn]({
         hidden = true,
@@ -53,19 +42,19 @@ function TelescopeOpen(fn)
 end
 
 -- Ctrl-p = fuzzy finder
-U.map('n', '<C-P>', "<CMD>lua TelescopeOpen('find_files')<CR>")
+U.map('n', '<C-P>', "<CMD>lua __telescope_open('find_files')<CR>")
 
 -- Fuzzy find active buffers
-U.map('n', "'b", "<CMD>lua TelescopeOpen('buffers')<CR>")
+U.map('n', "'b", "<CMD>lua __telescope_open('buffers')<CR>")
 
 -- Search for string
-U.map('n', "'r", "<CMD>lua TelescopeOpen('live_grep')<CR>")
+U.map('n', "'r", "<CMD>lua __telescope_open('live_grep')<CR>")
 
 -- Fuzzy find history buffers
-U.map('n', "'i", "<CMD>lua TelescopeOpen('oldfiles')<CR>")
+U.map('n', "'i", "<CMD>lua __telescope_open('oldfiles')<CR>")
 
 -- Fuzzy find changed files in git
-U.map('n', "'c", "<CMD>lua TelescopeOpen('git_status')<CR>")
+U.map('n', "'c", "<CMD>lua __telescope_open('git_status')<CR>")
 
 -- Fuzzy find register
-U.map('n', "'g", "<CMD>lua TelescopeOpen('registers')<CR>")
+U.map('n', "'g", "<CMD>lua __telescope_open('registers')<CR>")
