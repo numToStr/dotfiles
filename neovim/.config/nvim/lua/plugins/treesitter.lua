@@ -1,3 +1,6 @@
+-- vim.wo.foldmethod = 'expr'
+-- vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
+
 require('nvim-treesitter.configs').setup({
     -- nvim-treesitter/nvim-treesitter (self config)
     ensure_installed = 'maintained',
@@ -98,6 +101,3 @@ require('nvim-treesitter.configs').setup({
         -- highlight_current_scope = { enable = false },
     },
 })
-
--- cmd("set foldmethod=expr")
--- cmd("set foldexpr=nvim_treesitter#foldexpr()")

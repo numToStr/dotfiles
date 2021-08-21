@@ -5,7 +5,7 @@ local bo = vim.bo
 local wo = vim.wo
 local cmd = vim.api.nvim_command
 
-cmd('syntax on')
+-- cmd('syntax on')
 cmd('filetype plugin indent on')
 
 o.termguicolors = true

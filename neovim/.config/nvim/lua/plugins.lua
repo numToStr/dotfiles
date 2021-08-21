@@ -198,11 +198,12 @@ return require('packer').startup({
         use({
             'tpope/vim-surround',
             event = 'BufRead',
-        })
-
-        use({
-            'tpope/vim-repeat',
-            event = 'BufRead',
+            requires = {
+                {
+                    'tpope/vim-repeat',
+                    event = 'BufRead',
+                },
+            },
         })
 
         use({
@@ -224,11 +225,6 @@ return require('packer').startup({
             config = function()
                 require('plugins.whitespace')
             end,
-        })
-
-        use({
-            'michaeljsmith/vim-indent-object',
-            event = 'BufRead',
         })
 
         use({
