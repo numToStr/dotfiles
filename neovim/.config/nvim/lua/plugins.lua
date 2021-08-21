@@ -56,7 +56,7 @@ return require('packer').startup({
         })
 
         use({
-            'akinsho/nvim-bufferline.lua',
+            'akinsho/bufferline.nvim',
             event = 'BufEnter',
             config = function()
                 require('plugins.bufferline')
