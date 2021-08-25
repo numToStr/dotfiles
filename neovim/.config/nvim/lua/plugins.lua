@@ -272,6 +272,7 @@ return require('packer').startup({
 
         use({
             'neoclide/coc.nvim',
+            branch = 'release',
             event = 'BufRead',
             config = function()
                 require('plugins.coc')
