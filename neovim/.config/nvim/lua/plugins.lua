@@ -310,17 +310,43 @@ return require('packer').startup({
         })
 
         use({
-            'hrsh7th/nvim-compe',
-            disable = not is_nvim_lsp,
-            event = 'InsertEnter',
-            config = function()
-                require('plugins.lsp.nvim-compe')
-            end,
-            requires = {
-                {
-                    'L3MON4D3/LuaSnip',
-                    event = 'InsertCharPre',
+            {
+                'hrsh7th/nvim-cmp',
+                disable = not is_nvim_lsp,
+                event = 'InsertEnter',
+                config = function()
+                    require('plugins.lsp.nvim-cmp')
+                end,
+                requires = {
+                    {
+                        'L3MON4D3/LuaSnip',
+                        event = 'CursorHold',
+                        config = function()
+                            require('luasnip.loaders.from_vscode').lazy_load()
+                        end,
+                        requires = { 'rafamadriz/friendly-snippets' },
+                    },
                 },
+            },
+            {
+                'hrsh7th/cmp-nvim-lsp',
+                disable = not is_nvim_lsp,
+                after = 'nvim-cmp',
+            },
+            {
+                'abzcoding/cmp_luasnip',
+                disable = not is_nvim_lsp,
+                after = 'nvim-cmp',
+            },
+            {
+                'hrsh7th/cmp-path',
+                disable = not is_nvim_lsp,
+                after = 'nvim-cmp',
+            },
+            {
+                'hrsh7th/cmp-buffer',
+                disable = not is_nvim_lsp,
+                after = 'nvim-cmp',
             },
         })
     end,
