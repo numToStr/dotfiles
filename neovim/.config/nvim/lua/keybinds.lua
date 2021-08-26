@@ -3,6 +3,11 @@ local U = require('utils')
 -- Fix * (Keep the cursor position, don't move to next match)
 U.map('n', '*', '*N')
 
+-- Visual * and # search
+-- Until https://github.com/neovim/neovim/pull/15472 is merged
+U.map('x', '*', 'y/\\V<C-R>"<CR>')
+U.map('x', '#', 'y?\\V<C-R>"<CR>')
+
 -- Fix n and N. Keeping cursor in center
 U.map('n', 'n', 'nzz')
 U.map('n', 'N', 'Nzz')
