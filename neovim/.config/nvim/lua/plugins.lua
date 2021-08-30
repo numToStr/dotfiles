@@ -48,7 +48,7 @@ return require('packer').startup({
         })
 
         use({
-            'hoob3rt/lualine.nvim',
+            'shadmansaleh/lualine.nvim',
             event = 'BufEnter',
             config = function()
                 require('plugins.lualine')

@@ -1,11 +1,8 @@
-local U = require('utils')
-
-local err = U.get_hl_color('ErrorMsg', 'fg')
-local warn = U.get_hl_color('WarningMsg', 'fg')
+local get_hl = require('utils').get_hl_color
 
 require('lualine').setup({
     options = {
-        theme = 'gruvbox_material',
+        theme = 'gruvbox-material',
         component_separators = '',
         icons_enabled = true,
     },
@@ -22,8 +19,8 @@ require('lualine').setup({
             {
                 'diagnostics',
                 sources = { 'coc' },
-                color_error = err,
-                color_warn = warn,
+                color_error = { fg = get_hl('ErrorMsg', 'fg') },
+                color_warn = { fg = get_hl('WarningMsg', 'fg') },
             },
         },
         lualine_x = {
@@ -37,5 +34,5 @@ require('lualine').setup({
             { 'location', color = { gui = 'bold' } },
         },
     },
-    extensions = { 'nvim-tree' },
+    extensions = { 'quickfix', 'nvim-tree' },
 })
