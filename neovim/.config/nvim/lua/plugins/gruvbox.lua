@@ -1,4 +1,4 @@
-vim.g.gruvbox_material = {
+require('gruvbox-material').setup({
     background = 'hard',
     diagnostic_text_highlight = true,
     plugins = {
@@ -9,6 +9,6 @@ vim.g.gruvbox_material = {
         'nvim-tree',
         'gitsigns',
     },
-}
+})
 
 vim.api.nvim_command('colorscheme gruvbox-material')
