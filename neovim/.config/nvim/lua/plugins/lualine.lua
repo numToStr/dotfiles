@@ -8,7 +8,7 @@ require('lualine').setup({
     },
     sections = {
         lualine_a = {
-            { 'mode', upper = true, color = { gui = 'bold' } },
+            { 'mode', color = { gui = 'bold' } },
         },
         lualine_b = {
             { 'branch' },
@@ -19,8 +19,10 @@ require('lualine').setup({
             {
                 'diagnostics',
                 sources = { 'coc' },
-                color_error = { fg = get_hl('ErrorMsg', 'fg') },
-                color_warn = { fg = get_hl('WarningMsg', 'fg') },
+                diagnostics_color = {
+                    error = { fg = get_hl('ErrorMsg', 'fg') },
+                    warn = { fg = get_hl('WarningMsg', 'fg') },
+                },
             },
         },
         lualine_x = {
