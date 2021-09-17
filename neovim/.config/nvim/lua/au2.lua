@@ -1,17 +1,15 @@
+-- Remove after https://github.com/neovim/neovim/pull/14661 is merged
 local cmd = vim.api.nvim_command
 
-local function autocmd(this, e, v)
-    local is_table = type(v) == 'table'
-    local pattern = is_table and v[1] or '*'
-    local action = is_table and v[2] or v
-
+local function autocmd(this, event, spec)
+    local is_table = type(spec) == 'table'
+    local pattern = is_table and spec[1] or '*'
+    local action = is_table and spec[2] or spec
     if type(action) == 'function' then
         action = this.set(action)
     end
-
-    local ev = type(e) == 'table' and table.concat(e, ',') or e
-
-    cmd('autocmd ' .. ev .. ' ' .. pattern .. ' ' .. action)
+    local e = type(event) == 'table' and table.concat(event, ',') or event
+    cmd('autocmd ' .. e .. ' ' .. pattern .. ' ' .. action)
 end
 
 local B = {
@@ -37,12 +35,8 @@ function B.group(grp, cmds)
     cmd('augroup END')
 end
 
-local A = setmetatable({}, {
+return setmetatable({}, {
     __index = B,
     __newindex = autocmd,
-    __call = function(this, events, spec)
-        this[events] = spec
-    end,
+    __call = autocmd,
 })
-
-return A
