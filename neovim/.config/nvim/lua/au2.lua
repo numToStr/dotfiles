@@ -12,31 +12,37 @@ local function autocmd(this, event, spec)
     cmd('autocmd ' .. e .. ' ' .. pattern .. ' ' .. action)
 end
 
-local B = {
+local S = {
     __au = {},
 }
 
-function B.exec(id)
-    B.__au[id]()
+local X = setmetatable({}, {
+    __index = S,
+    __newindex = autocmd,
+    __call = autocmd,
+})
+
+function S.exec(id)
+    S.__au[id]()
 end
 
-function B.set(fn)
+function S.set(fn)
     local id = string.format('%p', fn)
-    B.__au[id] = fn
+    S.__au[id] = fn
     return string.format('lua require("au2").exec("%s")', id)
 end
 
-function B.group(grp, cmds)
+function S.group(grp, cmds)
     cmd('augroup ' .. grp)
     cmd('autocmd!')
-    for _, au in ipairs(cmds) do
-        autocmd(B, au[1], { au[2], au[3] })
+    if type(cmds) == 'function' then
+        cmds(X)
+    else
+        for _, au in ipairs(cmds) do
+            autocmd(S, au[1], { au[2], au[3] })
+        end
     end
     cmd('augroup END')
 end
 
-return setmetatable({}, {
-    __index = B,
-    __newindex = autocmd,
-    __call = autocmd,
-})
+return X

@@ -6,9 +6,9 @@ local is_nvim_lsp = os.getenv('NVIM_LSP') == 'true'
 cmd([[packadd packer.nvim]])
 
 -- Automatically run :PackerCompile whenever plugins.lua is updated with an autocommand:
-require('au2').group('PackerGroup', {
-    { 'BufWritePost', 'plugins.lua', 'source <afile> | PackerCompile' },
-})
+require('au2').group('PackerGroup', function(grp)
+    grp.BufWritePost = { 'plugins.lua', 'source <afile> | PackerCompile' }
+end)
 
 return require('packer').startup({
     function(use)
