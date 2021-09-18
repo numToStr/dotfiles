@@ -95,19 +95,17 @@ U.map('i', '<C-F>', 'coc#float#has_scroll() ? coc#float#scroll(1) : "<Right>"', 
 U.map('n', '<C-B>', 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-B>"', { expr = true })
 U.map('i', '<C-B>', 'coc#float#has_scroll() ? coc#float#scroll(0) : "<Left>"', { expr = true })
 
-require('au').augroup('CocOverrides', {
-    {
-        event = 'FileType',
-        pattern = 'typescript,json',
-        callback = function()
+require('au2').group('CocOverrides', function(grp)
+    grp.FileType = {
+        'typescript,json',
+        function()
             vim.api.nvim_buf_set_option(0, 'formatexpr', "CocAction('formatSelected')")
         end,
-    },
-    {
-        event = 'User',
-        pattern = 'CocJumpPlaceholder',
-        callback = function()
+    }
+    grp.User = {
+        'CocJumpPlaceholder',
+        function()
             vim.fn.CocActionAsync('showSignatureHelp')
         end,
-    },
-})
+    }
+end)

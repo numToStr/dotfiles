@@ -75,12 +75,11 @@ U.highlights({
     NvimTreeGitDeleted = git_hi,
 })
 
-require('au').augroup('NvimTreeOverrides', {
-    {
-        event = 'FileType',
-        pattern = 'NvimTree',
-        callback = function()
+require('au2').group('NvimTreeOverrides', function(grp)
+    grp.FileType = {
+        'NvimTree',
+        function()
             vim.api.nvim_win_set_option(0, 'wrap', false)
         end,
-    },
-})
+    }
+end)
