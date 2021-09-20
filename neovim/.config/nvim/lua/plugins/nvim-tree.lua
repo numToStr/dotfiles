@@ -62,19 +62,6 @@ g.nvim_tree_icons = {
 
 U.map('n', '<C-n>', ':NvimTreeToggle<CR>')
 
-local normal = U.get_hl_color('Normal', 'both')
-
-local git_hi = { fg = normal.fg, gui = 'bold' }
-
-U.highlights({
-    NvimTreeGitDirty = git_hi,
-    NvimTreeGitStaged = git_hi,
-    NvimTreeGitMerge = git_hi,
-    NvimTreeGitNew = git_hi,
-    NvimTreeGitRenamed = git_hi,
-    NvimTreeGitDeleted = git_hi,
-})
-
 require('au2').group('NvimTreeOverrides', function(grp)
     grp.FileType = {
         'NvimTree',

@@ -1,8 +1,6 @@
-local get_hl = require('utils').get_hl_color
-
 require('lualine').setup({
     options = {
-        theme = 'gruvbox-material',
+        theme = 'sakura',
         component_separators = '',
         icons_enabled = true,
     },
@@ -16,14 +14,7 @@ require('lualine').setup({
         },
         lualine_c = {
             { 'filename', file_status = true },
-            {
-                'diagnostics',
-                sources = { 'coc' },
-                diagnostics_color = {
-                    error = { fg = get_hl('ErrorMsg', 'fg') },
-                    warn = { fg = get_hl('WarningMsg', 'fg') },
-                },
-            },
+            { 'diagnostics', sources = { 'coc' } },
         },
         lualine_x = {
             'g:coc_status',

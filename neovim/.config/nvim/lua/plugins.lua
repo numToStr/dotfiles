@@ -29,14 +29,6 @@ return require('packer').startup({
         ----------------------------------------
 
         use({
-            'numtostr/gruvbox-material',
-            branch = 'lua',
-            config = function()
-                require('plugins.gruvbox')
-            end,
-        })
-
-        use({
             'kyazdani42/nvim-web-devicons',
             config = function()
                 require('nvim-web-devicons').setup()
@@ -44,7 +36,15 @@ return require('packer').startup({
         })
 
         use({
+            'numToStr/Sakura.nvim',
+            config = function()
+                require('plugins.sakura')
+            end,
+        })
+
+        use({
             'shadmansaleh/lualine.nvim',
+            after = 'Sakura.nvim',
             event = 'BufEnter',
             config = function()
                 require('plugins.lualine')
