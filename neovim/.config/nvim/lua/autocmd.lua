@@ -10,6 +10,7 @@ au2.group('MyFileTypes', {
     { ft_ev, '*.env*', 'set ft=sh' },
     { ft_ev, '*.mdx', 'set ft=markdown' },
     { ft_ev, '*.mjml', 'set ft=html' },
+    { ft_ev, '*tmux*', 'set ft=tmux' },
 })
 
 au2.TextYankPost = function()
