@@ -7,7 +7,7 @@ local fmt = nls.builtins.formatting
 nls.config({
     sources = {
         fmt.trim_whitespace.with({
-            filetypes = { 'text', 'sh', 'zsh', 'yaml', 'toml', 'make', 'conf' },
+            filetypes = { 'text', 'sh', 'zsh', 'yaml', 'toml', 'make', 'conf', 'tmux' },
         }),
         fmt.rustfmt,
         fmt.stylua,
