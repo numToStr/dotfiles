@@ -36,7 +36,7 @@ setopt autocd autopushd pushdignoredups
 # ENV               #
 #####################
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:=$HOME/.config}
-export TERM=${TERM:=screen-256color}
+export TERM=${TERM:=xterm-256color}
 export COLORTERM=${COLORTERM:=truecolor}
 export EDITOR=$(which nvim)
 # export PAGER=bat
