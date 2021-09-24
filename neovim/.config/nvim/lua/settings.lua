@@ -1,8 +1,6 @@
 local U = require('utils')
 local g = vim.g
 local o = vim.o
-local bo = vim.bo
-local wo = vim.wo
 local cmd = vim.api.nvim_command
 
 -- cmd('syntax on')
@@ -18,32 +16,31 @@ o.hidden = true
 o.timeoutlen = 500
 o.updatetime = 200
 
--- I have to set these individually as neovim doesn't update those
+-- Number of screen lines to keep above and below the cursor
 o.scrolloff = 8
-wo.scrolloff = 8
 
 -- Better editor UI
-wo.number = true
-wo.numberwidth = 6
-wo.relativenumber = true
-wo.signcolumn = 'yes'
-wo.cursorline = true
+o.number = true
+o.numberwidth = 6
+o.relativenumber = true
+o.signcolumn = 'yes'
+o.cursorline = true
 
 -- To fix a neovim bug affecting indent-blankline
 -- Related: https://github.com/lukas-reineke/indent-blankline.nvim/issues/59
-wo.colorcolumn = '99999'
+o.colorcolumn = '99999'
 
 -- Better editing experience
 o.expandtab = true
 o.smarttab = true
-o.tabstop = 4
 o.cindent = true
-o.shiftwidth = 4
-o.softtabstop = 4
 o.autoindent = true
-wo.wrap = true
-bo.textwidth = 300
--- bo.formatoptions = 'qrn1'
+o.wrap = true
+o.textwidth = 300
+o.tabstop = 4
+o.shiftwidth = 0
+o.softtabstop = -1 -- If negative, shiftwidth value is used
+-- o.formatoptions = 'qrn1'
 
 -- Makes neovim and host OS clipboard play nicely with each other
 o.clipboard = 'unnamedplus'
@@ -62,7 +59,10 @@ o.directory = '/tmp/'
 o.undodir = '/tmp/'
 
 -- Completion menu option
-o.completeopt = 'menuone,noselect'
+o.completeopt = 'menuone,noinsert,noselect'
+
+-- Don't show completion message in the msg area
+-- vim.opt.shortmess:append('c')
 
 -- When running macros and regexes on a large file, lazy redraw tells neovim/vim not to draw the screen, which greatly speeds it up, upto 6-7x faster
 o.lazyredraw = true
