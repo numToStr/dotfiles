@@ -10,8 +10,6 @@ g.nvim_tree_show_icons = {
     files = 1,
 }
 g.nvim_tree_icons = {
-    default = '',
-    symlink = '',
     git = {
         unstaged = '~',
         staged = '+',
