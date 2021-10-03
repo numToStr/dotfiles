@@ -2,6 +2,7 @@ require('lualine').setup({
     options = {
         theme = 'sakura',
         component_separators = '',
+        section_separators = '',
         icons_enabled = true,
     },
     sections = {
