@@ -99,16 +99,6 @@ return require('packer').startup({
         })
 
         use({
-            'folke/todo-comments.nvim',
-            event = 'BufRead',
-            config = function()
-                require('todo-comments').setup({
-                    signs = false,
-                })
-            end,
-        })
-
-        use({
             'lewis6991/gitsigns.nvim',
             event = 'BufRead',
             config = function()
