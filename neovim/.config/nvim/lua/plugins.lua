@@ -177,8 +177,11 @@ return require('packer').startup({
         -------------------------
 
         use({
-            'tomtom/tcomment_vim',
+            'numToStr/Comment.nvim',
             event = 'BufRead',
+            config = function()
+                require('Comment').setup()
+            end,
         })
 
         use({

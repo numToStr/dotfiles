@@ -63,7 +63,7 @@ U.map('n', '[g', '<Plug>(coc-diagnostic-prev)', { noremap = false })
 U.map('n', ']g', '<Plug>(coc-diagnostic-next)', { noremap = false })
 
 -- Multiple Cursors support
-U.map('n', 'gb', '<Plug>(coc-cursors-word)', { noremap = false })
+-- U.map('n', 'gb', '<Plug>(coc-cursors-word)', { noremap = false })
 
 -- GoTo code navigation.
 U.map('n', 'gd', '<Plug>(coc-definition)', { noremap = false })
