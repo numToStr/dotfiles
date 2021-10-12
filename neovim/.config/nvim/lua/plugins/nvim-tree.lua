@@ -23,7 +23,9 @@ g.nvim_tree_icons = {
 }
 
 require('nvim-tree').setup({
-    lsp_diagnostics = true,
+    diagnostics = {
+        enable = true,
+    },
     update_focused_file = {
         enable = true,
     },
