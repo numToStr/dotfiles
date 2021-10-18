@@ -1,10 +1,4 @@
-local o = vim.o
-
--- Disable shadafile
-o.shadafile = 'NONE'
-
 -- Vanilla Config
-require('builtins')
 require('plugins')
 require('settings')
 require('autocmd')
@@ -15,9 +9,6 @@ function _G.dump(...)
     local objects = vim.tbl_map(vim.inspect, { ... })
     print(unpack(objects))
 end
-
--- Enable shadafile
-o.shadafile = ''
 
 -- vim.api.nvim_exec(
 --     [[
