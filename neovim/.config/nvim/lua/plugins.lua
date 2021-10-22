@@ -43,7 +43,7 @@ return require('packer').startup({
         })
 
         use({
-            'shadmansaleh/lualine.nvim',
+            'nvim-lualine/lualine.nvim',
             after = 'Sakura.nvim',
             event = 'BufEnter',
             config = function()
