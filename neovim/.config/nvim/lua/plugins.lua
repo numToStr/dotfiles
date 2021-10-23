@@ -1,6 +1,6 @@
 local cmd = vim.api.nvim_command
 
-local is_nvim_lsp = os.getenv('NVIM_LSP') == 'true'
+local is_nvim_lsp = true
 
 -- Only required if you have packer in your `opt` pack
 cmd([[packadd packer.nvim]])
@@ -272,9 +272,16 @@ return require('packer').startup({
         use({
             'neovim/nvim-lspconfig',
             event = 'BufRead',
-            config = function()
+            config = is_nvim_lsp and function()
                 require('plugins.lsp.lsp-config')
             end,
+            requires = {
+                {
+                    -- Unfortunately we won't be able to lazy load this
+                    'hrsh7th/cmp-nvim-lsp',
+                    disable = not is_nvim_lsp,
+                },
+            },
         })
 
         use({
@@ -305,12 +312,7 @@ return require('packer').startup({
                 },
             },
             {
-                'hrsh7th/cmp-nvim-lsp',
-                disable = not is_nvim_lsp,
-                after = 'nvim-cmp',
-            },
-            {
-                'abzcoding/cmp_luasnip',
+                'saadparwaiz1/cmp_luasnip',
                 disable = not is_nvim_lsp,
                 after = 'nvim-cmp',
             },
