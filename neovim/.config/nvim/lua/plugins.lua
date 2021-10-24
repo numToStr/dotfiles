@@ -201,14 +201,6 @@ return require('packer').startup({
         })
 
         use({
-            'windwp/nvim-autopairs',
-            event = 'InsertCharPre',
-            config = function()
-                require('nvim-autopairs').setup()
-            end,
-        })
-
-        use({
             'ntpeters/vim-better-whitespace',
             event = 'BufRead',
             config = function()
@@ -246,28 +238,28 @@ return require('packer').startup({
         -- LSP, Completions and Snippets --
         -----------------------------------
 
-        use({
-            'neoclide/coc.nvim',
-            branch = 'release',
-            event = 'BufRead',
-            config = function()
-                require('plugins.coc')
-            end,
-            disable = is_nvim_lsp,
-            requires = {
-                {
-                    'dsznajder/vscode-es7-javascript-react-snippets',
-                    run = 'yarn install --frozen-lockfile && yarn compile',
-                    event = 'InsertCharPre',
-                    disable = is_nvim_lsp,
-                },
-                {
-                    'honza/vim-snippets',
-                    event = 'InsertCharPre',
-                    disable = is_nvim_lsp,
-                },
-            },
-        })
+        -- use({
+        --     'neoclide/coc.nvim',
+        --     branch = 'release',
+        --     event = 'BufRead',
+        --     config = function()
+        --         require('plugins.coc')
+        --     end,
+        --     disable = is_nvim_lsp,
+        --     requires = {
+        --         {
+        --             'dsznajder/vscode-es7-javascript-react-snippets',
+        --             run = 'yarn install --frozen-lockfile && yarn compile',
+        --             event = 'InsertCharPre',
+        --             disable = is_nvim_lsp,
+        --         },
+        --         {
+        --             'honza/vim-snippets',
+        --             event = 'InsertCharPre',
+        --             disable = is_nvim_lsp,
+        --         },
+        --     },
+        -- })
 
         use({
             'neovim/nvim-lspconfig',
@@ -326,6 +318,16 @@ return require('packer').startup({
                 disable = not is_nvim_lsp,
                 after = 'nvim-cmp',
             },
+        })
+
+        -- NOTE: nvim-autopairs needs to be loaded after nvim-cmp, so that <CR> would work properly
+        use({
+            'windwp/nvim-autopairs',
+            event = 'InsertCharPre',
+            after = 'nvim-cmp',
+            config = function()
+                require('plugins.pairs')
+            end,
         })
     end,
     config = {

@@ -1,0 +1,21 @@
+# Linters/Formatters
+- prettierd (yarn global add @fsouza/prettierd)
+- eslind_d (yarn global add eslint_d)
+- stylua (https://github.com/JohnnyMorganz/StyLua)
+- rustfmt (included w/ rust)
+- terraform-fmt (included w/ terraform)
+- gofmt (included w/ golang)
+- zig-fmt (included w/ zig)
+
+# LSP used
+- sumneko-lua -> lua
+- rust-analyzer -> rust
+- zls -> zig
+- gopls -> golang
+- typescript + typescript-language-server -> TS/JS
+- vscode-langservers-extracted
+    - vscode-html-language-server -> html
+    - vscode-css-language-server -> css
+    - vscode-json-language-server -> json
+    - vscode-eslint-language-server -> TS/JS
+

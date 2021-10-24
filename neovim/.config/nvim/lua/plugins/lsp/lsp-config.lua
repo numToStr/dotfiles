@@ -3,19 +3,26 @@ local lsp_utils = require('plugins.lsp.lsp-utils')
 
 local capabilities = lsp_utils.capabilities()
 
+-- Make runtime files discoverable to the server
+local runtime_path = vim.split(package.path, ';')
+table.insert(runtime_path, 'lua/?.lua')
+table.insert(runtime_path, 'lua/?/init.lua')
+
 -- Lua
 lsconf.sumneko_lua.setup({
     cmd = { 'lua-language-server' },
     capabilities = capabilities,
-    on_attach = function(client)
+    on_attach = function(client, buf)
         lsp_utils.disable_formatting(client)
+        lsp_utils.mappings(buf)
     end,
     settings = {
         Lua = {
             completion = {},
             runtime = {
+                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
                 version = 'LuaJIT',
-                path = vim.split(package.path, ';'),
+                path = runtime_path,
             },
             diagnostics = {
                 globals = { 'vim' },
@@ -24,6 +31,10 @@ lsconf.sumneko_lua.setup({
                 -- Make the server aware of Neovim runtime files
                 library = vim.api.nvim_get_runtime_file('', true),
             },
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = {
+                enable = false,
+            },
         },
     },
 })
@@ -31,23 +42,63 @@ lsconf.sumneko_lua.setup({
 -- Rust
 lsconf.rust_analyzer.setup({
     capabilities = capabilities,
-    on_attach = function(client)
+    on_attach = function(client, buf)
         lsp_utils.disable_formatting(client)
+        lsp_utils.mappings(buf)
     end,
+    settings = {
+        ['rust-analyzer'] = {
+            cargo = {
+                allFeatures = true,
+            },
+            checkOnSave = {
+                allFeatures = true,
+                command = 'clippy',
+            },
+        },
+    },
 })
 
 -- Zig
 lsconf.zls.setup({
     capabilities = capabilities,
-    on_attach = function(client)
+    on_attach = function(client, buf)
         lsp_utils.disable_formatting(client)
+        lsp_utils.mappings(buf)
     end,
 })
 
 -- Golang
 lsconf.gopls.setup({
     capabilities = capabilities,
+    on_attach = function(client, buf)
+        lsp_utils.disable_formatting(client)
+        lsp_utils.mappings(buf)
+    end,
+})
+
+-- Typescript
+lsconf.tsserver.setup({
+    capabilities = capabilities,
+    on_attach = function(client, buf)
+        lsp_utils.disable_formatting(client)
+        lsp_utils.mappings(buf)
+    end,
+})
+
+-- Eslint
+lsconf.eslint.setup({
+    capabilities = capabilities,
     on_attach = function(client)
         lsp_utils.disable_formatting(client)
+    end,
+})
+
+-- Json
+lsconf.jsonls.setup({
+    capabilities = capabilities,
+    on_attach = function(client, buf)
+        lsp_utils.disable_formatting(client)
+        lsp_utils.mappings(buf)
     end,
 })
