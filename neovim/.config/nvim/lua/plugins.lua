@@ -43,12 +43,18 @@ return require('packer').startup({
         })
 
         use({
-            'nvim-lualine/lualine.nvim',
-            after = 'Sakura.nvim',
-            event = 'BufEnter',
-            config = function()
-                require('plugins.lualine')
-            end,
+            {
+                'nvim-lualine/lualine.nvim',
+                after = 'Sakura.nvim',
+                event = 'BufEnter',
+                config = function()
+                    require('plugins.lualine')
+                end,
+            },
+            {
+                'arkav/lualine-lsp-progress',
+                after = 'lualine.nvim',
+            },
         })
 
         use({
@@ -269,7 +275,7 @@ return require('packer').startup({
             end,
             requires = {
                 {
-                    -- Unfortunately we won't be able to lazy load this
+                    -- WARN: Unfortunately we won't be able to lazy load this
                     'hrsh7th/cmp-nvim-lsp',
                     disable = not is_nvim_lsp,
                 },
