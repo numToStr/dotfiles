@@ -1,7 +1,5 @@
 local cmd = vim.api.nvim_command
 
-local is_nvim_lsp = true
-
 -- Only required if you have packer in your `opt` pack
 cmd([[packadd packer.nvim]])
 
@@ -270,14 +268,13 @@ return require('packer').startup({
         use({
             'neovim/nvim-lspconfig',
             event = 'BufRead',
-            config = is_nvim_lsp and function()
+            config = function()
                 require('plugins.lsp.lsp-config')
             end,
             requires = {
                 {
                     -- WARN: Unfortunately we won't be able to lazy load this
                     'hrsh7th/cmp-nvim-lsp',
-                    disable = not is_nvim_lsp,
                 },
             },
         })
@@ -293,7 +290,6 @@ return require('packer').startup({
         use({
             {
                 'hrsh7th/nvim-cmp',
-                disable = not is_nvim_lsp,
                 event = 'InsertEnter',
                 config = function()
                     require('plugins.lsp.nvim-cmp')
@@ -311,17 +307,14 @@ return require('packer').startup({
             },
             {
                 'saadparwaiz1/cmp_luasnip',
-                disable = not is_nvim_lsp,
                 after = 'nvim-cmp',
             },
             {
                 'hrsh7th/cmp-path',
-                disable = not is_nvim_lsp,
                 after = 'nvim-cmp',
             },
             {
                 'hrsh7th/cmp-buffer',
-                disable = not is_nvim_lsp,
                 after = 'nvim-cmp',
             },
         })

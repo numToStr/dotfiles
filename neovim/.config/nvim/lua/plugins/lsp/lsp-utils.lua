@@ -1,4 +1,5 @@
-local bmap = vim.api.nvim_buf_set_keymap
+local A = vim.api
+local bmap = A.nvim_buf_set_keymap
 local map_opt = { noremap = true, silent = true }
 
 local U = {}
@@ -7,7 +8,7 @@ local U = {}
 ---@param client table
 function U.fmt_on_save(client)
     if client.resolved_capabilities.document_formatting then
-        vim.api.nvim_command('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()')
+        A.nvim_command('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()')
     end
 end
 
