@@ -18,7 +18,10 @@ lsconf.sumneko_lua.setup({
     end,
     settings = {
         Lua = {
-            completion = {},
+            completion = {
+                enable = true,
+                showWord = 'Disable',
+            },
             runtime = {
                 -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
                 version = 'LuaJIT',
