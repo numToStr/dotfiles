@@ -25,7 +25,7 @@ nls.config({
         fmt.stylua,
         fmt.terraform_fmt,
         fmt.gofmt,
-        fmt.zigfmt, -- PR #278
+        fmt.zigfmt,
     },
 })
 
