@@ -1,7 +1,6 @@
 local U = require('utils')
 local g = vim.g
 
-g.nvim_tree_ignore = { '.git', 'node_modules' }
 g.nvim_tree_indent_markers = 1
 g.nvim_tree_disable_window_picker = 1
 g.nvim_tree_show_icons = {
@@ -33,9 +32,12 @@ require('nvim-tree').setup({
         width = 35,
         side = 'left',
     },
+    filters = {
+        custom = { '.git', 'node_modules' },
+    },
 })
 
-U.map('n', '<C-n>', ':NvimTreeToggle<CR>')
+U.map('n', '<C-n>', '<CMD>NvimTreeToggle<CR>')
 
 require('au2').group('NvimTreeOverrides', function(grp)
     grp.FileType = {
