@@ -299,7 +299,7 @@ return require('packer').startup({
                         'L3MON4D3/LuaSnip',
                         event = 'CursorHold',
                         config = function()
-                            require('luasnip.loaders.from_vscode').lazy_load()
+                            require('plugins.lsp.luasnip')
                         end,
                         requires = { 'rafamadriz/friendly-snippets' },
                     },
