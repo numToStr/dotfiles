@@ -15,9 +15,6 @@ require('telescope').setup({
                 ['<ESC>'] = actions.close,
                 ['<C-j>'] = actions.move_selection_next,
                 ['<C-k>'] = actions.move_selection_previous,
-                ['<C-o>'] = function()
-                    return
-                end,
                 ['<TAB>'] = actions.toggle_selection + actions.move_selection_next,
                 ['<C-s>'] = actions.send_selected_to_qflist,
                 ['<C-q>'] = actions.send_to_qflist,
@@ -44,6 +41,9 @@ end
 -- Ctrl-p = fuzzy finder
 U.map('n', '<C-P>', "<CMD>lua __telescope_open('find_files')<CR>")
 
+-- Get :help at the speed of light
+U.map('n', '<leader>H', "<CMD>lua __telescope_open('help_tags')<CR>")
+
 -- Fuzzy find active buffers
 U.map('n', "'b", "<CMD>lua __telescope_open('buffers')<CR>")
 
@@ -55,6 +55,3 @@ U.map('n', "'i", "<CMD>lua __telescope_open('oldfiles')<CR>")
 
 -- Fuzzy find changed files in git
 U.map('n', "'c", "<CMD>lua __telescope_open('git_status')<CR>")
-
--- Fuzzy find register
-U.map('n', "'g", "<CMD>lua __telescope_open('registers')<CR>")
