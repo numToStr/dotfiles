@@ -58,9 +58,6 @@ o.backupdir = '/tmp/'
 o.directory = '/tmp/'
 o.undodir = '/tmp/'
 
--- Completion menu option
-o.completeopt = 'menuone,noinsert,noselect'
-
 -- Don't show completion message in the msg area
 -- vim.opt.shortmess:append('c')
 
