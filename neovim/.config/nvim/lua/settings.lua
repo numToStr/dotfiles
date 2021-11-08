@@ -58,8 +58,8 @@ o.backupdir = '/tmp/'
 o.directory = '/tmp/'
 o.undodir = '/tmp/'
 
--- Don't show completion message in the msg area
--- vim.opt.shortmess:append('c')
+-- Remember 50 items in commandline history
+o.history = 50
 
 -- When running macros and regexes on a large file, lazy redraw tells neovim/vim not to draw the screen, which greatly speeds it up, upto 6-7x faster
 o.lazyredraw = true
