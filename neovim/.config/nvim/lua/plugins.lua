@@ -228,18 +228,10 @@ return require('packer').startup({
         })
 
         use({
-            'numtostr/BufOnly.nvim',
+            'numToStr/Buffers.nvim',
             event = 'BufRead',
             config = function()
-                require('utils').map('n', '<leader>x', ':BufOnly<CR>')
-            end,
-        })
-
-        use({
-            'moll/vim-bbye',
-            event = 'BufRead',
-            config = function()
-                require('utils').map('n', '<leader>q', ':Bdelete<CR>')
+                require('plugins.buffers')
             end,
         })
 
