@@ -216,11 +216,6 @@ return require('packer').startup({
             end,
         })
 
-        -- use({
-        --     'bronson/vim-visual-star-search',
-        --     event = 'BufRead',
-        -- })
-
         use({
             'AndrewRadev/splitjoin.vim',
             -- NOTE: splitjoin won't work with `BufRead` event

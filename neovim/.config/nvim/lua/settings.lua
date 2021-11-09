@@ -61,6 +61,10 @@ o.undodir = '/tmp/'
 -- Remember 50 items in commandline history
 o.history = 50
 
+-- Better buffer splitting
+o.splitright = true
+o.splitbelow = true
+
 -- When running macros and regexes on a large file, lazy redraw tells neovim/vim not to draw the screen, which greatly speeds it up, upto 6-7x faster
 o.lazyredraw = true
 
