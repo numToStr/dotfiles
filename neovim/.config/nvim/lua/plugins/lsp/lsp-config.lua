@@ -2,6 +2,10 @@ local lsconf = require('lspconfig')
 local lsp_utils = require('plugins.lsp.lsp-utils')
 
 local capabilities = lsp_utils.capabilities()
+local flags = {
+    allow_incremental_sync = true,
+    debounce_text_changes = 200,
+}
 
 -- Make runtime files discoverable to the server
 local runtime_path = vim.split(package.path, ';')
@@ -11,6 +15,7 @@ table.insert(runtime_path, 'lua/?/init.lua')
 -- Lua
 lsconf.sumneko_lua.setup({
     cmd = { 'lua-language-server' },
+    flags = flags,
     capabilities = capabilities,
     on_attach = function(client, buf)
         lsp_utils.disable_formatting(client)
@@ -44,6 +49,7 @@ lsconf.sumneko_lua.setup({
 
 -- Rust
 lsconf.rust_analyzer.setup({
+    flags = flags,
     capabilities = capabilities,
     on_attach = function(client, buf)
         lsp_utils.disable_formatting(client)
@@ -64,6 +70,7 @@ lsconf.rust_analyzer.setup({
 
 -- Zig
 lsconf.zls.setup({
+    flags = flags,
     capabilities = capabilities,
     on_attach = function(client, buf)
         lsp_utils.disable_formatting(client)
@@ -73,6 +80,7 @@ lsconf.zls.setup({
 
 -- Golang
 lsconf.gopls.setup({
+    flags = flags,
     capabilities = capabilities,
     on_attach = function(client, buf)
         lsp_utils.disable_formatting(client)
@@ -82,6 +90,7 @@ lsconf.gopls.setup({
 
 -- Typescript
 lsconf.tsserver.setup({
+    flags = flags,
     capabilities = capabilities,
     on_attach = function(client, buf)
         lsp_utils.disable_formatting(client)
@@ -91,6 +100,7 @@ lsconf.tsserver.setup({
 
 -- Eslint
 lsconf.eslint.setup({
+    flags = flags,
     capabilities = capabilities,
     on_attach = function(client)
         lsp_utils.disable_formatting(client)
@@ -99,6 +109,7 @@ lsconf.eslint.setup({
 
 -- Json
 lsconf.jsonls.setup({
+    flags = flags,
     capabilities = capabilities,
     on_attach = function(client, buf)
         lsp_utils.disable_formatting(client)
