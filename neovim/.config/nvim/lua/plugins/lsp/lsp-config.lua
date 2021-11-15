@@ -12,6 +12,16 @@ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
+-- Configuring native diagnostics
+vim.diagnostic.config({
+    virtual_text = {
+        source = 'always',
+    },
+    float = {
+        source = 'always',
+    },
+})
+
 -- Lua
 lsconf.sumneko_lua.setup({
     cmd = { 'lua-language-server' },
