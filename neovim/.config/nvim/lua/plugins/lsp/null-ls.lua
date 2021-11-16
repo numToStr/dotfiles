@@ -30,6 +30,7 @@ nls.config({
         fmt.zigfmt,
         -- # DIAGNOSTICS #
         dgn.eslint_d,
+        dgn.luacheck,
     },
 })
 
