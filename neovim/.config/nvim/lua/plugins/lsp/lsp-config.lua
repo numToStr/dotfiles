@@ -132,3 +132,13 @@ lsconf.jsonls.setup({
         lsp_utils.mappings(buf)
     end,
 })
+
+-- YAML
+lsconf.yamlls.setup({
+    flags = flags,
+    capabilities = capabilities,
+    on_attach = function(client, buf)
+        lsp_utils.disable_formatting(client)
+        lsp_utils.mappings(buf)
+    end,
+})

@@ -1,4 +1,5 @@
 local nls = require('null-ls')
+local lsp_utils = require('plugins.lsp.lsp-utils')
 
 local fmt = nls.builtins.formatting
 local dgn = nls.builtins.diagnostics
@@ -38,7 +39,8 @@ nls.config({
 -- Setting up null-ls server
 -- NOTE: don't move this setup() call elsewhere
 require('lspconfig')['null-ls'].setup({
-    on_attach = function(client)
-        require('plugins.lsp.lsp-utils').fmt_on_save(client)
+    on_attach = function(client, bufnr)
+        lsp_utils.fmt_on_save(client)
+        lsp_utils.mappings(bufnr)
     end,
 })
