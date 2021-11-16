@@ -31,6 +31,7 @@ nls.config({
         -- # DIAGNOSTICS #
         dgn.eslint_d,
         dgn.luacheck,
+        dgn.shellcheck,
     },
 })
 
