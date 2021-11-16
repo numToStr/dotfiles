@@ -108,14 +108,20 @@ lsconf.tsserver.setup({
     end,
 })
 
+-- BUG: Sending false errors. It seems to be a `root_dir` issue. Therefore, using `null-ls` for now.
 -- Eslint
-lsconf.eslint.setup({
-    flags = flags,
-    capabilities = capabilities,
-    on_attach = function(client)
-        lsp_utils.disable_formatting(client)
-    end,
-})
+-- lsconf.eslint.setup({
+--     flags = flags,
+--     capabilities = capabilities,
+--     on_attach = function(client)
+--         lsp_utils.disable_formatting(client)
+--     end,
+--     settings = {
+--         useESLintClass = true, -- Recommended for eslint >= 7
+--         packageManager = 'yarn', -- I use `yarn` btw
+--         -- run = 'onSave', -- Run `eslint` after save
+--     },
+-- })
 
 -- Json
 lsconf.jsonls.setup({

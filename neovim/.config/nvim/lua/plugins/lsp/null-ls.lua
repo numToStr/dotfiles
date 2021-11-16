@@ -1,10 +1,12 @@
 local nls = require('null-ls')
 
 local fmt = nls.builtins.formatting
+local dgn = nls.builtins.diagnostics
 
 -- Configuring null-ls
 nls.config({
     sources = {
+        -- # FORMATTING #
         fmt.trim_whitespace.with({
             filetypes = { 'text', 'sh', 'zsh', 'yaml', 'toml', 'make', 'conf', 'tmux' },
         }),
@@ -26,6 +28,8 @@ nls.config({
         fmt.terraform_fmt,
         fmt.gofmt,
         fmt.zigfmt,
+        -- # DIAGNOSTICS #
+        dgn.eslint_d,
     },
 })
 
