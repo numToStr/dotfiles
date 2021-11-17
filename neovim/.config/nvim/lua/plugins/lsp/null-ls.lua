@@ -29,10 +29,13 @@ nls.config({
         fmt.terraform_fmt,
         fmt.gofmt,
         fmt.zigfmt,
+        -- fmt.shfmt,
         -- # DIAGNOSTICS #
         dgn.eslint_d,
-        dgn.luacheck,
         dgn.shellcheck,
+        dgn.luacheck.with({
+            extra_args = { '--globals', 'vim', '--std', 'luajit' },
+        }),
     },
 })
 
