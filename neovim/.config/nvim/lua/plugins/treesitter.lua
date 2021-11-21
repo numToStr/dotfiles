@@ -40,6 +40,7 @@ require('nvim-treesitter.configs').setup({
                 ['il'] = '@loop.inner',
                 ['aa'] = '@parameter.outer',
                 ['ia'] = '@parameter.inner',
+                ['uc'] = '@comment.outer',
 
                 -- Or you can define your own textobjects like this
                 -- ["iF"] = {
