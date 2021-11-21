@@ -1,7 +1,5 @@
-local cmd = vim.api.nvim_command
-
 -- Only required if you have packer in your `opt` pack
-cmd([[packadd packer.nvim]])
+vim.api.nvim_command([[packadd packer.nvim]])
 
 -- Automatically run :PackerCompile whenever plugins.lua is updated with an autocommand:
 require('au2').group('PackerGroup', function(grp)
@@ -181,7 +179,7 @@ return require('packer').startup({
         -------------------------
 
         use({
-            'numToStr/Comment.nvim',
+            '~/Documents/code/Comment.nvim',
             event = 'BufRead',
             config = function()
                 require('plugins.comment')
