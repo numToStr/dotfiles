@@ -113,8 +113,9 @@ lsconf.tsserver.setup({
 -- lsconf.eslint.setup({
 --     flags = flags,
 --     capabilities = capabilities,
---     on_attach = function(client)
+--     on_attach = function(client, buf)
 --         lsp_utils.disable_formatting(client)
+--         lsp_utils.mappings(buf)
 --     end,
 --     settings = {
 --         useESLintClass = true, -- Recommended for eslint >= 7
