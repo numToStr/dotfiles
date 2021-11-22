@@ -65,8 +65,14 @@ o.history = 50
 o.splitright = true
 o.splitbelow = true
 
--- When running macros and regexes on a large file, lazy redraw tells neovim/vim not to draw the screen, which greatly speeds it up, upto 6-7x faster
+-- When running macros and regexes on a large file, lazy redraw tells neovim/vim not to draw the screen
 o.lazyredraw = true
+
+-- Better folds (don't fold by default)
+o.foldmethod = 'indent'
+o.foldlevelstart = 99
+o.foldnestmax = 3
+o.foldminlines = 1
 
 -- Map <leader> to space
 U.map('n', '<SPACE>', '<Nop>')
