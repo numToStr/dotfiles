@@ -1,6 +1,5 @@
 local au2 = require('au2')
-local api = vim.api
-local cmd = api.nvim_command
+local A = vim.api
 
 local ft_ev = 'BufNewFile,BufRead'
 
@@ -22,9 +21,8 @@ au2.BufEnter = {
     '*.txt',
     function()
         if vim.bo.buftype == 'help' then
-            cmd('wincmd L')
-            local nr = api.nvim_get_current_buf()
-            api.nvim_buf_set_keymap(nr, 'n', 'q', ':q<CR>', { noremap = true, silent = true })
+            A.nvim_command('wincmd L')
+            A.nvim_buf_set_keymap(0, 'n', 'q', ':q<CR>', { noremap = true, silent = true })
         end
     end,
 }

@@ -1,10 +1,8 @@
-local U = require('utils')
 local g = vim.g
 local o = vim.o
-local cmd = vim.api.nvim_command
 
 -- cmd('syntax on')
-cmd('filetype plugin indent on')
+vim.api.nvim_command('filetype plugin indent on')
 
 o.termguicolors = true
 o.background = 'dark'
@@ -75,6 +73,5 @@ o.foldnestmax = 3
 o.foldminlines = 1
 
 -- Map <leader> to space
-U.map('n', '<SPACE>', '<Nop>')
 g.mapleader = ' '
 g.maplocalleader = ' '
