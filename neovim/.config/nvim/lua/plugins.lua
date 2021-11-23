@@ -179,7 +179,7 @@ return require('packer').startup({
         -------------------------
 
         use({
-            'numToStr/Comment.nvim',
+            '~/Documents/code/Comment.nvim',
             event = 'BufRead',
             config = function()
                 require('plugins.comment')
@@ -279,6 +279,7 @@ return require('packer').startup({
 
         use({
             'jose-elias-alvarez/null-ls.nvim',
+            branch = 'rpc-cache',
             after = 'nvim-lspconfig',
             config = function()
                 require('plugins.lsp.null-ls')

@@ -7,11 +7,6 @@ local flags = {
     debounce_text_changes = 200,
 }
 
--- Make runtime files discoverable to the server
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, 'lua/?.lua')
-table.insert(runtime_path, 'lua/?/init.lua')
-
 -- Configuring native diagnostics
 vim.diagnostic.config({
     virtual_text = {
@@ -36,18 +31,19 @@ lsconf.sumneko_lua.setup({
             completion = {
                 enable = true,
                 showWord = 'Disable',
+                -- keywordSnippet = 'Disable',
             },
             runtime = {
                 -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
                 version = 'LuaJIT',
-                path = runtime_path,
+                path = lsp_utils.get_luajit_path(),
             },
             diagnostics = {
-                globals = { 'vim' },
+                globals = { 'vim', 'dump' },
             },
             workspace = {
                 -- Make the server aware of Neovim runtime files
-                library = vim.api.nvim_get_runtime_file('', true),
+                library = lsp_utils.get_nvim_rtp_path(),
             },
             -- Do not send telemetry data containing a randomized but unique identifier
             telemetry = {
