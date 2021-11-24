@@ -151,7 +151,7 @@ return require('packer').startup({
         })
 
         use({
-            'numtostr/Navigator.nvim',
+            'numToStr/Navigator.nvim',
             event = 'CursorHold',
             config = function()
                 require('plugins.navigator')
@@ -179,7 +179,7 @@ return require('packer').startup({
         -------------------------
 
         use({
-            '~/Documents/code/Comment.nvim',
+            'numToStr/Comment.nvim',
             event = 'BufRead',
             config = function()
                 require('plugins.comment')
@@ -279,7 +279,6 @@ return require('packer').startup({
 
         use({
             'jose-elias-alvarez/null-ls.nvim',
-            branch = 'rpc-cache',
             after = 'nvim-lspconfig',
             config = function()
                 require('plugins.lsp.null-ls')
