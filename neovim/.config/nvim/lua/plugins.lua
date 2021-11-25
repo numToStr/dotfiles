@@ -2,7 +2,7 @@
 vim.api.nvim_command([[packadd packer.nvim]])
 
 -- Automatically run :PackerCompile whenever plugins.lua is updated with an autocommand:
-require('au2').group('PackerGroup', function(grp)
+require('numToStr.au').group('PackerGroup', function(grp)
     grp.BufWritePost = { 'plugins.lua', 'source <afile> | PackerCompile' }
 end)
 

@@ -1,4 +1,4 @@
-local au2 = require('au2')
+local au2 = require('numToStr.au')
 local A = vim.api
 
 local ft_ev = 'BufNewFile,BufRead'

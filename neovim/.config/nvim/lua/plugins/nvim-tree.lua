@@ -39,7 +39,7 @@ require('nvim-tree').setup({
 
 U.map('n', '<C-n>', '<CMD>NvimTreeToggle<CR>')
 
-require('au2').group('NvimTreeOverrides', function(grp)
+require('numToStr.au').group('NvimTreeOverrides', function(grp)
     grp.FileType = {
         'NvimTree',
         function()
