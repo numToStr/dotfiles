@@ -1,8 +1,8 @@
 -- Vanilla Config
-require('plugins')
-require('settings')
-require('autocmd')
-require('keybinds')
+require('numToStr.settings')
+require('numToStr.autocmd')
+require('numToStr.plugins')
+require('numToStr.keybinds')
 
 -- For debugging purpose
 function _G.dump(...)
