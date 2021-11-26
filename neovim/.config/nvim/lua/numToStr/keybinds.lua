@@ -51,5 +51,5 @@ U.map('v', '<C-k>', "<CMD>move '<-2<CR>gv=gv")
 
 -- Use operator pending mode to visually select the whole buffer
 -- e.g. dA = delete buffer ALL, yA = copy whole buffer ALL
-U.map('o', 'A', '<CMD><C-U>normal! mzggVG<CR>`z')
-U.map('x', 'A', '<CMD><C-U>normal! ggVG<CR>')
+U.map('o', 'A', '<CMD>normal! mzggVG<CR>`z')
+U.map('x', 'A', '<CMD>normal! ggVG<CR>')
