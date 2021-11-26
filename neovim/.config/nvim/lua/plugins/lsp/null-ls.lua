@@ -9,7 +9,7 @@ nls.config({
     sources = {
         -- # FORMATTING #
         fmt.trim_whitespace.with({
-            filetypes = { 'text', 'sh', 'zsh', 'yaml', 'toml', 'make', 'conf', 'tmux' },
+            filetypes = { 'text', 'sh', 'zsh', 'toml', 'make', 'conf', 'tmux' },
         }),
         -- NOTE:
         -- 1. both needs to be enabled to so prettier can apply eslint fixes
