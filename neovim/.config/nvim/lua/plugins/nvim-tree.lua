@@ -35,6 +35,9 @@ require('nvim-tree').setup({
     filters = {
         custom = { '.git', 'node_modules' },
     },
+    git = {
+        ignore = false,
+    },
 })
 
 U.map('n', '<C-n>', '<CMD>NvimTreeToggle<CR>')
