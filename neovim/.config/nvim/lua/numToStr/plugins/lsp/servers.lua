@@ -1,5 +1,5 @@
 local lsp = require('lspconfig')
-local U = require('plugins.lsp.utils')
+local U = require('numToStr.plugins.lsp.utils')
 
 local capabilities = U.capabilities()
 local flags = {

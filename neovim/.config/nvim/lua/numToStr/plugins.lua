@@ -34,7 +34,7 @@ return require('packer').startup({
         use({
             'numToStr/Sakura.nvim',
             config = function()
-                require('plugins.sakura')
+                require('numToStr.plugins.sakura')
             end,
         })
 
@@ -44,7 +44,7 @@ return require('packer').startup({
                 after = 'Sakura.nvim',
                 event = 'BufEnter',
                 config = function()
-                    require('plugins.lualine')
+                    require('numToStr.plugins.lualine')
                 end,
             },
             {
@@ -57,7 +57,7 @@ return require('packer').startup({
             'akinsho/bufferline.nvim',
             event = 'BufEnter',
             config = function()
-                require('plugins.bufferline')
+                require('numToStr.plugins.bufferline')
             end,
         })
 
@@ -71,7 +71,7 @@ return require('packer').startup({
                 event = 'CursorHold',
                 run = ':TSUpdate',
                 config = function()
-                    require('plugins.treesitter')
+                    require('numToStr.plugins.treesitter')
                 end,
             },
             { 'nvim-treesitter/playground', after = 'nvim-treesitter' },
@@ -88,7 +88,7 @@ return require('packer').startup({
             'lukas-reineke/indent-blankline.nvim',
             event = 'BufRead',
             config = function()
-                require('plugins.indentline')
+                require('numToStr.plugins.indentline')
             end,
         })
 
@@ -104,7 +104,7 @@ return require('packer').startup({
             'lewis6991/gitsigns.nvim',
             event = 'BufRead',
             config = function()
-                require('plugins.gitsigns')
+                require('numToStr.plugins.gitsigns')
             end,
         })
 
@@ -112,7 +112,7 @@ return require('packer').startup({
             'rhysd/git-messenger.vim',
             event = 'BufRead',
             config = function()
-                require('plugins.git-messenger')
+                require('numToStr.plugins.git-messenger')
             end,
         })
 
@@ -124,7 +124,7 @@ return require('packer').startup({
             'kyazdani42/nvim-tree.lua',
             event = 'CursorHold',
             config = function()
-                require('plugins.nvim-tree')
+                require('numToStr.plugins.nvim-tree')
             end,
         })
 
@@ -133,7 +133,7 @@ return require('packer').startup({
                 'nvim-telescope/telescope.nvim',
                 event = 'CursorHold',
                 config = function()
-                    require('plugins.telescope')
+                    require('numToStr.plugins.telescope')
                 end,
             },
             {
@@ -154,7 +154,7 @@ return require('packer').startup({
             'numToStr/Navigator.nvim',
             event = 'CursorHold',
             config = function()
-                require('plugins.navigator')
+                require('numToStr.plugins.navigator')
             end,
         })
 
@@ -162,7 +162,7 @@ return require('packer').startup({
             'phaazon/hop.nvim',
             event = 'BufRead',
             config = function()
-                require('plugins.hop')
+                require('numToStr.plugins.hop')
             end,
         })
 
@@ -182,7 +182,7 @@ return require('packer').startup({
             'numToStr/Comment.nvim',
             event = 'BufRead',
             config = function()
-                require('plugins.comment')
+                require('numToStr.plugins.comment')
             end,
         })
 
@@ -206,7 +206,7 @@ return require('packer').startup({
             'ntpeters/vim-better-whitespace',
             event = 'BufRead',
             config = function()
-                require('plugins.whitespace')
+                require('numToStr.plugins.whitespace')
             end,
         })
 
@@ -220,7 +220,7 @@ return require('packer').startup({
             'numToStr/Buffers.nvim',
             event = 'BufRead',
             config = function()
-                require('plugins.buffers')
+                require('numToStr.plugins.buffers')
             end,
         })
 
@@ -232,7 +232,7 @@ return require('packer').startup({
             'numToStr/FTerm.nvim',
             event = 'CursorHold',
             config = function()
-                require('plugins.fterm')
+                require('numToStr.plugins.fterm')
             end,
         })
 
@@ -245,7 +245,7 @@ return require('packer').startup({
         --     branch = 'release',
         --     event = 'BufRead',
         --     config = function()
-        --         require('plugins.coc')
+        --         require('numToStr.plugins.coc')
         --     end,
         --     disable = is_nvim_lsp,
         --     requires = {
@@ -267,7 +267,7 @@ return require('packer').startup({
             'neovim/nvim-lspconfig',
             event = 'BufRead',
             config = function()
-                require('plugins.lsp.servers')
+                require('numToStr.plugins.lsp.servers')
             end,
             requires = {
                 {
@@ -281,7 +281,7 @@ return require('packer').startup({
             'jose-elias-alvarez/null-ls.nvim',
             after = 'nvim-lspconfig',
             config = function()
-                require('plugins.lsp.null-ls')
+                require('numToStr.plugins.lsp.null-ls')
             end,
         })
 
@@ -290,14 +290,14 @@ return require('packer').startup({
                 'hrsh7th/nvim-cmp',
                 event = 'InsertEnter',
                 config = function()
-                    require('plugins.lsp.nvim-cmp')
+                    require('numToStr.plugins.lsp.nvim-cmp')
                 end,
                 requires = {
                     {
                         'L3MON4D3/LuaSnip',
                         event = 'CursorHold',
                         config = function()
-                            require('plugins.lsp.luasnip')
+                            require('numToStr.plugins.lsp.luasnip')
                         end,
                         requires = { 'rafamadriz/friendly-snippets' },
                     },
@@ -314,7 +314,7 @@ return require('packer').startup({
             event = 'InsertCharPre',
             after = 'nvim-cmp',
             config = function()
-                require('plugins.pairs')
+                require('numToStr.plugins.pairs')
             end,
         })
     end,
