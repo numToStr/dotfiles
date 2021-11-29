@@ -1,7 +1,7 @@
-local lsconf = require('lspconfig')
-local lsp_utils = require('plugins.lsp.lsp-utils')
+local lsp = require('lspconfig')
+local U = require('plugins.lsp.lsp-utils')
 
-local capabilities = lsp_utils.capabilities()
+local capabilities = U.capabilities()
 local flags = {
     allow_incremental_sync = true,
     debounce_text_changes = 200,
@@ -18,13 +18,13 @@ vim.diagnostic.config({
 })
 
 -- Lua
-lsconf.sumneko_lua.setup({
+lsp.sumneko_lua.setup({
     cmd = { 'lua-language-server' },
     flags = flags,
     capabilities = capabilities,
     on_attach = function(client, buf)
-        lsp_utils.disable_formatting(client)
-        lsp_utils.mappings(buf)
+        U.disable_formatting(client)
+        U.mappings(buf)
     end,
     settings = {
         Lua = {
@@ -36,14 +36,14 @@ lsconf.sumneko_lua.setup({
             runtime = {
                 -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
                 version = 'LuaJIT',
-                path = lsp_utils.get_luajit_path(),
+                path = U.get_luajit_path(),
             },
             diagnostics = {
                 globals = { 'vim', 'dump' },
             },
             workspace = {
                 -- Make the server aware of Neovim runtime files
-                library = lsp_utils.get_nvim_rtp_path(),
+                library = U.get_nvim_rtp_path(),
             },
             -- Do not send telemetry data containing a randomized but unique identifier
             telemetry = {
@@ -54,12 +54,12 @@ lsconf.sumneko_lua.setup({
 })
 
 -- Rust
-lsconf.rust_analyzer.setup({
+lsp.rust_analyzer.setup({
     flags = flags,
     capabilities = capabilities,
     on_attach = function(client, buf)
-        lsp_utils.disable_formatting(client)
-        lsp_utils.mappings(buf)
+        U.disable_formatting(client)
+        U.mappings(buf)
     end,
     settings = {
         ['rust-analyzer'] = {
@@ -75,67 +75,68 @@ lsconf.rust_analyzer.setup({
 })
 
 -- Zig
-lsconf.zls.setup({
+lsp.zls.setup({
     flags = flags,
     capabilities = capabilities,
     on_attach = function(client, buf)
-        lsp_utils.disable_formatting(client)
-        lsp_utils.mappings(buf)
+        U.disable_formatting(client)
+        U.mappings(buf)
     end,
 })
 
 -- Golang
-lsconf.gopls.setup({
+lsp.gopls.setup({
     flags = flags,
     capabilities = capabilities,
     on_attach = function(client, buf)
-        lsp_utils.disable_formatting(client)
-        lsp_utils.mappings(buf)
+        U.disable_formatting(client)
+        U.mappings(buf)
     end,
 })
 
 -- Typescript
-lsconf.tsserver.setup({
+lsp.tsserver.setup({
     flags = flags,
     capabilities = capabilities,
     on_attach = function(client, buf)
-        lsp_utils.disable_formatting(client)
-        lsp_utils.mappings(buf)
+        U.disable_formatting(client)
+        U.mappings(buf)
     end,
 })
 
--- BUG: Sending false errors. It seems to be a `root_dir` issue. Therefore, using `null-ls` for now.
+-- TIP: Using `eslint_d` diagnostic from `null-ls` bcz it is way fasterrrrrrr.
 -- Eslint
--- lsconf.eslint.setup({
---     flags = flags,
---     capabilities = capabilities,
---     on_attach = function(client, buf)
---         lsp_utils.disable_formatting(client)
---         lsp_utils.mappings(buf)
---     end,
---     settings = {
---         useESLintClass = true, -- Recommended for eslint >= 7
---         packageManager = 'yarn', -- I use `yarn` btw
---         -- run = 'onSave', -- Run `eslint` after save
---     },
--- })
-
--- Json
-lsconf.jsonls.setup({
+--[[ lsp.eslint.setup({
     flags = flags,
     capabilities = capabilities,
     on_attach = function(client, buf)
-        lsp_utils.disable_formatting(client)
-        lsp_utils.mappings(buf)
+        U.disable_formatting(client)
+        U.mappings(buf)
+    end,
+    settings = {
+        useESLintClass = true, -- Recommended for eslint >= 7
+        run = 'onSave', -- Run `eslint` after save
+    },
+    -- NOTE: `root_dir` is required to fix the monorepo issue
+    root_dir = require('lspconfig.util').find_git_ancestor,
+}) ]]
+
+-- Json
+lsp.jsonls.setup({
+    flags = flags,
+    capabilities = capabilities,
+    on_attach = function(client, buf)
+        U.disable_formatting(client)
+        U.mappings(buf)
     end,
 })
 
 -- YAML
-lsconf.yamlls.setup({
+lsp.yamlls.setup({
     flags = flags,
     capabilities = capabilities,
     on_attach = function(client, buf)
-        lsp_utils.disable_formatting(client)
-        lsp_utils.mappings(buf)
+        U.disable_formatting(client)
+        U.mappings(buf)
     end,
 })
