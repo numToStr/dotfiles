@@ -1,5 +1,5 @@
 local nls = require('null-ls')
-local lsp_utils = require('plugins.lsp.lsp-utils')
+local lsp_utils = require('plugins.lsp.utils')
 
 local fmt = nls.builtins.formatting
 local dgn = nls.builtins.diagnostics

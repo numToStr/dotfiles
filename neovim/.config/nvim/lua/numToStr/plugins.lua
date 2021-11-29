@@ -267,7 +267,7 @@ return require('packer').startup({
             'neovim/nvim-lspconfig',
             event = 'BufRead',
             config = function()
-                require('plugins.lsp.lsp-config')
+                require('plugins.lsp.servers')
             end,
             requires = {
                 {
