@@ -19,7 +19,7 @@ require('luasnip').config.setup({
 require('luasnip.loaders.from_vscode').lazy_load()
 
 -- Mappins to move around inside snippets
-local U = require('utils')
+local U = require('numToStr.utils')
 
 U.map('i', '<C-j>', '<CMD>lua require("luasnip").jump(1)<CR>')
 U.map('i', '<C-k>', '<CMD>lua require("luasnip").jump(-1)<CR>')

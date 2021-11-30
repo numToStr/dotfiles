@@ -1,4 +1,4 @@
-local U = require('utils')
+local U = require('numToStr.utils')
 local g = vim.g
 
 g.nvim_tree_indent_markers = 1

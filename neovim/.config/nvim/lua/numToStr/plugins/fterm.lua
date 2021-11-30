@@ -1,4 +1,4 @@
-local U = require('utils')
+local U = require('numToStr.utils')
 
 U.map('n', '<A-i>', "<CMD>lua require('FTerm').toggle()<CR>")
 U.map('t', '<A-i>', "<C-\\><C-n><CMD>lua require('FTerm').toggle()<CR>")

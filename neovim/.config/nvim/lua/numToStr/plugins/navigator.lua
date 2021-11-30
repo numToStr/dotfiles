@@ -1,4 +1,4 @@
-local U = require('utils')
+local U = require('numToStr.utils')
 
 require('Navigator').setup({
     auto_save = 'current',

@@ -1,4 +1,4 @@
-local U = require('utils')
+local U = require('numToStr.utils')
 
 U.map('n', '<leader>x', '<CMD>lua require("Buffers").only()<CR>')
 U.map('n', '<leader>X', '<CMD>lua require("Buffers").clear()<CR>')

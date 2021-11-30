@@ -1,4 +1,4 @@
-local U = require('utils')
+local U = require('numToStr.utils')
 local g = vim.g
 local api = vim.api
 local cmd = api.nvim_command

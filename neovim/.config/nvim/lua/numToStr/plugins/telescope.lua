@@ -1,4 +1,4 @@
-local U = require('utils')
+local U = require('numToStr.utils')
 local finders = require('telescope.builtin')
 local actions = require('telescope.actions')
 

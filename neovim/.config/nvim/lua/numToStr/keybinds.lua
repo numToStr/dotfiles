@@ -1,4 +1,4 @@
-local U = require('utils')
+local U = require('numToStr.utils')
 
 -- Fix * (Keep the cursor position, don't move to next match)
 U.map('n', '*', '*N')
