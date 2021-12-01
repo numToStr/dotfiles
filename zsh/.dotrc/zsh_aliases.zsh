@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+alias v=nvim
 alias vim=nvim
 alias sysinfo="inxi -Fxxxz"
 # alias cat=bat
