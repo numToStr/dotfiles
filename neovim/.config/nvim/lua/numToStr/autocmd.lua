@@ -8,7 +8,7 @@ au.group('MyFileTypes', {
     { ft_ev, '*.env*', 'set ft=sh' },
     { ft_ev, '*.mdx', 'set ft=markdown' },
     { ft_ev, '*.mjml', 'set ft=html' },
-    { ft_ev, '*tmux*', 'set ft=tmux' },
+    { ft_ev, '*tmux*conf', 'set ft=tmux' },
 })
 
 au.TextYankPost = function()
