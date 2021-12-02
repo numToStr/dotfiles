@@ -240,29 +240,6 @@ return require('packer').startup({
         -- LSP, Completions and Snippets --
         -----------------------------------
 
-        -- use({
-        --     'neoclide/coc.nvim',
-        --     branch = 'release',
-        --     event = 'BufRead',
-        --     config = function()
-        --         require('numToStr.plugins.coc')
-        --     end,
-        --     disable = is_nvim_lsp,
-        --     requires = {
-        --         {
-        --             'dsznajder/vscode-es7-javascript-react-snippets',
-        --             run = 'yarn install --frozen-lockfile && yarn compile',
-        --             event = 'InsertCharPre',
-        --             disable = is_nvim_lsp,
-        --         },
-        --         {
-        --             'honza/vim-snippets',
-        --             event = 'InsertCharPre',
-        --             disable = is_nvim_lsp,
-        --         },
-        --     },
-        -- })
-
         use({
             'neovim/nvim-lspconfig',
             event = 'BufRead',
