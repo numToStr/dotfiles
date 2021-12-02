@@ -1,5 +1,4 @@
 local U = require('numToStr.utils')
-local finders = require('telescope.builtin')
 local actions = require('telescope.actions')
 
 require('telescope').setup({
@@ -31,27 +30,27 @@ require('telescope').setup({
     },
 })
 
-function _G.__telescope_open(fn)
-    U.move_cursor_from_tree()
-    finders[fn]({
-        hidden = true,
-    })
-end
+_G.Telescope = setmetatable({}, {
+    __index = function(_, k)
+        U.move_cursor_from_tree()
+        return require('telescope.builtin')[k]
+    end,
+})
 
 -- Ctrl-p = fuzzy finder
-U.map('n', '<C-P>', "<CMD>lua __telescope_open('find_files')<CR>")
+U.map('n', '<C-P>', '<CMD>lua Telescope.find_files({ hidden = true })<CR>')
 
 -- Get :help at the speed of light
-U.map('n', '<leader>H', "<CMD>lua __telescope_open('help_tags')<CR>")
+U.map('n', '<leader>H', '<CMD>lua Telescope.help_tags()<CR>')
 
 -- Fuzzy find active buffers
-U.map('n', "'b", "<CMD>lua __telescope_open('buffers')<CR>")
+U.map('n', "'b", '<CMD>lua Telescope.buffers()<CR>')
 
 -- Search for string
-U.map('n', "'r", "<CMD>lua __telescope_open('live_grep')<CR>")
-
--- Fuzzy find history buffers
-U.map('n', "'i", "<CMD>lua __telescope_open('oldfiles')<CR>")
+U.map('n', "'r", '<CMD>lua Telescope.live_grep()<CR>')
 
 -- Fuzzy find changed files in git
-U.map('n', "'c", "<CMD>lua __telescope_open('git_status')<CR>")
+U.map('n', "'c", '<CMD>lua Telescope.git_status()<CR>')
+
+-- Fuzzy find history buffers
+-- U.map('n', "'i", "<CMD>lua __telescope_open('oldfiles')<CR>")
