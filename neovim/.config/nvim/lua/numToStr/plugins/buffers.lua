@@ -1,5 +1,5 @@
-local U = require('numToStr.utils')
+local K = require('numToStr.keymap')
 
-U.map('n', '<leader>x', '<CMD>lua require("Buffers").only()<CR>')
-U.map('n', '<leader>X', '<CMD>lua require("Buffers").clear()<CR>')
-U.map('n', '<leader>q', '<CMD>lua require("Buffers").delete()<CR>')
+K.n('<leader>x', '<CMD>lua require("Buffers").only()<CR>')
+K.n('<leader>X', '<CMD>lua require("Buffers").clear()<CR>')
+K.n('<leader>q', '<CMD>lua require("Buffers").delete()<CR>')

@@ -1,4 +1,3 @@
-local U = require('numToStr.utils')
 local g = vim.g
 
 g.nvim_tree_indent_markers = 1
@@ -40,7 +39,7 @@ require('nvim-tree').setup({
     },
 })
 
-U.map('n', '<C-n>', '<CMD>NvimTreeToggle<CR>')
+require('numToStr.keymap').n('<C-n>', '<CMD>NvimTreeToggle<CR>')
 
 require('numToStr.au').group('NvimTreeOverrides', function(grp)
     grp.FileType = {

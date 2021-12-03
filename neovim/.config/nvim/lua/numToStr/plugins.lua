@@ -130,7 +130,7 @@ return require('packer').startup({
 
         use({
             {
-                'nvim-telescope/telescope.nvim',
+                '~/Documents/code/telescope.nvim',
                 event = 'CursorHold',
                 config = function()
                     require('numToStr.plugins.telescope')
@@ -185,6 +185,14 @@ return require('packer').startup({
                 require('numToStr.plugins.comment')
             end,
         })
+
+        -- use({
+        --     '~/Documents/code/Surround.nvim',
+        --     event = 'BufRead',
+        --     config = function()
+        --         require('Surround').setup()
+        --     end,
+        -- })
 
         use({
             'tpope/vim-surround',

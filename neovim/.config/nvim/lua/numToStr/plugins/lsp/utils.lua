@@ -1,6 +1,5 @@
+local K = require('numToStr.keymap')
 local A = vim.api
-local bmap = A.nvim_buf_set_keymap
-local map_opt = { noremap = true, silent = true }
 
 local U = {}
 
@@ -31,24 +30,24 @@ end
 ---LSP mappings
 ---@param bufnr number
 function U.mappings(bufnr)
-    bmap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', map_opt)
-    bmap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', map_opt)
-    bmap(bufnr, 'n', 'gh', '<cmd>lua vim.lsp.buf.hover()<CR>', map_opt)
-    bmap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', map_opt)
-    bmap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', map_opt)
-    bmap(bufnr, 'i', '<C-h>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', map_opt)
-    -- bmap(bufnr, 'n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-    -- bmap(bufnr, 'n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-    -- bmap(bufnr, 'n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-    -- bmap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-    bmap(bufnr, 'n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<CR>', map_opt)
-    bmap(bufnr, 'n', '<leader>c', '<cmd>lua vim.lsp.buf.code_action()<CR>', map_opt)
-    -- vim.api.nvim_buf_set_keymap(bufnr, 'v', '<leader>ca', '<cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
-    bmap(bufnr, 'n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', map_opt)
-    bmap(bufnr, 'n', '[g', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', map_opt)
-    bmap(bufnr, 'n', ']g', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', map_opt)
-    -- bmap(bufnr, 'n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-    -- bmap(bufnr, 'n', '<leader>so', [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
+    K.n.bmap(bufnr, 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
+    K.n.bmap(bufnr, 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
+    K.n.bmap(bufnr, 'gh', '<cmd>lua vim.lsp.buf.hover()<CR>')
+    K.n.bmap(bufnr, 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
+    K.n.bmap(bufnr, 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
+    K.i.bmap(bufnr, '<C-h>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+    -- K.n.bmap(bufnr, '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>')
+    -- K.n.bmap(bufnr, '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>')
+    -- K.n.bmap(bufnr, '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>')
+    -- K.n.bmap(bufnr, '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
+    K.n.bmap(bufnr, '<F2>', '<cmd>lua vim.lsp.buf.rename()<CR>')
+    K.n.bmap(bufnr, '<leader>c', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+    -- K.v.bmap(bufnr, '<leader>ca', '<cmd>lua vim.lsp.buf.range_code_action()<CR>')
+    K.n.bmap(bufnr, '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
+    K.n.bmap(bufnr, '[g', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
+    K.n.bmap(bufnr, ']g', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
+    -- K.n.bmap(bufnr, '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
+    -- K.n.bmap(bufnr, '<leader>so', [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]])
 end
 
 ---Make luajit runtime files discoverable to the server
