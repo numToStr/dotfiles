@@ -130,7 +130,7 @@ return require('packer').startup({
 
         use({
             {
-                '~/Documents/code/telescope.nvim',
+                'nvim-telescope/telescope.nvim',
                 event = 'CursorHold',
                 config = function()
                     require('numToStr.plugins.telescope')
