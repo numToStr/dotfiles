@@ -19,7 +19,6 @@ vim.diagnostic.config({
 
 -- Lua
 lsp.sumneko_lua.setup({
-    cmd = { 'lua-language-server' },
     flags = flags,
     capabilities = capabilities,
     on_attach = function(client, buf)
