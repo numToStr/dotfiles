@@ -27,9 +27,9 @@ function S.exec(id)
 end
 
 function S.set(fn)
-    local id = string.format('%p', fn)
+    local id = #S.__au + 1
     S.__au[id] = fn
-    return 'lua require("numToStr.au").exec("' .. id .. '")'
+    return ('lua require("numToStr.au").exec(%s)'):format(id)
 end
 
 function S.group(grp, cmds)
