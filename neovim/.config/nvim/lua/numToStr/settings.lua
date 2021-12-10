@@ -63,8 +63,9 @@ o.history = 50
 o.splitright = true
 o.splitbelow = true
 
+-- BUG: this won't update the search count after pressing `n` or `N`
 -- When running macros and regexes on a large file, lazy redraw tells neovim/vim not to draw the screen
-o.lazyredraw = true
+-- o.lazyredraw = true
 
 -- Better folds (don't fold by default)
 o.foldmethod = 'indent'
