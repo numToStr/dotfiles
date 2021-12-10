@@ -15,7 +15,7 @@ require('lualine').setup({
         },
         lualine_c = {
             { 'filename', file_status = true },
-            { 'diagnostics', sources = { 'nvim' } },
+            { 'diagnostics' },
         },
         lualine_x = {
             {
