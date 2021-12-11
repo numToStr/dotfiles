@@ -139,3 +139,13 @@ lsp.yamlls.setup({
         U.mappings(buf)
     end,
 })
+
+-- Terraform
+lsp.terraformls.setup({
+    flags = flags,
+    capabilities = capabilities,
+    on_attach = function(client, buf)
+        U.disable_formatting(client)
+        U.mappings(buf)
+    end,
+})
