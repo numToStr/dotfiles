@@ -5,7 +5,7 @@ local fmt = nls.builtins.formatting
 local dgn = nls.builtins.diagnostics
 
 -- Configuring null-ls
-nls.config({
+nls.setup({
     sources = {
         -- # FORMATTING #
         fmt.trim_whitespace.with({
@@ -37,11 +37,6 @@ nls.config({
             extra_args = { '--globals', 'vim', '--std', 'luajit' },
         }),
     },
-})
-
--- Setting up null-ls server
--- NOTE: don't move this setup() call elsewhere
-require('lspconfig')['null-ls'].setup({
     on_attach = function(client, bufnr)
         U.fmt_on_save(client)
         U.mappings(bufnr)
