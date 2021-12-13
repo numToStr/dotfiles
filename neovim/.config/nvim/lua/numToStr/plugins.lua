@@ -264,6 +264,7 @@ return require('packer').startup({
 
         use({
             'jose-elias-alvarez/null-ls.nvim',
+            event = 'BufRead',
             config = function()
                 require('numToStr.plugins.lsp.null-ls')
             end,
