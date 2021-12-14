@@ -1,5 +1,6 @@
 local K = require('numToStr.keymap')
 local actions = require('telescope.actions')
+local A = vim.api
 
 require('telescope').setup({
     defaults = {
@@ -17,6 +18,9 @@ require('telescope').setup({
                 ['<TAB>'] = actions.toggle_selection + actions.move_selection_next,
                 ['<C-s>'] = actions.send_selected_to_qflist,
                 ['<C-q>'] = actions.send_to_qflist,
+                ['<C-w>'] = function()
+                    A.nvim_command('norm! bcw')
+                end,
             },
         },
     },
@@ -33,7 +37,7 @@ require('telescope').setup({
 _G.Telescope = setmetatable({}, {
     __index = function(_, k)
         if vim.bo.filetype == 'NvimTree' then
-            vim.api.nvim_command('wincmd l')
+            A.nvim_command('wincmd l')
         end
         return require('telescope.builtin')[k]
     end,
