@@ -1,5 +1,6 @@
--- vim.wo.foldmethod = 'expr'
--- vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
+-- Treesitter folds
+-- vim.o.foldmethod = 'expr'
+-- vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
 
 require('nvim-treesitter.configs').setup({
     -- nvim-treesitter/nvim-treesitter (self config)
@@ -40,6 +41,7 @@ require('nvim-treesitter.configs').setup({
                 ['il'] = '@loop.inner',
                 ['aa'] = '@parameter.outer',
                 ['ia'] = '@parameter.inner',
+                ['uc'] = '@comment.outer',
 
                 -- Or you can define your own textobjects like this
                 -- ["iF"] = {

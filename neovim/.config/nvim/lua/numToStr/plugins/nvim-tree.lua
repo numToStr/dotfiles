@@ -1,4 +1,3 @@
-local U = require('utils')
 local g = vim.g
 
 g.nvim_tree_indent_markers = 1
@@ -35,11 +34,14 @@ require('nvim-tree').setup({
     filters = {
         custom = { '.git', 'node_modules' },
     },
+    git = {
+        ignore = false,
+    },
 })
 
-U.map('n', '<C-n>', '<CMD>NvimTreeToggle<CR>')
+require('numToStr.keymap').n('<C-n>', '<CMD>NvimTreeToggle<CR>')
 
-require('au2').group('NvimTreeOverrides', function(grp)
+require('numToStr.au').group('NvimTreeOverrides', function(grp)
     grp.FileType = {
         'NvimTree',
         function()

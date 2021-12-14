@@ -15,10 +15,13 @@ require('lualine').setup({
         },
         lualine_c = {
             { 'filename', file_status = true },
-            { 'diagnostics', sources = { 'coc' } },
+            { 'diagnostics' },
         },
         lualine_x = {
-            'g:coc_status',
+            {
+                'lsp_progress',
+                display_components = { 'lsp_client_name', { 'title', 'percentage', 'message' } },
+            },
             'filetype',
             'encoding',
             'fileformat',

@@ -58,6 +58,7 @@ export DISABLE_MAGIC_FUNCTIONS=true     # make pasting into terminal faster
 #####################
 # PATH              #
 #####################
+export LSP_BIN_PATH="$HOME/.local/lsp/bin"
 export GOPATH="$HOME/go/"
 export GOBIN="$GOPATH/bin"
-export PATH="$DOT_BIN:$GOBIN:$PATH"
+export PATH="$LSP_BIN_PATH:$GOBIN:$PATH"

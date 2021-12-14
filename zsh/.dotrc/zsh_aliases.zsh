@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+alias v=nvim
 alias vim=nvim
 alias sysinfo="inxi -Fxxxz"
 # alias cat=bat
@@ -34,7 +35,7 @@ prcreate() {
 }
 
 prmerge() {
-    gh pr merge --merge --delete-branch=false "$1"
+    gh pr merge --rebase --delete-branch=false "$1"
 }
 prlist() {
     gh pr list --state open

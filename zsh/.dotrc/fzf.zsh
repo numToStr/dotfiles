@@ -16,7 +16,7 @@ export FZF_DEFAULT_OPTS="--prompt '⯈ ' --marker=+ --keep-right --color=dark --
 # Use git-ls-files inside git repo, otherwise fd
 export FZF_DEFAULT_COMMAND="fd --type f --type l $FD_OPTIONS || git ls-files --cached --others --exclude-standard"
 
-export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
+export FZF_CTRL_T_COMMAND="fd --strip-cwd-prefix $FD_OPTIONS"
 export FZF_ALT_C_COMMAND="fd --type d $FD_OPTIONS"
 
 # Options to fzf command

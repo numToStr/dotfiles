@@ -1,16 +1,14 @@
-local U = require('utils')
 local g = vim.g
 local o = vim.o
-local cmd = vim.api.nvim_command
 
 -- cmd('syntax on')
-cmd('filetype plugin indent on')
+-- vim.api.nvim_command('filetype plugin indent on')
 
 o.termguicolors = true
-o.background = 'dark'
+-- o.background = 'dark'
 
 -- Do not save when switching buffers
-o.hidden = true
+-- o.hidden = true
 
 -- Decrease update time
 o.timeoutlen = 500
@@ -32,9 +30,9 @@ o.colorcolumn = '99999'
 
 -- Better editing experience
 o.expandtab = true
-o.smarttab = true
+-- o.smarttab = true
 o.cindent = true
-o.autoindent = true
+-- o.autoindent = true
 o.wrap = true
 o.textwidth = 300
 o.tabstop = 4
@@ -54,9 +52,9 @@ o.backup = false
 o.writebackup = false
 o.undofile = true
 o.swapfile = false
-o.backupdir = '/tmp/'
-o.directory = '/tmp/'
-o.undodir = '/tmp/'
+-- o.backupdir = '/tmp/'
+-- o.directory = '/tmp/'
+-- o.undodir = '/tmp/'
 
 -- Remember 50 items in commandline history
 o.history = 50
@@ -65,10 +63,16 @@ o.history = 50
 o.splitright = true
 o.splitbelow = true
 
--- When running macros and regexes on a large file, lazy redraw tells neovim/vim not to draw the screen, which greatly speeds it up, upto 6-7x faster
-o.lazyredraw = true
+-- BUG: this won't update the search count after pressing `n` or `N`
+-- When running macros and regexes on a large file, lazy redraw tells neovim/vim not to draw the screen
+-- o.lazyredraw = true
+
+-- Better folds (don't fold by default)
+o.foldmethod = 'indent'
+o.foldlevelstart = 99
+o.foldnestmax = 3
+o.foldminlines = 1
 
 -- Map <leader> to space
-U.map('n', '<SPACE>', '<Nop>')
 g.mapleader = ' '
 g.maplocalleader = ' '

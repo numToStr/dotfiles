@@ -1,6 +1,6 @@
-local U = require('utils')
-local finders = require('telescope.builtin')
+local K = require('numToStr.keymap')
 local actions = require('telescope.actions')
+local A = vim.api
 
 require('telescope').setup({
     defaults = {
@@ -18,6 +18,9 @@ require('telescope').setup({
                 ['<TAB>'] = actions.toggle_selection + actions.move_selection_next,
                 ['<C-s>'] = actions.send_selected_to_qflist,
                 ['<C-q>'] = actions.send_to_qflist,
+                ['<C-w>'] = function()
+                    A.nvim_command('norm! bcw')
+                end,
             },
         },
     },
@@ -31,27 +34,29 @@ require('telescope').setup({
     },
 })
 
-function _G.__telescope_open(fn)
-    U.move_cursor_from_tree()
-    finders[fn]({
-        hidden = true,
-    })
-end
+_G.Telescope = setmetatable({}, {
+    __index = function(_, k)
+        if vim.bo.filetype == 'NvimTree' then
+            A.nvim_command('wincmd l')
+        end
+        return require('telescope.builtin')[k]
+    end,
+})
 
 -- Ctrl-p = fuzzy finder
-U.map('n', '<C-P>', "<CMD>lua __telescope_open('find_files')<CR>")
+K.n('<C-P>', '<CMD>lua Telescope.find_files({ hidden = true })<CR>')
 
 -- Get :help at the speed of light
-U.map('n', '<leader>H', "<CMD>lua __telescope_open('help_tags')<CR>")
+K.n('<leader>H', '<CMD>lua Telescope.help_tags()<CR>')
 
 -- Fuzzy find active buffers
-U.map('n', "'b", "<CMD>lua __telescope_open('buffers')<CR>")
+K.n("'b", '<CMD>lua Telescope.buffers()<CR>')
 
 -- Search for string
-U.map('n', "'r", "<CMD>lua __telescope_open('live_grep')<CR>")
-
--- Fuzzy find history buffers
-U.map('n', "'i", "<CMD>lua __telescope_open('oldfiles')<CR>")
+K.n("'r", '<CMD>lua Telescope.live_grep()<CR>')
 
 -- Fuzzy find changed files in git
-U.map('n', "'c", "<CMD>lua __telescope_open('git_status')<CR>")
+K.n("'c", '<CMD>lua Telescope.git_status()<CR>')
+
+-- Fuzzy find history buffers
+-- U.map('n', "'i", "<CMD>lua __telescope_open('oldfiles')<CR>")
