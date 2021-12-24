@@ -18,10 +18,7 @@ require('lualine').setup({
             { 'diagnostics' },
         },
         lualine_x = {
-            {
-                'lsp_progress',
-                display_components = { 'lsp_client_name', { 'title', 'percentage', 'message' } },
-            },
+            'lsp_progress',
             'filetype',
             'encoding',
             'fileformat',
