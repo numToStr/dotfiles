@@ -68,10 +68,10 @@ o.splitbelow = true
 -- o.lazyredraw = true
 
 -- Better folds (don't fold by default)
-o.foldmethod = 'indent'
-o.foldlevelstart = 99
-o.foldnestmax = 3
-o.foldminlines = 1
+-- o.foldmethod = 'indent'
+-- o.foldlevelstart = 99
+-- o.foldnestmax = 3
+-- o.foldminlines = 1
 
 -- Map <leader> to space
 g.mapleader = ' '
