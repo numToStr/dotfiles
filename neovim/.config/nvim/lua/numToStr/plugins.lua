@@ -179,7 +179,7 @@ return require('packer').startup({
         -------------------------
 
         use({
-            'numToStr/Comment.nvim',
+            '~/Documents/code/Comment.nvim',
             event = 'BufRead',
             config = function()
                 require('numToStr.plugins.comment')
