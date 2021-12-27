@@ -16,10 +16,6 @@ K.n('N', 'Nzz')
 K.i('<C-E>', '<ESC>A')
 K.i('<C-A>', '<ESC>I')
 
--- Fast execute macro
-K.x('<S-q>', ':normal @@<CR>')
-K.n('<S-q>', ':normal @@<CR>')
-
 -- Quickly save the current buffer or all buffers
 K.n('<leader>w', ':update<CR>')
 K.n('<leader>W', ':wall<CR>')
