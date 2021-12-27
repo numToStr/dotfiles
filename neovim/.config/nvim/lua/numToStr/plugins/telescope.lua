@@ -19,7 +19,7 @@ require('telescope').setup({
                 ['<C-s>'] = actions.send_selected_to_qflist,
                 ['<C-q>'] = actions.send_to_qflist,
                 ['<C-w>'] = function()
-                    A.nvim_command('norm! bcw')
+                    A.nvim_feedkeys(A.nvim_replace_termcodes('<C-S-W>', true, false, true), 'ni', true)
                 end,
             },
         },
