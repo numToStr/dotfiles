@@ -2,12 +2,6 @@ local K = require('numToStr.keymap')
 local actions = require('telescope.actions')
 local A = vim.api
 
-local function pmap(key)
-    return function()
-        A.nvim_feedkeys(A.nvim_replace_termcodes(key, true, false, true), 'ni', true)
-    end
-end
-
 require('telescope').setup({
     defaults = {
         prompt_prefix = ' ❯ ',
@@ -24,8 +18,6 @@ require('telescope').setup({
                 ['<TAB>'] = actions.toggle_selection + actions.move_selection_next,
                 ['<C-s>'] = actions.send_selected_to_qflist,
                 ['<C-q>'] = actions.send_to_qflist,
-                ['<C-w>'] = pmap('<C-S-W>'),
-                ['<C-u>'] = pmap('<C-S-U>'),
             },
         },
     },
