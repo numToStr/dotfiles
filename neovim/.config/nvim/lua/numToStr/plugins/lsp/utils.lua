@@ -1,5 +1,4 @@
 local K = require('numToStr.keymap')
-local A = vim.api
 
 local U = {}
 
@@ -7,7 +6,12 @@ local U = {}
 ---@param client table
 function U.fmt_on_save(client)
     if client.resolved_capabilities.document_formatting then
-        A.nvim_command('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()')
+        vim.cmd([[
+            augroup FORMATTING
+                autocmd! * <buffer>
+                autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+            augroup END
+        ]])
     end
 end
 
