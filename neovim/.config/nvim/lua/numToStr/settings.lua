@@ -24,10 +24,6 @@ o.relativenumber = true
 o.signcolumn = 'yes'
 o.cursorline = true
 
--- To fix a neovim bug affecting indent-blankline
--- Related: https://github.com/lukas-reineke/indent-blankline.nvim/issues/59
-o.colorcolumn = '99999'
-
 -- Better editing experience
 o.expandtab = true
 -- o.smarttab = true
