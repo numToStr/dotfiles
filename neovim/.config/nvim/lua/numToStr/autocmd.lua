@@ -1,39 +1,29 @@
-local A = vim.api
+vim.g.did_load_filetypes = 0 -- Disable vim-based filetype plugin
+vim.g.do_filetype_lua = 1 -- Enable lua-based filetype plugin
 
-local extensions = {
-    ['%.eslintrc$'] = 'json',
-    ['%.eslintignore$'] = 'conf',
-    ['%.prettierrc$'] = 'json',
-    ['%.prettierignore$'] = 'conf',
-    ['%.conf$'] = 'conf',
-    ['.*%.env.*'] = 'sh',
-    ['%.mdx$'] = 'markdown',
-    ['%.mjml$'] = 'html',
-    ['.*tmux.*conf'] = 'tmux',
-}
+-- Custom filetypes
+vim.filetype.add({
+    extension = {
+        eslintrc = 'json',
+        prettierrc = 'json',
+        conf = 'conf',
+        mdx = 'markdown',
+    },
+    pattern = {
+        ['.*%.env.*'] = 'sh',
+        ['.*ignore'] = 'conf',
+        -- ['.*tmux.*conf$'] = 'tmux',
+    },
+})
 
 require('numToStr.au').group('NUMTOSTR', function(aucmd)
-    -- Custom filetypes
-    aucmd('BufNewFile,BufRead', function()
-        local bufnr = A.nvim_get_current_buf()
-        local path = A.nvim_buf_get_name(bufnr)
-        if #path == 0 then
-            return
-        end
-        for ext, ft in pairs(extensions) do
-            if path:match('.*/(.*)$'):find(ext) then
-                A.nvim_buf_set_option(bufnr, 'filetype', ft)
-            end
-        end
-    end)
-
     -- Open help vertically and press q to exit
     aucmd.BufEnter = {
         '*.txt',
         function()
             if vim.bo.buftype == 'help' then
-                A.nvim_command('wincmd L')
-                A.nvim_buf_set_keymap(0, 'n', 'q', ':q<CR>', { noremap = true, silent = true })
+                vim.api.nvim_command('wincmd L')
+                vim.api.nvim_buf_set_keymap(0, 'n', 'q', '<CMD>q<CR>', { noremap = true })
             end
         end,
     }
