@@ -53,14 +53,6 @@ return require('packer').startup({
             },
         })
 
-        use({
-            'akinsho/bufferline.nvim',
-            event = 'BufEnter',
-            config = function()
-                require('numToStr.plugins.bufferline')
-            end,
-        })
-
         -----------------------------------
         -- Treesitter: Better Highlights --
         -----------------------------------

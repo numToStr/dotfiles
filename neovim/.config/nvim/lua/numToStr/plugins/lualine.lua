@@ -28,5 +28,9 @@ require('lualine').setup({
             { 'location', color = { gui = 'bold' } },
         },
     },
+    tabline = {
+        lualine_a = { 'buffers' },
+        lualine_z = { 'tabs' },
+    },
     extensions = { 'quickfix', 'nvim-tree' },
 })
