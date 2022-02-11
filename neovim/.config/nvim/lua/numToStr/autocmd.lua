@@ -14,6 +14,9 @@ vim.filetype.add({
         ['.*ignore'] = 'conf',
         -- ['.*tmux.*conf$'] = 'tmux',
     },
+    filename = {
+        ['yup.lock'] = 'yaml',
+    },
 })
 
 require('numToStr.au').group('NUMTOSTR', function(aucmd)
