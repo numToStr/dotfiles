@@ -29,8 +29,18 @@ require('lualine').setup({
         },
     },
     tabline = {
-        lualine_a = { 'buffers' },
-        lualine_z = { 'tabs' },
+        lualine_a = {
+            {
+                'buffers',
+                buffers_color = { active = 'lualine_b_normal' },
+            },
+        },
+        lualine_z = {
+            {
+                'tabs',
+                tabs_color = { active = 'lualine_b_normal' },
+            },
+        },
     },
     extensions = { 'quickfix', 'nvim-tree' },
 })
