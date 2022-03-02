@@ -1,7 +1,6 @@
 local g = vim.g
 
 g.nvim_tree_indent_markers = 1
-g.nvim_tree_disable_window_picker = 1
 g.nvim_tree_show_icons = {
     git = 1,
     folders = 1,
@@ -36,6 +35,13 @@ require('nvim-tree').setup({
     },
     git = {
         ignore = false,
+    },
+    actions = {
+        open_file = {
+            window_picker = {
+                enable = false,
+            },
+        },
     },
 })
 
