@@ -143,7 +143,7 @@ return require('packer').startup({
         })
 
         use({
-            'numToStr/Navigator.nvim',
+            '~/Documents/code/Navigator.nvim',
             event = 'CursorHold',
             config = function()
                 require('numToStr.plugins.navigator')
@@ -176,6 +176,11 @@ return require('packer').startup({
             config = function()
                 require('numToStr.plugins.comment')
             end,
+        })
+
+        use({
+            '~/Documents/code/Tree.nvim',
+            event = 'BufRead',
         })
 
         -- use({
