@@ -47,11 +47,11 @@ require('nvim-tree').setup({
 
 require('numToStr.keymap').n('<C-n>', '<CMD>NvimTreeToggle<CR>')
 
-require('numToStr.au').group('NvimTreeOverrides', function(grp)
-    grp.FileType = {
-        'NvimTree',
-        function()
-            vim.api.nvim_win_set_option(0, 'wrap', false)
-        end,
-    }
-end)
+vim.api.nvim_create_augroup('NVIM_TREE', {})
+vim.api.nvim_create_autocmd('FileType', {
+    group = 'NVIM_TREE',
+    pattern = 'NvimTree',
+    callback = function()
+        vim.api.nvim_win_set_option(0, 'wrap', false)
+    end,
+})

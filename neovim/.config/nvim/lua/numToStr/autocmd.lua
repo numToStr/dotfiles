@@ -1,3 +1,5 @@
+local A = vim.api
+
 vim.g.did_load_filetypes = 0 -- Disable vim-based filetype plugin
 vim.g.do_filetype_lua = 1 -- Enable lua-based filetype plugin
 
@@ -19,20 +21,24 @@ vim.filetype.add({
     },
 })
 
-require('numToStr.au').group('NUMTOSTR', function(aucmd)
-    -- Open help vertically and press q to exit
-    aucmd.BufEnter = {
-        '*.txt',
-        function()
-            if vim.bo.buftype == 'help' then
-                vim.api.nvim_command('wincmd L')
-                vim.api.nvim_buf_set_keymap(0, 'n', 'q', '<CMD>q<CR>', { noremap = true })
-            end
-        end,
-    }
+A.nvim_create_augroup('NUMTOSTR', {})
 
-    -- Highlight the region on yank
-    aucmd.TextYankPost = function()
+-- Open help vertically and press q to exit
+A.nvim_create_autocmd('BufEnter', {
+    group = 'NUMTOSTR',
+    pattern = '*.txt',
+    callback = function()
+        if vim.bo.buftype == 'help' then
+            A.nvim_command('wincmd L')
+            A.nvim_buf_set_keymap(0, 'n', 'q', '<CMD>q<CR>', { noremap = true })
+        end
+    end,
+})
+
+-- Highlight the region on yank
+A.nvim_create_autocmd('TextYankPost', {
+    group = 'NUMTOSTR',
+    callback = function()
         vim.highlight.on_yank({ higroup = 'Visual', timeout = 120 })
-    end
-end)
+    end,
+})
