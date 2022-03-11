@@ -21,11 +21,11 @@ vim.filetype.add({
     },
 })
 
-A.nvim_create_augroup('NUMTOSTR', {})
+local num_au = A.nvim_create_augroup('NUMTOSTR', { clear = true })
 
 -- Open help vertically and press q to exit
 A.nvim_create_autocmd('BufEnter', {
-    group = 'NUMTOSTR',
+    group = num_au,
     pattern = '*.txt',
     callback = function()
         if vim.bo.buftype == 'help' then
@@ -37,7 +37,7 @@ A.nvim_create_autocmd('BufEnter', {
 
 -- Highlight the region on yank
 A.nvim_create_autocmd('TextYankPost', {
-    group = 'NUMTOSTR',
+    group = num_au,
     callback = function()
         vim.highlight.on_yank({ higroup = 'Visual', timeout = 120 })
     end,
