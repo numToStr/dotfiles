@@ -10,6 +10,7 @@ vim.filetype.add({
         prettierrc = 'json',
         conf = 'conf',
         mdx = 'markdown',
+        mjml = 'html',
     },
     pattern = {
         ['.*%.env.*'] = 'sh',
