@@ -1,17 +1,25 @@
 [core]
-   pager = delta
+    pager = delta
 
 [interactive]
-   diffFilter = delta --color-only
+    diffFilter = delta --color-only
 
 [delta]
-   plus-color = "#012800"
-   minus-color = "#340001"
-   syntax-theme = Monokai Extended
-   features = side-by-side line-numbers decorations
-   whitespace-error-style = 22 reverse
+    features = side-by-side line-numbers decorations
+    syntax-theme = Monokai Extended
+    plus-color = "#012800"
+    minus-color = "#340001"
+    whitespace-error-style = 22 reverse
+    navigate = true # use n and N to move between diff sections
 
 [delta "decorations"]
-   commit-decoration-style = bold yellow box ul
-   file-style = bold yellow ul
-   file-decoration-style = none
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+    hunk-header-decoration-style = cyan box ul
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
