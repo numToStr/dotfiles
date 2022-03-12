@@ -39,6 +39,7 @@ export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:=$HOME/.config}
 export TERM=${TERM:=xterm-256color}
 export COLORTERM=${COLORTERM:=truecolor}
 export EDITOR=$(which nvim)
+export MANPAGER="nvim --clean +Man! +'setl noma'"
 # export PAGER=bat
 
 # Update locales (Also fixes powerline fonts rendering inside tmux)
