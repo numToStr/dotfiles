@@ -4,6 +4,7 @@ require('lualine').setup({
         component_separators = '',
         section_separators = '',
         icons_enabled = true,
+        globalstatus = true,
     },
     sections = {
         lualine_a = {
