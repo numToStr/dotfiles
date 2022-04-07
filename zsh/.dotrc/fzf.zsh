@@ -5,29 +5,39 @@
 # Don't move it to zsh_config.zsh     #
 #######################################
 
-# Configure fzf, command line fuzzyf finder
-# Ignoring files will be handled by ~/.fdignore
-FD_OPTIONS="--hidden --follow"
-# FD_OPTIONS="--hidden --follow --exclude .git --exclude node_modules --exclude .npm"
+# Common fd command
+FD="fd --hidden --follow --strip-cwd-prefix"
 
-# export FZF_DEFAULT_OPTS="--no-mouse --height 50% -1 --reverse --multi --inline-info --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --style=numbers --color=always {} || cat {}) 2> /dev/null | head -300' --preview-window='right:hidden:wrap' --bind='f3:execute(bat --style=numbers {} || less -f {}),f2:toggle-preview,ctrl-d:half-page-down,ctrl-u:half-page-up,ctrl-a:select-all+accept,ctrl-y:execute-silent(echo {+} | pbcopy),ctrl-x:execute(rm -i {+})+abort'"
-export FZF_DEFAULT_OPTS="--prompt '⯈ ' --marker=+ --keep-right --color=dark --layout=reverse --color=fg:250,fg+:15,hl:203,hl+:203 --color=info:100,pointer:15,marker:220,spinner:11,header:-1,gutter:-1,prompt:15"
+# Default TUI options
+export FZF_DEFAULT_OPTS="
+--multi
+--keep-right
+--no-mouse
+--prompt '⯈ '
+--marker=+
+--preview-window='right:hidden:wrap'
+--color=dark
+--color=fg:250,fg+:15,hl:203,hl+:203
+--color=info:100,pointer:15,marker:220,spinner:11,header:-1,gutter:-1,prompt:15
+--layout=reverse
+--height=60%
+--border=rounded
+"
 
-# Use git-ls-files inside git repo, otherwise fd
-export FZF_DEFAULT_COMMAND="fd --type f --type l $FD_OPTIONS || git ls-files --cached --others --exclude-standard"
+# Default command to run to generate search entries
+export FZF_DEFAULT_COMMAND="$FD --type f --type l"
 
-export FZF_CTRL_T_COMMAND="fd --strip-cwd-prefix $FD_OPTIONS"
-export FZF_ALT_C_COMMAND="fd --type d $FD_OPTIONS"
+# Command for `CTRL-T`
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-# Options to fzf command
-export FZF_COMPLETION_OPTS="-x"
-
+# Used for generating completions for `path`
+# Ex: vim **<tab> runs _fzf_compgen_path()
 _fzf_compgen_path() {
-    fd --hidden --follow . "$1"
+    eval "$FZF_DEFAULT_COMMAND -- $1"
 }
 
-# Use fd to generate the list for directory completion
+# Used for generating completions for `directory`
+# Ex: cd **<tab> runs _fzf_compgen_dir()
 _fzf_compgen_dir() {
-    fd --type d --hidden --follow . "$1"
+    eval "$FD --type d -- $1"
 }
-
