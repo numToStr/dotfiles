@@ -27,9 +27,44 @@ export DOTFILES=${DOTFILES:=$HOME/.dotfiles}
 #####################
 # PROMPT            #
 #####################
-zinit lucid for \
+zinit lucid light-mode for \
     as"command" from"gh-r" atload'eval "$(starship init zsh)"' bpick'*unknown-linux-gnu*' \
     starship/starship \
+
+#####################
+# PROGRAMS          #
+#####################
+
+zinit lucid light-mode from"gh-r" as"command" bpick'*linux*' for \
+     atload'
+        eval "$(snm env zsh)"
+        alias n="snm"
+    ' mv'snm* -> snm' pick'snm/snm' \
+        @numToStr/snm \
+    atload'
+        eval "$(zoxide init --no-aliases zsh)"
+        alias z="__zoxide_z"
+    ' mv'zoxide* -> zoxide' pick'zoxide/zoxide' \
+        @ajeetdsouza/zoxide \
+        @junegunn/fzf \
+    mv'ripgrep* -> rg' pick'rg/rg' \
+        @BurntSushi/ripgrep \
+    mv'fd* -> fd' pick'fd/fd' \
+        @sharkdp/fd \
+    mv'bat* -> bat' pick'bat/bat' \
+        @sharkdp/bat \
+    mv'delta* -> delta' pick'delta/delta' \
+        @dandavison/delta \
+    atload'
+        alias l="exa -abghHlS --git --group-directories-first"
+    ' pick'bin/exa' \
+        @ogham/exa \
+    # mv'vivid* -> vivid' pick'vivid/vivid' atload'export LS_COLORS="$(vivid generate ayu)"' \
+    #     @sharkdp/vivid \
+
+zinit wait lucid light-mode as'command' for \
+    from'gh-r' atinit'export PATH="$HOME/.yarn/bin:$PATH"' mv'yarn* -> yarn' pick"yarn/bin/yarn" bpick'*.tar.gz' \
+        yarnpkg/yarn \
 
 ##########################
 # OMZ Libs and Plugins   #
@@ -142,47 +177,6 @@ zinit wait lucid for \
     atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”' \
         trapd00r/LS_COLORS
 
-
-#####################
-# PROGRAMS          #
-#####################
-
-zinit wait lucid light-mode as'command' for \
-    from'gh-r' atinit'export PATH="$HOME/.yarn/bin:$PATH"' mv'yarn* -> yarn' pick"yarn/bin/yarn" bpick'*.tar.gz' \
-        yarnpkg/yarn \
-
-zinit wait"1a" lucid light-mode from"gh-r" as"command" bpick'*linux*' for \
-     atload'
-        eval "$(snm env zsh)"
-        alias n="snm"
-    ' mv'snm* -> snm' pick'snm/snm' \
-        @numToStr/snm \
-    atload'
-        eval "$(zoxide init --no-aliases zsh)"
-        alias z="__zoxide_z"
-    ' mv'zoxide* -> zoxide' pick'zoxide/zoxide' \
-        @ajeetdsouza/zoxide \
-        @junegunn/fzf \
-    mv'ripgrep* -> rg' pick'rg/rg' \
-        @BurntSushi/ripgrep \
-    mv'fd* -> fd' pick'fd/fd' \
-        @sharkdp/fd \
-    mv'bat* -> bat' pick'bat/bat' \
-        @sharkdp/bat \
-    mv'delta* -> delta' pick'delta/delta' \
-        @dandavison/delta \
-    atload'
-        unalias l
-        alias l="exa -abghHlS --git --group-directories-first"
-    ' pick'bin/exa' \
-        @ogham/exa \
-    # mv'vivid* -> vivid' pick'vivid/vivid' atload'export LS_COLORS="$(vivid generate ayu)"' \
-    #     @sharkdp/vivid \
-
-# atclone'
-#         mkdir -p $HOME/.config/nvim/plugin
-#         curl https://raw.githubusercontent.com/junegunn/fzf/master/plugin/fzf.vim -o $HOME/.config/nvim/plugin/fzf.vim
-#     ' atpull'%atclone'
 
 #####################
 # MANUAL CONFIG     #
