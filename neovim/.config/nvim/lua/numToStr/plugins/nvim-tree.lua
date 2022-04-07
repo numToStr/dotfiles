@@ -31,7 +31,7 @@ require('nvim-tree').setup({
         side = 'left',
     },
     filters = {
-        custom = { '.git', 'node_modules' },
+        custom = { '.git', 'node_modules', 'target' },
     },
     git = {
         ignore = false,
