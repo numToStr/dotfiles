@@ -2,8 +2,8 @@
 
 echo "Show help for command"
 echo -n "> "
-read -r _command_
+read -r CMD
 
-if [[ -n "$_command_" ]]; then
-    tmux new-window -n "help($_command_)" "man $_command_ || $_command_ --help | $MANPAGER"
+if [[ -n "$CMD" ]]; then
+    tmux new-window -n "help($CMD)" "man $CMD 2> /dev/null || $CMD --help | $MANPAGER"
 fi
