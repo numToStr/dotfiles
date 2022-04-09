@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 BASE=${CODE_DIR:=$HOME}
 TARGET=$(find "$BASE" -maxdepth 1 -type d ! -path "$BASE" -printf '%f\n' | fzf --reverse --no-mouse --color=fg:250,fg+:15,hl:203,hl+:203,info:100,pointer:15,spinner:11,header:-1,gutter:-1,prompt:15)
