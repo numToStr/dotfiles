@@ -17,12 +17,9 @@ autoload -Uz _zinit
 ### End of Zinit's installer chunk
 
 # Load .zsh_pre if available
-zinit is-snippet for if"[[ -f $HOME/.zsh_pre ]]" $HOME/.zsh_pre
-
-############
-# DOTFILES #
-############
-export DOTFILES=${DOTFILES:=$HOME/.dotfiles}
+zinit is-snippet for \
+    if"[[ -f $HOME/.zsh_pre ]]" $HOME/.zsh_pre \
+    $HOME/.dotrc/config.zsh \
 
 #####################
 # PROMPT            #
@@ -186,5 +183,5 @@ zinit wait lucid for \
 # 3. Load ~/.localrc, if it exists
 # 3. Load ~/.zsh_post if it exists
 zinit wait'0a' lucid is-snippet for \
-    $HOME/.dotrc/*.zsh \
+    $HOME/.dotrc/extra/*.zsh \
     if"[[ -f $HOME/.localrc ]]" $HOME/.localrc

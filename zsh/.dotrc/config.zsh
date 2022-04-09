@@ -32,6 +32,11 @@ setopt autocd autopushd pushdignoredups
 # HISTSIZE=290000
 # SAVEHIST=$HISTSIZE
 
+############
+# DOTFILES #
+############
+export DOTFILES=${DOTFILES:=$HOME/.dotfiles}
+
 #####################
 # ENV               #
 #####################
