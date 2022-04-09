@@ -48,7 +48,9 @@ zinit lucid light-mode from"gh-r" as"command" bpick'*linux*' for \
         @BurntSushi/ripgrep \
     mv'fd* -> fd' pick'fd/fd' \
         @sharkdp/fd \
-    mv'bat* -> bat' pick'bat/bat' \
+    mv'bat* -> bat' pick'bat/bat' atload'
+        export MANPAGER="bat --plain"
+    ' \
         @sharkdp/bat \
     mv'delta* -> delta' pick'delta/delta' \
         @dandavison/delta \
