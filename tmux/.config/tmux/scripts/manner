@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo "Show help for command"
+echo -n "> "
+read -r _command_
+
+if [[ -n "$_command_" ]]; then
+    tmux new-window -n "help($_command_)" "man $_command_ || $_command_ --help | $MANPAGER"
+fi
