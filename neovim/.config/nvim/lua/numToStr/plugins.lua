@@ -50,8 +50,11 @@ return require('packer').startup({
                 end,
             },
             {
-                'arkav/lualine-lsp-progress',
+                'j-hui/fidget.nvim',
                 after = 'lualine.nvim',
+                config = function()
+                    require('fidget').setup()
+                end,
             },
         })
 
