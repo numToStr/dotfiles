@@ -1,6 +1,5 @@
 local g = vim.g
 
-g.nvim_tree_indent_markers = 1
 g.nvim_tree_show_icons = {
     git = 1,
     folders = 1,
@@ -41,6 +40,11 @@ require('nvim-tree').setup({
             window_picker = {
                 enable = false,
             },
+        },
+    },
+    renderer = {
+        indent_markers = {
+            enable = true,
         },
     },
 })
