@@ -75,6 +75,7 @@ return require('packer').startup({
             { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' },
             { 'nvim-treesitter/nvim-treesitter-refactor', after = 'nvim-treesitter' },
             { 'windwp/nvim-ts-autotag', after = 'nvim-treesitter' },
+            { 'JoosepAlviste/nvim-ts-context-commentstring', after = 'nvim-treesitter' },
         })
 
         --------------------------
@@ -148,7 +149,7 @@ return require('packer').startup({
         })
 
         use({
-            '~/Documents/code/Navigator.nvim',
+            'numToStr/Navigator.nvim',
             event = 'CursorHold',
             config = function()
                 require('numToStr.plugins.navigator')
@@ -176,17 +177,17 @@ return require('packer').startup({
         -------------------------
 
         use({
-            '~/Documents/code/Comment.nvim',
+            'numToStr/Comment.nvim',
             event = 'BufRead',
             config = function()
                 require('numToStr.plugins.comment')
             end,
         })
 
-        use({
-            '~/Documents/code/Tree.nvim',
-            event = 'BufRead',
-        })
+        -- use({
+        --     '~/Documents/code/Tree.nvim',
+        --     event = 'BufRead',
+        -- })
 
         -- use({
         --     '~/Documents/code/Surround.nvim',
