@@ -6,12 +6,14 @@ local U = {}
 ---@param client table
 function U.fmt_on_save(client)
     if client.resolved_capabilities.document_formatting then
-        vim.cmd([[
-            augroup FORMATTING
-                autocmd! * <buffer>
-                autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-            augroup END
-        ]])
+        vim.api.nvim_create_autocmd('BufWritePre', {
+            group = vim.api.nvim_create_augroup('FORMATTING', { clear = true }),
+            buffer = vim.api.nvim_get_current_buf(),
+            callback = function()
+                -- increase timeout to 3 seconds
+                vim.lsp.buf.formatting_sync(nil, 3000)
+            end,
+        })
     end
 end
 
