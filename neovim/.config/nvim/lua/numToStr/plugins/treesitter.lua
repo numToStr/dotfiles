@@ -103,4 +103,8 @@ require('nvim-treesitter.configs').setup({
         highlight_definitions = { enable = true },
         -- highlight_current_scope = { enable = false },
     },
+    context_commentstring = {
+        enable = true,
+        enable_autocmd = false,
+    },
 })
