@@ -2,15 +2,21 @@ local K = require('numToStr.keymap')
 
 local U = {}
 
+local fmt_group = vim.api.nvim_create_augroup('FORMATTING', { clear = true })
+
 ---Common format-on-save for lsp servers that implements formatting
 ---@param client table
-function U.fmt_on_save(client)
-    if client.resolved_capabilities.document_formatting then
+---@param buf integer
+function U.fmt_on_save(client, buf)
+    if client.supports_method('textDocument/formatting') then
         vim.api.nvim_create_autocmd('BufWritePre', {
-            group = vim.api.nvim_create_augroup('FORMATTING', { clear = true }),
+            group = fmt_group,
+            buffer = buf,
             callback = function()
-                -- increase timeout to 3 seconds
-                vim.lsp.buf.formatting_sync(nil, 3000)
+                vim.lsp.buf.format({
+                    timeout_ms = 3000,
+                    buffer = buf,
+                })
             end,
         })
     end
@@ -22,14 +28,6 @@ function U.capabilities()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
 
     return require('cmp_nvim_lsp').update_capabilities(capabilities)
-end
-
----Disable formatting for servers. Handles by null-ls
----@param client table
----@see https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts
-function U.disable_formatting(client)
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
 end
 
 ---LSP mappings

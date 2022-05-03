@@ -21,8 +21,7 @@ vim.diagnostic.config({
 lsp.sumneko_lua.setup({
     flags = flags,
     capabilities = capabilities,
-    on_attach = function(client, buf)
-        U.disable_formatting(client)
+    on_attach = function(_, buf)
         U.mappings(buf)
     end,
     settings = {
@@ -56,8 +55,7 @@ lsp.sumneko_lua.setup({
 lsp.rust_analyzer.setup({
     flags = flags,
     capabilities = capabilities,
-    on_attach = function(client, buf)
-        U.disable_formatting(client)
+    on_attach = function(_, buf)
         U.mappings(buf)
     end,
     settings = {
@@ -84,8 +82,7 @@ lsp.rust_analyzer.setup({
 lsp.zls.setup({
     flags = flags,
     capabilities = capabilities,
-    on_attach = function(client, buf)
-        U.disable_formatting(client)
+    on_attach = function(_, buf)
         U.mappings(buf)
     end,
 })
@@ -94,8 +91,7 @@ lsp.zls.setup({
 lsp.gopls.setup({
     flags = flags,
     capabilities = capabilities,
-    on_attach = function(client, buf)
-        U.disable_formatting(client)
+    on_attach = function(_, buf)
         U.mappings(buf)
     end,
 })
@@ -104,8 +100,7 @@ lsp.gopls.setup({
 lsp.tsserver.setup({
     flags = flags,
     capabilities = capabilities,
-    on_attach = function(client, buf)
-        U.disable_formatting(client)
+    on_attach = function(_, buf)
         U.mappings(buf)
     end,
 })
@@ -116,7 +111,6 @@ lsp.tsserver.setup({
     flags = flags,
     capabilities = capabilities,
     on_attach = function(client, buf)
-        U.disable_formatting(client)
         U.mappings(buf)
     end,
     settings = {
@@ -131,8 +125,7 @@ lsp.tsserver.setup({
 lsp.jsonls.setup({
     flags = flags,
     capabilities = capabilities,
-    on_attach = function(client, buf)
-        U.disable_formatting(client)
+    on_attach = function(_, buf)
         U.mappings(buf)
     end,
 })
@@ -141,8 +134,7 @@ lsp.jsonls.setup({
 lsp.yamlls.setup({
     flags = flags,
     capabilities = capabilities,
-    on_attach = function(client, buf)
-        U.disable_formatting(client)
+    on_attach = function(_, buf)
         U.mappings(buf)
     end,
 })
@@ -151,8 +143,7 @@ lsp.yamlls.setup({
 lsp.terraformls.setup({
     flags = flags,
     capabilities = capabilities,
-    on_attach = function(client, buf)
-        U.disable_formatting(client)
+    on_attach = function(_, buf)
         U.mappings(buf)
     end,
 })

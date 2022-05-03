@@ -38,7 +38,7 @@ nls.setup({
         }),
     },
     on_attach = function(client, bufnr)
-        U.fmt_on_save(client)
+        U.fmt_on_save(client, bufnr)
         U.mappings(bufnr)
     end,
 })
