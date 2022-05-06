@@ -1,13 +1,12 @@
-#!/bin/sh
+#!/bin/bash
 
-inside_git_repo="$(git rev-parse --is-inside-work-tree 2>/dev/null)"
+inside_git_repo="$(git rev-parse --is-inside-work-tree 2> /dev/null)"
 
-if [ "$inside_git_repo" ];
-then
-    read -p "Deleting node_modules. Confirm? (y/n) " -r CONFIRM
+if [ "$inside_git_repo" ]; then
+    echo -n "Deleting node_modules. Confirm? (y/n)"
+    read -r CONFIRM
 
-    if [[ $CONFIRM == "y" || $CONFIRM == "yes" ]]
-    then
+    if [[ $CONFIRM == "y" || $CONFIRM == "yes" ]]; then
         rm -rf "./**/node_modules"
         echo "+ Deleted :-)"
     else

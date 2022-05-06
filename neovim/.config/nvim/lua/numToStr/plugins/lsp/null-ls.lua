@@ -29,7 +29,9 @@ nls.setup({
         fmt.terraform_fmt,
         fmt.gofmt,
         fmt.zigfmt,
-        -- fmt.shfmt,
+        fmt.shfmt.with({
+            extra_args = { '-i', 4, '-ci', '-sr' },
+        }),
         -- # DIAGNOSTICS #
         dgn.eslint_d,
         dgn.shellcheck,

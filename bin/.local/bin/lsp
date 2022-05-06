@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 
@@ -107,7 +107,7 @@ help() {
 main() {
     mkdir -p "$LSP_BIN_PATH"
     case $1 in
-        -h|--help)
+        -h | --help)
             help
             shift # past argument
             ;;
@@ -136,7 +136,7 @@ main() {
             eslintd
             shift
             ;;
-        html|css|json)
+        html | css | json)
             lsp_extracted
             shift
             ;;

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 
@@ -31,24 +31,24 @@ set -e
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
-shrink () {
+shrink() {
     IMG_SIZE=180
 
     gs \
-      -q -dNOPAUSE -dBATCH -dSAFER \
-      -sDEVICE=pdfwrite \
-      -dPDFSETTINGS=/screen \
-      -dEmbedAllFonts=true \
-      -dSubsetFonts=true \
-      -dAutoRotatePages=/None \
-      -dColorImageDownsampleType=/Bicubic \
-      -dColorImageResolution=$IMG_SIZE \
-      -dGrayImageDownsampleType=/Bicubic \
-      -dGrayImageResolution=$IMG_SIZE \
-      -dMonoImageDownsampleType=/Subsample \
-      -dMonoImageResolution=$IMG_SIZE \
-      -sOutputFile="$2" \
-      "$1"
+        -q -dNOPAUSE -dBATCH -dSAFER \
+        -sDEVICE=pdfwrite \
+        -dPDFSETTINGS=/screen \
+        -dEmbedAllFonts=true \
+        -dSubsetFonts=true \
+        -dAutoRotatePages=/None \
+        -dColorImageDownsampleType=/Bicubic \
+        -dColorImageResolution=$IMG_SIZE \
+        -dGrayImageDownsampleType=/Bicubic \
+        -dGrayImageResolution=$IMG_SIZE \
+        -dMonoImageDownsampleType=/Subsample \
+        -dMonoImageResolution=$IMG_SIZE \
+        -sOutputFile="$2" \
+        "$1"
 
     # gs \
     #   -q -dNOPAUSE -dBATCH -dSAFER \
@@ -70,14 +70,14 @@ size() {
 
 echoSizes() {
     if [ ! -f "$1" ] || [ ! -f "$2" ]; then
-        return 0;
+        return 0
     fi
 
     echo "Input - $1 : $(size "$1")"
     echo "Ouput - $2 : $(size "$2")"
 }
 
-usage () {
+usage() {
     echo "Reduces PDF filesize by lossy recompressing with Ghostscript."
     echo "Not guaranteed to succeed, but usually works."
     echo
