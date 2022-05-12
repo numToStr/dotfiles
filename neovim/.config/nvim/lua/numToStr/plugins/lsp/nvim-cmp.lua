@@ -1,5 +1,38 @@
 local cmp = require('cmp')
 
+local icons = {
+    Text = '',
+    Method = '',
+    Function = '',
+    Constructor = '',
+    Field = 'ﰠ',
+    Variable = '',
+    Class = 'ﴯ',
+    Interface = '',
+    Module = '',
+    Property = 'ﰠ',
+    Unit = '塞',
+    Value = '',
+    Enum = '',
+    Keyword = '',
+    Snippet = '',
+    Color = '',
+    File = '',
+    Reference = '',
+    Folder = '',
+    EnumMember = '',
+    Constant = '',
+    Struct = 'פּ',
+    Event = '',
+    Operator = '',
+    TypeParameter = '',
+}
+
+local aliases = {
+    nvim_lsp = 'lsp',
+    luasnip = 'snippet',
+}
+
 cmp.setup({
     mapping = cmp.mapping.preset.insert({
         ['<C-e>'] = cmp.config.disable,
@@ -17,6 +50,15 @@ cmp.setup({
     snippet = {
         expand = function(args)
             require('luasnip').lsp_expand(args.body)
+        end,
+    },
+    formatting = {
+        format = function(entry, item)
+            -- Kind icons
+            item.kind = string.format('%s %s', icons[item.kind], item.kind)
+            -- Source
+            item.menu = string.format('[%s]', aliases[entry.source.name] or entry.source.name)
+            return item
         end,
     },
 })
