@@ -41,7 +41,7 @@ zinit lucid light-mode from"gh-r" as"command" bpick'*linux*' for \
     atload'
         eval "$(zoxide init --no-aliases zsh)"
         alias z="__zoxide_z"
-    ' mv'zoxide* -> zoxide' pick'zoxide/zoxide' \
+    ' pick'zoxide/zoxide' \
         @ajeetdsouza/zoxide \
         @junegunn/fzf \
     mv'ripgrep* -> rg' pick'rg/rg' \
