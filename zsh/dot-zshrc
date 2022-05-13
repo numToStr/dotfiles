@@ -60,12 +60,10 @@ zinit lucid light-mode from"gh-r" as"command" bpick'*linux*' for \
         @ogham/exa \
     extrawurst/gitui \
     JohnnyMorganz/StyLua \
+    bpick'*.tar.gz' atinit'export PATH="$HOME/.yarn/bin:$PATH"' mv'yarn* -> yarn' pick"yarn/bin/yarn" \
+        yarnpkg/yarn \
     # mv'vivid* -> vivid' pick'vivid/vivid' atload'export LS_COLORS="$(vivid generate ayu)"' \
     #     @sharkdp/vivid \
-
-zinit wait lucid light-mode as'command' for \
-    from'gh-r' atinit'export PATH="$HOME/.yarn/bin:$PATH"' mv'yarn* -> yarn' pick"yarn/bin/yarn" bpick'*.tar.gz' \
-        yarnpkg/yarn \
 
 ##########################
 # OMZ Libs and Plugins   #
