@@ -161,12 +161,6 @@ zinit wait lucid for \
         zpcdreplay;
     " \
         zdharma-continuum/fast-syntax-highlighting \
-    bindmap"^R -> ^H" atinit"
-        zstyle :history-search-multi-word page-size 10
-        zstyle :history-search-multi-word highlight-color fg=red,bold
-        zstyle :plugin:history-search-multi-word reset-prompt-protect 1
-    " \
-        zdharma-continuum/history-search-multi-word \
     reset \
     atclone"local P=${${(M)OSTYPE:#*darwin*}:+g}
             \${P}sed -i \
@@ -175,6 +169,13 @@ zinit wait lucid for \
     atpull'%atclone' pick"c.zsh" nocompile'!' \
     atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”' \
         trapd00r/LS_COLORS
+
+    # bindmap"^R -> ^H" atinit"
+    #     zstyle :history-search-multi-word page-size 10
+    #     zstyle :history-search-multi-word highlight-color fg=red,bold
+    #     zstyle :plugin:history-search-multi-word reset-prompt-protect 1
+    # " \
+    #     zdharma-continuum/history-search-multi-word \
 
 
 #####################
