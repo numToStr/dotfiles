@@ -41,7 +41,7 @@ lsp.sumneko_lua.setup({
             },
             workspace = {
                 -- Make the server aware of Neovim runtime files
-                library = U.get_nvim_rtp_path(),
+                library = { os.getenv('VIMRUNTIME') },
             },
             -- Do not send telemetry data containing a randomized but unique identifier
             telemetry = {

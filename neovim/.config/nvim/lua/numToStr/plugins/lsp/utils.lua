@@ -61,18 +61,4 @@ function U.get_luajit_path()
     return luajit_path
 end
 
----Make neovim runtime files discoverable to the server
-function U.get_nvim_rtp_path()
-    return { os.getenv('VIMRUNTIME') }
-    -- local result = {}
-    -- for _, path in pairs(A.nvim_get_runtime_file('lua/', true)) do
-    --     -- Don't load the `packer.nvim` path
-    --     -- WARN: This is causing my local plugins to conflict with plugins loaded via packer.
-    --     if not path:find('%.local/share') then
-    --         result[path] = true
-    --     end
-    -- end
-    -- return result
-end
-
 return U
