@@ -19,7 +19,6 @@ require('lualine').setup({
             { 'diagnostics' },
         },
         lualine_x = {
-            'lsp_progress',
             'filetype',
             'encoding',
             'fileformat',
