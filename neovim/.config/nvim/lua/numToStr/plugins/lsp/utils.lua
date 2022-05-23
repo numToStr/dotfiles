@@ -53,12 +53,4 @@ function U.mappings(bufnr)
     -- K.n.bmap(bufnr, '<leader>so', [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]])
 end
 
----Make luajit runtime files discoverable to the server
-function U.get_luajit_path()
-    local luajit_path = vim.split(package.path, ';')
-    table.insert(luajit_path, 'lua/?.lua')
-    table.insert(luajit_path, 'lua/?/init.lua')
-    return luajit_path
-end
-
 return U

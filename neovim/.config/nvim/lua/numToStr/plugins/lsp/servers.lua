@@ -34,7 +34,6 @@ lsp.sumneko_lua.setup({
             runtime = {
                 -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
                 version = 'LuaJIT',
-                path = U.get_luajit_path(),
             },
             diagnostics = {
                 globals = { 'vim', 'dump' },
