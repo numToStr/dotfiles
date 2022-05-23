@@ -44,3 +44,6 @@ luac.out
 # after linking, packer.nvim and tpm will install their plugins in the following directories
 neovim/.config/nvim/plugin
 tmux/.config/tmux/plugins
+
+**/.local/share/
+!konsole/.local/share/konsole
