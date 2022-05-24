@@ -3,11 +3,6 @@ local K = require('numToStr.keymap')
 -- Fix * (Keep the cursor position, don't move to next match)
 K.n('*', '*N')
 
--- Visual * and # search
--- Until https://github.com/neovim/neovim/pull/15472 is merged
-K.x('*', 'y/\\V<C-R>"<CR>')
-K.x('#', 'y?\\V<C-R>"<CR>')
-
 -- Fix n and N. Keeping cursor in center
 K.n('n', 'nzz')
 K.n('N', 'Nzz')
