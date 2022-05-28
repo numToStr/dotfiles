@@ -1,23 +1,3 @@
-local g = vim.g
-
-g.nvim_tree_show_icons = {
-    git = 1,
-    folders = 1,
-    files = 1,
-}
-g.nvim_tree_icons = {
-    default = '',
-    symlink = '',
-    git = {
-        unstaged = '~',
-        staged = '+',
-        unmerged = '!',
-        renamed = '≈',
-        untracked = '?',
-        deleted = '-',
-    },
-}
-
 require('nvim-tree').setup({
     diagnostics = {
         enable = true,
@@ -43,6 +23,24 @@ require('nvim-tree').setup({
         },
     },
     renderer = {
+        icons = {
+            show = {
+                git = true,
+                folder = true,
+                file = true,
+            },
+            glyphs = {
+                default = '',
+                git = {
+                    unstaged = '~',
+                    staged = '+',
+                    unmerged = '!',
+                    renamed = '≈',
+                    untracked = '?',
+                    deleted = '-',
+                },
+            },
+        },
         indent_markers = {
             enable = true,
         },
