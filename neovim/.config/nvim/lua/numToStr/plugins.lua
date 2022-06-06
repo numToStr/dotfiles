@@ -214,14 +214,6 @@ return require('packer').startup({
         })
 
         use({
-            'ntpeters/vim-better-whitespace',
-            event = 'BufRead',
-            config = function()
-                require('numToStr.plugins.whitespace')
-            end,
-        })
-
-        use({
             'AndrewRadev/splitjoin.vim',
             -- NOTE: splitjoin won't work with `BufRead` event
             event = 'CursorHold',
