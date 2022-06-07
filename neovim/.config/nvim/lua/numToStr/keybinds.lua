@@ -1,46 +1,48 @@
-local K = require('numToStr.keymap')
+local function map(m, k, v)
+    vim.keymap.set(m, k, v, { silent = true })
+end
 
 -- Fix * (Keep the cursor position, don't move to next match)
-K.n('*', '*N')
+map('n', '*', '*N')
 
 -- Fix n and N. Keeping cursor in center
-K.n('n', 'nzz')
-K.n('N', 'Nzz')
+map('n', 'n', 'nzz')
+map('n', 'N', 'Nzz')
 
 -- Mimic shell movements
-K.i('<C-E>', '<ESC>A')
-K.i('<C-A>', '<ESC>I')
+map('i', '<C-E>', '<ESC>A')
+map('i', '<C-A>', '<ESC>I')
 
 -- Quickly save the current buffer or all buffers
-K.n('<leader>w', ':update<CR>')
-K.n('<leader>W', ':wall<CR>')
+map('n', '<leader>w', ':update<CR>')
+map('n', '<leader>W', ':wall<CR>')
 
 -- Quit neovim
-K.n('<C-Q>', ':q<CR>')
+map('n', '<C-Q>', ':q<CR>')
 
 -- leader-o/O inserts blank line below/above
-K.n('<leader>o', 'o<ESC>')
-K.n('<leader>O', 'O<ESC>')
+map('n', '<leader>o', 'o<ESC>')
+map('n', '<leader>O', 'O<ESC>')
 
 -- Move to the next/previous buffer
-K.n('<leader>[', ':bp<CR>')
-K.n('<leader>]', ':bn<CR>')
+map('n', '<leader>[', ':bp<CR>')
+map('n', '<leader>]', ':bn<CR>')
 
 -- Move to last buffer
-K.n("''", ':b#<CR>')
+map('n', "''", ':b#<CR>')
 
 -- Copying the vscode behaviour of making tab splits
-K.n('<C-\\>', ':vsplit<CR>')
-K.n('<A-\\>', ':split<CR>')
+map('n', '<C-\\>', ':vsplit<CR>')
+map('n', '<A-\\>', ':split<CR>')
 
 -- Move line up and down in NORMAL and VISUAL modes
 -- Reference: https://vim.fandom.com/wiki/Moving_lines_up_or_down
-K.n('<C-j>', ':move .+1<CR>')
-K.n('<C-k>', ':move .-2<CR>')
-K.x('<C-j>', ":move '>+1<CR>gv=gv")
-K.x('<C-k>', ":move '<-2<CR>gv=gv")
+map('n', '<C-j>', ':move .+1<CR>')
+map('n', '<C-k>', ':move .-2<CR>')
+map('x', '<C-j>', ":move '>+1<CR>gv=gv")
+map('x', '<C-k>', ":move '<-2<CR>gv=gv")
 
 -- Use operator pending mode to visually select the whole buffer
 -- e.g. dA = delete buffer ALL, yA = copy whole buffer ALL
-K.o('A', ':<C-U>normal! mzggVG<CR>`z')
-K.x('A', ':<C-U>normal! ggVG<CR>')
+map('o', 'A', ':<C-U>normal! mzggVG<CR>`z')
+map('x', 'A', ':<C-U>normal! ggVG<CR>')

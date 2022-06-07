@@ -1,4 +1,3 @@
-local K = require('numToStr.keymap')
 local actions = require('telescope.actions')
 local A = vim.api
 
@@ -41,19 +40,19 @@ _G.Telescope = setmetatable({}, {
 })
 
 -- Ctrl-p = fuzzy finder
-K.n('<C-P>', '<CMD>lua Telescope.find_files({ hidden = true })<CR>')
+vim.keymap.set('n', '<C-P>', '<CMD>lua Telescope.find_files({ hidden = true })<CR>')
 
 -- Get :help at the speed of light
-K.n('<leader>H', '<CMD>lua Telescope.help_tags()<CR>')
+vim.keymap.set('n', '<leader>H', '<CMD>lua Telescope.help_tags()<CR>')
 
 -- Fuzzy find active buffers
-K.n("'b", '<CMD>lua Telescope.buffers()<CR>')
+vim.keymap.set('n', "'b", '<CMD>lua Telescope.buffers()<CR>')
 
 -- Search for string
-K.n("'r", '<CMD>lua Telescope.live_grep()<CR>')
+vim.keymap.set('n', "'r", '<CMD>lua Telescope.live_grep()<CR>')
 
 -- Fuzzy find changed files in git
-K.n("'c", '<CMD>lua Telescope.git_status()<CR>')
+vim.keymap.set('n', "'c", '<CMD>lua Telescope.git_status()<CR>')
 
 -- Fuzzy find history buffers
 -- U.map('n', "'i", "<CMD>lua __telescope_open('oldfiles')<CR>")
