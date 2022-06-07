@@ -13,8 +13,9 @@ require('gitsigns').setup({
 
         -- Actions
         map({ 'n', 'v' }, '<leader>hr', '<CMD>Gitsigns reset_hunk<CR>', { buffer = buf })
-        map('n', '<leader>hp', '<CMD>Gitsigns preview_hunk<CR>', { buffer = buf })
+        map({ 'n', 'v' }, '<leader>hs', '<CMD>Gitsigns stage_hunk<CR>')
         map('n', '<leader>hS', '<CMD>Gitsigns stage_buffer<CR>', { buffer = buf })
+        map('n', '<leader>hp', '<CMD>Gitsigns preview_hunk<CR>', { buffer = buf })
 
         -- Text object
         map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { buffer = buf })
