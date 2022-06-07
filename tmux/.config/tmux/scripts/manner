@@ -1,7 +1,6 @@
 #!/bin/bash
 
-echo "Show help for command"
-echo -n "> "
+echo -n '$ '
 read -r CMD
 
 if [[ -n "$CMD" ]]; then
