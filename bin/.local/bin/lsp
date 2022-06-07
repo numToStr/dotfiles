@@ -2,80 +2,42 @@
 
 set -e
 
-LSP_BIN_PATH=$HOME/.local/lsp/bin
+LSP_BIN_PATH="$HOME/.local/lsp/bin"
 
 banner() {
-    echo "> Installing $1"
+    echo "> Installing ::" "$@"
 }
 
 mk_exec() {
     chmod +x "$LSP_BIN_PATH/$1"
 }
 
-yi() {
+curl_me() {
+    curl -L --progress-bar "$1"
+}
+
+yarn_me() {
+    banner "$@"
     yarn global add "$@"
 }
 
-pmi() {
-    pamac install --no-confirm "$@"
-}
-
-lua() {
-    name1="lua-language-server"
-    name2="luacheck"
-    banner "$name1 + $name2"
-    pmi $name1 $name2
+pac_me() {
+    banner "$@"
+    paru -S --noconfirm "$@"
 }
 
 rust_analyzer() {
     name="rust-analyzer"
     banner $name
-    curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > "$LSP_BIN_PATH/$name"
+    curl_me https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > "$LSP_BIN_PATH/$name"
     mk_exec $name
 }
 
 zls() {
     name=zls
     banner "$name (Zig Language Server)"
-    curl -L https://github.com/zigtools/zls/releases/latest/download/x86_64-linux.tar.xz | tar -xJ --strip-components=1 -C "$LSP_BIN_PATH"
+    curl_me https://github.com/zigtools/zls/releases/latest/download/x86_64-linux.tar.xz | tar -xJ --strip-components=1 -C "$LSP_BIN_PATH"
     mk_exec $name
-}
-
-tsserver() {
-    name1=typescript
-    name2="typescript-language-server"
-    banner "$name1 + $name2"
-    yi $name1 $name2
-}
-
-lsp_extracted() {
-    name="vscode-langservers-extracted"
-    banner $name
-    yi $name
-}
-
-eslintd() {
-    name="eslint_d"
-    banner $name
-    yi $name
-}
-
-prettierd() {
-    name="@fsouza/prettierd"
-    banner $name
-    yi $name
-}
-
-yaml() {
-    name="yaml-language-server"
-    banner $name
-    yi $name
-}
-
-shellcheck() {
-    name="shellcheck-bin"
-    banner $name
-    pmi $name
 }
 
 help() {
@@ -99,20 +61,17 @@ help() {
     eslint              Setup eslint diagnostic server and formatter
     prettier            Setup prettier formatter
     yaml                Setup yaml-language-server
-    shell               Setup shellcheck diagnostic
+    shell               Setup shellcheck and shfmt
     "
     echo "Give a star @ https://github.com/numToStr/dotfiles"
 }
 
 main() {
     mkdir -p "$LSP_BIN_PATH"
+
     case $1 in
-        -h | --help)
-            help
-            shift # past argument
-            ;;
         lua)
-            lua
+            pac_me "luacheck" "lua-language-server"
             shift
             ;;
         rust)
@@ -124,29 +83,36 @@ main() {
             shift
             ;;
         tsserver)
-            tsserver
+            yarn_me "typescript" "typescript-language-server"
             shift
             ;;
         prettier)
-            prettierd
+            yarn_me "@fsouza/prettierd"
             shift
             ;;
         eslint)
-            lsp_extracted
-            eslintd
+            yarn_me "eslint_d" "vscode-langservers-extracted"
             shift
             ;;
         html | css | json)
-            lsp_extracted
+            yarn_me "vscode-langservers-extracted"
             shift
             ;;
         yaml)
-            yaml
+            yarn_me "yaml-language-server"
             shift
             ;;
         shell)
-            shellcheck
+            pac_me "shellcheck-bin" "shfmt"
             shift
+            ;;
+        # -h | --help)
+        #     help
+        #     shift
+        #     ;;
+        *)
+            help
+            shift # past argument
             ;;
     esac
 }
