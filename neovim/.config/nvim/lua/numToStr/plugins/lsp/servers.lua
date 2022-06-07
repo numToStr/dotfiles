@@ -120,6 +120,24 @@ lsp.tsserver.setup({
     root_dir = require('lspconfig.util').find_git_ancestor,
 }) ]]
 
+-- HTML
+lsp.html.setup({
+    flags = flags,
+    capabilities = capabilities,
+    on_attach = function(_, buf)
+        U.mappings(buf)
+    end,
+})
+
+-- CSS
+lsp.cssls.setup({
+    flags = flags,
+    capabilities = capabilities,
+    on_attach = function(_, buf)
+        U.mappings(buf)
+    end,
+})
+
 -- Json
 lsp.jsonls.setup({
     flags = flags,
