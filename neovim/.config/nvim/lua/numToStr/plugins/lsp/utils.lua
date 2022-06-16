@@ -30,6 +30,14 @@ function U.capabilities()
     return require('cmp_nvim_lsp').update_capabilities(capabilities)
 end
 
+---Disable formatting for servers | Handled by null-ls
+---@param client table
+---@see https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts
+function U.disable_formatting(client)
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = true
+end
+
 ---Creates LSP mappings
 ---@param buf number
 function U.mappings(buf)

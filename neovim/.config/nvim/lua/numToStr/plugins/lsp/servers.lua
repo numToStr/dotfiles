@@ -1,11 +1,22 @@
 local lsp = require('lspconfig')
 local U = require('numToStr.plugins.lsp.utils')
 
-local capabilities = U.capabilities()
+---Common perf related flags for all the LSP servers
 local flags = {
     allow_incremental_sync = true,
     debounce_text_changes = 200,
 }
+
+---Common capabilities including lsp snippets and autocompletion
+local capabilities = U.capabilities()
+
+---Common `on_attach` function for LSP servers
+---@param client table
+---@param buf integer
+local function on_attach(client, buf)
+    U.disable_formatting(client)
+    U.mappings(buf)
+end
 
 -- Configuring native diagnostics
 vim.diagnostic.config({
@@ -21,9 +32,7 @@ vim.diagnostic.config({
 lsp.sumneko_lua.setup({
     flags = flags,
     capabilities = capabilities,
-    on_attach = function(_, buf)
-        U.mappings(buf)
-    end,
+    on_attach = on_attach,
     settings = {
         Lua = {
             completion = {
@@ -36,7 +45,7 @@ lsp.sumneko_lua.setup({
                 version = 'LuaJIT',
             },
             diagnostics = {
-                globals = { 'vim', 'dump' },
+                globals = { 'vim' },
             },
             workspace = {
                 -- Make the server aware of Neovim runtime files
@@ -54,9 +63,7 @@ lsp.sumneko_lua.setup({
 lsp.rust_analyzer.setup({
     flags = flags,
     capabilities = capabilities,
-    on_attach = function(_, buf)
-        U.mappings(buf)
-    end,
+    on_attach = on_attach,
     settings = {
         ['rust-analyzer'] = {
             cargo = {
@@ -77,32 +84,25 @@ lsp.rust_analyzer.setup({
     },
 })
 
--- Zig
-lsp.zls.setup({
-    flags = flags,
-    capabilities = capabilities,
-    on_attach = function(_, buf)
-        U.mappings(buf)
-    end,
-})
+---List of the LSP server that don't need special configuration
+local servers = {
+    'zls', -- Zig
+    'gopls', -- Golang
+    'tsserver', -- Typescript
+    'html', -- HTML
+    'cssls', -- CSS
+    'jsonls', -- Json
+    'yamlls', -- YAML
+    -- 'terraformls', -- Terraform
+}
 
--- Golang
-lsp.gopls.setup({
-    flags = flags,
-    capabilities = capabilities,
-    on_attach = function(_, buf)
-        U.mappings(buf)
-    end,
-})
-
--- Typescript
-lsp.tsserver.setup({
-    flags = flags,
-    capabilities = capabilities,
-    on_attach = function(_, buf)
-        U.mappings(buf)
-    end,
-})
+for _, server in ipairs(servers) do
+    lsp[server].setup({
+        flags = flags,
+        capabilities = capabilities,
+        on_attach = on_attach,
+    })
+end
 
 -- TIP: Using `eslint_d` diagnostic from `null-ls` bcz it is way fasterrrrrrr.
 -- Eslint
@@ -119,48 +119,3 @@ lsp.tsserver.setup({
     -- NOTE: `root_dir` is required to fix the monorepo issue
     root_dir = require('lspconfig.util').find_git_ancestor,
 }) ]]
-
--- HTML
-lsp.html.setup({
-    flags = flags,
-    capabilities = capabilities,
-    on_attach = function(_, buf)
-        U.mappings(buf)
-    end,
-})
-
--- CSS
-lsp.cssls.setup({
-    flags = flags,
-    capabilities = capabilities,
-    on_attach = function(_, buf)
-        U.mappings(buf)
-    end,
-})
-
--- Json
-lsp.jsonls.setup({
-    flags = flags,
-    capabilities = capabilities,
-    on_attach = function(_, buf)
-        U.mappings(buf)
-    end,
-})
-
--- YAML
-lsp.yamlls.setup({
-    flags = flags,
-    capabilities = capabilities,
-    on_attach = function(_, buf)
-        U.mappings(buf)
-    end,
-})
-
--- Terraform
-lsp.terraformls.setup({
-    flags = flags,
-    capabilities = capabilities,
-    on_attach = function(_, buf)
-        U.mappings(buf)
-    end,
-})
