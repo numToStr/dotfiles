@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+TMPDIR="$(mktemp -d)"
+
+echo ">> Downloading latest nightly..."
+curl -L --progress-bar "https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz" | tar -xz --strip-components=1 -C "$TMPDIR"
+
+echo ">> Installing..."
+sudo cp -r --preserve "$TMPDIR"/* /usr/local/
+
+rm -rf "$TMPDIR"
