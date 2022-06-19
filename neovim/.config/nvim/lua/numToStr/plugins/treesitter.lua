@@ -20,10 +20,11 @@ require('nvim-treesitter.configs').setup({
     incremental_selection = {
         enable = true,
         keymaps = {
-            init_selection = '<leader>si',
-            node_incremental = '<leader>sn',
-            node_decremental = '<leader>sN',
-            scope_incremental = '<leader>sc',
+            init_selection = 'gs',
+            -- NOTE: These are visual mode mappings
+            node_incremental = 'gs',
+            node_decremental = 'gS',
+            scope_incremental = '<leader>gc',
         },
     },
     -- nvim-treesitter/nvim-treesitter-textobjects
