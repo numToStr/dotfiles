@@ -40,6 +40,11 @@ zls() {
     mk_exec $name
 }
 
+gopls() {
+    banner "gopls (Golang Language Server)"
+    go install golang.org/x/tools/gopls@latest
+}
+
 help() {
     echo "lsp - LSP Installer/Updater
     "
@@ -54,6 +59,7 @@ help() {
     lua                 Setup lua-language-server and luacheck diagnostic
     rust                Setup rust-analyzer
     zls                 Setup zls (Zig Language Server)
+    go                  Setup gopls (Golang Language Server)
     tsserver            Setup typescript-language-server
     html                Setup HTML language server
     css                 Setup CSS language server
@@ -80,6 +86,10 @@ main() {
             ;;
         zls)
             zls
+            shift
+            ;;
+        go)
+            gopls
             shift
             ;;
         tsserver)
