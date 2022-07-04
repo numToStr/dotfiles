@@ -61,6 +61,9 @@ o.history = 50
 o.splitright = true
 o.splitbelow = true
 
+-- Preserve view while jumping
+o.jumpoptions = 'view'
+
 -- BUG: this won't update the search count after pressing `n` or `N`
 -- When running macros and regexes on a large file, lazy redraw tells neovim/vim not to draw the screen
 -- o.lazyredraw = true
