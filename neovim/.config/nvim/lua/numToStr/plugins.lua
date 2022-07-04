@@ -275,11 +275,16 @@ return require('packer').startup({
                 requires = {
                     {
                         'L3MON4D3/LuaSnip',
-                        event = 'CursorHold',
+                        event = 'InsertEnter',
                         config = function()
                             require('numToStr.plugins.lsp.luasnip')
                         end,
-                        requires = { 'rafamadriz/friendly-snippets' },
+                        requires = {
+                            {
+                                'rafamadriz/friendly-snippets',
+                                event = 'CursorHold',
+                            },
+                        },
                     },
                 },
             },
