@@ -26,7 +26,7 @@ nls.setup({
         -- }),
         fmt.rustfmt,
         fmt.stylua,
-        fmt.terraform_fmt,
+        -- fmt.terraform_fmt,
         fmt.gofmt,
         fmt.zigfmt,
         fmt.shfmt.with({
