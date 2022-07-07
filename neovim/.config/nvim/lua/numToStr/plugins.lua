@@ -1,6 +1,3 @@
--- Only required if you have packer in your `opt` pack
-vim.api.nvim_command([[packadd packer.nvim]])
-
 -- Automatically run :PackerCompile whenever plugins.lua is updated with an autocommand:
 vim.api.nvim_create_autocmd('BufWritePost', {
     group = vim.api.nvim_create_augroup('PACKER', { clear = true }),
@@ -14,7 +11,7 @@ return require('packer').startup({
         -- Package Manager --
         ---------------------
 
-        use({ 'wbthomason/packer.nvim', opt = true })
+        use('wbthomason/packer.nvim')
 
         ----------------------
         -- Required plugins --
