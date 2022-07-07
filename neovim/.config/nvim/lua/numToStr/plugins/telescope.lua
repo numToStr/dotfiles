@@ -33,7 +33,7 @@ require('telescope').setup({
 _G.Telescope = setmetatable({}, {
     __index = function(_, k)
         if vim.bo.filetype == 'NvimTree' then
-            A.nvim_command('wincmd l')
+            A.nvim_cmd({ cmd = 'wincmd', args = { 'l' } }, {})
         end
         return require('telescope.builtin')[k]
     end,
