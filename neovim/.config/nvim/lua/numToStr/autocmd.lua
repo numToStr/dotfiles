@@ -1,8 +1,5 @@
 local A = vim.api
 
-vim.g.did_load_filetypes = 0 -- Disable vim-based filetype plugin
-vim.g.do_filetype_lua = 1 -- Enable lua-based filetype plugin
-
 -- Custom filetypes
 vim.filetype.add({
     extension = {
