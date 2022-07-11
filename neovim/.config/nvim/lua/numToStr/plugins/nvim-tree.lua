@@ -28,6 +28,7 @@ require('nvim-tree').setup({
                 git = true,
                 folder = true,
                 file = true,
+                folder_arrow = false,
             },
             glyphs = {
                 default = '',
