@@ -9,7 +9,7 @@ nls.setup({
     sources = {
         -- # FORMATTING #
         fmt.trim_whitespace.with({
-            filetypes = { 'text', 'sh', 'zsh', 'toml', 'make', 'conf', 'tmux' },
+            filetypes = { 'text', 'zsh', 'toml', 'make', 'conf', 'tmux' },
         }),
         -- NOTE:
         -- 1. both needs to be enabled to so prettier can apply eslint fixes
@@ -26,7 +26,6 @@ nls.setup({
         -- }),
         fmt.rustfmt,
         fmt.stylua,
-        -- fmt.terraform_fmt,
         fmt.gofmt,
         fmt.zigfmt,
         fmt.shfmt.with({
