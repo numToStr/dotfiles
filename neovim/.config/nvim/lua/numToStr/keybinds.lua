@@ -14,31 +14,31 @@ map('i', '<C-E>', '<ESC>A')
 map('i', '<C-A>', '<ESC>I')
 
 -- Quickly save the current buffer or all buffers
-map('n', '<leader>w', ':update<CR>')
-map('n', '<leader>W', ':wall<CR>')
+map('n', '<leader>w', '<CMD>update<CR>')
+map('n', '<leader>W', '<CMD>wall<CR>')
 
 -- Quit neovim
-map('n', '<C-Q>', ':q<CR>')
+map('n', '<C-Q>', '<CMD>q<CR>')
 
 -- leader-o/O inserts blank line below/above
 map('n', '<leader>o', 'o<ESC>')
 map('n', '<leader>O', 'O<ESC>')
 
 -- Move to the next/previous buffer
-map('n', '<leader>[', ':bp<CR>')
-map('n', '<leader>]', ':bn<CR>')
+map('n', '<leader>[', '<CMD>bp<CR>')
+map('n', '<leader>]', '<CMD>bn<CR>')
 
 -- Move to last buffer
-map('n', "''", ':b#<CR>')
+map('n', "''", '<CMD>b#<CR>')
 
 -- Copying the vscode behaviour of making tab splits
-map('n', '<C-\\>', ':vsplit<CR>')
-map('n', '<A-\\>', ':split<CR>')
+map('n', '<C-\\>', '<CMD>vsplit<CR>')
+map('n', '<A-\\>', '<CMD>split<CR>')
 
 -- Move line up and down in NORMAL and VISUAL modes
 -- Reference: https://vim.fandom.com/wiki/Moving_lines_up_or_down
-map('n', '<C-j>', ':move .+1<CR>')
-map('n', '<C-k>', ':move .-2<CR>')
+map('n', '<C-j>', '<CMD>move .+1<CR>')
+map('n', '<C-k>', '<CMD>move .-2<CR>')
 map('x', '<C-j>', ":move '>+1<CR>gv=gv")
 map('x', '<C-k>', ":move '<-2<CR>gv=gv")
 
