@@ -1,5 +1,5 @@
 local actions = require('telescope.actions')
-local A = vim.api
+local finders = require('telescope.builtin')
 
 require('telescope').setup({
     defaults = {
@@ -30,29 +30,32 @@ require('telescope').setup({
     },
 })
 
-_G.Telescope = setmetatable({}, {
+local Telescope = setmetatable({}, {
     __index = function(_, k)
         if vim.bo.filetype == 'NvimTree' then
-            A.nvim_cmd({ cmd = 'wincmd', args = { 'l' } }, {})
+            vim.cmd.wincmd('l')
         end
-        return require('telescope.builtin')[k]
+        return finders[k]
     end,
 })
 
 -- Ctrl-p = fuzzy finder
-vim.keymap.set('n', '<C-P>', '<CMD>lua Telescope.find_files({ hidden = true })<CR>')
+vim.keymap.set('n', '<C-P>', function()
+    if next(vim.fs.find({ '.git' })) then
+        Telescope.git_files({ show_untracked = true })
+    else
+        Telescope.find_files()
+    end
+end)
 
 -- Get :help at the speed of light
-vim.keymap.set('n', '<leader>H', '<CMD>lua Telescope.help_tags()<CR>')
+vim.keymap.set('n', '<leader>H', Telescope.help_tags)
 
 -- Fuzzy find active buffers
-vim.keymap.set('n', "'b", '<CMD>lua Telescope.buffers()<CR>')
+vim.keymap.set('n', "'b", Telescope.buffers)
 
 -- Search for string
-vim.keymap.set('n', "'r", '<CMD>lua Telescope.live_grep()<CR>')
+vim.keymap.set('n', "'r", Telescope.live_grep)
 
 -- Fuzzy find changed files in git
-vim.keymap.set('n', "'c", '<CMD>lua Telescope.git_status()<CR>')
-
--- Fuzzy find history buffers
--- U.map('n', "'i", "<CMD>lua __telescope_open('oldfiles')<CR>")
+vim.keymap.set('n', "'c", Telescope.git_status)
