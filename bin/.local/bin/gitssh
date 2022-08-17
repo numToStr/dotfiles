@@ -1,0 +1,42 @@
+#!/bin/bash
+
+echo -n "Enter your email: "
+read -r EMAIL
+
+echo -n "Enter your username: "
+read -r NAME
+
+if [[ -z $EMAIL || -z $NAME ]]; then
+    echo
+    echo "[ERR] Please provide github email and username!"
+    exit 1
+fi
+
+echo -n "Enter hostname (github.com): "
+read -r HOST
+HOST="${HOST:-github.com}"
+
+KEY_DIR="$HOME/.ssh/keys/$HOST"
+KEY_FILE="$KEY_DIR/$NAME"
+
+mkdir -p "$KEY_DIR"
+
+ssh-keygen -q -f "$KEY_FILE" -N "" -t ed25519 -C "$EMAIL"
+
+echo
+echo "------------------------------"
+echo
+echo "1. Copy the following public key and paste into $HOST ssh dashboard"
+echo
+cat "$KEY_FILE.pub"
+echo
+echo "2. Paste the following into ~/.ssh/config"
+echo "
+Host $NAME
+    Hostname $HOST
+    IdentityFile $KEY_FILE
+"
+echo
+echo "3. Run the following command to clone any repository"
+echo
+echo "git clone git@$NAME:<org>/<repo>"
