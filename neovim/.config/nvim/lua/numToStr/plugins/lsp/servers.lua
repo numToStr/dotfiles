@@ -87,6 +87,18 @@ lsp.rust_analyzer.setup({
     },
 })
 
+-- Angular
+-- 1. install @angular/language-server globally
+-- 2. install @angular/language-service inside project as dev dep
+lsp.angularls.setup({
+    flags = flags,
+    capabilities = capabilities,
+    on_attach = function(client, buf)
+        client.server_capabilities.renameProvider = false
+        on_attach(client, buf)
+    end,
+})
+
 ---List of the LSP server that don't need special configuration
 local servers = {
     'zls', -- Zig
