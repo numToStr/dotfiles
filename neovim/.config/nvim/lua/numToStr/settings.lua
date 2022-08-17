@@ -19,9 +19,9 @@ o.scrolloff = 8
 
 -- Better editor UI
 o.number = true
-o.numberwidth = 6
+o.numberwidth = 5
 o.relativenumber = true
-o.signcolumn = 'yes'
+o.signcolumn = 'yes:2'
 o.cursorline = true
 
 -- Better editing experience
