@@ -6,18 +6,23 @@ alias sysinfo="inxi -Fxxxz"
 # alias cat=bat
 alias open=xdg-open
 
-if command -v pamac >/dev/null 2>&1; then
+# go to root git dir
+cdr() {
+    cd "$(git rev-parse --show-toplevel)" || return
+}
+
+if command -v pamac > /dev/null 2>&1; then
     alias checkup="sudo pamac checkupdates -a"
     alias up="pamac upgrade -a --no-confirm"
     alias buildup="pamac build --no-confirm"
 fi
 
-if command -v pacman >/dev/null 2>&1; then
+if command -v pacman > /dev/null 2>&1; then
     alias upnup="sudo pacman -Syyuu"
     alias cleanup='sudo pacman -Rsn $(pacman -Qdtq)'
 fi
 
-if command -v microk8s >/dev/null 2>&1; then
+if command -v microk8s > /dev/null 2>&1; then
     alias k="microk8s.kubectl"
     alias kube="microk8s.kubectl"
     alias kubectl="microk8s.kubectl"
@@ -46,10 +51,10 @@ prcheck() {
 
 # IP aliases
 ip-internal() {
-    echo "Wireless :: IP => $( ip -4 -o a show wlo1 | awk '{ print $4 }' )"
+    echo "Wireless :: IP => $(ip -4 -o a show wlo1 | awk '{ print $4 }')"
 }
 ip-external() {
-    echo "External :: IP => $( curl --silent https://ifconfig.me )"
+    echo "External :: IP => $(curl --silent https://ifconfig.me)"
 }
 ipinfo() {
     ip-internal && ip-external
