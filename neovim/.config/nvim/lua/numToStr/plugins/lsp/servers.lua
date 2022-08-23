@@ -119,14 +119,12 @@ for _, server in ipairs(servers) do
     })
 end
 
--- TIP: Using `eslint_d` diagnostic from `null-ls` bcz it is way fasterrrrrrr.
+-- NOTE: Using `eslint_d` via `null-ls` bcz it is way fasterrrrrrr.
 -- Eslint
 --[[ lsp.eslint.setup({
     flags = flags,
     capabilities = capabilities,
-    on_attach = function(client, buf)
-        U.mappings(buf)
-    end,
+    on_attach = on_attach,
     settings = {
         useESLintClass = true, -- Recommended for eslint >= 7
         run = 'onSave', -- Run `eslint` after save
