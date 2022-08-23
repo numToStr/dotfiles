@@ -181,18 +181,7 @@ return require('packer').startup({
             end,
         })
 
-        -- use({
-        --     '~/Documents/code/Tree.nvim',
-        --     event = 'BufRead',
-        -- })
-
-        -- use({
-        --     '~/Documents/code/Surround.nvim',
-        --     event = 'BufRead',
-        --     config = function()
-        --         require('Surround').setup()
-        --     end,
-        -- })
+        use('numToStr/prettierrc.nvim')
 
         use({
             'tpope/vim-surround',
