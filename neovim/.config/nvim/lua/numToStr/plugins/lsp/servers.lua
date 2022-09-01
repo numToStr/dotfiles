@@ -108,6 +108,7 @@ local servers = {
     'cssls', -- CSS
     'jsonls', -- Json
     'yamlls', -- YAML
+    'emmet_ls', -- emmet-ls
     -- 'terraformls', -- Terraform
 }
 
