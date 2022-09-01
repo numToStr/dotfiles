@@ -41,9 +41,8 @@ local Telescope = setmetatable({}, {
 
 -- Ctrl-p = fuzzy finder
 vim.keymap.set('n', '<C-P>', function()
-    if next(vim.fs.find({ '.git' })) then
-        Telescope.git_files({ show_untracked = true })
-    else
+    local ok = pcall(Telescope.git_files, { show_untracked = true })
+    if not ok then
         Telescope.find_files()
     end
 end)
