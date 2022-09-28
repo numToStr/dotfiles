@@ -35,14 +35,14 @@ setopt autocd autopushd pushdignoredups
 ############
 # DOTFILES #
 ############
-export DOTFILES=${DOTFILES:=$HOME/.dotfiles}
+export DOTFILES=${DOTFILES:-$HOME/.dotfiles}
 
 #####################
 # ENV               #
 #####################
-export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:=$HOME/.config}
-export TERM=${TERM:=xterm-256color}
-export COLORTERM=${COLORTERM:=truecolor}
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
+export TERM=${TERM:-xterm-256color}
+export COLORTERM=${COLORTERM:-truecolor}
 export EDITOR=$(which nvim)
 # export MANPAGER="nvim --clean +Man! +'setl noma' +'nn q :q!<CR>'"
 # export PAGER=bat
