@@ -116,7 +116,7 @@ return require('packer').startup({
         ---------------------------------
 
         use({
-            'kyazdani42/nvim-tree.lua',
+            'nvim-tree/nvim-tree.lua',
             event = 'CursorHold',
             config = function()
                 require('numToStr.plugins.nvim-tree')

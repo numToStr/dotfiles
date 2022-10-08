@@ -1,4 +1,5 @@
 local actions = require('telescope.actions')
+local lactions = require('telescope.actions.layout')
 local finders = require('telescope.builtin')
 
 require('telescope').setup({
@@ -17,6 +18,7 @@ require('telescope').setup({
                 ['<TAB>'] = actions.toggle_selection + actions.move_selection_next,
                 ['<C-s>'] = actions.send_selected_to_qflist,
                 ['<C-q>'] = actions.send_to_qflist,
+                ['<C-h>'] = lactions.toggle_preview,
             },
         },
     },
