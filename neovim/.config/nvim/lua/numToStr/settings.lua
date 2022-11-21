@@ -65,6 +65,9 @@ o.splitbelow = true
 -- Preserve view while jumping
 o.jumpoptions = 'view'
 
+-- Stable buffer content on window open/close events.
+o.splitkeep = 'screen'
+
 -- Improve diff
 vim.opt.diffopt:append('linematch:60')
 
