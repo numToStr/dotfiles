@@ -38,21 +38,12 @@ return require('packer').startup({
         })
 
         use({
-            {
-                'nvim-lualine/lualine.nvim',
-                after = 'Sakura.nvim',
-                event = 'BufEnter',
-                config = function()
-                    require('numToStr.plugins.lualine')
-                end,
-            },
-            {
-                'j-hui/fidget.nvim',
-                after = 'lualine.nvim',
-                config = function()
-                    require('fidget').setup()
-                end,
-            },
+            'nvim-lualine/lualine.nvim',
+            after = 'Sakura.nvim',
+            event = 'BufEnter',
+            config = function()
+                require('numToStr.plugins.lualine')
+            end,
         })
 
         -----------------------------------
@@ -95,6 +86,10 @@ return require('packer').startup({
             end,
         })
 
+        ---------------
+        -- Git Stuff --
+        ---------------
+
         use({
             'lewis6991/gitsigns.nvim',
             event = 'BufRead',
@@ -108,6 +103,14 @@ return require('packer').startup({
             event = 'BufRead',
             config = function()
                 require('numToStr.plugins.git-messenger')
+            end,
+        })
+
+        use({
+            'sindrets/diffview.nvim',
+            event = 'BufRead',
+            config = function()
+                require('numToStr.plugins.diffview')
             end,
         })
 
@@ -286,6 +289,13 @@ return require('packer').startup({
             after = 'nvim-cmp',
             config = function()
                 require('numToStr.plugins.pairs')
+            end,
+        })
+
+        use({
+            'j-hui/fidget.nvim',
+            config = function()
+                require('fidget').setup()
             end,
         })
     end,
