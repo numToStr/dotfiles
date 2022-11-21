@@ -36,7 +36,7 @@ rust_analyzer() {
 zls() {
     name=zls
     banner "$name (Zig Language Server)"
-    curl_me https://github.com/zigtools/zls/releases/latest/download/x86_64-linux.tar.xz | tar -xJ --strip-components=1 -C "$LSP_BIN_PATH"
+    curl_me https://github.com/zigtools/zls/releases/latest/download/x86_64-linux.tar.zst | tar --zstd -x --strip-components=1 -C "$LSP_BIN_PATH"
     mk_exec $name
 }
 
@@ -58,7 +58,7 @@ help() {
     echo "COMMAND:
     lua                 Setup lua-language-server and luacheck diagnostic
     rust                Setup rust-analyzer
-    zls                 Setup zls (Zig Language Server)
+    zig                 Setup zls (Zig Language Server)
     go                  Setup gopls (Golang Language Server)
     tsserver            Setup typescript-language-server
     html                Setup HTML language server
@@ -84,7 +84,7 @@ main() {
             rust_analyzer
             shift
             ;;
-        zls)
+        zig)
             zls
             shift
             ;;
@@ -92,7 +92,7 @@ main() {
             gopls
             shift
             ;;
-        tsserver)
+        ts)
             yarn_me "typescript" "typescript-language-server"
             shift
             ;;
