@@ -2,6 +2,8 @@
     selected_tab: Yellow,
     command_fg: White,
     selection_bg: Black,
+    selection_fg: White,
+    cmdbar_bg: Black,
     cmdbar_extra_lines_bg: Black,
     disabled_fg: DarkGray,
     diff_line_add: Green,
@@ -16,4 +18,6 @@
     danger_fg: Red,
     push_gauge_bg: Black,
     push_gauge_fg: Reset,
+    tag_fg: LightMagenta,
+    branch_fg: LightYellow,
 )
