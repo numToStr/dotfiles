@@ -3,8 +3,6 @@ local A = vim.api
 -- Custom filetypes
 vim.filetype.add({
     extension = {
-        eslintrc = 'json',
-        prettierrc = 'json',
         conf = 'conf',
         mdx = 'markdown',
         mjml = 'html',
