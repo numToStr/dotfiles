@@ -15,7 +15,15 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 ---@param client table
 ---@param buf integer
 local function on_attach(client, buf)
-    U.disable_formatting(client)
+    ---Disable formatting for servers (Handled by null-ls)
+    ---@see https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Avoiding-LSP-formatting-conflicts
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
+
+    ---Disable |lsp-semantic_tokens| (conflicting with TS highlights)
+    client.server_capabilities.semanticTokensProvider = nil
+
+    ---LSP Mappings
     U.mappings(buf)
 end
 
