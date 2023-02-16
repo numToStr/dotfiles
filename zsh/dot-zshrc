@@ -58,8 +58,9 @@ zinit lucid light-mode from"gh-r" as"command" bpick'*linux*' for \
         alias l="exa -abghHlS --git --group-directories-first"
     ' pick'bin/exa' \
         @ogham/exa \
-    extrawurst/gitui \
     JohnnyMorganz/StyLua \
+    bpick'*linux-musl*' \
+        extrawurst/gitui \
     bpick'*.tar.gz' atinit'export PATH="$HOME/.yarn/bin:$PATH"' mv'yarn* -> yarn' pick"yarn/bin/yarn" \
         yarnpkg/yarn \
     # mv'vivid* -> vivid' pick'vivid/vivid' atload'export LS_COLORS="$(vivid generate ayu)"' \
