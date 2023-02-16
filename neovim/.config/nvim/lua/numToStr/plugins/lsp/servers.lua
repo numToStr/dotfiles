@@ -41,7 +41,7 @@ vim.diagnostic.config({
 })
 
 -- Lua
-lsp.sumneko_lua.setup({
+lsp.lua_ls.setup({
     flags = flags,
     capabilities = capabilities,
     on_attach = on_attach,
@@ -62,6 +62,8 @@ lsp.sumneko_lua.setup({
             workspace = {
                 -- Make the server aware of Neovim runtime files
                 library = { os.getenv('VIMRUNTIME') },
+                -- Don't show suggestions for third party libs
+                checkThirdParty = false,
             },
             -- Do not send telemetry data containing a randomized but unique identifier
             telemetry = {
