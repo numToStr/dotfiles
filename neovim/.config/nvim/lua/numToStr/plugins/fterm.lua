@@ -8,3 +8,7 @@ vim.keymap.set('n', '<A-g>', function()
         })
         :open()
 end)
+
+vim.keymap.set('n', '<C-e>', function()
+    require('FTerm'):new({ cmd = { 'nnn' } }):open()
+end)

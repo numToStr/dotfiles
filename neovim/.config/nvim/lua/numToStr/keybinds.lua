@@ -24,6 +24,9 @@ map('n', '<C-Q>', '<CMD>q<CR>')
 map('n', '<leader>o', 'o<ESC>')
 map('n', '<leader>O', 'O<ESC>')
 
+-- Shortcut to yank register
+map({ 'n', 'x' }, '<leader>p', '"0p')
+
 -- Move to the next/previous buffer
 map('n', '<leader>[', '<CMD>bp<CR>')
 map('n', '<leader>]', '<CMD>bn<CR>')
