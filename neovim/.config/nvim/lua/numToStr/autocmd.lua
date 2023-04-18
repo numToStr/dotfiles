@@ -6,6 +6,7 @@ vim.filetype.add({
         conf = 'conf',
         mdx = 'markdown',
         mjml = 'html',
+        kicad_mod = 'scheme',
     },
     pattern = {
         ['.*%.env.*'] = 'sh',
