@@ -114,6 +114,7 @@ zinit wait lucid for \
 	OMZL::grep.zsh \
 	OMZL::key-bindings.zsh \
 	OMZL::spectrum.zsh \
+	OMZL::functions.zsh \
 	OMZL::termsupport.zsh \
     atload"
         alias gcd='git checkout dev'
