@@ -76,6 +76,18 @@ main() {
     mkdir -p "$LSP_BIN_PATH"
 
     case $1 in
+        all)
+            for lsp in lua rust ts prettier eslint html yaml shell zig go; do
+                main $lsp
+            done
+            shift
+            ;;
+        web)
+            for lsp in ts prettier eslint html; do
+                main $lsp
+            done
+            shift
+            ;;
         lua)
             pac_me "luacheck" "lua-language-server"
             shift
