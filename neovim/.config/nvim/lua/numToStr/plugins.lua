@@ -59,7 +59,6 @@ return require('packer').startup({
                     require('numToStr.plugins.treesitter')
                 end,
             },
-            { 'nvim-treesitter/playground', after = 'nvim-treesitter' },
             { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' },
             { 'nvim-treesitter/nvim-treesitter-refactor', after = 'nvim-treesitter' },
             { 'windwp/nvim-ts-autotag', after = 'nvim-treesitter' },
@@ -157,7 +156,8 @@ return require('packer').startup({
         })
 
         use({
-            'phaazon/hop.nvim',
+            -- 'phaazon/hop.nvim',
+            'smoka7/hop.nvim',
             event = 'BufRead',
             config = function()
                 require('numToStr.plugins.hop')
