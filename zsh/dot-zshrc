@@ -121,11 +121,9 @@ zinit wait lucid for \
         alias gce='git commit -a -e'
     " \
 	OMZP::git \
-	OMZP::docker-compose \
-	as"completion" OMZP::docker/_docker \
-    djui/alias-tips \
-    https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh \
-    https://github.com/junegunn/fzf/blob/master/shell/completion.zsh \
+  djui/alias-tips \
+  https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh \
+  https://github.com/junegunn/fzf/blob/master/shell/completion.zsh \
     # hlissner/zsh-autopair \
     # chriskempson/base16-shell \
 	# OMZP::fzf \
