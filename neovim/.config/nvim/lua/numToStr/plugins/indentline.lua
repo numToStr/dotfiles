@@ -1,5 +1,10 @@
-require('indent_blankline').setup({
-    show_first_indent_level = false,
-    filetype_exclude = { 'help', 'packer', 'FTerm' },
-    buftype_exclude = { 'terminal', 'nofile' },
+local hooks = require('ibl.hooks')
+
+require('ibl').setup({
+    exclude = {
+        filetypes = { 'help', 'packer', 'FTerm' },
+        buftypes = { 'terminal', 'nofile' },
+    },
 })
+
+hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
