@@ -2,22 +2,23 @@
 
 set -e
 
-# Moving two directory upwards to the root of the dotfiles
-# from the scripts/ directory where this script
-cd "$(dirname "$0")/../.."
+# If ran through `dotfiles-cli` then `$DOTFILES_CLI` is set
+# In that case, hopefully $DOTFILES will be available if `setup` is already performed
+# This check prevents $DOTFILES not to be set again which is useful for the cli
+if [[ -z $DOTFILES_CLI ]]; then
+    # Moving two directory upwards to the root of the dotfiles
+    # from the scripts/ directory where this script
+    cd "$(dirname "$0")/../.."
 
-export DOTFILES=$(pwd -P)
+    export DOTFILES=$(pwd -P)
+fi
+
 TARGET=$HOME
 
 # List of packages that has to installed via `stow`
 DOTFILES_DIRS=$(ls -d $DOTFILES/*/ | awk -F "/" '{ print $(NF-1) }')
 
 for F in $DOTFILES_DIRS ; do
-    # Don't install scripts/
-    # if [[ $F = "scripts" ]]; then
-    #     continue;
-    # fi
-
     echo "~ Installing :: $F"
 
     # Remove previous links

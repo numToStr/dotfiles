@@ -2,9 +2,15 @@
 
 set -e
 
-# Moving two directory upwards to the root of the dotfiles
-# from the scripts/ directory where this script
-cd "$(dirname "$0")/../.."
+# If ran through `dotfiles-cli` then `$DOTFILES_CLI` is set
+if [[ -z $DOTFILES_CLI ]]; then
+    # Moving two directory upwards to the root of the dotfiles
+    # from the scripts/ directory where this script
+    cd "$(dirname "$0")/../.."
+else
+    # Need to cd into `$DOTFILES` so that update channel can be set
+    cd $DOTFILES
+fi
 
 REPO="https://github.com/numToStr/dotfiles.git"
 
